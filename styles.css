@@ -224,4 +224,96 @@ body {
 
 
 
-.footer
+.footer {
+    padding: 25px 20px;
+    text-align: center;
+    background: #4a3038;
+    color: #ffe8ee;
+}
+.footer-text {
+    font-size: 14px;
+}
+
+
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+    
+    100% {
+        transfrom: translateY(0);
+    }
+}
+
+@keyframes giftBounce {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(3deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+
+/* ================================
+   PHONE
+================================ */
+
+@media (max-width: 550px) {
+
+    .hero {
+        min-height: 100vh;
+        padding: 60px 18px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero h2 {
+        font-size: 23px;
+    }
+
+    .intro {
+        font-size: 15px;
+    }
+
+    .message,
+    .memories,
+    .surprise {
+        padding: 65px 18px;
+    }
+
+    .message h2,
+    .memories h2,
+    .surprise h2 {
+        font-size: 31px;
+    }
+
+    .memories-gallery {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .memory img {
+        height: 300px;
+    }
+
+    .gift {
+        font-size: 75px;
+    }
+
+    .surprise h3 {
+        font-size: 25px;
+    }
+}
