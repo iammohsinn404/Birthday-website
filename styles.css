@@ -33,4 +33,20 @@ body {
     overflow: hidden;
 }
 
-.hero;
+.hero::before {
+    content: "🎈";
+    position: absolute;
+    top: 70px;
+    left: 10%;
+    font-size: 55px;
+    animation: float 4s ease-in-out infinite;
+}
+
+.hero::after {
+    content: "🎈";
+    position: absolute;
+    top: 120px;
+    left: 10%;
+    font-size: 45px;
+    animation: float 5s ease-in-out infinite;
+}
