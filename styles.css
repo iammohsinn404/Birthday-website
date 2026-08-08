@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: "Poppins", Arial, sans-serif;
+    background-color: rgba(77, 34, 157, 0.6);
+    color: #4a3038;
+    line-height: 1.7;
+}
+
+
+.hero {
+    min-height: 100vh;
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background: 
+    radial-gradient(circle at top left, #ffd6e3, transparent 35%),
+    radial-gradient(circle at bottom right, #ffe9c7, transparent 35%),
+    #fff5f7;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.hero;
