@@ -67,4 +67,77 @@ body {
     color: #70444f;
     margin-bottom: 20px;
 }
+.intro {
+    max-width: 720px;
+    font-size: 17px
+}
+.intro strong {
+    color: #d94f75;
+    font-size: 22px;
+}
+
+
+#surprise-button {
+    border: none;
+    background-color: #d94f75;
+    color: #fff;
+
+    padding: 15px 28px;
+    border-radius: 30px;
+    
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 20px rgba(217, 79, 117, 0.25);
+
+    transition: all 0.3s ease;
+}
+
+#surprise-button:hover {
+    background-color: #c83f65;
+    box-shadow: 0 12px 25px rgba(217, 79, 117, 0.35);
+    transform: translateY(-4px);
+}
+
+#surprise-button:active {
+     transform: scale(0.95);
+
+}
+
+
+.message {
+    padding: 90px 20px;
+    text-align: center;
+    background: white;
+}
+
+.message h2,
+.memories h2,
+.surprise h2 {
+    font-family: Georgia, serif;
+    font-size: 38px;
+    color: #d94f75;
+    margin-bottom: 25px;
+
+}
+.message-text {
+    max-width: 750px;
+    margin: auto;
+    font-size: 17px;
+    color: #684b54;
+    white-space: pre-line;
+}
+
+
+
+
+.memories {
+    padding: 90px 20px;
+    text-align: center;
+    background: #fff0f4;
+
+}
+
 
