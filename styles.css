@@ -16,6 +16,37 @@ body {
 body.intro-active {
     overflow: hidden;
 }
+#musicButton {
+    position: fixed;
+
+    top: 20px;
+    right: 20px;
+
+    z-index: 20000;
+    border: none;
+    padding: 10px 18px;
+
+    border-radius: 25px;
+    background: #d94f75;
+    color: white;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 6px 18px rgba(217, 79, 117, 0.25);
+    transition: 
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+#musicButton:hover {
+    transform: translateY(-2px);
+    background: #c83f65;
+}
+#musicButton:active {
+    transform: scale(0.95);
+}
 .intro-screen {
     position: fixed;
     inset: 0;

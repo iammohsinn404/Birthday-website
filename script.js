@@ -1,3 +1,28 @@
+// Sounds
+
+const clickSound = new Audio("Sounds/click.mp3");
+const successSound = new Audio ("Sounds/sucess.mp3");
+const giftSound = new Audio("Sounds/gift.mp3");
+const burpSound = new Audio("Sounds/burp.mp3");
+const backgroundMusic = new Audio ("Sounds/cute_music.mp3");
+
+backgroundMusic.loop = true;
+backgroundMusic.volume = 0.35;
+
+const musicButton = document.getElementById("musicButton");
+
+musicButton.addEventListener("click", () => {
+
+    if (backgroundMusic.paused) {
+        backgroundMusic.play();
+        musicButton.textContent = "Stop Music";
+    } else {
+        backgroundMusic.pause();
+        musicButton.textContent = "Play Music";
+    }
+
+});
+
 // Intro SCREEN 
 
 const introScreen = document.getElementById("introScreen");
@@ -94,6 +119,8 @@ function flipCard(card) {
     if (card.classList.contains("matched")) return;
 
     card.classList.add("flipped");
+    clickSound.currentTime = 0;
+    clickSound.play();
 
     if (!firstCard) {
 
