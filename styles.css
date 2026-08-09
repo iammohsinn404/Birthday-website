@@ -301,7 +301,22 @@ overflow-x: hidden;
 .puzzle-card.flipped .card-image {
     opacity: 1;
 }
-/* Matched card Stay Filliped
+/* Matched card Stay Flipped */
+.puzzle-card.matched {
+    cursor: default;
+
+    box-shadow:
+        0 0 0 3px #d94f75,
+        0 10px 25px rgba(217, 79, 117, 0.2);
+}
+
+.puzzle-card.matched .card-front {
+    opacity: 0;
+}
+
+.puzzle-card.matched .card-image {
+    opacity: 1;
+}
 /* Matched Card */
    .puzzle-card.matched {
     cursor: default;
@@ -311,7 +326,7 @@ overflow-x: hidden;
              0 10px 25px rgba(217, 79, 117, 0.2);
    }
    .puzzle-card.matched .card-image {
-     opacity: 0;
+     opacity: 1;
    }
 
    /* Congratulations */
