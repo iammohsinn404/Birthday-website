@@ -30,7 +30,7 @@ body {
     #fff5f8;
 
     transition: opacity 0.8s ease,
-                visiblility 0.8s ease;
+                visibility 0.8s ease;
 }
 .intro-content{
     width: min(90%, 700px);
@@ -80,7 +80,31 @@ body {
 #noButton {
     background: white;
     color: #70444f;
-    box-shadow: 1px  solid #ead2d9;
+    border: 1px  solid #ead2d9;
+    transition:
+        left 0.25s ease,
+        top 0.25s ease,
+        transform 0.2s ease;
+}
+#noButton.angry {
+    animation: angryShake 0.35s ease;
+}
+@keyframes angryShake {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-8deg);
+    }
+    50% {
+        transform: rotate(8deg);
+    }
+    75% {
+        transform: rotate(-6deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
 }
 .intro-buttons button:hover {
     transform: translateY(-4px);
@@ -253,7 +277,7 @@ body {
 
 .memory img {
     width: 100%;
-    height: 2800px;
+    height: 280px;
 
     object-fit: cover;
 
@@ -333,7 +357,7 @@ body {
     }
     
     100% {
-        transfrom: translateY(0);
+        transform: translateY(0);
     }
 }
 

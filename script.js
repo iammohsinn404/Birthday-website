@@ -10,7 +10,36 @@ yesButton.addEventListener("click", () => {
 });
 
 // no Button
-noButton.addEventListener("mouseenter", () => {
+// 'No' button - running loop\
+   let noAttempts = 0;
+
+   const noMessages = [
+    "NO 😐",
+    "Are you sure? 😑",
+    "Really?! 😒",
+    "STOP! 😡",
+    "JUST CLICK YES! 😤",
+    "WHY ARE YOU STILL TRYING?! 😠",
+    "NOPE! 😂"
+   ];
+
+   noButton.addEventListener("mouseenter", () => {
+    noAttempts++;
+
+    //changing text 
+    if (noAttempts <= 3) {
+        noButton.textContent = noMessages[noAttempts - 1];
+
+    if (noAttempts === 3) {
+        noButton.classList.add("angry");
+    }    
+} 
+    else {
+        const randomMessage =
+                noMessages[Math.floor(Math.random() * noMessages.length)];
+                noButton.textContent = randomMessage;
+    }
+    // Calculate safe screen area
     const maxX = window.innerWidth - noButton.offsetWidth - 20;
     const maxY = window.innerHeight - noButton.offsetHeight - 20;
 
@@ -20,8 +49,7 @@ noButton.addEventListener("mouseenter", () => {
     noButton.style.position = "fixed";
     noButton.style.left = randomX + "px";
     noButton.style.top = randomY + "px";
-
-});
+    });
 
 
 
