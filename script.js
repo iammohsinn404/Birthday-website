@@ -25,7 +25,9 @@ yesButton.addEventListener("click", () => {
     "NOPE! 😂"
    ];
 
-   noButton.addEventListener("mouseenter", () => {
+   noButton.addEventListener("pointerenter", () => {
+     event.preventDefault();
+     
     noAttempts++;
 
     //changing text 
@@ -66,10 +68,6 @@ yesButton.addEventListener("click", () => {
     noButton.style.left = randomX + "px";
     noButton.style.top = randomY + "px";
     });
-
-
-
-
 
 // Brithday surprise //
 
