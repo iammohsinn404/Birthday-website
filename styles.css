@@ -53,12 +53,12 @@ body {
     color: #684b54;
     margin-bottom: 35px;
 }
-.intro-button {
+.intro-buttons {
     display: flex;
     justify-content: center;
     gap: 15px;
 }
-.intro-button button {
+.intro-buttons button {
     border: none;
     padding: 14px 30px;
 

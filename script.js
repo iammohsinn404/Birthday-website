@@ -1,3 +1,32 @@
+// Intro SCREEN 
+
+const introScreen = document.getElementById("introScreen");
+const yesButton = document.getElementById("yesButton");
+const noButton = document.getElementById("noButton");
+
+// yes Button
+yesButton.addEventListener("click", () => {
+    introScreen.classList.add("intro-hidden");
+});
+
+// no Button
+noButton.addEventListener("mouseenter", () => {
+    const maxX = window.innerWidth - noButton.offsetWidth - 20;
+    const maxY = window.innerHeight - noButton.offsetHeight - 20;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noButton.style.position = "fixed";
+    noButton.style.left = randomX + "px";
+    noButton.style.top = randomY + "px";
+
+});
+
+
+
+
+
 // Brithday surprise //
 
 const surpriseButton = document.getElementById("surprise-button");
