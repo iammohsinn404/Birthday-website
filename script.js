@@ -31,6 +31,8 @@ yesButton.addEventListener("click", () => {
         noButton.textContent = noMessages[noAttempts - 1];
 
     if (noAttempts === 3) {
+        noButton.classList.remove("angry");
+        void noButton.offsetWidth;
         noButton.classList.add("angry");
     }    
 } 
@@ -38,13 +40,24 @@ yesButton.addEventListener("click", () => {
         const randomMessage =
                 noMessages[Math.floor(Math.random() * noMessages.length)];
                 noButton.textContent = randomMessage;
-    }
-    // Calculate safe screen area
-    const maxX = window.innerWidth - noButton.offsetWidth - 20;
-    const maxY = window.innerHeight - noButton.offsetHeight - 20;
 
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
+                noButton.classList.remove("angry");
+                void noButton.offsetWidth;
+                noButton.classList.add("angry");
+    }
+
+    // Calculate safe screen area 
+    const padding = 20;
+
+    const maxX =
+          window.innerWidth - noButton.offsetWidth - padding;
+    const maxY = 
+          window.innerHeight -noButton.offsetHeight - padding;
+    const randomX = 
+          padding + Math.random() * (maxX - padding);
+    const randomY =
+          padding + Math.random() * (maxY - padding);            
+
 
     noButton.style.position = "fixed";
     noButton.style.left = randomX + "px";
