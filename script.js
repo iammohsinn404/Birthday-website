@@ -9,11 +9,181 @@ const noButton = document.getElementById("noButton");
 yesButton.addEventListener("click", () => {
     introScreen.classList.add("intro-hidden");
     document.body.classList.remove("intro-active");
+    gameScreen.classList.add("show-game");
+    startPuzzle();
 });
 
+ // ========================================
+// PUZZLE GAME
+// ========================================
+const puzzleImages = [
+    "cake.jpg",
+    "catcake.jpg",
+    "catrose.jpg",
+    "loveheart.jpg",
+    "purposeemoji.jpg",
+    "realheart.jpg",
+    "rose.jpg"
+];
+
+let firstCard = null;
+let secondCard = null;
+let lockBoard = false;
+let matchedPairs = 0;
+
+
+// ========================================
+// START PUZZLE
+// ========================================
+
+function startPuzzle() {
+
+    puzzle.innerHTML = "";
+
+    matchedPairs = 0;
+    firstCard = null;
+    secondCard = null;
+    lockBoard = false;
+
+    const cards = [...puzzleImages, ...puzzleImages];
+
+    cards.sort(() => Math.random() - 0.5);
+
+    cards.forEach((image) => {
+
+        const card = document.createElement("button");
+
+        card.classList.add("puzzle-card");
+
+        card.dataset.image = image;
+
+        card.innerHTML = `
+            <span class="card-front">?</span>
+
+            <img
+                class="card-image"
+                src="puzzle Imgs/${image}"
+                alt="Puzzle image"
+            >
+        `;
+
+        card.addEventListener("click", () => {
+            flipCard(card);
+        });
+
+        puzzle.appendChild(card);
+    });
+}
+
+
+// ========================================
+// FLIP CARD
+// ========================================
+
+function flipCard(card) {
+
+    if (lockBoard) return;
+
+    if (card === firstCard) return;
+
+    if (card.classList.contains("matched")) return;
+
+    card.classList.add("flipped");
+
+    if (!firstCard) {
+
+        firstCard = card;
+
+        return;
+    }
+
+    secondCard = card;
+
+    checkMatch();
+}
+
+
+// ========================================
+// CHECK MATCH
+// ========================================
+
+function checkMatch() {
+
+    const isMatch =
+        firstCard.dataset.image === secondCard.dataset.image;
+
+
+    if (isMatch) {
+
+        firstCard.classList.add("matched");
+        secondCard.classList.add("matched");
+
+        matchedPairs++;
+
+        resetCards();
+
+        if (matchedPairs === puzzleImages.length) {
+
+            puzzleComplete();
+
+        }
+
+    } else {
+
+        lockBoard = true;
+
+        setTimeout(() => {
+
+            firstCard.classList.remove("flipped");
+            secondCard.classList.remove("flipped");
+
+            resetCards();
+
+        }, 800);
+    }
+}
+
+
+// ========================================
+// RESET SELECTED CARDS
+// ========================================
+
+function resetCards() {
+
+    firstCard = null;
+    secondCard = null;
+    lockBoard = false;
+}
+
+
+// PUZZLE COMPLETE
+
+function puzzleComplete() {
+
+    const message = document.createElement("div");
+
+    message.classList.add("puzzle-complete");
+
+    message.innerHTML = `
+        <h2>Congratulations!</h2>
+
+        <p>You passed the way.</p>
+
+        <div class="game-gift">
+            🎁
+        </div>
+
+        <p>Something is waiting for you...</p>
+    `;
+
+    gameScreen
+        .querySelector(".game-content")
+        .appendChild(message);
+}
+   
 // no Button
 // 'No' button - running loop\
-   let noAttempts = 0;
+   let noAttempts = 0;  
 
    const noMessages = [
     "NO 😐",
@@ -25,9 +195,9 @@ yesButton.addEventListener("click", () => {
     "NOPE! 😂"
    ];
 
-   noButton.addEventListener("pointerenter", () => {
+   noButton.addEventListener("pointerdown", (event) => {
      event.preventDefault();
-     
+
     noAttempts++;
 
     //changing text 
