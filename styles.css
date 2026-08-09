@@ -14,10 +14,95 @@ body {
     line-height: 1.7;
 }
 .intro-screen {
-    position 
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    text-align: center;
+
+    background: fixed
+        radial-gradient(circle at 20% 20%, #ffd6e5, transparent 35%),
+        radial-gradient(circle at 80% 80%, #ffe6c7, transparent 35%),
+    #fff5f8;
+
+    transition: opacity 0.8s ease,
+                visiblility 0.8s ease;
+}
+.intro-content{
+    width: min(90%, 700px);
+
+    animation: introAppear 1.2s ease forwards;
+}
+.intro-small {
+    color: #b36b7d;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.intro-content h1 {
+    font-family: Georgia, Serif;
+    font-size: clamp(50px, 9vw, 90px);
+    color: #d94f75;
+    margin-bottom: 15px;
+}
+.intro-question {
+    font-size: 18px;
+    color: #684b54;
+    margin-bottom: 35px;
+}
+.intro-button {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.intro-button button {
+    border: none;
+    padding: 14px 30px;
+
+    border-radius: 30px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+#yesButton {
+    background: #d94f75;
+    color: white;
+    box-shadow: 0 8px 20px rgba(217, 79, 117, 0.25);
+}
+#noButton {
+    background: white;
+    color: #70444f;
+    box-shadow: 1px  solid #ead2d9;
+}
+.intro-buttons button:hover {
+    transform: translateY(-4px);
+}
+.intro-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
+@keyframes introAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
 .hero {
+
     min-height: 100vh;
     padding: 80px 20px;
     display: flex;
