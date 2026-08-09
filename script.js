@@ -3,10 +3,12 @@
 const introScreen = document.getElementById("introScreen");
 const yesButton = document.getElementById("yesButton");
 const noButton = document.getElementById("noButton");
+    document.body.classList.add("intro-active");
 
 // yes Button
 yesButton.addEventListener("click", () => {
     introScreen.classList.add("intro-hidden");
+    document.body.classList.remove("intro-active");
 });
 
 // no Button
@@ -50,13 +52,14 @@ yesButton.addEventListener("click", () => {
     const padding = 20;
 
     const maxX =
-          window.innerWidth - noButton.offsetWidth - padding;
+          document.documentElement.clientWidth - noButton.offsetWidth - padding;
     const maxY = 
-          window.innerHeight -noButton.offsetHeight - padding;
-    const randomX = 
-          padding + Math.random() * (maxX - padding);
+          document.documentElement.clientHeight -noButton.offsetHeight - padding;
+    const randomX =
+    Math.max(padding, Math.random() * maxX);
+
     const randomY =
-          padding + Math.random() * (maxY - padding);            
+    Math.max(padding, Math.random() * maxY);          
 
 
     noButton.style.position = "fixed";

@@ -13,10 +13,14 @@ body {
     color: #4a3038;
     line-height: 1.7;
 }
+body.intro-active {
+    overflow: hidden;
+}
 .intro-screen {
     position: fixed;
     inset: 0;
     z-index: 10000;
+    overflow: hidden;
 
     display: flex;
     justify-content: center;
