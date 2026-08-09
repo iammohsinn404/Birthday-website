@@ -39,7 +39,7 @@ body.intro-active {
 .intro-content{
     width: min(90%, 700px);
 
-    animation: introAppear 1.2s ease forwards;
+    animation: introAppear 1.2s ease ;
 }
 .intro-small {
     color: #b36b7d;
@@ -122,11 +122,9 @@ body.intro-active {
 @keyframes introAppear {
     from {
         opacity: 0;
-        transform: translateY(30px) scale(0.96);
     }
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
     }
 }
 .hero {
