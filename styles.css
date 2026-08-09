@@ -168,6 +168,23 @@ body.intro-active {
 }
 /* Puzzle Game */
 .game-screen {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    z-index: 9000;
+
+    display: none;
+
+    overflow-y: auto;
+overflow-x: hidden;
+}
+.game-screen.show-game {
+    display: flex;
+}
+.game-screen {
     min-height: 100vh;
     width: 100%;
     display: none;
@@ -256,6 +273,7 @@ body.intro-active {
 }
 /* Image */
 .card-image {
+    
     position: absolute;
 
     inset: 0;
@@ -272,8 +290,6 @@ body.intro-active {
     transition: 
          opacity 0.25 ease,
          transform 0.5s ease;
-
-         backface-visibility: hidden;
 }
 /* Flipped card */
 .puzzle-card.flipped {
@@ -285,6 +301,7 @@ body.intro-active {
 .puzzle-card.flipped .card-image {
     opacity: 1;
 }
+/* Matched card Stay Filliped
 /* Matched Card */
    .puzzle-card.matched {
     cursor: default;
@@ -294,8 +311,7 @@ body.intro-active {
              0 10px 25px rgba(217, 79, 117, 0.2);
    }
    .puzzle-card.matched .card-image {
-     opacity: 1;
-     transform: rotateY(180deg);
+     opacity: 0;
    }
 
    /* Congratulations */
@@ -623,6 +639,29 @@ body.intro-active {
 .game-instruction {
     font-size: 14px;
     margin-bottom: 20px;
+}
+.puzzle {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 25px;
+}
+.puzzle-card {
+    border-radius: 12px;
+}
+.card-image {
+    border-radius: 12px;
+}
+.card-front {
+    font-size: 27px;
+}
+.puzzle-complete {
+    padding: 20px;
+}
+.puzzle-complete h2 {
+    font-size: 30px;
+}
+.game-gift {
+    font-size: 65px;
 }
 
     .hero {

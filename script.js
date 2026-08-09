@@ -3,7 +3,11 @@
 const introScreen = document.getElementById("introScreen");
 const yesButton = document.getElementById("yesButton");
 const noButton = document.getElementById("noButton");
-    document.body.classList.add("intro-active");
+
+const gameScreen = document.getElementById("gameScreen");
+const puzzle = document.getElementById("puzzle");
+
+document.body.classList.add("intro-active");
 
 // yes Button
 yesButton.addEventListener("click", () => {
@@ -23,7 +27,8 @@ const puzzleImages = [
     "loveheart.jpg",
     "purposeemoji.jpg",
     "realheart.jpg",
-    "rose.jpg"
+    "rose.jpg",
+    "moon.jpg"
 ];
 
 let firstCard = null;
@@ -62,7 +67,7 @@ function startPuzzle() {
 
             <img
                 class="card-image"
-                src="puzzle Imgs/${image}"
+                src="./puzzle Imgs/${image}"
                 alt="Puzzle image"
             >
         `;
@@ -140,6 +145,7 @@ function checkMatch() {
             resetCards();
 
         }, 800);
+
     }
 }
 
