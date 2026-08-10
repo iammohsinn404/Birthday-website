@@ -31,6 +31,7 @@ const noButton = document.getElementById("noButton");
 
 const gameScreen = document.getElementById("gameScreen");
 const puzzle = document.getElementById("puzzle");
+const cakePage = document.getElementById("cakePage");
 
 document.body.classList.add("intro-active");
 
@@ -222,6 +223,8 @@ function puzzleComplete() {
     gameScreen
         .querySelector(".game-content")
         .appendChild(message);
+
+       
 const gameGift = document.getElementById("gameGift");
 
 gameGift.addEventListener("click", openGift);
@@ -399,9 +402,8 @@ function createConfetti() {
     }
 }
 
-// Cake Surprise
-const cakeButton = documenet.getElementById();
-const cakePage = document.getElementById("cakePage");
+ // Cake Surprise
+
 const cakeClose = document.getElementById("cakeClose");
 const cakeArea = document.getElementById("cakeArea");
 const cakeSlice = document.getElementById("cakeSlice");
@@ -410,9 +412,12 @@ const cakeMessage = document.getElementById("cakeMessage");
 // open cake pagee
 
 document.addEventListener("click", (event) => {
-    if (event.target.id === "cakeButton") {
+     if (event.target.closest("#cakeButton")) {
+
         cakePage.classList.add("cake-page-open");
+
     }
+
 });
 // close cake page
 cakeClose.addEventListener("click", () => {

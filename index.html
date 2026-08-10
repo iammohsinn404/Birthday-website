@@ -29,7 +29,6 @@
         </div>
         <section class="game-screen" id="gameScreen">
             <div class="game-content">
-                <div class="puzzle" id="puzzle"></div>
 
 <button id="skipPuzzleButton">
     Skip Puzzle → 🎁
@@ -62,28 +61,66 @@
                 Click The Cake! 👀
             </p>
             <div class="cake-area" id="cakeArea">
-             <div class="cake">
-                <div class="cake-top">
-                    <div class="candle"></div>
-                    <div class="flame"></div>
-                </div>
-                <div class="cake-cream"></div>
-                <div class="cake-body">
-                    <div class="cake-drip drip-one"></div>
-                    <div class="cake-drip drip-two"></div>
-                    <div class="cake-drip drip-three"></div>
-                </div>
-                <div class="cake-bottom"></div>
-                <!--Cake Slice-->
-                <div class="cake-slice" id="cakeSlice">
-                    <div class="slice-top"></div>
-                    <div class="slice-body"></div>
-                </div>
-             </div>
-            </div>
-            <p class="cake-message" id="cakeMessage">
-                Click one piece 😈
-            </p>
+
+    <div class="cake">
+
+        <!-- TOP -->
+        <div class="cake-top">
+
+            <div class="cream cream-1"></div>
+            <div class="cream cream-2"></div>
+            <div class="cream cream-3"></div>
+
+        </div>
+
+        <!-- CAKE BODY -->
+        <div class="cake-body">
+
+            <div class="cake-layer cake-layer-1"></div>
+            <div class="cake-layer cake-layer-2"></div>
+
+            <!-- Individual pieces -->
+            <button class="cake-piece piece-1" data-piece="1">
+                <span></span>
+            </button>
+
+            <button class="cake-piece piece-2" data-piece="2">
+                <span></span>
+            </button>
+
+            <button class="cake-piece piece-3" data-piece="3">
+                <span></span>
+            </button>
+
+            <button class="cake-piece piece-4" data-piece="4">
+                <span></span>
+            </button>
+
+            <button class="cake-piece piece-5" data-piece="5">
+                <span></span>
+            </button>
+
+            <button class="cake-piece piece-6" data-piece="6">
+                <span></span>
+            </button>
+
+        </div>
+
+        <!-- CAKE PLATE -->
+        <div class="cake-plate"></div>
+
+        <!-- CANDLE -->
+        <div class="cake-candle">
+            <div class="candle-flame"></div>
+        </div>
+
+    </div>
+
+</div>
+
+<p class="cake-message" id="cakeMessage">
+    Click any piece of cake 😈
+</p>
         </div>
         </section>
         <div class="site-profile">
