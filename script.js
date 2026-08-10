@@ -212,6 +212,9 @@ function puzzleComplete() {
         <div class="game-gift" id="gameGift">
     <img src="Gift Imgs/Gift1.png" alt="Gift">
 </div>
+     <button id="cakeButton" class="cake-button"> 
+            🍰 One More Surprise
+        </button>    
 
         <p>Something is waiting for you... </p>
     `;
@@ -265,7 +268,9 @@ setTimeout(() => {
                 alt="Memorable Photo"
             >
 
-            <p>Just Kidding! 😂</p>
+           
+             <p>MY SPACE MONKEYYY!</p>
+             <p>Just Kidding! 😂</p>
 
         </div>
     `;
@@ -391,5 +396,98 @@ function createConfetti() {
              setTimeout(() => {
                 confetti.remove();
              }, duration * 1000);
+    }
+}
+
+// Cake Surprise
+const cakeButton = documenet.getElementById();
+const cakePage = document.getElementById("cakePage");
+const cakeClose = document.getElementById("cakeClose");
+const cakeArea = document.getElementById("cakeArea");
+const cakeSlice = document.getElementById("cakeSlice");
+const cakeMessage = document.getElementById("cakeMessage");
+
+// open cake pagee
+
+document.addEventListener("click", (event) => {
+    if (event.target.id === "cakeButton") {
+        cakePage.classList.add("cake-page-open");
+    }
+});
+// close cake page
+cakeClose.addEventListener("click", () => {
+    cakePage.classList.remove("cake-page-open");
+});
+// CLICK CAKE
+
+cakeArea.addEventListener("click", () => {
+
+    if (cakeSlice.classList.contains("slice-missing")) {
+        return;
+    }
+
+    burpSound.currentTime = 0;
+    burpSound.play();
+
+    cakeSlice.classList.add("slice-missing");
+
+    cakeMessage.textContent =
+        "Oops... someone ate a piece! 😂";
+
+    createCakeParticles();
+
+});
+
+
+// CAKE PARTICLES
+
+function createCakeParticles() {
+
+    const particles = [
+        "🟫",
+        "🟫",
+        "🟤",
+        "✨",
+        "💨",
+        "🟫",
+        "✨",
+        "🟤"
+    ];
+
+    for (let i = 0; i < 18; i++) {
+
+        const particle = document.createElement("span");
+
+        particle.classList.add("cake-particle");
+
+        particle.textContent =
+            particles[Math.floor(Math.random() * particles.length)];
+
+        particle.style.left =
+            (45 + Math.random() * 15) + "%";
+
+        particle.style.top =
+            (45 + Math.random() * 15) + "%";
+
+        particle.style.setProperty(
+            "--x",
+            (Math.random() * 220 - 110) + "px"
+        );
+
+        particle.style.setProperty(
+            "--y",
+            (Math.random() * -180 - 30) + "px"
+        );
+
+        particle.style.setProperty(
+            "--rotate",
+            (Math.random() * 720 - 360) + "deg"
+        );
+
+        cakePage.appendChild(particle);
+
+        setTimeout(() => {
+            particle.remove();
+        }, 1000);
     }
 }
