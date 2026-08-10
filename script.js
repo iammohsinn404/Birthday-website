@@ -206,7 +206,7 @@ function puzzleComplete() {
         <p>You passed the way.</p>
 
         <div class="game-gift" id="gameGift">
-    <img src="Gift Imgs/gift1.png" alt="Gift">
+    <img src="Gift Imgs/Gift1.png" alt="Gift">
 </div>
 
         <p>Something is waiting for you... </p>
@@ -237,13 +237,13 @@ giftSound.play();
 
 //stage 1 => stage 2
 setTimeout(() => {
-    gameGift.querySelector("img").src = "Gift Imgs/gift2.png";
+    gameGift.querySelector("img").src = "Gift Imgs/Gift2.png";
 }, 300);
 setTimeout(() => {
-    gameGift.querySelector("img").src = "Gift Imgs/gift3.png";
+    gameGift.querySelector("img").src = "Gift Imgs/Gift3.png";
 }, 900);
 setTimeout(() => {
-    gameGift.querySelector("img").src = "Gift Imgs/gift4.png";
+    gameGift.querySelector("img").src = "Gift Imgs/Gift4.png";
 }, 1500);
 
 //show message after animation
