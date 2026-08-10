@@ -65,7 +65,11 @@ let matchedPairs = 0;
 // ========================================
 // START PUZZLE
 // ========================================
+const skipPuzzleButton = document.getElementById("skipPuzzleButton");
 
+skipPuzzleButton.addEventListener("click", () => {
+    puzzleComplete();
+});
 function startPuzzle() {
 
     puzzle.innerHTML = "";
@@ -248,21 +252,24 @@ setTimeout(() => {
 
 //show message after animation
 setTimeout(() => {
+
+    gameGift.classList.add("revealed");
+
     gameGift.innerHTML = `
-    <div class="gift-reveal">
+        <div class="gift-reveal">
 
-        <h2>A Memorable Photo Of YOU!</h2>
+            <h2>A Memorable Photo Of YOU!</h2>
 
-        <img
-            src="Imgs/monkey.jpg"
-            alt="Memorable Photo"
-        >
+            <img
+                src="Imgs/monkey.jpg"
+                alt="Memorable Photo"
+            >
 
-        <p>Just Kidding! 😂</p>
+            <p>Just Kidding! 😂</p>
 
-    </div>
-`;
-        
+        </div>
+    `;
+
 }, 2000);
 
 }

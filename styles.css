@@ -397,6 +397,19 @@ overflow-x: hidden;
     position: relative;
     transition: transform 0.3s ease;
    }
+   .game-gift.revealed {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+
+    margin: 25px auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: default;
+   }
    .game-gift:hover {
     transform: scale(1.05);
    }
@@ -408,42 +421,83 @@ overflow-x: hidden;
 
     display: block;
    }
+   #skipPuzzleButton {
+    margin-top: 25px;
+
+    padding: 12px 22px;
+
+    border: none;
+    border-radius: 25px;
+
+    background: white;
+    color: #d94f75;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(100, 50, 65, 0.12);
+
+    transition: 0.25s ease;
+}
+
+#skipPuzzleButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(100, 50, 65, 0.18);
+}
    /* gift Reveal */
-   .game-reveal {
+   .gift-reveal {
     width: 100%;
+    max-width: 500px;
+
+    margin: 0 auto;
 
     display: flex;
     flex-direction: column;
-
     align-items: center;
     justify-content: center;
 
     text-align: center;
-   }
-   .gift-reveal h2 {
-    margin: 10px 0 20px;
 
-    font-family: georgia, serif;
+    animation: revealAppear 0.8s ease;
+}
 
-    font-size: 30px;
+.gift-reveal h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+
+    font-family: Georgia, serif;
+    font-size: 32px;
+    line-height: 1.2;
 
     color: #d94f75;
-   }
-   .gift-reveal img {
-    width: 220px;
-    height: 220px;
+}
+
+.gift-reveal img {
+    width: 240px;
+    height: 240px;
 
     object-fit: cover;
+
     display: block;
 
-    border-radius: 18px;
-   }
-   .gift-reveal p {
-    margin-top: 15px;
+    margin: 0 auto;
 
-    font-size: 18px;
+    border-radius: 20px;
+
+    box-shadow: 0 10px 25px rgba(100, 50, 65, 0.15);
+}
+
+.gift-reveal p {
+    margin: 18px 0 0;
+
+    font-size: 19px;
+    line-height: 1.4;
+
     color: #684b54;
-   }
+}
    /* Animations */
    @keyframes puzzelComplete {
     from {
@@ -771,10 +825,11 @@ overflow-x: hidden;
 .game-reveal img {
     width: 180px;
     height: 180px;
-}
+} 
 .game-gift {
     font-size: 65px;
 }
+
 
     .hero {
         min-height: 100vh;
