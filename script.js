@@ -192,6 +192,9 @@ function resetCards() {
 // PUZZLE COMPLETE
 
 function puzzleComplete() {
+    
+    successSound.currentTime = 0;
+    successSound.play();
 
     const message = document.createElement("div");
 
@@ -202,18 +205,68 @@ function puzzleComplete() {
 
         <p>You passed the way.</p>
 
-        <div class="game-gift">
-            🎁
-        </div>
+        <div class="game-gift" id="gameGift">
+    <img src="Gift Imgs/gift1.png" alt="Gift">
+</div>
 
-        <p>Something is waiting for you...</p>
+        <p>Something is waiting for you... </p>
     `;
 
     gameScreen
         .querySelector(".game-content")
         .appendChild(message);
+const gameGift = document.getElementById("gameGift");
+
+gameGift.addEventListener("click", openGift);
 }
+function openGift() {
+const gameGift = document.getElementById("gameGift");
+
+if(!gameGift) return;
+
+
+// prevent cliking agian
+gameGift.style.pointerEvents = "none"; 
    
+
+
+
+//Gift Sound
+giftSound.currentTime = 0;
+giftSound.play();
+
+//stage 1 => stage 2
+setTimeout(() => {
+    gameGift.querySelector("img").src = "Gift Imgs/gift2.png";
+}, 300);
+setTimeout(() => {
+    gameGift.querySelector("img").src = "Gift Imgs/gift3.png";
+}, 900);
+setTimeout(() => {
+    gameGift.querySelector("img").src = "Gift Imgs/gift4.png";
+}, 1500);
+
+//show message after animation
+setTimeout(() => {
+    gameGift.innerHTML = `
+    <div class="gift-reveal">
+
+        <h2>A Memorable Photo Of YOU!</h2>
+
+        <img
+            src="Imgs/monkey.jpg"
+            alt="Memorable Photo"
+        >
+
+        <p>Just Kidding! 😂</p>
+
+    </div>
+`;
+        
+}, 2000);
+
+}
+
 // no Button
 // 'No' button - running loop\
    let noAttempts = 0;  
