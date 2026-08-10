@@ -212,10 +212,7 @@ function puzzleComplete() {
 
         <div class="game-gift" id="gameGift">
     <img src="Gift Imgs/Gift1.png" alt="Gift">
-</div>
-     <button id="cakeButton" class="cake-button"> 
-            🍰 One More Surprise
-        </button>    
+</div>    
 
         <p>Something is waiting for you... </p>
     `;
@@ -223,6 +220,13 @@ function puzzleComplete() {
     gameScreen
         .querySelector(".game-content")
         .appendChild(message);
+
+  setTimeout(() => {
+    message.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+  }, 200);     
 
        
 const gameGift = document.getElementById("gameGift");
@@ -277,6 +281,35 @@ setTimeout(() => {
 
         </div>
     `;
+
+    // wait 2s after monkey appeears
+    setTimeout(() => {
+        const cakeButton =
+        document.createElement("button");
+
+        cakeButton.id = "cakeButton";
+        cakeButton.className = "cake-button";
+
+        cakeButton.textContent =
+        "🍰 One More Surprise";
+
+
+        gameScreen
+            .querySelector(".game-content")
+            .appendChild(cakeButton);
+
+
+        // Scroll to the new button
+        setTimeout(() => {
+
+            cakeButton.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }, 100);
+
+    }, 3000);
 
 }, 2000);
 
@@ -425,24 +458,30 @@ cakeClose.addEventListener("click", () => {
 });
 // CLICK CAKE
 
-cakeArea.addEventListener("click", () => {
+cakeArea.addEventListener("click", (event) => {
 
-    if (cakeSlice.classList.contains("slice-missing")) {
+    const piece = event.target.closest(".cake-piece");
+
+    if (!piece) return;
+
+    if (piece.classList.contains("eaten")) {
         return;
     }
 
+    // Mark this piece as eaten
+    piece.classList.add("eaten");
+
+    // Burp sound
     burpSound.currentTime = 0;
     burpSound.play();
 
-    cakeSlice.classList.add("slice-missing");
-
+    // Message
     cakeMessage.textContent =
-        "Oops... someone ate a piece! 😂";
+        "Yummm... another piece disappeared! 😂";
 
-    createCakeParticles();
-
+    // Breaking particles
+    createCakeParticles(piece);
 });
-
 
 // CAKE PARTICLES
 

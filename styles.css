@@ -770,7 +770,42 @@ overflow-x: hidden;
         transform: translateY(0) rotate(0deg);
     }
 }
+/* ONE MORE SURPRISE BUTTON */
 
+.cake-button {
+    display: block;
+    margin: 25px auto 10px;
+
+    padding: 14px 30px;
+
+    border: none;
+    border-radius: 30px;
+
+    background: linear-gradient(135deg, #d94f75, #e96b8b);
+
+    color: white;
+
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 20px rgba(217, 79, 117, 0.25);
+
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.cake-button:hover {
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow: 0 12px 25px rgba(217, 79, 117, 0.35);
+}
+
+.cake-button:active {
+    transform: scale(0.95);
+}
 /* ========================================
    CAKE SURPRISE PAGE
 ======================================== */
@@ -1405,9 +1440,17 @@ overflow-x: hidden;
     margin: 20px auto;
 
 }
-.cake-button {
-    display: none;
-    
+
+
+@keyframes surpriseButtonAppear {
+     from {
+        opacity: 0;
+        transform: translateY(15px);
+     }
+     to {
+        opacity: 1;
+        transform: translateY(0);
+     }
 }
 .gift-reveal h2 {
     font-size: 24px;
