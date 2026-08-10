@@ -7,10 +7,9 @@ const burpSound = new Audio("Sounds/burp.mp3");
 const backgroundMusic = new Audio ("Sounds/cute_music.mp3");
 
 backgroundMusic.loop = true;
-backgroundMusic.volume = 0.35;
+backgroundMusic.volume = 0.4;
 
 const musicButton = document.getElementById("musicButton");
-
 musicButton.addEventListener("click", () => {
 
     if (backgroundMusic.paused) {
@@ -20,6 +19,7 @@ musicButton.addEventListener("click", () => {
         backgroundMusic.pause();
         musicButton.textContent = "Play Music";
     }
+    
 
 });
 
