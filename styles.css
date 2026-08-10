@@ -7,15 +7,18 @@
 html {
     scroll-behavior: smooth;
 }
+
 body {
     font-family: "Poppins", Arial, sans-serif;
     background-color: rgba(77, 34, 157, 0.6);
     color: #4a3038;
     line-height: 1.7;
 }
+
 body.intro-active {
     overflow: hidden;
 }
+
 #musicButton {
     position: fixed;
 
@@ -36,17 +39,20 @@ body.intro-active {
     cursor: pointer;
 
     box-shadow: 0 6px 18px rgba(217, 79, 117, 0.25);
-    transition: 
-    transform 0.2s ease,
-    background 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
 }
+
 #musicButton:hover {
     transform: translateY(-2px);
     background: #c83f65;
 }
+
 #musicButton:active {
     transform: scale(0.95);
 }
+
 .intro-screen {
     position: fixed;
     inset: 0;
@@ -56,43 +62,49 @@ body.intro-active {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     text-align: center;
 
     background:
         radial-gradient(circle at 20% 20%, #ffd6e5, transparent 35%),
         radial-gradient(circle at 80% 80%, #ffe6c7, transparent 35%),
-    #fff5f8;
+        #fff5f8;
 
     transition: opacity 0.8s ease,
-                visibility 0.8s ease;
+        visibility 0.8s ease;
 }
-.intro-content{
+
+.intro-content {
     width: min(90%, 700px);
 
-    animation: introAppear 1.2s ease ;
+    animation: introAppear 1.2s ease;
 }
+
 .intro-small {
     color: #b36b7d;
     font-size: 16px;
     margin-bottom: 15px;
 }
+
 .intro-content h1 {
     font-family: Georgia, Serif;
     font-size: clamp(50px, 9vw, 90px);
     color: #d94f75;
     margin-bottom: 15px;
 }
+
 .intro-question {
     font-size: 18px;
     color: #684b54;
     margin-bottom: 35px;
 }
+
 .intro-buttons {
     display: flex;
     justify-content: center;
     gap: 15px;
 }
+
 .intro-buttons button {
     border: none;
     padding: 14px 30px;
@@ -105,48 +117,58 @@ body.intro-active {
     cursor: pointer;
 
     transition: transform 0.25s ease,
-                box-shadow 0.25s ease;
+        box-shadow 0.25s ease;
 }
+
 #yesButton {
     background: #d94f75;
     color: white;
     box-shadow: 0 8px 20px rgba(217, 79, 117, 0.25);
 }
+
 #noButton {
     max-width: calc(100vw - 40px);
     box-sizing: border-box;
     white-space: normal;
     background: white;
     color: #70444f;
-    border: 1px  solid #ead2d9;
+    border: 1px solid #ead2d9;
     transition:
         left 0.25s ease,
         top 0.25s ease,
         transform 0.2s ease;
 }
+
 #noButton.angry {
     animation: angryShake 0.35s ease;
 }
+
 @keyframes angryShake {
     0% {
         transform: rotate(0deg);
     }
+
     25% {
         transform: rotate(-8deg);
     }
+
     50% {
         transform: rotate(8deg);
     }
+
     75% {
         transform: rotate(-6deg);
     }
+
     100% {
         transform: rotate(0deg);
     }
 }
+
 .intro-buttons button:hover {
     transform: translateY(-4px);
 }
+
 .intro-hidden {
     opacity: 0;
     visibility: hidden;
@@ -157,10 +179,12 @@ body.intro-active {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
 }
+
 .site-profile {
     position: fixed;
     top: 20px;
@@ -174,12 +198,13 @@ body.intro-active {
     border-radius: 50%;
     background: white;
 
-    box-shadow: 0 6px 20px rgba(0,0,0, 0.15);
-    
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+
     z-index: 9000;
-    
+
     animation: profileFloat 3s ease-in-out infinite;
 }
+
 .site-profile img {
     width: 100%;
     height: 100%;
@@ -189,14 +214,19 @@ body.intro-active {
     object-fit: cover;
     border-radius: 50%;
 }
+
 @keyframes profileFloat {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-4px);
     }
 }
+
 /* Puzzle Game */
 .game-screen {
     position: fixed;
@@ -210,11 +240,13 @@ body.intro-active {
     display: none;
 
     overflow-y: auto;
-overflow-x: hidden;
+    overflow-x: hidden;
 }
+
 .game-screen.show-game {
     display: flex;
 }
+
 .game-screen {
     min-height: 100vh;
     width: 100%;
@@ -224,19 +256,22 @@ overflow-x: hidden;
     padding: 60px 20px;
     text-align: center;
 
-    background: 
-    radial-gradient(circle at 15% 20%, #ffdce8, transparent 35%),
-    radial-gradient(circle at 85% 80%, #ffe8cf, transparent 35%),
-    #fff7fa;
+    background:
+        radial-gradient(circle at 15% 20%, #ffdce8, transparent 35%),
+        radial-gradient(circle at 85% 80%, #ffe8cf, transparent 35%),
+        #fff7fa;
 }
+
 .game-screen.show-game {
     display: flex;
 }
+
 .game-content {
     width: min(92%, 700px);
     margin: auto;
 
 }
+
 .game-content h1 {
     font-family: Georgia, serif;
     color: #d94f75;
@@ -244,11 +279,13 @@ overflow-x: hidden;
     line-height: 1.1;
     margin-bottom: 15px;
 }
+
 .game-instruction {
     color: #684b54;
     font-size: 16px;
     margin-bottom: 30px;
 }
+
 /* puzzle Grid */
 .puzzle {
     width: min(100%, 560px);
@@ -260,6 +297,7 @@ overflow-x: hidden;
 
     perspective: 1000px;
 }
+
 /* puzzle Card */
 .puzzle-card {
     position: relative;
@@ -274,16 +312,18 @@ overflow-x: hidden;
     background: #d94f75;
 
     cursor: pointer;
-     overflow: hidden;
-     transform-style: preserve-3d;
-     transition: 
-     transform 0.5s ease,
-     box-shadow 0.3s ease;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition:
+        transform 0.5s ease,
+        box-shadow 0.3s ease;
 }
+
 .puzzle-card:hover {
     transform: translateY(-4px);
     box-shadow: 0.3s ease;
 }
+
 /* Question Mark?*/
 .card-front {
     position: absolute;
@@ -302,9 +342,10 @@ overflow-x: hidden;
     backface-visibility: hidden;
     z-index: 2;
 }
+
 /* Image */
 .card-image {
-    
+
     position: absolute;
 
     inset: 0;
@@ -318,20 +359,24 @@ overflow-x: hidden;
     opacity: 0;
 
     transform: none;
-    transition: 
-         opacity 0.25 ease,
-         transform 0.5s ease;
+    transition:
+        opacity 0.25 ease,
+        transform 0.5s ease;
 }
+
 /* Flipped card */
 .puzzle-card.flipped {
     transform: rotateY(180deg);
 }
+
 .puzzle-card.flipped .card-front {
-     opacity: 0;
+    opacity: 0;
 }
+
 .puzzle-card.flipped .card-image {
     opacity: 1;
 }
+
 /* Matched card Stay Flipped */
 .puzzle-card.matched {
     cursor: default;
@@ -348,43 +393,48 @@ overflow-x: hidden;
 .puzzle-card.matched .card-image {
     opacity: 1;
 }
-/* Matched Card */
-   .puzzle-card.matched {
-    cursor: default;
-    
-    box-shadow: 
-             0 0 0 3px #d94f75,
-             0 10px 25px rgba(217, 79, 117, 0.2);
-   }
-   .puzzle-card.matched .card-image {
-     opacity: 1;
-   }
 
-   /* Congratulations */
-   .puzzle-complete {
+/* Matched Card */
+.puzzle-card.matched {
+    cursor: default;
+
+    box-shadow:
+        0 0 0 3px #d94f75,
+        0 10px 25px rgba(217, 79, 117, 0.2);
+}
+
+.puzzle-card.matched .card-image {
+    opacity: 1;
+}
+
+/* Congratulations */
+.puzzle-complete {
     margin-top: 30px;
 
     padding: 25px;
 
-    background: 
-            rgba(255,255,255,0.8);
+    background:
+        rgba(255, 255, 255, 0.8);
     border-radius: 24px;
-    box-shadow: 0 15px 40px rgba(100,50,65,0.12);
-    
+    box-shadow: 0 15px 40px rgba(100, 50, 65, 0.12);
+
     animation: puzzleComplete 0.7s ease;
 
-   }
-   .puzzle-complete h2 {
+}
+
+.puzzle-complete h2 {
     font-family: Georgia, serif;
     color: #d94f75;
     font-size: 36px;
     margin-bottom: 10px;
-   }
-   .puzzle-complete p {
+}
+
+.puzzle-complete p {
     color: #684b54;
-   }
-   /* puzzle Gift */
-   .game-gift {
+}
+
+/* puzzle Gift */
+.game-gift {
     width: 260px;
     height: 260px;
 
@@ -396,8 +446,9 @@ overflow-x: hidden;
     cursor: pointer;
     position: relative;
     transition: transform 0.3s ease;
-   }
-   .game-gift.revealed {
+}
+
+.game-gift.revealed {
     width: 100%;
     height: auto;
     min-height: 0;
@@ -409,19 +460,22 @@ overflow-x: hidden;
     align-items: center;
 
     cursor: default;
-   }
-   .game-gift:hover {
+}
+
+.game-gift:hover {
     transform: scale(1.05);
-   }
-   .game-gift> img {
+}
+
+.game-gift>img {
     width: 100%;
     height: 100%;
 
     object-fit: contain;
 
     display: block;
-   }
-   #skipPuzzleButton {
+}
+
+#skipPuzzleButton {
     margin-top: 25px;
 
     padding: 12px 22px;
@@ -446,8 +500,9 @@ overflow-x: hidden;
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(100, 50, 65, 0.18);
 }
-   /* gift Reveal */
-   .gift-reveal {
+
+/* gift Reveal */
+.gift-reveal {
     width: 100%;
     max-width: 500px;
 
@@ -498,29 +553,34 @@ overflow-x: hidden;
 
     color: #684b54;
 }
-   /* Animations */
-   @keyframes puzzleComplete {
+
+/* Animations */
+@keyframes puzzleComplete {
     from {
         opacity: 0;
         transform: scale(0.8) translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: scale(1) translateY(0);
     }
-   }
-   @keyframes giftFloat {
+}
+
+@keyframes giftFloat {
+
     0%,
     100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-10px);
     }
-   }
+}
 
- 
-    
+
+
 .hero {
 
     min-height: 100vh;
@@ -531,10 +591,10 @@ overflow-x: hidden;
     align-items: center;
     text-align: center;
 
-    background: 
-    radial-gradient(circle at top left, #ffd6e3, transparent 35%),
-    radial-gradient(circle at bottom right, #ffe9c7, transparent 35%),
-    #fff5f7;
+    background:
+        radial-gradient(circle at top left, #ffd6e3, transparent 35%),
+        radial-gradient(circle at bottom right, #ffe9c7, transparent 35%),
+        #fff5f7;
 
     position: relative;
     overflow: hidden;
@@ -557,11 +617,13 @@ overflow-x: hidden;
     font-size: 45px;
     animation: float 5s ease-in-out infinite;
 }
+
 .small-text {
     font-size: 16px;
     color: #a86b7b;
     margin-bottom: 15px;
 }
+
 .hero h1 {
     font-family: Georgia, serif;
     font-size: clamp(48px, 5vw, 90px);
@@ -569,15 +631,18 @@ overflow-x: hidden;
     line-height: 1.1;
     margin-bottom: 15px;
 }
+
 .hero h2 {
     font-size: 28px;
     color: #70444f;
     margin-bottom: 20px;
 }
+
 .intro {
     max-width: 720px;
     font-size: 17px
 }
+
 .intro strong {
     color: #d94f75;
     font-size: 22px;
@@ -591,7 +656,7 @@ overflow-x: hidden;
 
     padding: 15px 28px;
     border-radius: 30px;
-    
+
     font-size: 16px;
     font-weight: 600;
 
@@ -609,7 +674,7 @@ overflow-x: hidden;
 }
 
 #surprise-button:active {
-     transform: scale(0.95);
+    transform: scale(0.95);
 
 }
 
@@ -629,6 +694,7 @@ overflow-x: hidden;
     margin-bottom: 25px;
 
 }
+
 .message-text {
     max-width: 750px;
     margin: auto;
@@ -685,7 +751,7 @@ overflow-x: hidden;
 .memory-caption {
     padding: 15px 8px 8px;
     font-size: 15px;
-    color:#70444f;
+    color: #70444f;
 }
 
 
@@ -702,8 +768,8 @@ overflow-x: hidden;
 
     text-align: center;
 
-    background: 
-    radial-gradient(circle at center, #ffe1ea, #fff5f7);
+    background:
+        radial-gradient(circle at center, #ffe1ea, #fff5f7);
 }
 
 .gift {
@@ -737,6 +803,7 @@ overflow-x: hidden;
     background: #4a3038;
     color: #ffe8ee;
 }
+
 .footer-text {
     font-size: 14px;
 }
@@ -751,7 +818,7 @@ overflow-x: hidden;
     50% {
         transform: translateY(-20px);
     }
-    
+
     100% {
         transform: translateY(0);
     }
@@ -770,6 +837,7 @@ overflow-x: hidden;
         transform: translateY(0) rotate(0deg);
     }
 }
+
 /* ONE MORE SURPRISE BUTTON */
 
 .cake-button {
@@ -794,7 +862,7 @@ overflow-x: hidden;
     box-shadow: 0 8px 20px rgba(217, 79, 117, 0.25);
 
     transition: transform 0.2s ease,
-                box-shadow 0.2s ease;
+        box-shadow 0.2s ease;
 }
 
 .cake-button:hover {
@@ -806,6 +874,7 @@ overflow-x: hidden;
 .cake-button:active {
     transform: scale(0.95);
 }
+
 /* ========================================
    CAKE SURPRISE PAGE
 ======================================== */
@@ -832,7 +901,7 @@ overflow-x: hidden;
 }
 
 .cake-page.cake-page-open {
-    display: flex;
+    display: flex !important;
     justify-content: center;
     align-items: center;
 }
@@ -941,11 +1010,9 @@ overflow-x: hidden;
     border-radius: 50%;
 
     background:
-        linear-gradient(
-            180deg,
+        linear-gradient(180deg,
             #ffffff,
-            #e5e5e5
-        );
+            #e5e5e5);
 
     box-shadow:
         0 12px 20px rgba(80, 50, 60, 0.18);
@@ -968,19 +1035,14 @@ overflow-x: hidden;
     height: 180px;
 
     border-radius:
-        20px
-        20px
-        30px
-        30px;
+        20px 20px 30px 30px;
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             #c95773,
             #ed9aae 35%,
             #f3aabd 65%,
-            #c95773
-        );
+            #c95773);
 
     border: 4px solid #b84766;
 
@@ -1003,11 +1065,9 @@ overflow-x: hidden;
     height: 45px;
 
     background:
-        linear-gradient(
-            180deg,
+        linear-gradient(180deg,
             #fffafa,
-            #ffe3ea
-        );
+            #ffe3ea);
 
     border-top: 3px solid #ffffff;
     border-bottom: 3px solid #e7a0b1;
@@ -1038,12 +1098,10 @@ overflow-x: hidden;
     border-radius: 50%;
 
     background:
-        radial-gradient(
-            ellipse at 45% 35%,
+        radial-gradient(ellipse at 45% 35%,
             #ffffff,
             #ffd8e3 55%,
-            #e99aad
-        );
+            #e99aad);
 
     border: 5px solid #b84766;
 
@@ -1067,11 +1125,9 @@ overflow-x: hidden;
     border-radius: 50%;
 
     background:
-        radial-gradient(
-            circle at 35% 30%,
+        radial-gradient(circle at 35% 30%,
             #ffffff,
-            #ffe9ef
-        );
+            #ffe9ef);
 
     box-shadow:
         0 4px 8px rgba(100, 50, 60, 0.12);
@@ -1108,12 +1164,10 @@ overflow-x: hidden;
     border: 0;
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             #c65372,
             #e88da3,
-            #f1a8ba
-        );
+            #f1a8ba);
 
     border-right: 3px solid #b84766;
 
@@ -1139,11 +1193,9 @@ overflow-x: hidden;
     height: 42px;
 
     background:
-        linear-gradient(
-            180deg,
+        linear-gradient(180deg,
             #ffffff,
-            #ffe1e9
-        );
+            #ffe1e9);
 
     border-radius:
         0 0 18px 18px;
@@ -1204,10 +1256,7 @@ overflow-x: hidden;
     pointer-events: none;
 
     animation:
-        cakePieceBreak
-        0.65s
-        ease-out
-        forwards;
+        cakePieceBreak 0.65s ease-out forwards;
 }
 
 
@@ -1215,27 +1264,21 @@ overflow-x: hidden;
 
     0% {
         transform:
-            translate(0, 0)
-            rotate(0deg)
-            scale(1);
+            translate(0, 0) rotate(0deg) scale(1);
 
         opacity: 1;
     }
 
     35% {
         transform:
-            translate(10px, -20px)
-            rotate(8deg)
-            scale(1.05);
+            translate(10px, -20px) rotate(8deg) scale(1.05);
 
         opacity: 1;
     }
 
     100% {
         transform:
-            translate(100px, 150px)
-            rotate(35deg)
-            scale(0.6);
+            translate(100px, 150px) rotate(35deg) scale(0.6);
 
         opacity: 0;
     }
@@ -1260,11 +1303,9 @@ overflow-x: hidden;
     border-radius: 8px;
 
     background:
-        repeating-linear-gradient(
-            45deg,
+        repeating-linear-gradient(45deg,
             #d94f75 0 8px,
-            #ffffff 8px 16px
-        );
+            #ffffff 8px 16px);
 
     z-index: 12;
 }
@@ -1280,30 +1321,21 @@ overflow-x: hidden;
     height: 34px;
 
     transform:
-        translateX(-50%)
-        rotate(-45deg);
+        translateX(-50%) rotate(-45deg);
 
     border-radius:
-        50%
-        50%
-        50%
-        0;
+        50% 50% 50% 0;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #fff176,
-            #ff9800
-        );
+            #ff9800);
 
     box-shadow:
         0 0 18px #ffc107;
 
     animation:
-        candleFlicker
-        0.6s
-        infinite
-        alternate;
+        candleFlicker 0.6s infinite alternate;
 }
 
 
@@ -1311,16 +1343,12 @@ overflow-x: hidden;
 
     from {
         transform:
-            translateX(-50%)
-            rotate(-45deg)
-            scale(1);
+            translateX(-50%) rotate(-45deg) scale(1);
     }
 
     to {
         transform:
-            translateX(-50%)
-            rotate(-45deg)
-            scale(1.15);
+            translateX(-50%) rotate(-45deg) scale(1.15);
     }
 }
 
@@ -1348,10 +1376,7 @@ overflow-x: hidden;
         inset -2px -2px 0 #704025;
 
     animation:
-        cakeParticleBreak
-        0.8s
-        cubic-bezier(.15, .8, .25, 1)
-        forwards;
+        cakeParticleBreak 0.8s cubic-bezier(.15, .8, .25, 1) forwards;
 }
 
 
@@ -1359,18 +1384,14 @@ overflow-x: hidden;
 
     0% {
         transform:
-            translate(0, 0)
-            rotate(0deg)
-            scale(1);
+            translate(0, 0) rotate(0deg) scale(1);
 
         opacity: 1;
     }
 
     100% {
         transform:
-            translate(var(--x), var(--y))
-            rotate(var(--rotate))
-            scale(0.5);
+            translate(var(--x), var(--y)) rotate(var(--rotate)) scale(0.5);
 
         opacity: 0;
     }
@@ -1390,79 +1411,97 @@ overflow-x: hidden;
 
     font-weight: 600;
 }
-
+.scratch-page {
+    position: fixed;
+    inset: 0,
+}
 /* ================================
    PHONE
 ================================ */
 
 @media (max-width: 550px) {
-    
-.site-profile {
-    width: 52px;
-    height: 52px;
-    top: 15px; 
-    left: 15px;
-}
-.game-screen {
-    padding: 45px 15px;
-}
-.game-content {
-    width: 94%;
-}
-.game-content h1 {
-    font-size: 40px;
-}
-.game-instruction {
-    font-size: 14px;
-    margin-bottom: 20px;
-}
-.puzzle {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-top: 25px;
-}
-.puzzle-card {
-    border-radius: 12px;
-}
-.card-image {
-    border-radius: 12px;
-}
-.card-front {
-    font-size: 27px;
-}
-.puzzle-complete {
-    padding: 20px;
-}
-.puzzle-complete h2 {
-    width: 210px;
-    height: 210px;
 
-    margin: 20px auto;
+    .site-profile {
+        width: 52px;
+        height: 52px;
+        top: 15px;
+        left: 15px;
+    }
 
-}
+    .game-screen {
+        padding: 45px 15px;
+    }
+
+    .game-content {
+        width: 94%;
+    }
+
+    .game-content h1 {
+        font-size: 40px;
+    }
+
+    .game-instruction {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .puzzle {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 25px;
+    }
+
+    .puzzle-card {
+        border-radius: 12px;
+    }
+
+    .card-image {
+        border-radius: 12px;
+    }
+
+    .card-front {
+        font-size: 27px;
+    }
+
+    .puzzle-complete {
+        padding: 20px;
+    }
+
+    .puzzle-complete h2 {
+        width: 210px;
+        height: 210px;
+
+        margin: 20px auto;
+
+    }
 
 
-@keyframes surpriseButtonAppear {
-     from {
-        opacity: 0;
-        transform: translateY(15px);
-     }
-     to {
-        opacity: 1;
-        transform: translateY(0);
-     }
-}
-.gift-reveal h2 {
-    font-size: 24px;
-}
-.gift-reveal img {
-    width: 180px;
-    height: 180px;
-} 
-.game-gift {
-    font-size: 65px;
-}
-.cake-area {
+    @keyframes surpriseButtonAppear {
+        from {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .gift-reveal h2 {
+        font-size: 24px;
+    }
+
+    .gift-reveal img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .game-gift {
+        font-size: 65px;
+    }
+
+    .cake-area {
         transform: scale(0.78);
 
         margin-top: -20px;
@@ -1480,19 +1519,20 @@ overflow-x: hidden;
 }
 
 
-    .hero {
-        min-height: 100vh;
-        padding: 60px 18px;
-    }
+.hero {
+    min-height: 100vh;
+    padding: 60px 18px;
+}
 
-    .hero h1 {
-        font-size: 48px;
-    }
+.hero h1 {
+    font-size: 48px;
+}
 
-    .hero h2 {
-        font-size: 23px;
-    }
-    /* FINAL INTRO SCREEN FIX */
+.hero h2 {
+    font-size: 23px;
+}
+
+/* FINAL INTRO SCREEN FIX */
 
 .intro-screen {
     position: fixed !important;
@@ -1505,53 +1545,58 @@ overflow-x: hidden;
 
     z-index: 10000 !important;
 }
-    .intro-content {
-        width: 90%;
-        max-width: 90vh;
-    }
-    .intro-content h1 {
-        font-size: 48px;
-    }
-    .intro-question {
-        font-size: 16px;
-    }
-    .intro-buttons{
-        gap: 10px;
-    }
-    .intro-buttons button {
-        padding: 12px 24px;
-        font-size: 14px;
-    }
 
-    .intro {
-        font-size: 15px;
-    }
+.intro-content {
+    width: 90%;
+    max-width: 90vh;
+}
 
-    .message,
-    .memories,
-    .surprise {
-        padding: 65px 18px;
-    }
+.intro-content h1 {
+    font-size: 48px;
+}
 
-    .message h2,
-    .memories h2,
-    .surprise h2 {
-        font-size: 31px;
-    }
+.intro-question {
+    font-size: 16px;
+}
 
-    .memories-gallery {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+.intro-buttons {
+    gap: 10px;
+}
 
-    .memory img {
-        height: 300px;
-    }
+.intro-buttons button {
+    padding: 12px 24px;
+    font-size: 14px;
+}
 
-    .gift {
-        font-size: 75px;
-    }
+.intro {
+    font-size: 15px;
+}
 
-    .surprise h3 {
-        font-size: 25px;
-    }
+.message,
+.memories,
+.surprise {
+    padding: 65px 18px;
+}
+
+.message h2,
+.memories h2,
+.surprise h2 {
+    font-size: 31px;
+}
+
+.memories-gallery {
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.memory img {
+    height: 300px;
+}
+
+.gift {
+    font-size: 75px;
+}
+
+.surprise h3 {
+    font-size: 25px;
+}

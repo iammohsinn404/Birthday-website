@@ -282,7 +282,7 @@ setTimeout(() => {
         </div>
     `;
 
-    // wait 2s after monkey appeears
+    // wait 3s after monkey appeears
     setTimeout(() => {
         const cakeButton =
         document.createElement("button");
