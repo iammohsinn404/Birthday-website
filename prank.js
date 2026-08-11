@@ -51,7 +51,7 @@ for (let i = 0; i < 35; i++) {
         new AudioContext();
 
         const oscillator = 
-        audio.createGain();
+        audio.creatOscillator();
 
         const gain = audio.createGain();
         
@@ -280,12 +280,8 @@ surpriseBtn.addEventListener(
    GO TO MAIN BIRTHDAY PAGE
 ======================================== */
 
-birthdayBtn.addEventListener(
-    "click",
-    () => {
+birthdayBtn.addEventListener("click", () => {
 
-        window.location.href =
-            "index.html";
+    window.location.href = "index.html#surprise";
 
-    }
-);
+});

@@ -9,10 +9,27 @@ html {
 }
 
 body {
-    font-family: "Poppins", Arial, sans-serif;
-    background-color: rgba(77, 34, 157, 0.6);
-    color: #4a3038;
-    line-height: 1.7;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: #392532;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 170, 205, .35),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(190, 170, 255, .3),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #fff0f7,
+            #f4eaff,
+            #ffe8f1
+        );
 }
 
 body.intro-active {
@@ -649,22 +666,38 @@ body.intro-active {
 }
 
 
-#surprise-button {
+/* FORCE SURPRISE BUTTON TO BE VISIBLE */
+
+#surprise-btn {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    position: relative;
+    z-index: 50;
+
+    margin-top: 30px;
+
+    padding: 16px 32px;
+
     border: none;
-    background-color: #d94f75;
-    color: #fff;
+    border-radius: 999px;
 
-    padding: 15px 28px;
-    border-radius: 30px;
+    color: #ffffff !important;
 
-    font-size: 16px;
-    font-weight: 600;
+    background: linear-gradient(
+        135deg,
+        #e84f7b,
+        #b93767
+    );
+
+    font-size: 17px;
+    font-weight: 800;
 
     cursor: pointer;
 
-    box-shadow: 0 8px 20px rgba(217, 79, 117, 0.25);
-
-    transition: all 0.3s ease;
+    box-shadow:
+        0 10px 30px rgba(185, 55, 103, 0.35);
 }
 
 #surprise-button:hover {
@@ -672,7 +705,45 @@ body.intro-active {
     box-shadow: 0 12px 25px rgba(217, 79, 117, 0.35);
     transform: translateY(-4px);
 }
+.background-particle {
+    position: absolute;
+    bottom: -30px;
 
+    pointer-events: none;
+
+    color: rgba(190, 80, 130, 0.35);
+
+    z-index: 1;
+
+    animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+
+    from {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: .5;
+    }
+
+    85% {
+        opacity: .5;
+    }
+
+    to {
+        transform:
+            translateY(-115vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
 #surprise-button:active {
     transform: scale(0.95);
 
@@ -1744,6 +1815,98 @@ body.intro-active {
     touch-action: none;
 
     z-index: 5;
+}
+/* ================================
+   CAKE - MORE FORWARD BUTTON
+================================ */
+
+#moreForwardButton {
+    display: none;
+
+    margin: 30px auto 0;
+
+    padding: 12px 24px;
+
+    border: 2px solid #d94f75;
+    border-radius: 999px;
+
+    background: linear-gradient(
+        135deg,
+        #e85b82,
+        #d43f6b
+    );
+
+    color: white;
+
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(217, 79, 117, 0.30);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+}
+
+
+/* When JavaScript adds .show */
+
+#moreForwardButton.show {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    animation:
+        moreForwardAppear 0.7s ease forwards;
+}
+
+
+/* Hover */
+
+#moreForwardButton:hover {
+    transform:
+        translateY(-4px)
+        scale(1.04);
+
+    box-shadow:
+        0 14px 35px rgba(217, 79, 117, 0.40);
+
+    filter: brightness(1.05);
+}
+
+
+/* Click */
+
+#moreForwardButton:active {
+    transform:
+        translateY(0)
+        scale(0.96);
+}
+
+
+/* Entrance */
+
+@keyframes moreForwardAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(20px)
+            scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
 }
 
 /* ================================

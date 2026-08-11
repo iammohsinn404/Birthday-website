@@ -442,6 +442,14 @@ const cakeArea = document.getElementById("cakeArea");
 const cakeMessage = document.getElementById("cakeMessage");
    const moreForwardButton =
     document.getElementById("moreForwardButton");
+    // Cake → Prank Page
+moreForwardButton.addEventListener("click", () => {
+
+    cakePage.classList.remove("cake-page-open");
+
+    window.location.href = "prank.html";
+
+});
 
     let eatenPieces = 0;
 
@@ -460,20 +468,6 @@ cakeClose.addEventListener("click", () => {
     cakePage.classList.remove("cake-page-open");
 });
 
-
-// MORE FORWARD BUTTON
-
-const scratchPage =
-    document.getElementById("scratchPage");
-
-
-moreForwardButton.addEventListener("click", () => {
-
-    cakePage.classList.remove("cake-page-open");
-
-    scratchPage.classList.add("scratch-page-open");
-
-});
 // CLICK CAKE
 
 
@@ -580,7 +574,7 @@ function createCakeParticles() {
 // Scratchh Cardd
 // SCRATCH CARD
 // ========================================
-
+const scratchPage = document.getElementById("scratchPage");
 const scratchCanvas = document.getElementById("scratchCanvas");
 const scratchCard = document.getElementById("scratchCard");
 
@@ -709,18 +703,6 @@ if (scratchCanvas && scratchCard) {
 
     scratchCanvas.addEventListener("touchend", () => {
         scratching = false;
-    });
-
-    // Setup when scratch page opens
-    moreForwardButton.addEventListener("click", () => {
-
-        cakePage.classList.remove("cake-page-open");
-
-        scratchPage.classList.add("scratch-page-open");
-
-        setTimeout(() => {
-            setupScratchCanvas();
-        }, 100);
     });
 
     // Resize

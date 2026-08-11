@@ -115,7 +115,7 @@ body {
     }
 }
 /* Text */
-emoji-title {
+.emoji-title {
     font-size: 48px;
 
     margin-bottom: 15px;
