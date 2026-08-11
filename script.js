@@ -439,7 +439,6 @@ function createConfetti() {
 
 const cakeClose = document.getElementById("cakeClose");
 const cakeArea = document.getElementById("cakeArea");
-const cakeSlice = document.getElementById("cakeSlice");
 const cakeMessage = document.getElementById("cakeMessage");
    const moreForwardButton =
     document.getElementById("moreForwardButton");
@@ -577,29 +576,11 @@ function createCakeParticles() {
     }
 }
 
-// scratch carddd
 
-const scratchPage = document.getElementById("scratchPage");
-const scratchCanvas = document.getElementById("scratchCanvas");
-const scratchCard = document.getElementById("scratchCard");
-
-if (scratchCanvas && scratchCard) {
-    const ctx = scratchCanvas.getContext("2d");
-    function setupScratchCanvas() {
-        const rect = scratchCard.getBoundingClientRect();
-        const dpr = windows.devicePixelRatio || 1;
-
-function createCakeParticles() {
-
-    // ...
-
-}
-
-// ========================================
+// Scratchh Cardd
 // SCRATCH CARD
 // ========================================
 
-const scratchPage = document.getElementById("scratchPage");
 const scratchCanvas = document.getElementById("scratchCanvas");
 const scratchCard = document.getElementById("scratchCard");
 
@@ -615,9 +596,7 @@ if (scratchCanvas && scratchCard) {
 
         scratchCanvas.width = rect.width * dpr;
         scratchCanvas.height = rect.height * dpr;
-
-        scratchCanvas.style.width = rect.width + "px";
-        scratchCanvas.style.height = rect.height + "px";
+ 
 
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
@@ -755,5 +734,4 @@ if (scratchCanvas && scratchCard) {
         }
 
     });
-xp
 }

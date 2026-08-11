@@ -1,0 +1,574 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: #392532;
+
+    background: 
+           radial-gradient(circle at 20% 20%, rgba(255, 170, 205, .35),
+           transparent 30%
+           ),
+           radial-gradient(circle at 80% 30%, rgba(190, 170, 255, .3),
+           ),
+           linear-gradient(
+               135deg,
+               #fff0f7,
+               #f4eaff,
+               #ffe8f1
+           );
+}
+/* Page */
+.prank-page {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+/* Background Glow */
+.glow {
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    filter:blur(80px);
+
+    opacity: .45;
+
+    animation: glowMove 8s ease-in-out infinite alternate;
+}
+.glow-one {
+    top: -100px;
+    left: -80px;
+
+    background: #ff9fc4;
+}
+.glow-two {
+    right: -100px;
+    bottom: -100px;
+
+    background: #bca5ff;
+
+    animation-delay: 2s;
+}
+@keyframes glowMove {
+    from {
+        transform: translate(0,0) scale(1);
+    }
+    to {
+        transform: translate(50px, 30px) scale(1.15);
+    }
+}
+/* Main Content */
+.prank-content {
+    position: relative;
+    z-index: 10;
+
+    width: min(90%, 700px);
+
+    padding: 55px 35px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, .48);
+
+    border: 1px solid rgba(255, 255,255, .75);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border-radius: 35px;
+
+    box-shadow: 0 25px 70px rgba(100, 50, 90, .15),
+                inset 0 1px 0 rgba(255, 255, 255, .8);
+    animation: 
+            cardEnter 1s ease forwards;
+}
+@keyframes cardEnter {
+    from {
+        opacity: 0;
+
+        transform: translateY(40px) scale(.94);
+    }
+    to {
+        opacity: 1;
+
+        transform: translateY(0) scale(1);
+    }
+}
+/* Text */
+emoji-title {
+    font-size: 48px;
+
+    margin-bottom: 15px;
+
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    50% {
+        transform: translateY(-9px);
+    }
+}
+.eyebrow {
+    font-size: 14px;
+
+    font-weight: 700;
+    
+    letter-spacing: 3px;
+
+    color: #b24d73;
+
+    margin-bottom: 12px;
+}
+h1 {
+    font-size:
+        clamp(35px, 7vw, 62px);
+
+    line-height: 1.15;
+
+    margin-bottom: 20px;
+
+    color: #392532;
+}
+
+.description {
+    max-width: 520px;
+
+    margin: auto;
+
+    color: #745c69;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   MAIN BUTTON
+========================= */
+
+.surprise-btn,
+.continue-btn {
+
+    border: none;
+
+    padding: 16px 32px;
+
+    border-radius: 999px;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.surprise-btn {
+
+    position: relative;
+
+    margin-top: 32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e64f7a,
+            #bd3c69
+        );
+
+    box-shadow:
+        0 12px 30px
+        rgba(190, 55, 105, .3);
+}
+
+.surprise-btn:hover {
+
+    transform:
+        translateY(-4px)
+        scale(1.04);
+
+    box-shadow:
+        0 18px 40px
+        rgba(190, 55, 105, .4);
+}
+
+.surprise-btn:active {
+
+    transform:
+        scale(.96);
+}
+
+
+/* =========================
+   PRESENTS
+========================= */
+
+.presents {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+
+    gap: 25px;
+
+    margin-top: 25px;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.present {
+
+    font-size:
+        clamp(65px, 13vw, 110px);
+
+    display: inline-block;
+
+    transform:
+        translateY(180px)
+        scale(0)
+        rotate(-20deg);
+}
+
+.revealed .presents {
+
+    opacity: 1;
+}
+
+.revealed .present {
+
+    animation:
+        presentPop
+        .8s
+        cubic-bezier(.17, .89, .32, 1.4)
+        forwards;
+}
+
+.revealed .present:nth-child(2) {
+
+    animation-delay: .15s;
+}
+
+.revealed .present:nth-child(3) {
+
+    animation-delay: .3s;
+}
+
+@keyframes presentPop {
+
+    0% {
+
+        transform:
+            translateY(180px)
+            scale(0)
+            rotate(-25deg);
+    }
+
+    65% {
+
+        transform:
+            translateY(-25px)
+            scale(1.18)
+            rotate(8deg);
+    }
+
+    100% {
+
+        transform:
+            translateY(0)
+            scale(1)
+            rotate(0);
+    }
+}
+
+
+/* =========================
+   FINAL MESSAGE
+========================= */
+
+.final-message {
+
+    display: none;
+
+    margin-top: 20px;
+}
+
+.revealed .final-message {
+
+    display: block;
+
+    animation:
+        finalAppear
+        1s
+        ease
+        forwards;
+}
+
+@keyframes finalAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+.final-message h2 {
+
+    margin-top: 15px;
+
+    font-size:
+        clamp(28px, 6vw, 42px);
+}
+
+.chilling {
+
+    margin-top: 8px;
+
+    font-size: 19px;
+
+    color: #765d6c;
+}
+
+.no-prank {
+
+    margin-top: 12px;
+
+    font-size:
+        clamp(30px, 6vw, 48px);
+
+    font-weight: 800;
+
+    color: #c83e6d;
+}
+
+.probably {
+
+    margin-top: 5px;
+
+    font-size: 14px;
+
+    color: #927a87;
+}
+
+
+/* =========================
+   BIRTHDAY BUTTON
+========================= */
+
+.continue-btn {
+
+    margin-top: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6c5ce7,
+            #4b3db4
+        );
+
+    box-shadow:
+        0 12px 30px
+        rgba(90, 70, 180, .3);
+
+    opacity: 0;
+
+    transform:
+        translateY(15px);
+}
+
+.revealed .continue-btn {
+
+    animation:
+        continueAppear
+        .8s
+        ease
+        1.2s
+        forwards;
+}
+
+@keyframes continueAppear {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+.continue-btn:hover {
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================
+   EXPLOSION
+========================= */
+
+.explosion {
+
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    z-index: 100;
+
+    pointer-events: none;
+
+    font-size: 24px;
+
+    animation:
+        explode
+        1.5s
+        ease-out
+        forwards;
+}
+
+@keyframes explode {
+
+    from {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.5)
+            rotate(0);
+    }
+
+    to {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(1.2)
+            rotate(var(--rotation));
+    }
+}
+
+
+/* =========================
+   SCREEN SHAKE
+========================= */
+
+.shake {
+
+    animation:
+        screenShake
+        .45s
+        ease;
+}
+
+@keyframes screenShake {
+
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform:
+            translate(-8px, 4px);
+    }
+
+    40% {
+        transform:
+            translate(8px, -4px);
+    }
+
+    60% {
+        transform:
+            translate(-5px, -3px);
+    }
+
+    80% {
+        transform:
+            translate(5px, 3px);
+    }
+
+    100% {
+        transform:
+            translate(0);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .prank-content {
+
+        padding:
+            40px 22px;
+
+        border-radius:
+            28px;
+    }
+
+    .description {
+
+        font-size:
+            15px;
+    }
+
+    .presents {
+
+        gap: 5px;
+    }
+
+    .present {
+
+        font-size:
+            65px;
+    }
+}
