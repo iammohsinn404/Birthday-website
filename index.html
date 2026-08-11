@@ -46,95 +46,175 @@
         </section>
 
     <main class="birthday-page">
-        <section class="cake-page" id="cakePage">
-             <button class="cake-close" id="cakeClose">
-                ✕
+        <!-- ========================================
+     CAKE SURPRISE PAGE
+======================================== -->
+
+<section class="cake-page" id="cakePage">
+
+    <button class="cake-close" id="cakeClose">
+        ✕
+    </button>
+
+    <div class="cake-page-content">
+
+        <p class="cake-small">
+            Something Special for Someone Special...
+        </p>
+
+        <h1>
+            Your Birthday Cake 🎂
+        </h1>
+
+        <p class="cake-instruction">
+            Click The Cake! 👀
+        </p>
+
+
+        <!-- CAKE AREA -->
+
+        <div class="cake-area" id="cakeArea">
+
+            <div class="cake">
+
+                <!-- TOP -->
+
+                <div class="cake-top">
+
+                    <div class="cream cream-1"></div>
+                    <div class="cream cream-2"></div>
+                    <div class="cream cream-3"></div>
+
+                </div>
+
+
+                <!-- CAKE BODY -->
+
+                <div class="cake-body">
+
+                    <div class="cake-layer cake-layer-1"></div>
+                    <div class="cake-layer cake-layer-2"></div>
+
+
+                    <!-- PIECE 1 -->
+
+                    <button
+                        class="cake-piece piece-1"
+                        data-piece="1"
+                    >
+                        <span></span>
+                    </button>
+
+
+                    <!-- PIECE 2 -->
+
+                    <button
+                        class="cake-piece piece-2"
+                        data-piece="2"
+                    >
+                        <span></span>
+                    </button>
+
+
+                    <!-- PIECE 3 -->
+
+                    <button
+                        class="cake-piece piece-3"
+                        data-piece="3"
+                    >
+                        <span></span>
+                    </button>
+
+
+                    <!-- PIECE 4 -->
+
+                    <button
+                        class="cake-piece piece-4"
+                        data-piece="4"
+                    >
+                        <span></span>
+                    </button>
+
+
+                    <!-- PIECE 5 -->
+
+                    <button
+                        class="cake-piece piece-5"
+                        data-piece="5"
+                    >
+                        <span></span>
+                    </button>
+
+
+                    <!-- PIECE 6 -->
+
+                    <button
+                        class="cake-piece piece-6"
+                        data-piece="6"
+                    >
+                        <span></span>
+                    </button>
+
+                </div>
+
+
+                <!-- CAKE PLATE -->
+
+                <div class="cake-plate"></div>
+
+
+                <!-- CANDLE -->
+
+                <div class="cake-candle">
+
+                    <div class="candle-flame"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAKE MESSAGE -->
+
+        <p
+            class="cake-message"
+            id="cakeMessage"
+        ></p>
+
+
+        <!-- MORE FORWARD BUTTON -->
+
+        <button
+            class="more-forward-button"
+            id="moreForwardButton"
+        >
+            ✨ More Forward
         </button>
-        <div class="cake-page-content">
-            <p class="cake-small">
-                Something Special for Someone Special...
-            </p>
-            <h1> 
-                Your Birthday Cake 🎂
-            </h1>
-            <p class="cake-instruction">
-                Click The Cake! 👀
-            </p>
-            <div class="cake-area" id="cakeArea">
-
-    <div class="cake">
-
-        <!-- TOP -->
-        <div class="cake-top">
-
-            <div class="cream cream-1"></div>
-            <div class="cream cream-2"></div>
-            <div class="cream cream-3"></div>
-
-        </div>
-
-        <!-- CAKE BODY -->
-        <div class="cake-body">
-
-            <div class="cake-layer cake-layer-1"></div>
-            <div class="cake-layer cake-layer-2"></div>
-
-            <!-- Individual pieces -->
-            <button class="cake-piece piece-1" data-piece="1">
-                <span></span>
-            </button>
-
-            <button class="cake-piece piece-2" data-piece="2">
-                <span></span>
-            </button>
-
-            <button class="cake-piece piece-3" data-piece="3">
-                <span></span>
-            </button>
-
-            <button class="cake-piece piece-4" data-piece="4">
-                <span></span>
-            </button>
-
-            <button class="cake-piece piece-5" data-piece="5">
-                <span></span>
-            </button>
-
-            <button class="cake-piece piece-6" data-piece="6">
-                <span></span>
-            </button>
-
-        </div>
-
-        <!-- CAKE PLATE -->
-        <div class="cake-plate"></div>
-
-        <!-- CANDLE -->
-        <div class="cake-candle">
-            <div class="candle-flame"></div>
-        </div>
 
     </div>
 
-</div>
-
-<p class="cake-message" id="cakeMessage">
-    Click any piece of cake 😈
-</p>
- <!--More Forward PAge-->
- <section class="scratch-page" id="scratchPage">
+</section>
+        </div>
+        </section>
+        <div class="site-profile">
+            <img src="Imgs/profile.jpg"  alt="Profile">
+        </div>
+<section class="scratch-page" id="scratchPage">
     <div class="scratch-content">
         <p class="scratch-small">
             ✨ One Last Little Secret...
         </p>
-        <h1> More Forward💗</h1>
+        <h1>More Forward 💗 </h1>
         <p class="scratch-instruction">
-            Something is hidden here....
+            Something is hiiden here...
         </p>
         <div class="scratch-card" id="scratchCard">
-            <!--Hidden Message-->
-            <h2> You Found It 💌</h2>
-            <p>
+            <div class="hidden-message">
+                <h2>You Found It! 💌</h2>
+
+                <p>
                     You made it all the way here! ❤️
                 </p>
 
@@ -143,20 +223,10 @@
                     waiting for the curious ones. ✨
                 </p>
             </div>
-
-            <!-- Scratch surface -->
-            <canvas id="scratchCanvas"></canvas>
-
-        </div>
-
+            <canvas id="scratchCanvas"></canvas> 
         </div>
     </div>
- </section>
-        </div>
-        </section>
-        <div class="site-profile">
-            <img src="Imgs/profile.jpg"  alt="Profile">
-        </div>
+</section>
         <section class="hero">
 
     <p class="intro">

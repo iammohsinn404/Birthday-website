@@ -1411,10 +1411,341 @@ body.intro-active {
 
     font-weight: 600;
 }
+ /* Styling of forward button */
+ .more-forward-button {
+    display: none !important;
+
+    margin:  25px auto 10px;
+
+    padding: none;
+
+    border-radius: 999px;
+    background: linear-gradient(
+        135deg,
+        #d94f75,
+        #ef7895
+    );
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(217, 79, 117, 0.25);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* JavaScript adds .show after all pieces are eaten */
+
+.more-forward-button.show {
+    display: block !important;
+
+    animation: moreForwardAppear 0.6s ease forwards;
+}
+
+.more-forward-button:hover {
+    transform: translateY(-4px) scale(1.04);
+
+    box-shadow:
+        0 12px 28px rgba(217, 79, 117, 0.35);
+}
+
+.more-forward-button:active {
+    transform: scale(0.96);
+}
+
+@keyframes moreForwardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ========================================
+   MORE FORWARD / SCRATCH PAGE
+======================================== */
+
 .scratch-page {
     position: fixed;
-    inset: 0,
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    display: none;
+
+    z-index: 20000;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 190, 215, 0.65),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 75%,
+            rgba(255, 220, 190, 0.6),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #fff5f8,
+            #ffe8f0,
+            #fff7ed
+        );
 }
+
+
+/* OPEN PAGE */
+
+.scratch-page.scratch-page-open {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    animation: scratchPageIn 0.8s ease;
+}
+
+
+@keyframes scratchPageIn {
+
+    from {
+        opacity: 0;
+        transform: scale(1.04);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* ========================================
+   FLOATING BACKGROUND EFFECTS
+======================================== */
+
+.scratch-page::before,
+.scratch-page::after {
+    content: "✦";
+
+    position: absolute;
+
+    font-size: 80px;
+
+    color: rgba(217, 79, 117, 0.12);
+
+    animation: floatingStar 5s ease-in-out infinite;
+}
+
+.scratch-page::before {
+    top: 15%;
+    left: 12%;
+}
+
+.scratch-page::after {
+    content: "♡";
+
+    right: 12%;
+    bottom: 15%;
+
+    font-size: 100px;
+
+    animation-delay: 1.5s;
+}
+
+
+@keyframes floatingStar {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0.35;
+    }
+
+    50% {
+        transform:
+            translateY(-25px)
+            rotate(15deg);
+
+        opacity: 0.8;
+    }
+}
+
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.scratch-content {
+    position: relative;
+
+    width: min(90%, 700px);
+
+    text-align: center;
+
+    z-index: 2;
+
+    animation: scratchContentIn 1s ease;
+}
+
+
+@keyframes scratchContentIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.scratch-small {
+    color: #c46a82;
+
+    font-size: 16px;
+
+    margin-bottom: 8px;
+}
+
+
+.scratch-content h1 {
+    margin: 0 0 10px;
+
+    color: #d94f75;
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(42px, 7vw, 68px);
+}
+
+
+.scratch-instruction {
+    color: #684b54;
+
+    font-size: 18px;
+
+    margin-bottom: 30px;
+}
+
+
+/* ========================================
+   SCRATCH CARD
+======================================== */
+
+.scratch-card {
+    position: relative;
+
+    width: min(90vw, 500px);
+    height: 280px;
+
+    margin: auto;
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #fff0f5
+        );
+
+    box-shadow:
+        0 20px 50px rgba(120, 60, 80, 0.18);
+
+    border: 2px solid rgba(217, 79, 117, 0.18);
+}
+
+
+/* ========================================
+   HIDDEN MESSAGE
+======================================== */
+
+.hidden-message {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+
+.hidden-message h2 {
+    color: #d94f75;
+
+    font-family: Georgia, serif;
+
+    font-size: 34px;
+
+    margin-bottom: 15px;
+}
+
+
+.hidden-message p {
+    color: #684b54;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
+    margin: 5px 0;
+}
+
+
+/* ========================================
+   SCRATCH CANVAS
+======================================== */
+
+#scratchCanvas {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    cursor: crosshair;
+
+    touch-action: none;
+
+    z-index: 5;
+}
+
 /* ================================
    PHONE
 ================================ */
@@ -1516,8 +1847,30 @@ body.intro-active {
         top: 15px;
         right: 15px;
     }
-}
+.scratch-content {
+        width: 94%;
+    }
 
+    .scratch-content h1 {
+        font-size: 42px;
+    }
+
+    .scratch-instruction {
+        font-size: 16px;
+    }
+
+    .scratch-card {
+        width: 90vw;
+        height: 250px;
+    }
+
+    .hidden-message h2 {
+        font-size: 28px;
+    }
+
+    .hidden-message p {
+        font-size: 15px;
+    }
 
 .hero {
     min-height: 100vh;
@@ -1599,4 +1952,5 @@ body.intro-active {
 
 .surprise h3 {
     font-size: 25px;
+}
 }

@@ -441,6 +441,10 @@ const cakeClose = document.getElementById("cakeClose");
 const cakeArea = document.getElementById("cakeArea");
 const cakeSlice = document.getElementById("cakeSlice");
 const cakeMessage = document.getElementById("cakeMessage");
+   const moreForwardButton =
+    document.getElementById("moreForwardButton");
+
+    let eatenPieces = 0;
 
 // open cake pagee
 
@@ -452,11 +456,27 @@ document.addEventListener("click", (event) => {
     }
 
 });
-// close cake page
+ // close cake page
 cakeClose.addEventListener("click", () => {
     cakePage.classList.remove("cake-page-open");
 });
+
+
+// MORE FORWARD BUTTON
+
+const scratchPage =
+    document.getElementById("scratchPage");
+
+
+moreForwardButton.addEventListener("click", () => {
+
+    cakePage.classList.remove("cake-page-open");
+
+    scratchPage.classList.add("scratch-page-open");
+
+});
 // CLICK CAKE
+
 
 cakeArea.addEventListener("click", (event) => {
 
@@ -471,6 +491,8 @@ cakeArea.addEventListener("click", (event) => {
     // Mark this piece as eaten
     piece.classList.add("eaten");
 
+    eatenPieces++;
+
     // Burp sound
     burpSound.currentTime = 0;
     burpSound.play();
@@ -481,6 +503,25 @@ cakeArea.addEventListener("click", (event) => {
 
     // Breaking particles
     createCakeParticles(piece);
+
+    // All 6 pieces eaten
+    if (eatenPieces === 6) {
+
+        cakeMessage.textContent =
+            "You ate them all! 😂🍰";
+
+        setTimeout(() => {
+
+            moreForwardButton.classList.add("show");
+
+            moreForwardButton.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }, 800);
+    }
+
 });
 
 // CAKE PARTICLES
@@ -534,4 +575,185 @@ function createCakeParticles() {
             particle.remove();
         }, 1000);
     }
+}
+
+// scratch carddd
+
+const scratchPage = document.getElementById("scratchPage");
+const scratchCanvas = document.getElementById("scratchCanvas");
+const scratchCard = document.getElementById("scratchCard");
+
+if (scratchCanvas && scratchCard) {
+    const ctx = scratchCanvas.getContext("2d");
+    function setupScratchCanvas() {
+        const rect = scratchCard.getBoundingClientRect();
+        const dpr = windows.devicePixelRatio || 1;
+
+function createCakeParticles() {
+
+    // ...
+
+}
+
+// ========================================
+// SCRATCH CARD
+// ========================================
+
+const scratchPage = document.getElementById("scratchPage");
+const scratchCanvas = document.getElementById("scratchCanvas");
+const scratchCard = document.getElementById("scratchCard");
+
+if (scratchCanvas && scratchCard) {
+
+    const ctx = scratchCanvas.getContext("2d");
+
+    function setupScratchCanvas() {
+
+        const rect = scratchCard.getBoundingClientRect();
+
+        const dpr = window.devicePixelRatio || 1;
+
+        scratchCanvas.width = rect.width * dpr;
+        scratchCanvas.height = rect.height * dpr;
+
+        scratchCanvas.style.width = rect.width + "px";
+        scratchCanvas.style.height = rect.height + "px";
+
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        // Scratch cover
+        const gradient = ctx.createLinearGradient(
+            0,
+            0,
+            rect.width,
+            rect.height
+        );
+
+        gradient.addColorStop(0, "#d94f75");
+        gradient.addColorStop(0.5, "#ef7895");
+        gradient.addColorStop(1, "#d94f75");
+
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, rect.width, rect.height);
+
+        // Text on scratch surface
+        ctx.fillStyle = "rgba(255,255,255,0.95)";
+        ctx.font = "bold 22px Arial";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        ctx.fillText(
+            "✨ Scratch Me ✨",
+            rect.width / 2,
+            rect.height / 2
+        );
+    }
+
+    let scratching = false;
+
+    function scratch(x, y) {
+
+        const rect = scratchCanvas.getBoundingClientRect();
+
+        const canvasX = x - rect.left;
+        const canvasY = y - rect.top;
+
+        ctx.globalCompositeOperation = "destination-out";
+
+        ctx.beginPath();
+
+        ctx.arc(
+            canvasX,
+            canvasY,
+            28,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+    }
+
+    // Mouse
+    scratchCanvas.addEventListener("mousedown", () => {
+        scratching = true;
+    });
+
+    scratchCanvas.addEventListener("mouseup", () => {
+        scratching = false;
+    });
+
+    scratchCanvas.addEventListener("mouseleave", () => {
+        scratching = false;
+    });
+
+    scratchCanvas.addEventListener("mousemove", (event) => {
+
+        if (!scratching) return;
+
+        scratch(event.clientX, event.clientY);
+    });
+
+    // Touch
+    scratchCanvas.addEventListener(
+        "touchstart",
+        (event) => {
+
+            scratching = true;
+
+            const touch = event.touches[0];
+
+            scratch(
+                touch.clientX,
+                touch.clientY
+            );
+        },
+        { passive: false }
+    );
+
+    scratchCanvas.addEventListener(
+        "touchmove",
+        (event) => {
+
+            event.preventDefault();
+
+            if (!scratching) return;
+
+            const touch = event.touches[0];
+
+            scratch(
+                touch.clientX,
+                touch.clientY
+            );
+        },
+        { passive: false }
+    );
+
+    scratchCanvas.addEventListener("touchend", () => {
+        scratching = false;
+    });
+
+    // Setup when scratch page opens
+    moreForwardButton.addEventListener("click", () => {
+
+        cakePage.classList.remove("cake-page-open");
+
+        scratchPage.classList.add("scratch-page-open");
+
+        setTimeout(() => {
+            setupScratchCanvas();
+        }, 100);
+    });
+
+    // Resize
+    window.addEventListener("resize", () => {
+
+        if (
+            scratchPage &&
+            scratchPage.classList.contains("scratch-page-open")
+        ) {
+            setupScratchCanvas();
+        }
+
+    });
+xp
 }
