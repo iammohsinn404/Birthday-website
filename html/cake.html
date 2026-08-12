@@ -1,157 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Birthday Cake 🎂</title>
+
     <link rel="stylesheet" href="../css/styles.css">
 </head>
+
 <body>
-    <section class="cake-page" id="cakePage">
 
-    <button class="cake-close" id="cakeClose">
-        ✕
-    </button>
+    <section class="cake-page cake-page-open" id="cakePage">
 
-    <div class="cake-page-content">
+        <button class="cake-close" id="cakeClose">
+            ✕
+        </button>
 
-        <p class="cake-small">
-            Something Special for Someone Special...
-        </p>
+        <div class="cake-page-content">
 
-        <h1>
-            Your Birthday Cake 🎂
-        </h1>
+            <p class="cake-small">
+                Something Special for Someone Special...
+            </p>
 
-        <p class="cake-instruction">
-            Click The Cake! 👀
-        </p>
+            <h1>
+                Your Birthday Cake 🎂
+            </h1>
 
-
-        <!-- CAKE AREA -->
-
-        <div class="cake-area" id="cakeArea">
-
-            <div class="cake">
-
-                <!-- TOP -->
-
-                <div class="cake-top">
-
-                    <div class="cream cream-1"></div>
-                    <div class="cream cream-2"></div>
-                    <div class="cream cream-3"></div>
-
-                </div>
+            <p class="cake-instruction">
+                Click The Cake! 👀
+            </p>
 
 
-                <!-- CAKE BODY -->
+            <!-- CAKE AREA -->
 
-                <div class="cake-body">
+            <div class="cake-area" id="cakeArea">
 
-                    <div class="cake-layer cake-layer-1"></div>
-                    <div class="cake-layer cake-layer-2"></div>
+                <div class="cake">
 
+                    <!-- TOP -->
 
-                    <!-- PIECE 1 -->
+                    <div class="cake-top">
 
-                    <button
-                        class="cake-piece piece-1"
-                        data-piece="1"
-                    >
-                        <span></span>
-                    </button>
+                        <div class="cream cream-1"></div>
+                        <div class="cream cream-2"></div>
+                        <div class="cream cream-3"></div>
 
-
-                    <!-- PIECE 2 -->
-
-                    <button
-                        class="cake-piece piece-2"
-                        data-piece="2"
-                    >
-                        <span></span>
-                    </button>
+                    </div>
 
 
-                    <!-- PIECE 3 -->
+                    <!-- CAKE BODY -->
 
-                    <button
-                        class="cake-piece piece-3"
-                        data-piece="3"
-                    >
-                        <span></span>
-                    </button>
+                    <div class="cake-body">
+
+                        <div class="cake-layer cake-layer-1"></div>
+                        <div class="cake-layer cake-layer-2"></div>
 
 
-                    <!-- PIECE 4 -->
+                        <!-- PIECE 1 -->
 
-                    <button
-                        class="cake-piece piece-4"
-                        data-piece="4"
-                    >
-                        <span></span>
-                    </button>
-
-
-                    <!-- PIECE 5 -->
-
-                    <button
-                        class="cake-piece piece-5"
-                        data-piece="5"
-                    >
-                        <span></span>
-                    </button>
+                        <button
+                            class="cake-piece piece-1"
+                            data-piece="1">
+                            <span></span>
+                        </button>
 
 
-                    <!-- PIECE 6 -->
+                        <!-- PIECE 2 -->
 
-                    <button
-                        class="cake-piece piece-6"
-                        data-piece="6"
-                    >
-                        <span></span>
-                    </button>
-
-                </div>
+                        <button
+                            class="cake-piece piece-2"
+                            data-piece="2">
+                            <span></span>
+                        </button>
 
 
-                <!-- CAKE PLATE -->
+                        <!-- PIECE 3 -->
 
-                <div class="cake-plate"></div>
+                        <button
+                            class="cake-piece piece-3"
+                            data-piece="3">
+                            <span></span>
+                        </button>
 
 
-                <!-- CANDLE -->
+                        <!-- PIECE 4 -->
 
-                <div class="cake-candle">
+                        <button
+                            class="cake-piece piece-4"
+                            data-piece="4">
+                            <span></span>
+                        </button>
 
-                    <div class="candle-flame"></div>
+
+                        <!-- PIECE 5 -->
+
+                        <button
+                            class="cake-piece piece-5"
+                            data-piece="5">
+                            <span></span>
+                        </button>
+
+
+                        <!-- PIECE 6 -->
+
+                        <button
+                            class="cake-piece piece-6"
+                            data-piece="6">
+                            <span></span>
+                        </button>
+
+                    </div>
+
+
+                    <!-- CAKE PLATE -->
+
+                    <div class="cake-plate"></div>
+
+
+                    <!-- CANDLE -->
+
+                    <div class="cake-candle">
+
+                        <div class="candle-flame"></div>
+
+                    </div>
 
                 </div>
 
             </div>
 
+
+            <!-- CAKE MESSAGE -->
+
+            <p
+                class="cake-message"
+                id="cakeMessage">
+            </p>
+
+
+            <!-- MORE FORWARD BUTTON -->
+
+            <button
+                class="more-forward-button"
+                id="moreForwardButton">
+
+                ✨ More Forward
+
+            </button>
+
         </div>
 
-
-        <!-- CAKE MESSAGE -->
-
-        <p
-            class="cake-message"
-            id="cakeMessage"
-        ></p>
+    </section>
 
 
-        <!-- MORE FORWARD BUTTON -->
+    <script src="../js/cake.js"></script>
 
-        <button
-            class="moreforwardbutton"
-            id="moreForwardButton">
-            ✨ More Forward
-        </button>
-
-    </div>
-
-</section>
-       <script src="../js/cake.js"></script>
 </body>
 </html>

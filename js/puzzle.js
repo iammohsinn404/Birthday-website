@@ -1,7 +1,7 @@
+console.log("PUZZLE JS IS WORKING!");
 // ================================
 // PUZZLE PAGE
 // ================================
-
 const clickSound = new Audio("../Sounds/click.mp3");
 const successSound = new Audio("../Sounds/sucess.mp3");
 

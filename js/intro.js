@@ -8,11 +8,13 @@ const noButton = document.getElementById("noButton");
 
 // Music
 const backgroundMusic = new Audio("../Sounds/cute_music.mp3");
+
 backgroundMusic.loop = true;
 backgroundMusic.volume = 0.4;
 
 if (musicButton) {
     musicButton.addEventListener("click", () => {
+
         if (backgroundMusic.paused) {
             backgroundMusic.play();
             musicButton.textContent = "Stop Music";
@@ -20,14 +22,19 @@ if (musicButton) {
             backgroundMusic.pause();
             musicButton.textContent = "Play Music";
         }
+
     });
 }
 
 // YES → Puzzle
 if (yesButton) {
+
     yesButton.addEventListener("click", () => {
+
         window.location.href = "puzzle.html";
+
     });
+
 }
 
 // NO button
@@ -44,27 +51,42 @@ const noMessages = [
 ];
 
 if (noButton) {
+
     noButton.addEventListener("pointerdown", (event) => {
+
         event.preventDefault();
 
         noAttempts++;
 
         if (noAttempts <= 3) {
-            noButton.textContent = noMessages[noAttempts - 1];
+
+            noButton.textContent =
+                noMessages[noAttempts - 1];
 
             if (noAttempts === 3) {
+
                 noButton.classList.remove("angry");
+
                 void noButton.offsetWidth;
+
                 noButton.classList.add("angry");
             }
+
         } else {
+
             const randomMessage =
-                noMessages[Math.floor(Math.random() * noMessages.length)];
+                noMessages[
+                    Math.floor(
+                        Math.random() * noMessages.length
+                    )
+                ];
 
             noButton.textContent = randomMessage;
 
             noButton.classList.remove("angry");
+
             void noButton.offsetWidth;
+
             noButton.classList.add("angry");
         }
 
@@ -81,13 +103,21 @@ if (noButton) {
             padding;
 
         const randomX =
-            Math.max(padding, Math.random() * maxX);
+            Math.max(
+                padding,
+                Math.random() * maxX
+            );
 
         const randomY =
-            Math.max(padding, Math.random() * maxY);
+            Math.max(
+                padding,
+                Math.random() * maxY
+            );
 
         noButton.style.position = "fixed";
         noButton.style.left = randomX + "px";
         noButton.style.top = randomY + "px";
+
     });
+
 }
