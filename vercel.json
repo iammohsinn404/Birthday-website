@@ -3,6 +3,26 @@
     {
       "source": "/",
       "destination": "/html/index.html"
+    },
+    {
+      "source": "/puzzle.html",
+      "destination": "/html/puzzle.html"
+    },
+    {
+      "source": "/monkey.html",
+      "destination": "/html/monkey.html"
+    },
+    {
+      "source": "/cake.html",
+      "destination": "/html/cake.html"
+    },
+    {
+      "source": "/prank.html",
+      "destination": "/html/prank.html"
+    },
+    {
+      "source": "/birthday.html",
+      "destination": "/html/birthday.html"
     }
   ]
 }
