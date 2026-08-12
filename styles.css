@@ -705,45 +705,7 @@ body.intro-active {
     box-shadow: 0 12px 25px rgba(217, 79, 117, 0.35);
     transform: translateY(-4px);
 }
-.background-particle {
-    position: absolute;
-    bottom: -30px;
 
-    pointer-events: none;
-
-    color: rgba(190, 80, 130, 0.35);
-
-    z-index: 1;
-
-    animation: floatParticle linear infinite;
-}
-
-@keyframes floatParticle {
-
-    from {
-        transform:
-            translateY(0)
-            rotate(0deg);
-
-        opacity: 0;
-    }
-
-    15% {
-        opacity: .5;
-    }
-
-    85% {
-        opacity: .5;
-    }
-
-    to {
-        transform:
-            translateY(-115vh)
-            rotate(360deg);
-
-        opacity: 0;
-    }
-}
 #surprise-button:active {
     transform: scale(0.95);
 

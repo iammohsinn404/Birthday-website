@@ -30,18 +30,48 @@ const yesButton = document.getElementById("yesButton");
 const noButton = document.getElementById("noButton");
 
 const gameScreen = document.getElementById("gameScreen");
-const puzzle = document.getElementById("puzzle");
-const cakePage = document.getElementById("cakePage");
 
 document.body.classList.add("intro-active");
+const cakePage = document.getElementById("cakePage");
 
-// yes Button
+// Page Stage
+
+function saveStage(stage) {
+    sessionStorage.setItem("birthdayStage", stage);
+}
+function getStage() {
+    return sessionStorage.getItem("birthdayStage") || "intro";
+}
+
+const openBirthday = 
+sessionStorage.getItem("openBirthday");
+
+
+/* Save current position */
+
+window.addEventListener("scroll", () => {
+
+    sessionStorage.setItem(
+        "savedScroll",
+        window.scrollY
+    );
+
+});
+
+const puzzle = document.getElementById("puzzle");
+// YEs button
 yesButton.addEventListener("click", () => {
+
+    saveStage("puzzle");
+
     introScreen.classList.add("intro-hidden");
     document.body.classList.remove("intro-active");
     gameScreen.classList.add("show-game");
+
     startPuzzle();
+
 });
+ 
 
  // ========================================
 // PUZZLE GAME
@@ -197,6 +227,8 @@ function resetCards() {
 // PUZZLE COMPLETE
 
 function puzzleComplete() {
+
+    saveStage("gift");
     
     successSound.currentTime = 0;
     successSound.play();
@@ -445,6 +477,8 @@ const cakeMessage = document.getElementById("cakeMessage");
     // Cake → Prank Page
 moreForwardButton.addEventListener("click", () => {
 
+    saveStage("prank");
+
     cakePage.classList.remove("cake-page-open");
 
     window.location.href = "prank.html";
@@ -456,11 +490,13 @@ moreForwardButton.addEventListener("click", () => {
 // open cake pagee
 
 document.addEventListener("click", (event) => {
-     if (event.target.closest("#cakeButton")) {
+      if (event.target.closest("#cakeButton")) {
 
-        cakePage.classList.add("cake-page-open");
+    saveStage("cake");
 
-    }
+    cakePage.classList.add("cake-page-open");
+
+}
 
 });
  // close cake page
@@ -717,3 +753,73 @@ if (scratchCanvas && scratchCard) {
 
     });
 }
+// restore Page After REload
+
+window.addEventListener("load", () => {
+    const stage = getStage();
+    // coming from prank.html
+    if (openBirthday === "true") {
+        sessionStorage.removeItem("openBirthday");
+
+        saveStage("birthday");
+
+        introScreen.classList.add("intro-hidden");
+        document.body.classList.remove("intro-active");
+
+        setTimeout(() => {
+
+            document.getElementById("birthday")?.scrollIntoView({
+                behavior: "instant",
+                block: "start"
+            });
+        }, 100);
+        return;
+    }
+
+    if (stage === "intro") {
+        return;
+    }
+
+    introScreen.classList.add("intro-hidden");
+    document.body.classList.remove("intro-active");
+    gameScreen.classList.add("show-game");
+
+    if (stage === "puzzle") {
+        startPuzzle();
+        return;
+    }
+
+    if (stage === "gift"){
+        startPuzzle();
+
+        setTimeout(() => {
+            puzzleComplete();
+        }, 100);
+        return;
+    }
+
+    if (stage === "cake") {
+        setTimeout(() => {
+            cakePage.classList.add("cake-page-open");
+        }, 100);
+        return;
+    }
+        // Restore Birthday after reload
+    if (stage === "birthday") {
+
+        introScreen.classList.add("intro-hidden");
+        document.body.classList.remove("intro-active");
+
+        setTimeout(() => {
+
+            document.getElementById("birthday")?.scrollIntoView({
+                behavior: "instant",
+                block: "start"
+            });
+
+        }, 100);
+
+        return;
+    }
+
+    });

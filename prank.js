@@ -38,92 +38,59 @@ for (let i = 0; i < 35; i++) {
       page.appendChild(particle);
     }
 
-    /* funny Sound */
+    /* funny (Fart) Sound */
 
-    function playFunnySound () {
-        const AudioContext =
-        window.AudioContext ||
-        window.webkitAudioContext;
+ function playFart() {
 
-        if (!AudioContext) return;
+    const fart = new Audio("Sounds/fart.mp3");
 
-        const audio =
-        new AudioContext();
+    fart.volume = 1;
 
-        const oscillator = 
-        audio.creatOscillator();
+    fart.currentTime = 0;
 
-        const gain = audio.createGain();
-        
-
-        oscillator.type = "sawtooth";
-
-       oscillator.frequency.setValueAtTime(
-        120,
-        audio.currentTime
-    );
-
-    oscillator.frequency.exponentialRampToValueAtTime(
-        45,
-        audio.currentTime + 0.7
-    );
-
-    gain.gain.setValueAtTime(
-        0.001,
-        audio.currentTime
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-        0.2,
-        audio.currentTime + 0.05
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-        0.001,
-        audio.currentTime + 0.75
-    );
-
-    oscillator.connect(gain);
-
-    gain.connect(audio.destination);
-
-    oscillator.start();
-
-    oscillator.stop(
-        audio.currentTime + 0.8
-    );
-
+    fart.play().catch(error => {
+        console.log("Fart sound could not play:", error);
+    });
 }
 /* ========================================
-   EXPLOSION PARTICLES
+   SCREEN SHAKE
 ======================================== */
 
-function createExplosion() {
+function shakeScreen() {
 
-    const explosionSymbols = [
-        "✨",
-        "🎉",
-        "🎊",
-        "💗",
-        "💕",
-        "⭐",
-        "🎈",
-        "💖"
+    page.classList.remove("shake");
+
+    void page.offsetWidth;
+
+    page.classList.add("shake");
+}
+/* ========================================
+   GREEN PARTICLE EXPLOSION
+======================================== */
+
+function createGreenExplosion() {
+
+    const particles = [
+        "●",
+        "•",
+        "✦",
+        "✧",
+        "✨"
     ];
 
-    for (let i = 0; i < 70; i++) {
+    for (let i = 0; i < 80; i++) {
 
         const particle =
             document.createElement("span");
 
         particle.className =
-            "explosion";
+            "green-explosion";
 
         particle.textContent =
-            explosionSymbols[
+            particles[
                 Math.floor(
                     Math.random() *
-                    explosionSymbols.length
+                    particles.length
                 )
             ];
 
@@ -134,7 +101,7 @@ function createExplosion() {
 
         particle.style.setProperty(
             "--y",
-            (Math.random() * 700 - 350) + "px"
+            (Math.random() * 650 - 325) + "px"
         );
 
         particle.style.setProperty(
@@ -142,12 +109,12 @@ function createExplosion() {
             (Math.random() * 720 - 360) + "deg"
         );
 
-        particle.style.fontSize =
-            Math.random() * 22 + 14 + "px";
-
-        document.body.appendChild(
-            particle
+        particle.style.setProperty(
+            "--size",
+            (Math.random() * 12 + 5) + "px"
         );
+
+        document.body.appendChild(particle);
 
         setTimeout(() => {
             particle.remove();
@@ -157,16 +124,48 @@ function createExplosion() {
 
 
 /* ========================================
+   POOP IMAGE
+======================================== */
+
+function showPoop() {
+
+    const poop = document.createElement("img");
+
+    poop.src = "Imgs/poop.png";
+
+    poop.alt = "Surprise";
+
+    poop.className = "poop-surprise";
+
+    document.body.appendChild(poop);
+
+    /* Remove it after animation */
+
+    setTimeout(() => {
+
+        poop.classList.add("poop-fade");
+
+    }, 2200);
+
+    setTimeout(() => {
+
+        poop.remove();
+
+    }, 2800);
+}
+
+/* ========================================
    CONFETTI
 ======================================== */
 
 function createConfetti() {
 
-    const confettiSymbols = [
+    const symbols = [
         "🎉",
         "🎊",
         "✨",
         "💗",
+        "⭐",
         "🎈"
     ];
 
@@ -176,30 +175,22 @@ function createConfetti() {
             document.createElement("span");
 
         confetti.className =
-            "explosion";
+            "confetti-piece";
 
         confetti.textContent =
-            confettiSymbols[
+            symbols[
                 Math.floor(
                     Math.random() *
-                    confettiSymbols.length
+                    symbols.length
                 )
             ];
 
         confetti.style.left =
-            Math.random() * 100 + "%";
-
-        confetti.style.top =
-            Math.random() * 20 + "%";
+            Math.random() * 100 + "vw";
 
         confetti.style.setProperty(
             "--x",
-            (Math.random() * 500 - 250) + "px"
-        );
-
-        confetti.style.setProperty(
-            "--y",
-            (Math.random() * 800 + 300) + "px"
+            (Math.random() * 300 - 150) + "px"
         );
 
         confetti.style.setProperty(
@@ -207,81 +198,103 @@ function createConfetti() {
             (Math.random() * 900 - 450) + "deg"
         );
 
-        document.body.appendChild(
-            confetti
-        );
+        document.body.appendChild(confetti);
 
         setTimeout(() => {
             confetti.remove();
-        }, 1800);
+        }, 2500);
     }
 }
 
 
 /* ========================================
-   MAIN SURPRISE
+   FINAL MESSAGE
 ======================================== */
 
-surpriseBtn.addEventListener(
-    "click",
-    () => {
+function showFinalMessage() {
 
-        surpriseBtn.style.pointerEvents =
-            "none";
+    content.classList.add("revealed");
 
-        surpriseBtn.style.transition =
-            "all .35s ease";
-
-        surpriseBtn.style.opacity =
-            "0";
-
-        surpriseBtn.style.transform =
-            "scale(.6)";
-
-
-        // Funny sound
-        playFunnySound();
-
-
-        // Screen shake
-        page.classList.remove("shake");
-
-        void page.offsetWidth;
-
-        page.classList.add("shake");
-
-
-        // Explosion
-        createExplosion();
-
-
-        // Presents
-        setTimeout(() => {
-
-            content.classList.add(
-                "revealed"
-            );
-
-        }, 250);
-
-
-        // More confetti
-        setTimeout(() => {
-
-            createConfetti();
-
-        }, 850);
-
-    }
-);
+}
 
 
 /* ========================================
-   GO TO MAIN BIRTHDAY PAGE
+   MAIN BUTTON
+======================================== */
+
+surpriseBtn.addEventListener("click", () => {
+
+    /* Prevent clicking multiple times */
+
+    surpriseBtn.disabled = true;
+
+    surpriseBtn.style.pointerEvents = "none";
+
+
+    /* Hide button */
+
+    surpriseBtn.style.transition =
+        "all .35s ease";
+
+    surpriseBtn.style.opacity = "0";
+
+    surpriseBtn.style.transform =
+        "scale(.5)";
+
+
+    /* Green explosion */
+
+    createGreenExplosion();
+
+
+    /* Screen shake */
+
+    shakeScreen();
+
+
+    /* FART 💨 */
+
+    playFart();
+
+
+    /* POOP 💩 */
+
+    setTimeout(() => {
+
+        showPoop();
+
+    }, 250);
+
+
+    /* Extra confetti */
+
+    setTimeout(() => {
+
+        createConfetti();
+
+    }, 700);
+
+
+    /* Final message */
+
+    setTimeout(() => {
+
+        showFinalMessage();
+
+    }, 2800);
+
+});
+/* ========================================
+   GO TO BIRTHDAY PAGE
 ======================================== */
 
 birthdayBtn.addEventListener("click", () => {
 
-    window.location.href = "index.html#surprise";
+    sessionStorage.setItem("openBirthday", "true");
+
+    window.location.href = "index.html";
 
 });
+
+
+ 
