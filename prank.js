@@ -289,11 +289,7 @@ surpriseBtn.addEventListener("click", () => {
 ======================================== */
 
 birthdayBtn.addEventListener("click", () => {
-
-    sessionStorage.setItem("openBirthday", "true");
-
-    window.location.href = "index.html";
-
+    window.location.href = "index.html?birthday=true#birthday";
 });
 
 

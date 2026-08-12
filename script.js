@@ -5,7 +5,12 @@ const successSound = new Audio ("Sounds/sucess.mp3");
 const giftSound = new Audio("Sounds/gift.mp3");
 const burpSound = new Audio("Sounds/burp.mp3");
 const backgroundMusic = new Audio ("Sounds/cute_music.mp3");
+const urlParams = new URLSearchParams(window.location.search);
 
+
+const openBirthday =
+    urlParams.get("birthday") === "true" ||
+    sessionStorage.getItem("openbirthday") === "true";
 backgroundMusic.loop = true;
 backgroundMusic.volume = 0.4;
 
@@ -43,8 +48,7 @@ function getStage() {
     return sessionStorage.getItem("birthdayStage") || "intro";
 }
 
-const openBirthday = 
-sessionStorage.getItem("openBirthday");
+ 
 
 
 /* Save current position */
@@ -757,69 +761,63 @@ if (scratchCanvas && scratchCard) {
 
 window.addEventListener("load", () => {
     const stage = getStage();
-    // coming from prank.html
+
+    // Coming from prank.html → go directly to birthday page
     if (openBirthday === "true") {
-        sessionStorage.removeItem("openBirthday");
+        sessionStorage.removeItem("openbirthday");
 
         saveStage("birthday");
 
+        // Hide intro and puzzle/gift screen
         introScreen.classList.add("intro-hidden");
+        gameScreen.classList.remove("show-game");
         document.body.classList.remove("intro-active");
 
+        // Go directly to the birthday page
         setTimeout(() => {
-
             document.getElementById("birthday")?.scrollIntoView({
                 behavior: "instant",
                 block: "start"
             });
         }, 100);
+
         return;
     }
 
     if (stage === "intro") {
-        return;
-    }
+    return;
+}
+
+// Coming from the poop/prank page
+if (stage === "prank") {
+    saveStage("birthday");
 
     introScreen.classList.add("intro-hidden");
+    gameScreen.classList.remove("show-game");
     document.body.classList.remove("intro-active");
-    gameScreen.classList.add("show-game");
 
-    if (stage === "puzzle") {
-        startPuzzle();
-        return;
-    }
+    setTimeout(() => {
+        document.getElementById("birthday")?.scrollIntoView({
+            behavior: "instant",
+            block: "start"
+        });
+    }, 100);
 
-    if (stage === "gift"){
-        startPuzzle();
+    return;
+}
 
-        setTimeout(() => {
-            puzzleComplete();
-        }, 100);
-        return;
-    }
-
-    if (stage === "cake") {
-        setTimeout(() => {
-            cakePage.classList.add("cake-page-open");
-        }, 100);
-        return;
-    }
-        // Restore Birthday after reload
-    if (stage === "birthday") {
-
-        introScreen.classList.add("intro-hidden");
+introScreen.classList.add("intro-hidden");
+document.body.classList.remove("intro-active");
+gameScreen.classList.add("show-game");
         document.body.classList.remove("intro-active");
 
         setTimeout(() => {
-
             document.getElementById("birthday")?.scrollIntoView({
                 behavior: "instant",
                 block: "start"
             });
-
         }, 100);
 
         return;
     }
-
-    });
+});
