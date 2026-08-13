@@ -254,3 +254,19 @@ if (surpriseButton) {
     );
 
 }
+// ========================================
+// BIRTHDAY → SCRATCH
+// ========================================
+
+const scratchButton =
+    document.getElementById("scratchButton");
+
+if (scratchButton) {
+
+    scratchButton.addEventListener("click", () => {
+
+        window.location.href = "scratch.html";
+
+    });
+
+}

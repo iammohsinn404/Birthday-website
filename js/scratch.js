@@ -8,6 +8,10 @@ const scratchCanvas =
 const scratchCard =
     document.getElementById("scratchCard");
 
+const scratchContinueButton =
+    document.getElementById("scratchContinueButton");
+
+
 if (scratchCanvas && scratchCard) {
 
     const ctx =
@@ -15,7 +19,13 @@ if (scratchCanvas && scratchCard) {
 
     let scratching = false;
 
-    // Setup canvas
+    let checkingScratch = false;
+
+
+    // ========================================
+    // SETUP CANVAS
+    // ========================================
+
     function setupScratchCanvas() {
 
         const rect =
@@ -24,17 +34,20 @@ if (scratchCanvas && scratchCard) {
         const dpr =
             window.devicePixelRatio || 1;
 
+
         scratchCanvas.width =
             rect.width * dpr;
 
         scratchCanvas.height =
             rect.height * dpr;
 
+
         scratchCanvas.style.width =
             rect.width + "px";
 
         scratchCanvas.style.height =
             rect.height + "px";
+
 
         ctx.setTransform(
             dpr,
@@ -45,7 +58,9 @@ if (scratchCanvas && scratchCard) {
             0
         );
 
+
         // Scratch cover
+
         const gradient =
             ctx.createLinearGradient(
                 0,
@@ -53,6 +68,7 @@ if (scratchCanvas && scratchCard) {
                 rect.width,
                 rect.height
             );
+
 
         gradient.addColorStop(
             0,
@@ -69,7 +85,13 @@ if (scratchCanvas && scratchCard) {
             "#d94f75"
         );
 
-        ctx.fillStyle = gradient;
+
+        ctx.globalCompositeOperation =
+            "source-over";
+
+        ctx.fillStyle =
+            gradient;
+
 
         ctx.fillRect(
             0,
@@ -78,28 +100,40 @@ if (scratchCanvas && scratchCard) {
             rect.height
         );
 
-        // Text
+
+        // Scratch text
+
         ctx.fillStyle =
             "rgba(255,255,255,0.95)";
 
         ctx.font =
             "bold 22px Arial";
 
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
+        ctx.textAlign =
+            "center";
+
+        ctx.textBaseline =
+            "middle";
+
 
         ctx.fillText(
             "✨ Scratch Me ✨",
             rect.width / 2,
             rect.height / 2
         );
+
     }
 
-    // Scratch
+
+    // ========================================
+    // SCRATCH
+    // ========================================
+
     function scratch(x, y) {
 
         const rect =
             scratchCanvas.getBoundingClientRect();
+
 
         const canvasX =
             x - rect.left;
@@ -107,10 +141,13 @@ if (scratchCanvas && scratchCard) {
         const canvasY =
             y - rect.top;
 
+
         ctx.globalCompositeOperation =
             "destination-out";
 
+
         ctx.beginPath();
+
 
         ctx.arc(
             canvasX,
@@ -120,30 +157,129 @@ if (scratchCanvas && scratchCard) {
             Math.PI * 2
         );
 
+
         ctx.fill();
+
+
+        checkScratchProgress();
+
     }
 
-    // Mouse
+
+    // ========================================
+    // CHECK HOW MUCH IS SCRATCHED
+    // ========================================
+
+    function checkScratchProgress() {
+
+        if (checkingScratch) return;
+
+        checkingScratch = true;
+
+
+        setTimeout(() => {
+
+            checkingScratch = false;
+
+
+            const width =
+                scratchCanvas.width;
+
+            const height =
+                scratchCanvas.height;
+
+
+            const imageData =
+                ctx.getImageData(
+                    0,
+                    0,
+                    width,
+                    height
+                );
+
+
+            const data =
+                imageData.data;
+
+
+            let transparentPixels = 0;
+
+            let totalPixels = 0;
+
+
+            // Check every 8th pixel
+
+            for (
+                let i = 3;
+                i < data.length;
+                i += 32
+            ) {
+
+                totalPixels++;
+
+
+                if (data[i] < 50) {
+                    transparentPixels++;
+                }
+
+            }
+
+
+            const scratchedPercentage =
+                (transparentPixels / totalPixels) * 100;
+
+
+            // Reveal button after 40%
+
+            if (
+                scratchedPercentage >= 40 &&
+                scratchContinueButton
+            ) {
+
+                scratchContinueButton.classList.add(
+                    "show"
+                );
+
+            }
+
+        }, 100);
+
+    }
+
+
+    // ========================================
+    // MOUSE
+    // ========================================
+
     scratchCanvas.addEventListener(
         "mousedown",
         () => {
+
             scratching = true;
+
         }
     );
+
 
     scratchCanvas.addEventListener(
         "mouseup",
         () => {
+
             scratching = false;
+
         }
     );
+
 
     scratchCanvas.addEventListener(
         "mouseleave",
         () => {
+
             scratching = false;
+
         }
     );
+
 
     scratchCanvas.addEventListener(
         "mousemove",
@@ -151,32 +287,45 @@ if (scratchCanvas && scratchCard) {
 
             if (!scratching) return;
 
+
             scratch(
                 event.clientX,
                 event.clientY
             );
+
         }
     );
 
-    // Touch
+
+    // ========================================
+    // TOUCH
+    // ========================================
+
     scratchCanvas.addEventListener(
         "touchstart",
         (event) => {
 
             event.preventDefault();
 
+
             scratching = true;
+
 
             const touch =
                 event.touches[0];
+
 
             scratch(
                 touch.clientX,
                 touch.clientY
             );
+
         },
-        { passive: false }
+        {
+            passive: false
+        }
     );
+
 
     scratchCanvas.addEventListener(
         "touchmove",
@@ -184,34 +333,74 @@ if (scratchCanvas && scratchCard) {
 
             event.preventDefault();
 
+
             if (!scratching) return;
+
 
             const touch =
                 event.touches[0];
+
 
             scratch(
                 touch.clientX,
                 touch.clientY
             );
+
         },
-        { passive: false }
+        {
+            passive: false
+        }
     );
+
 
     scratchCanvas.addEventListener(
         "touchend",
         () => {
+
             scratching = false;
+
         }
     );
 
-    // Resize
+
+    // ========================================
+    // RESIZE
+    // ========================================
+
     window.addEventListener(
         "resize",
         () => {
+
             setupScratchCanvas();
+
         }
     );
 
-    // Start
+
+    // ========================================
+    // CONTINUE → BIRTHDAY
+    // ========================================
+
+    if (scratchContinueButton) {
+
+    scratchContinueButton.addEventListener("click", () => {
+
+        scratchContinueButton.textContent =
+            "💗 You Found It!";
+
+        scratchContinueButton.disabled = true;
+
+        scratchContinueButton.classList.add("revealed");
+
+    });
+
+}
+
+
+    // ========================================
+    // START
+    // ========================================
+
     setupScratchCanvas();
+
 }

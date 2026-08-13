@@ -1,15 +1,12 @@
- // ================================
+// ================================
 // PRANK / POOP PAGE
 // ================================
 
 const page = document.getElementById("prankPage");
 const content = document.getElementById("prankContent");
 
-const surpriseBtn =
-    document.getElementById("surpriseBtn");
-
-const birthdayBtn =
-    document.getElementById("birthdayBtn");
+const surpriseBtn = document.getElementById("surpriseBtn");
+const birthdayBtn = document.getElementById("birthdayBtn");
 
 
 // ========================================
@@ -27,17 +24,13 @@ if (page) {
 
     for (let i = 0; i < 35; i++) {
 
-        const particle =
-            document.createElement("span");
+        const particle = document.createElement("span");
 
-        particle.className =
-            "background-particle";
+        particle.className = "background-particle";
 
         particle.textContent =
             symbols[
-                Math.floor(
-                    Math.random() * symbols.length
-                )
+                Math.floor(Math.random() * symbols.length)
             ];
 
         particle.style.left =
@@ -63,18 +56,13 @@ if (page) {
 
 function playFart() {
 
-    const fart =
-        new Audio("../Sounds/fart.mp3");
+    const fart = new Audio("../Sounds/fart.mp3");
 
     fart.volume = 1;
-
     fart.currentTime = 0;
 
     fart.play().catch(error => {
-        console.log(
-            "Fart sound could not play:",
-            error
-        );
+        console.log("Fart sound could not play:", error);
     });
 }
 
@@ -111,18 +99,13 @@ function createGreenExplosion() {
 
     for (let i = 0; i < 80; i++) {
 
-        const particle =
-            document.createElement("span");
+        const particle = document.createElement("span");
 
-        particle.className =
-            "green-explosion";
+        particle.className = "green-explosion";
 
         particle.textContent =
             particles[
-                Math.floor(
-                    Math.random() *
-                    particles.length
-                )
+                Math.floor(Math.random() * particles.length)
             ];
 
         particle.style.setProperty(
@@ -160,33 +143,23 @@ function createGreenExplosion() {
 
 function showPoop() {
 
-    const poop =
-        document.createElement("img");
+    const poop = document.createElement("img");
 
-    poop.src =
-        "../Imgs/poop.png";
+    poop.src = "../Imgs/poop.png";
 
-    poop.alt =
-        "Surprise";
+    poop.alt = "Surprise";
 
-    poop.className =
-        "poop-surprise";
+    poop.className = "poop-surprise";
 
     document.body.appendChild(poop);
 
 
-    // Fade out
-
     setTimeout(() => {
 
-        poop.classList.add(
-            "poop-fade"
-        );
+        poop.classList.add("poop-fade");
 
     }, 2200);
 
-
-    // Remove
 
     setTimeout(() => {
 
@@ -213,18 +186,13 @@ function createConfetti() {
 
     for (let i = 0; i < 45; i++) {
 
-        const confetti =
-            document.createElement("span");
+        const confetti = document.createElement("span");
 
-        confetti.className =
-            "confetti-piece";
+        confetti.className = "confetti-piece";
 
         confetti.textContent =
             symbols[
-                Math.floor(
-                    Math.random() *
-                    symbols.length
-                )
+                Math.floor(Math.random() * symbols.length)
             ];
 
         confetti.style.left =
@@ -262,41 +230,67 @@ function showFinalMessage() {
 
 
 // ========================================
-// MAIN BUTTON
+// OKAY, CONTINUE BUTTON
 // ========================================
 
-const surpriseBtn = document.getElementById("surpriseBtn");
-
 if (surpriseBtn) {
+
     surpriseBtn.addEventListener("click", () => {
 
         console.log("OKAY BUTTON WORKING!");
 
-        // Hide the button
-        surpriseBtn.style.display = "none";
+        surpriseBtn.disabled = true;
 
-        // Your poop effects
+        surpriseBtn.style.pointerEvents = "none";
+
+        surpriseBtn.style.opacity = "0";
+
+        surpriseBtn.style.transform = "scale(.5)";
+
+
+        // Green explosion
         createGreenExplosion();
+
+
+        // Screen shake
         shakeScreen();
+
+
+        // Fart
         playFart();
 
+
+        // Poop
         setTimeout(() => {
+
             showPoop();
+
         }, 250);
 
+
+        // Confetti
         setTimeout(() => {
+
             createConfetti();
+
         }, 700);
 
+
+        // Final message
         setTimeout(() => {
+
             showFinalMessage();
+
         }, 2800);
 
     });
+
 }
 
 
-const birthdayBtn = document.getElementById("birthdayBtn");
+// ========================================
+// NOW LET'S CELEBRATE 🎉
+// ========================================
 
 if (birthdayBtn) {
     birthdayBtn.addEventListener("click", (event) => {
