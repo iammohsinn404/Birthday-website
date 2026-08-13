@@ -72,17 +72,17 @@ if (scratchCanvas && scratchCard) {
 
         gradient.addColorStop(
             0,
-            "#d94f75"
+            "#e46313"
         );
 
         gradient.addColorStop(
             0.5,
-            "#ef7895"
+            "#e61ccb"
         );
 
         gradient.addColorStop(
             1,
-            "#d94f75"
+            "#1393e9"
         );
 
 
