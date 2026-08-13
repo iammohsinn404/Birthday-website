@@ -25,7 +25,7 @@
       "destination": "/html/birthday.html"
     },
     {
-      "source": "/scratch.html",
+      "source": "/scratch.html"
       "destination": "/html/scratch.html"
     }
   ]
