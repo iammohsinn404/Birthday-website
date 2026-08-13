@@ -23,6 +23,10 @@
     {
       "source": "/birthday.html",
       "destination": "/html/birthday.html"
+    },
+    {
+      "source": "/puzzle.html",
+      "destination": "/html/scratch.html"
     }
   ]
 }
