@@ -18,22 +18,32 @@
     >
 
 </head>
-
-
 <body>
-     <button id="musicButton">
-        Play Music
+      <div class="page-control">
+
+        <button 
+              id="profileBtn"
+              class="page-control-btn"
+              aria-label="Profile" class="site-profile"> <img src="../Imgs/profile.jpg" alt="Profile Picture"></button>
+
+              <button 
+                    id="musicBtn"
+                    class="page-control-btn"
+                    aria-label="Music">🎵</button>
+      </div>
+      <div class="profile-menu" id="profileMenu">
+
+        <button id="restartBtn">
+            ↻ Restart
         </button>
-<!-- PROFILE -->
-
-        <div class="site-profile">
-
-            <img
-                src="../Imgs/profile.jpg"
-                alt="Profile"
-            >
-
-        </div>
+        <button id="introBtn">
+            ✨ Intro
+        </button>
+      </div>
+      <audio id="backgroundMusic" loop>
+        <source src="../Sounds/cute_music.mp3" type="audio/mpeg">
+      </audio>
+    
        
     <!-- Animated background effects -->
     <div

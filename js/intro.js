@@ -121,3 +121,94 @@ if (noButton) {
     });
 
 }
+
+// ========================================
+// BIRTHDAY LINK GENERATOR
+// ========================================
+
+const createLinkButton =
+    document.getElementById("createLinkButton");
+
+const linkGenerator =
+    document.getElementById("linkGenerator");
+
+const generateLinkButton =
+    document.getElementById("generateLinkButton");
+
+const copyLinkButton =
+    document.getElementById("copyLinkButton");
+
+const generatedLink =
+    document.getElementById("generatedLink");
+
+
+createLinkButton?.addEventListener("click", () => {
+
+    linkGenerator.classList.toggle("show");
+
+});
+
+
+generateLinkButton?.addEventListener("click", () => {
+
+    const name =
+        document.getElementById("personName").value.trim();
+
+    const day =
+        document.getElementById("birthDay").value;
+
+    const month =
+        document.getElementById("birthMonth").value;
+
+    const year =
+        document.getElementById("birthYear").value;
+
+    const relationship =
+        document.getElementById("relationship").value.trim();
+
+
+    if (!name || !day || !month || !year || !relationship) {
+
+        alert("Please fill in everything.");
+
+        return;
+    }
+
+
+    const params = new URLSearchParams({
+
+        name: name,
+        day: day,
+        month: month,
+        year: year,
+        relationship: relationship
+
+    });
+
+
+    const link =
+        `${window.location.origin}/?${params.toString()}`;
+
+
+    generatedLink.value = link;
+
+});
+
+
+copyLinkButton?.addEventListener("click", async () => {
+
+    if (!generatedLink.value) return;
+
+    await navigator.clipboard.writeText(
+        generatedLink.value
+    );
+
+    copyLinkButton.textContent = "Copied! ✓";
+
+    setTimeout(() => {
+
+        copyLinkButton.textContent = "Copy Link";
+
+    }, 1500);
+
+});

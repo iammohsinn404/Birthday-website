@@ -254,6 +254,51 @@ if (surpriseButton) {
     );
 
 }
+
+/* ============================================
+
+           PROFILE + MUSIC CONTROLS
+
+================================================*/
+
+const profileBtn = document.getElementById("profileBtn");
+const profileMenu = document.getElementById("profileMenu");
+
+const restartBtn = document.getElementById("restartBtn");
+const introBtn = document.getElementById("introBtn");
+
+const musicBtn = document.getElementById("musicBtn");
+const backgroundMuisic = document.getElementById("backgroundMusic");
+
+/* Profile */
+profileBtn?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    profileMenu?.classList.toggle("show");
+});
+/* close proflile menu when clicking somewhere else */
+document.addEventListener("click", () => {
+    profileMenu?.classList.remove("show");
+});
+/* Restart */
+restartBtn?.addEventListener("click", () => {
+    window.location.reload();
+});
+/* Go back to intro */
+introBtn?.addEventListener("click", () => {
+    window.location.href = "/html/intro.html";
+});
+/* MUsic */
+musicBtn?.addEventListener("click", () => {
+    if (!backgroundMusic) return;
+
+    if (backgroundMusic.paused) {
+        backgroundMusic.play();
+        musicBtn.textContent = "⏸️"
+    }  else {
+        backgroundMuisic.pause();
+        musicBtn.textContent = "🎵";
+    }
+});
 // ========================================
 // BIRTHDAY → SCRATCH
 // ========================================
