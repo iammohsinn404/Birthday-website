@@ -43,14 +43,14 @@ const successSound = new Audio("../Sounds/sucess.mp3");
 const puzzle = document.getElementById("puzzle");
 
 const puzzleImages = [
-    "cake.jpg",
-    "catcake.jpg",
-    "catrose.jpg",
-    "loveheart.jpg",
-    "purposeemoji.jpg",
-    "realheart.jpg",
-    "rose.jpg",
-    "moon.jpg"
+    "cake.webp",
+    "catcake.webp",
+    "catrose.webp",
+    "loveheart.webp",
+    "purposeemoji.webp",
+    "realheart.webp",
+    "rose.webp",
+    "moon.webp"
 ];
 
 let firstCard = null;

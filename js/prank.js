@@ -181,7 +181,7 @@ function showPoop() {
 
     const poop = document.createElement("img");
 
-    poop.src = "../Imgs/poop.png";
+    poop.src = "../Imgs/poop.webp";
 
     poop.alt = "Surprise";
 

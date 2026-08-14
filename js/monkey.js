@@ -56,7 +56,7 @@ if (gameGift) {
         setTimeout(() => {
             gameGift.innerHTML = `
                 <img
-                    src="../Gift Imgs/Gift2.png"
+                    src="../Gift Imgs/Gift2.webp"
                     alt="Gift"
                 >
             `;
@@ -65,7 +65,7 @@ if (gameGift) {
         setTimeout(() => {
             gameGift.innerHTML = `
                 <img
-                    src="../Gift Imgs/Gift3.png"
+                    src="../Gift Imgs/Gift3.webp"
                     alt="Gift"
                 >
             `;
@@ -74,7 +74,7 @@ if (gameGift) {
         setTimeout(() => {
             gameGift.innerHTML = `
                 <img
-                    src="../Gift Imgs/Gift4.png"
+                    src="../Gift Imgs/Gift4.webp"
                     alt="Gift"
                 >
             `;
@@ -91,7 +91,7 @@ if (gameGift) {
                     <h2>A Memorable Photo Of YOU!</h2>
 
                     <img
-                        src="../Imgs/monkey.jpg"
+                        src="../Imgs/monkey.webp"
                         alt="Memorable Photo"
                     >
 
