@@ -5,6 +5,10 @@
       "destination": "/html/intro.html"
     },
     {
+      "source": "/intro.html",
+      "destination": "/html/intro.html"
+    },
+    {
       "source": "/puzzle.html",
       "destination": "/html/puzzle.html"
     },
