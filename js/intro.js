@@ -123,6 +123,53 @@ if (noButton) {
 }
 
 // ========================================
+// PROFILE MENU
+// ========================================
+
+const profileBtn =
+    document.getElementById("profileBtn");
+
+const profileMenu =
+    document.getElementById("profileMenu");
+
+const restartBtn =
+    document.getElementById("restartBtn");
+
+const introBtn =
+    document.getElementById("introBtn");
+
+
+profileBtn?.addEventListener("click", (event) => {
+
+    event.stopPropagation();
+
+    profileMenu?.classList.toggle("show");
+
+});
+
+
+document.addEventListener("click", () => {
+
+    profileMenu?.classList.remove("show");
+
+});
+
+
+restartBtn?.addEventListener("click", () => {
+
+    window.location.reload();
+
+});
+
+
+introBtn?.addEventListener("click", () => {
+
+    window.location.reload();
+
+});
+
+
+// ========================================
 // BIRTHDAY LINK GENERATOR
 // ========================================
 
@@ -144,7 +191,7 @@ const generatedLink =
 
 createLinkButton?.addEventListener("click", () => {
 
-    linkGenerator.classList.toggle("show");
+    linkGenerator?.classList.toggle("show");
 
 });
 
@@ -152,36 +199,48 @@ createLinkButton?.addEventListener("click", () => {
 generateLinkButton?.addEventListener("click", () => {
 
     const name =
-        document.getElementById("personName").value.trim();
+        document.getElementById("personName")
+            ?.value.trim();
 
     const day =
-        document.getElementById("birthDay").value;
+        document.getElementById("birthDay")
+            ?.value;
 
     const month =
-        document.getElementById("birthMonth").value;
+        document.getElementById("birthMonth")
+            ?.value;
 
     const year =
-        document.getElementById("birthYear").value;
+        document.getElementById("birthYear")
+            ?.value;
 
     const relationship =
-        document.getElementById("relationship").value.trim();
+        document.getElementById("relationship")
+            ?.value.trim();
 
 
-    if (!name || !day || !month || !year || !relationship) {
+    if (
+        !name ||
+        !day ||
+        !month ||
+        !year ||
+        !relationship
+    ) {
 
         alert("Please fill in everything.");
 
         return;
+
     }
 
 
     const params = new URLSearchParams({
 
-        name: name,
-        day: day,
-        month: month,
-        year: year,
-        relationship: relationship
+        name,
+        day,
+        month,
+        year,
+        relationship
 
     });
 
@@ -197,18 +256,33 @@ generateLinkButton?.addEventListener("click", () => {
 
 copyLinkButton?.addEventListener("click", async () => {
 
-    if (!generatedLink.value) return;
+    if (!generatedLink?.value) return;
 
-    await navigator.clipboard.writeText(
-        generatedLink.value
-    );
+    try {
 
-    copyLinkButton.textContent = "Copied! ✓";
+        await navigator.clipboard.writeText(
+            generatedLink.value
+        );
 
-    setTimeout(() => {
+        copyLinkButton.textContent =
+            "Copied! ✓";
 
-        copyLinkButton.textContent = "Copy Link";
+        setTimeout(() => {
 
-    }, 1500);
+            copyLinkButton.textContent =
+                "Copy Link";
+
+        }, 1500);
+
+    } catch {
+
+        generatedLink.select();
+
+        document.execCommand("copy");
+
+        copyLinkButton.textContent =
+            "Copied! ✓";
+
+    }
 
 });
