@@ -2625,6 +2625,56 @@ body.intro-active {
     transform: translateX(3px);
 }
 /* ========================================
+   LEVELS MENU
+======================================== */
+
+.levels-menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+
+    margin: 2px 0 5px;
+    padding: 6px;
+
+    background: rgba(255, 255, 255, .55);
+
+    border-radius: 12px;
+}
+
+.levels-menu.show {
+    display: flex;
+}
+
+.levels-menu button {
+    width: 100%;
+
+    border: none;
+    background: transparent;
+
+    padding: 9px 10px;
+
+    border-radius: 9px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #4b3650;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+.levels-menu button:hover {
+    background: rgba(255, 105, 155, .12);
+
+    transform: translateX(3px);
+}
+/* ========================================
    BIRTHDAY LINK GENERATOR
 ======================================== */
 

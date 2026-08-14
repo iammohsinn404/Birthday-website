@@ -1,3 +1,39 @@
+// ========================================
+// PROFILE MENU
+// ========================================
+
+const profileBtn = document.getElementById("profileBtn");
+const profileMenu = document.getElementById("profileMenu");
+const restartButton = document.getElementById("restartButton");
+const refreshButton = document.getElementById("refreshButton");
+
+if (profileBtn && profileMenu) {
+    profileBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        profileMenu.classList.toggle("show");
+    });
+
+    document.addEventListener("click", (event) => {
+        if (
+            !profileMenu.contains(event.target) &&
+            !profileBtn.contains(event.target)
+        ) {
+            profileMenu.classList.remove("show");
+        }
+    });
+}
+
+if (restartButton) {
+    restartButton.addEventListener("click", () => {
+        window.location.href = "intro.html";
+    });
+}
+
+if (refreshButton) {
+    refreshButton.addEventListener("click", () => {
+        window.location.reload();
+    });
+}
 // ================================
 // PRANK / POOP PAGE
 // ================================

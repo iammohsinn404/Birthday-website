@@ -788,6 +788,102 @@ h1 {
         
     }
 }
+/* =========================
+   PROFILE BUTTON
+========================= */
+
+.site-profile {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    right: auto;
+    width: 52px;
+    height: 52px;
+
+    padding: 0;
+    margin: 0;
+
+    border: 2px solid rgba(255, 255, 255, .9);
+    border-radius: 50%;
+
+    background: white;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    z-index: 20001;
+
+    box-shadow:
+        0 8px 25px rgba(80, 50, 100, .18);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.site-profile img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+.site-profile:hover {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 12px 30px rgba(80, 50, 100, .25);
+}
+
+.site-profile:active {
+    transform: scale(.95);
+}
+/* Profile dropdown */
+
+.profile-menu {
+    position: fixed;
+    top: 76px;
+    left: 20px;
+    right: auto;
+    min-width: 160px;
+    padding: 10px;
+    display: none;
+    flex-direction: column;
+    gap: 7px;
+    background: rgba(255,255,255,.88);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,.8);
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(80,50,100,.18);
+    z-index: 20002;
+}
+
+.profile-menu.show {
+    display: flex;
+}
+
+.profile-menu button {
+    border: none;
+    background: transparent;
+    padding: 11px 14px;
+    border-radius: 10px;
+    text-align: left;
+    cursor: pointer;
+    font-weight: 600;
+    color: #4b3650;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.profile-menu button:hover {
+    background: rgba(255,105,155,.12);
+    transform: translateX(3px);
+}
 
 
 /* =========================

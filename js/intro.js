@@ -295,7 +295,53 @@ if (generateLinkButton) {
     });
 
 }
+// ========================================
+// LEVELS MENU
+// ========================================
 
+const levelsButton =
+    document.getElementById("levelsButton");
+
+const levelsMenu =
+    document.getElementById("levelsMenu");
+
+const levelButtons =
+    document.querySelectorAll("[data-level]");
+
+
+// Open / close levels
+
+if (levelsButton && levelsMenu) {
+
+    levelsButton.addEventListener("click", (event) => {
+
+        event.stopPropagation();
+
+        levelsMenu.classList.toggle("show");
+
+    });
+
+}
+
+
+// Jump to selected level
+
+levelButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+        const page =
+            button.dataset.level;
+
+        if (page) {
+
+            window.location.href = page;
+
+        }
+
+    });
+
+});
 
 // ========================================
 // COPY GENERATED LINK
