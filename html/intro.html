@@ -11,13 +11,25 @@
 
 <body>
 
-    <div class="site-profile">
-        <img src="../Imgs/profile.jpg" alt="Profile">
-    </div>
+    <button id="profileBtn" class="site-profile" aria-label="Profile">
+    <img src="../Imgs/profile.jpg" alt="Profile">
+</button>
 
-    <button id="musicButton">
-        Play Music
+<button id="musicButton">
+    Play Music
+</button>
+
+<div class="profile-menu" id="profileMenu">
+
+    <button id="restartBtn">
+        ↻ Restart
     </button>
+
+    <button id="introBtn">
+        ✨ Intro
+    </button>
+
+</div>
 
     <div class="intro-screen" id="introScreen">
 
@@ -50,7 +62,7 @@
             <button id="createLinkButton" class="create-link-button">
                 🔗 Create Birthday Link
             </button>
-            <div id=" lineGenerator" class="link-generator">
+            <div id="lineGenerator" class="link-generator">
                 <h2> Create A Birthday Link</h2>
 
                 <input
