@@ -41,8 +41,6 @@ const clickSound = new Audio("../Sounds/click.mp3");
 const successSound = new Audio("../Sounds/sucess.mp3");
 
 const puzzle = document.getElementById("puzzle");
-const skipPuzzleButton =
-    document.getElementById("skipPuzzleButton");
 
 const puzzleImages = [
     "cake.jpg",
@@ -179,14 +177,6 @@ function puzzleComplete() {
     setTimeout(() => {
         window.location.href = "monkey.html";
     }, 500);
-}
-
-// Skip puzzle
-if (skipPuzzleButton) {
-
-    skipPuzzleButton.addEventListener("click", () => {
-        puzzleComplete();
-    });
 }
 
 // Start
