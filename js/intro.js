@@ -6,27 +6,44 @@ const musicButton = document.getElementById("musicButton");
 const yesButton = document.getElementById("yesButton");
 const noButton = document.getElementById("noButton");
 
-// Music
-const backgroundMusic = new Audio("../Sounds/cute_music.mp3");
+
+// ========================================
+// MUSIC
+// ========================================
+
+const backgroundMusic =
+    new Audio("../Sounds/cute_music.mp3");
 
 backgroundMusic.loop = true;
 backgroundMusic.volume = 0.4;
 
 if (musicButton) {
+
     musicButton.addEventListener("click", () => {
 
         if (backgroundMusic.paused) {
+
             backgroundMusic.play();
+
             musicButton.textContent = "Stop Music";
+
         } else {
+
             backgroundMusic.pause();
+
             musicButton.textContent = "Play Music";
+
         }
 
     });
+
 }
 
-// YES → Puzzle
+
+// ========================================
+// YES → PUZZLE
+// ========================================
+
 if (yesButton) {
 
     yesButton.addEventListener("click", () => {
@@ -37,7 +54,11 @@ if (yesButton) {
 
 }
 
-// NO button
+
+// ========================================
+// NO BUTTON
+// ========================================
+
 let noAttempts = 0;
 
 const noMessages = [
@@ -70,6 +91,7 @@ if (noButton) {
                 void noButton.offsetWidth;
 
                 noButton.classList.add("angry");
+
             }
 
         } else {
@@ -88,7 +110,9 @@ if (noButton) {
             void noButton.offsetWidth;
 
             noButton.classList.add("angry");
+
         }
+
 
         const padding = 20;
 
@@ -102,6 +126,7 @@ if (noButton) {
             noButton.offsetHeight -
             padding;
 
+
         const randomX =
             Math.max(
                 padding,
@@ -114,16 +139,22 @@ if (noButton) {
                 Math.random() * maxY
             );
 
+
         noButton.style.position = "fixed";
-        noButton.style.left = randomX + "px";
-        noButton.style.top = randomY + "px";
+
+        noButton.style.left =
+            randomX + "px";
+
+        noButton.style.top =
+            randomY + "px";
 
     });
 
 }
 
+
 // ========================================
-// PROFILE MENU
+// INTRO PROFILE MENU
 // ========================================
 
 const profileBtn =
@@ -132,49 +163,40 @@ const profileBtn =
 const profileMenu =
     document.getElementById("profileMenu");
 
-const restartBtn =
-    document.getElementById("restartBtn");
-
-const introBtn =
-    document.getElementById("introBtn");
-
-
-profileBtn?.addEventListener("click", (event) => {
-
-    event.stopPropagation();
-
-    profileMenu?.classList.toggle("show");
-
-});
-
-
-document.addEventListener("click", () => {
-
-    profileMenu?.classList.remove("show");
-
-});
-
-
-restartBtn?.addEventListener("click", () => {
-
-    window.location.reload();
-
-});
-
-
-introBtn?.addEventListener("click", () => {
-
-    window.location.reload();
-
-});
-
-
-// ========================================
-// BIRTHDAY LINK GENERATOR
-// ========================================
-
 const createLinkButton =
     document.getElementById("createLinkButton");
+
+
+if (profileBtn && profileMenu) {
+
+    profileBtn.addEventListener("click", (event) => {
+
+        event.stopPropagation();
+
+        profileMenu.classList.toggle("show");
+
+    });
+
+
+    document.addEventListener("click", (event) => {
+
+        if (
+            !profileMenu.contains(event.target) &&
+            !profileBtn.contains(event.target)
+        ) {
+
+            profileMenu.classList.remove("show");
+
+        }
+
+    });
+
+}
+
+
+// ========================================
+// LINK GENERATOR
+// ========================================
 
 const linkGenerator =
     document.getElementById("linkGenerator");
@@ -182,107 +204,139 @@ const linkGenerator =
 const generateLinkButton =
     document.getElementById("generateLinkButton");
 
-const copyLinkButton =
-    document.getElementById("copyLinkButton");
-
 const generatedLink =
     document.getElementById("generatedLink");
 
-
-createLinkButton?.addEventListener("click", () => {
-
-    linkGenerator?.classList.toggle("show");
-
-});
+const copyLinkButton =
+    document.getElementById("copyLinkButton");
 
 
-generateLinkButton?.addEventListener("click", () => {
+// Open link generator from Profile menu
 
-    const name =
-        document.getElementById("personName")
-            ?.value.trim();
+if (createLinkButton && linkGenerator) {
 
-    const day =
-        document.getElementById("birthDay")
-            ?.value;
+    createLinkButton.addEventListener("click", (event) => {
 
-    const month =
-        document.getElementById("birthMonth")
-            ?.value;
+        event.stopPropagation();
 
-    const year =
-        document.getElementById("birthYear")
-            ?.value;
+        linkGenerator.classList.toggle("show");
 
-    const relationship =
-        document.getElementById("relationship")
-            ?.value.trim();
-
-
-    if (
-        !name ||
-        !day ||
-        !month ||
-        !year ||
-        !relationship
-    ) {
-
-        alert("Please fill in everything.");
-
-        return;
-
-    }
-
-
-    const params = new URLSearchParams({
-
-        name,
-        day,
-        month,
-        year,
-        relationship
+        profileMenu?.classList.remove("show");
 
     });
 
-
-    const link =
-        `${window.location.origin}/?${params.toString()}`;
+}
 
 
-    generatedLink.value = link;
+// Generate personalized link
 
-});
+if (generateLinkButton) {
+
+    generateLinkButton.addEventListener("click", () => {
+
+        const name =
+            document.getElementById("personName")
+                ?.value.trim();
+
+        const day =
+            document.getElementById("birthDay")
+                ?.value;
+
+        const month =
+            document.getElementById("birthMonth")
+                ?.value;
+
+        const year =
+            document.getElementById("birthYear")
+                ?.value;
+
+        const relationship =
+            document.getElementById("relationship")
+                ?.value.trim();
 
 
-copyLinkButton?.addEventListener("click", async () => {
+        if (
+            !name ||
+            !day ||
+            !month ||
+            !year ||
+            !relationship
+        ) {
 
-    if (!generatedLink?.value) return;
+            alert("Please fill in everything.");
 
-    try {
+            return;
 
-        await navigator.clipboard.writeText(
-            generatedLink.value
-        );
+        }
 
-        copyLinkButton.textContent =
-            "Copied! ✓";
 
-        setTimeout(() => {
+        const params =
+            new URLSearchParams({
+
+                name,
+                day,
+                month,
+                year,
+                relationship
+
+            });
+
+
+        const link =
+            `${window.location.origin}/?${params.toString()}`;
+
+
+        if (generatedLink) {
+
+            generatedLink.value = link;
+
+        }
+
+    });
+
+}
+
+
+// ========================================
+// COPY GENERATED LINK
+// ========================================
+
+if (copyLinkButton) {
+
+    copyLinkButton.addEventListener("click", async () => {
+
+        if (!generatedLink?.value) return;
+
+
+        try {
+
+            await navigator.clipboard.writeText(
+                generatedLink.value
+            );
 
             copyLinkButton.textContent =
-                "Copy Link";
+                "Copied! ✓";
 
-        }, 1500);
 
-    } catch {
+            setTimeout(() => {
 
-        generatedLink.select();
+                copyLinkButton.textContent =
+                    "Copy Link";
 
-        document.execCommand("copy");
+            }, 1500);
 
-        copyLinkButton.textContent =
-            "Copied! ✓";
 
-    }
+        } catch {
 
-});
+            generatedLink.select();
+
+            document.execCommand("copy");
+
+            copyLinkButton.textContent =
+                "Copied! ✓";
+
+        }
+
+    });
+
+}

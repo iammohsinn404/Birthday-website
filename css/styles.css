@@ -229,7 +229,7 @@ body.intro-active {
 
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 
-    z-index: 9000;
+    z-index: 20001;
 
     animation: profileFloat 3s ease-in-out infinite;
 }
@@ -2601,7 +2601,7 @@ body.intro-active {
     border: 1px solid rgba(255,255,255,.8);
     border-radius: 16px;
     box-shadow: 0 15px 40px rgba(80,50,100,.18);
-    z-index: 9998;
+    z-index: 20002;
 }
 
 .profile-menu.show {
