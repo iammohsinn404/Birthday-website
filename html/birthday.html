@@ -1,369 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff6b9d">
+<title>Happy Birthday, Bestie 🎂</title>
+<script>document.documentElement.classList.add('js')</script>
 
-    <meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Happy Birthday 🎂</title>
-
-    <link
-        rel="stylesheet"
-        href="../css/styles.css"
-    >
-
+<link rel="stylesheet" href="../css/birthday.css">
 </head>
 <body>
-      <div class="page-control">
 
-        <button 
-              id="profileBtn"
-              class="page-control-btn"
-              aria-label="Profile" class="site-profile"> <img src="../Imgs/profile.jpg" alt="Profile Picture"></button>
-
-              <button 
-                    id="musicBtn"
-                    class="page-control-btn"
-                    aria-label="Music">🎵</button>
-      </div>
-      <div class="profile-menu" id="profileMenu">
-
-        <button id="restartBtn">
-            ↻ Restart
-        </button>
-        <button id="introBtn">
-            ✨ Intro
-        </button>
-      </div>
-      <audio id="backgroundMusic" loop>
-        <source src="../Sounds/cute_music.mp3" type="audio/mpeg">
-      </audio>
-    
-       
-    <!-- Animated background effects -->
-    <div
-        class="birthday-effects"
-        id="birthdayEffects">
-    </div>
-
-
-    <main class="birthday-page">
-        <!-- ================================
-             HERO / BIRTHDAY INTRO
-        ================================= -->
-
-        <section class="hero">
-
-
-            <p class="intro">
-
-                <strong>
-                    MY BEST FRIEND ❤️
-                </strong>
-
-                <br>
-                <br>
-
-
-                Today, I want to take a moment to
-                celebrate you and the incredible
-                person you are.
-
-                Your kindness, generosity, and
-                unwavering support have made a
-                lasting impact on my life.
-
-                You have a heart of gold, and your
-                presence brings joy to everyone
-                around you.
-
-
-                <br>
-                <br>
-
-
-                On this special day, I wish you
-                nothing but happiness, love, and
-                success in all that you do.
-
-                May this year be filled with
-                exciting adventures, cherished
-                moments, and endless opportunities.
-
-
-                <br>
-                <br>
-
-
-                Happy Birthday! 🎉
-
-            </p>
-
-
-            <button id="surprise-button">
-
-                Click for a Surprise! 🎁
-
-            </button>
-
-
-        </section>
-
-
-        <!-- ================================
-             SPECIAL MESSAGE
-        ================================= -->
-
-        <section class="message">
-
-
-            <h2>
-                A Special Message for You! 💌
-            </h2>
-
-
-            <p class="message-text">
-
-                Happy Birthday! 🎉🎂🎈
-
-                <br>
-                <br>
-
-                Wishing you a day filled with
-                love, laughter, and all the things
-                that bring you joy.
-
-                May this year be your best one yet,
-                filled with new adventures,
-                cherished memories, and endless
-                happiness.
-
-                <br>
-                <br>
-
-                You deserve all the wonderful
-                things life has to offer.
-
-                <br>
-                <br>
-
-                Cheers to another amazing year
-                ahead! 🥳
-
-            </p>
-
-
-        </section>
-
-
-        <!-- ================================
-             MEMORIES
-        ================================= -->
-
-        <section class="memories">
-
-
-            <h2>
-                Some Beautiful Memories 📸
-            </h2>
-
-
-            <div class="memories-gallery">
-
-
-                <!-- MEMORY 1 -->
-
-                <div class="memory">
-
-
-                    <img
-                        src="../Imgs/decoration.jpg"
-                        alt="Memory 1"
-                    >
-
-
-                    <p class="memory-caption">
-
-                        I decorated the things,
-                        where is my cakee?? 😂🎂
-
-                    </p>
-
-
-                </div>
-
-
-                <!-- MEMORY 2 -->
-
-                <div class="memory">
-
-
-                    <img
-                        src="../Imgs/birthday.cat.jpg"
-                        alt="Memory 2"
-                    >
-
-
-                    <p class="memory-caption">
-
-                        Thank U for the Cake,
-                        Happy Birthday MY best
-                        friend! 🎂❤️
-
-                    </p>
-
-
-                </div>
-
-
-                <!-- MEMORY 3 -->
-
-                <div class="memory">
-
-
-                    <img
-                        src="../Imgs/Happybirthday.jpg"
-                        alt="Memory 3"
-                    >
-
-
-                    <p class="memory-caption">
-
-                        Our special moment
-                        together! ❤️
-
-                    </p>
-
-
-                </div>
-
-
-            </div>
-
-
-        </section>
-
-
-        <!-- ================================
-             FINAL SURPRISE
-        ================================= -->
-
-        <section
-            class="surprise"
-            id="surprise"
-        >
-
-
-            <div class="game-gift">
-
-                🎁
-
-            </div>
-
-
-            <h2>
-
-                One More Thing...
-
-            </h2>
-            <button id="scratchButton" class="scratch-continue-button">
-           💗 One Last Secret
-           </button>
-
-
-            <p class="surprise-text">
-
-                Surprise! 🎉🎁
-
-                <br>
-                <br>
-
-                I hope this little gesture brings
-                a smile to your face and adds an
-                extra dose of excitement to your
-                birthday celebration.
-
-                <br>
-                <br>
-
-                You deserve all the happiness in
-                the world, and I wanted to make
-                sure you feel extra special today.
-
-                <br>
-                <br>
-
-                Enjoy this surprise and know that
-                you are loved and appreciated.
-
-                <br>
-                <br>
-
-                Happy Birthday once again! 🥳
-
-            </p>
-
-            <h3>
-
-                Happy Birthday! 🎉
-                | With Full Love ❤️
-
-            </h3>
-           <!-- SCRATCH BUTTON -->
-
-<div class="birthday-scratch-button">
-
-    <h2>
-        One Last Little Secret... 💗
-    </h2>
-
-    <p>
-        You thought that was everything? 👀
-    </p>
-
-    <button
-        id="scratchButton"
-        class="scratch-continue-button"
-    >
-        💗 Go to the Final Secret
-    </button>
-
+<!-- preloader -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader-heart">💗</div>
+  <div class="preloader-bar"><span id="preloaderFill"></span></div>
+  <p class="preloader-label">wrapping something up...</p>
 </div>
 
-        </section>
-         
+<!-- film grain texture, purely decorative -->
+<div class="noise" aria-hidden="true"></div>
 
+<!-- scroll progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
-        <!-- ================================
-             FOOTER
-        ================================= -->
+<!-- ambient drifting hearts/sparkles, sits behind everything -->
+<div class="ambient" id="ambient" aria-hidden="true"></div>
 
-        <footer class="footer">
+<!-- cursor glow + ring (only shown on desktop, JS adds body.cursor-ready) -->
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
+<!-- fixed top nav, fades in once the intro gate lifts -->
+<header class="top-nav" id="topNav">
+  <div class="nav-row">
+    <a href="#heroSection" class="nav-brand">
+      <span class="nav-mark" aria-hidden="true">✦</span>
+      <span class="nav-word">for you</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#heroSection" data-nav-for="heroSection">Hello</a></li>
+      <li><a href="#messageSection" data-nav-for="messageSection">Letter</a></li>
+      <li><a href="#storySection" data-nav-for="storySection">Story</a></li>
+      <li><a href="#memoriesSection" data-nav-for="memoriesSection">Gallery</a></li>
+      <li><a href="#surpriseSection" data-nav-for="surpriseSection">Surprise</a></li>
+    </ul>
+    <button class="nav-cta" id="navCta">🎁 Surprise</button>
+  </div>
+</header>
 
-            <p class="footer-text">
+<!-- section wayfinding dots -->
+<nav class="section-dots" aria-label="Section navigation">
+  <a href="#heroSection" class="dot active" data-label="Hello" data-nav-for="heroSection"></a>
+  <a href="#messageSection" class="dot" data-label="Letter" data-nav-for="messageSection"></a>
+  <a href="#storySection" class="dot" data-label="Story" data-nav-for="storySection"></a>
+  <a href="#memoriesSection" class="dot" data-label="Gallery" data-nav-for="memoriesSection"></a>
+  <a href="#surpriseSection" class="dot" data-label="Surprise" data-nav-for="surpriseSection"></a>
+</nav>
 
-                Made with ❤️ by Your Best Friend
+<main class="birthday-page">
 
+    <section class="hero" id="heroSection">
+
+        <div class="hero-balloons" aria-hidden="true">
+          <div class="balloon b1" data-depth="1.4"><svg viewBox="0 0 60 84" width="64"><ellipse cx="30" cy="28" rx="26" ry="30" fill="#ff9dc0"/><path d="M30 58 L25 67 L35 67 Z" fill="#ff9dc0"/><line x1="30" y1="67" x2="30" y2="84" stroke="#e2b8cf" stroke-width="2"/></svg></div>
+          <div class="balloon b2" data-depth="2.1"><svg viewBox="0 0 60 84" width="46"><ellipse cx="30" cy="28" rx="24" ry="28" fill="#b8a2ff"/><path d="M30 55 L26 63 L34 63 Z" fill="#b8a2ff"/><line x1="30" y1="63" x2="30" y2="80" stroke="#cbb8ea" stroke-width="2"/></svg></div>
+          <div class="balloon b3" data-depth="1.7"><svg viewBox="0 0 60 84" width="56"><ellipse cx="30" cy="28" rx="25" ry="29" fill="#ffd88f"/><path d="M30 56 L26 65 L34 65 Z" fill="#ffd88f"/><line x1="30" y1="65" x2="30" y2="82" stroke="#e9cf9c" stroke-width="2"/></svg></div>
+          <div class="balloon b4" data-depth="2.6"><svg viewBox="0 0 60 84" width="38"><ellipse cx="30" cy="28" rx="23" ry="27" fill="#ff7fa8"/><path d="M30 54 L26 62 L34 62 Z" fill="#ff7fa8"/><line x1="30" y1="62" x2="30" y2="78" stroke="#e2b8cf" stroke-width="2"/></svg></div>
+        </div>
+
+        <div class="hero-visual" id="heroVisual">
+          <div class="vitals-card" id="vitalsCard">
+            <p class="vitals-eyebrow">🎂 Today's Vitals</p>
+            <div class="vitals-row"><span class="vitals-num" data-target="100" data-suffix="%">0%</span><span class="vitals-label">Happiness, verified</span></div>
+            <div class="vitals-row"><span class="vitals-num">∞</span><span class="vitals-label">Hugs queued for delivery</span></div>
+            <div class="vitals-row"><span class="vitals-num" data-target="1" data-suffix="">0</span><span class="vitals-label">One-of-a-kind bestie (you)</span></div>
+          </div>
+
+          <figure class="stack-card c3" style="--rot:-11deg">
+            <img src="../Imgs/Birthday-wishes.jpg" alt="The birthday decorations, candles and balloons" loading="eager">
+          </figure>
+          <figure class="stack-card c2" style="--rot:9deg">
+            <img src="../Imgs/ballon.jpg" alt="Our official birthday mascot delivering cake and flowers" loading="eager">
+          </figure>
+          <figure class="stack-card c1" style="--rot:-6deg">
+            <img src="../Imgs/Smile-Birthday.jpg" alt="A handmade happy birthday card" loading="eager">
+          </figure>
+
+          <div class="stack-badge"><span class="dot" aria-hidden="true"></span> celebration mode: on</div>
+        </div>
+
+        <div class="hero-inner">
+            <p class="hero-eyebrow">✨ something just for you</p>
+
+            <h1 class="hero-title">
+              <span class="word grad">MY</span><span class="word grad">BEST</span><span class="word grad">FRIEND</span><span class="word">❤️</span>
+            </h1>
+
+            <p class="lede">
+              A little corner of the internet, made just to say it properly — Happy Birthday. 🎂
             </p>
 
+            <button id="surprise-button">Click for a Surprise! 🎁</button>
 
-        </footer>
+            <a href="#messageSection" class="scroll-cue">
+                <span>Scroll to discover</span>
+                <span class="scroll-cue-arrow">↓</span>
+            </a>
+        </div>
+
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-group">
+          <span>Happy Birthday</span><span>To My Favorite Person</span><span>More Cake</span><span>More Laughs</span><span>More Us</span>
+        </div>
+        <div class="marquee-group">
+          <span>Happy Birthday</span><span>To My Favorite Person</span><span>More Cake</span><span>More Laughs</span><span>More Us</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="letter" id="messageSection">
+        <div class="letter-bg" aria-hidden="true"></div>
+        <div class="letter-inner">
+            <p class="section-eyebrow">💌 a little letter</p>
+            <h2>Everything I Wanted To Say</h2>
+
+            <div class="letter-body reveal-stagger">
+                <p class="line">Today, I want to take a moment to celebrate you and the incredible person you are.</p>
+                <p class="line">Your kindness, generosity, and unwavering support have made a lasting impact on my life.</p>
+                <p class="line">You have a heart of gold, and your presence brings joy to everyone around you.</p>
+                <p class="line">On this special day, I wish you nothing but happiness, love, and success in all that you do.</p>
+                <p class="line">May this year be filled with exciting adventures, cherished moments, and endless opportunities — the best one yet.</p>
+                <p class="line">Wishing you a day filled with love, laughter, and all the things that bring you joy. You deserve all the wonderful things life has to offer.</p>
+                <p class="line line-signoff">Happy Birthday! 🎉</p>
+            </div>
+
+            <p class="chips-label">In a word, you are —</p>
+            <div class="trait-chips reveal-stagger">
+                <span class="chip">✨ Kind</span>
+                <span class="chip">💛 Generous</span>
+                <span class="chip">🫶 Heart of gold</span>
+                <span class="chip">🌟 Joy-bringer</span>
+                <span class="chip">🎉 Always there</span>
+            </div>
+        </div>
+    </section>
 
 
-    </main>
+    <section class="story" id="storySection">
+        <div class="story-head reveal">
+            <p class="section-eyebrow">🫶 a few reasons, out of many</p>
+            <h2>Why You're Impossible To Replace</h2>
+        </div>
+
+        <div class="story-grid">
+            <div class="story-rail" aria-hidden="true"><div class="story-rail-fill" id="storyRailFill"></div></div>
+            <div class="story-items" id="storyItems">
+                <article class="story-item" data-i="0">
+                    <span class="story-num">01</span>
+                    <div><h3>The kind of friend everyone wants</h3><p>You make hard days lighter and good days unforgettable, just by being in them.</p></div>
+                </article>
+                <article class="story-item" data-i="1">
+                    <span class="story-num">02</span>
+                    <div><h3>Remembers every little thing</h3><p>The random stories, the inside jokes, the tiny details — you actually remember them all.</p></div>
+                </article>
+                <article class="story-item" data-i="2">
+                    <span class="story-num">03</span>
+                    <div><h3>Shows up, every single time</h3><p>Near or far, early morning or way too late — you're the one who picks up.</p></div>
+                </article>
+                <article class="story-item" data-i="3">
+                    <span class="story-num">04</span>
+                    <div><h3>Turns ordinary into memorable</h3><p>Somehow the most boring plans turn into the stories we still laugh about.</p></div>
+                </article>
+                <article class="story-item" data-i="4">
+                    <span class="story-num">05</span>
+                    <div><h3>Today, it's all about you</h3><p>So just for one day, sit back and let everyone else do the celebrating.</p></div>
+                </article>
+            </div>
+        </div>
+    </section>
 
 
-    <!-- BIRTHDAY JAVASCRIPT -->
+    <section class="reel" id="memoriesSection">
 
-    <script src="../js/birthday.js"></script>
+        <div class="reel-head reveal">
+            <p class="section-eyebrow">📸 memory reel</p>
+            <h2>Scroll Through Our Little Story</h2>
+            <p class="reel-sub">Three frames, one very good year — keep scrolling.</p>
+        </div>
 
+        <div class="reel-track" id="reelTrack">
+            <div class="reel-pin">
+                <div class="reel-stage">
+                    <figure class="reel-frame" data-i="0" style="--r:-4deg">
+                        <div class="frame-card">
+                            <img src="../Imgs/decoration.jpg" alt="The birthday decorations, mid-setup" loading="lazy">
+                        </div>
+                        <figcaption>I decorated the things, where is my cakee?? 😂🎂</figcaption>
+                    </figure>
+                    <figure class="reel-frame" data-i="1" style="--r:3deg">
+                        <div class="frame-card">
+                            <img src="../Imgs/birthday.cat.jpg" alt="A cake and flowers delivered by the cutest courier" loading="lazy">
+                        </div>
+                        <figcaption>Thank U for the Cake, Happy Birthday MY best friend! 🎂❤️</figcaption>
+                    </figure>
+                    <figure class="reel-frame" data-i="2" style="--r:-2deg">
+                        <div class="frame-card">
+                            <img src="../Imgs/Happybirthday.jpg" alt="Our special moment together" loading="lazy">
+                        </div>
+                        <figcaption>Our special moment together! ❤️</figcaption>
+                    </figure>
+                </div>
+
+                <div class="reel-ui">
+                    <div class="reel-counter"><span id="reelCurrent">01</span>/03</div>
+                    <div class="reel-dashes">
+                        <span class="dash" data-i="0"></span>
+                        <span class="dash" data-i="1"></span>
+                        <span class="dash" data-i="2"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="cinematic" aria-hidden="false">
+        <div class="cinematic-bg" style="background-image:url('images/decoration.jpg')" aria-hidden="true"></div>
+        <p class="cinematic-eyebrow reveal">✦ a small pause</p>
+        <h2 class="cinematic-lines" id="cinematicLines">
+            <span class="mask-line"><span>Some people just make life better.</span></span>
+            <span class="mask-line"><span>You're <em class="accent">one of them</em>.</span></span>
+        </h2>
+    </section>
+
+
+    <section class="surprise" id="surpriseSection">
+
+        <div class="gift">🎁</div>
+
+        <h2>One More Thing...</h2>
+
+        <p class="surprise-text">Surprise! 🎉🎁
+
+I hope this little gesture brings a smile to your face and adds an extra dose of excitement to your birthday celebration.
+
+You deserve all the happiness in the world, and I wanted to make sure you feel extra special today.
+
+Enjoy this surprise and know that you are loved and appreciated.
+
+Happy Birthday once again! 🥳</p>
+
+        <h3>Happy Birthday! 🎉 | With Full Love ❤️</h3>
+
+    </section>
+
+    <section class="final-cta">
+        <div class="final-cta-bg" style="background-image:url('images/cake-cat.jpg')" aria-hidden="true"></div>
+        <p class="final-cta-eyebrow reveal">before you go</p>
+        <h2 class="reveal">Here's To Another Year</h2>
+        <p class="reveal">Of bad jokes, good food, and everything in between. I'm grateful for you today — and every day.</p>
+        <button id="scratchButton" class="reveal">
+    💗 One Last Secret
+</button>
+        <p class="final-cta-ps reveal">P.S. — scroll back up anytime you need a smile.</p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <a href="#heroSection" class="nav-brand">
+              <span class="nav-mark" aria-hidden="true">✦</span>
+              <span class="nav-word">for you</span>
+            </a>
+            <p class="footer-tagline">A tiny corner of the internet, built just to say happy birthday properly.</p>
+        </div>
+        <div class="footer-col">
+            <h4>on this page</h4>
+            <ul>
+                <li><a href="#heroSection">Hello</a></li>
+                <li><a href="#messageSection">Letter</a></li>
+                <li><a href="#storySection">Story</a></li>
+                <li><a href="#memoriesSection">Gallery</a></li>
+                <li><a href="#surpriseSection">Surprise</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>built with</h4>
+            <ul>
+                <li><span>Way too much coffee ☕</span></li>
+                <li><span>A few late nights 🌙</span></li>
+                <li><span>A whole lot of love ❤️</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-tags">
+            <span class="footer-tag">🎂 Birthday Edition</span>
+            <span class="footer-tag">💌 Handmade, Not Mass-Produced</span>
+        </div>
+        <span class="footer-credit">Made with ❤️ by Your Best Friend</span>
+        <a href="#heroSection" class="footer-top-link">Back to top ↑</a>
+    </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+<canvas id="fxCanvas" aria-hidden="true"></canvas>
+
+<script src="../js/birthday.js"></script>
 
 </body>
-
 </html>
