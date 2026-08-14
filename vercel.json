@@ -1,8 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/",
+       "source": "/",
       "destination": "/html/index.html"
+    },
+    {
+      "source": "/",
+      "destination": "/html/intro.html"
     },
     {
       "source": "/puzzle.html",
@@ -25,7 +29,7 @@
       "destination": "/html/birthday.html"
     },
     {
-      "source": "/scratch.html"
+      "source": "/scratch.html",
       "destination": "/html/scratch.html"
     }
   ]
