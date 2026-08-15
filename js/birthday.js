@@ -8,31 +8,31 @@ const restartButton = document.getElementById("restartButton");
 const refreshButton = document.getElementById("refreshButton");
 
 if (profileBtn && profileMenu) {
-    profileBtn.addEventListener("click", (event) => {
-        event.stopPropagation();
-        profileMenu.classList.toggle("show");
-    });
+  profileBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+    profileMenu.classList.toggle("show");
+  });
 
-    document.addEventListener("click", (event) => {
-        if (
-            !profileMenu.contains(event.target) &&
-            !profileBtn.contains(event.target)
-        ) {
-            profileMenu.classList.remove("show");
-        }
-    });
+  document.addEventListener("click", (event) => {
+    if (
+      !profileMenu.contains(event.target) &&
+      !profileBtn.contains(event.target)
+    ) {
+      profileMenu.classList.remove("show");
+    }
+  });
 }
 
 if (restartButton) {
-    restartButton.addEventListener("click", () => {
-        window.location.href = "intro.html";
-    });
+  restartButton.addEventListener("click", () => {
+    window.location.href = "intro.html";
+  });
 }
 
 if (refreshButton) {
-    refreshButton.addEventListener("click", () => {
-        window.location.reload();
-    });
+  refreshButton.addEventListener("click", () => {
+    window.location.reload();
+  });
 }
 const prefersReducedMotion = matchMedia(
   "(prefers-reduced-motion: reduce)",
@@ -157,32 +157,26 @@ function countUp(el) {
 
 // START BIRTHDAY PAGE DIRECTLY
 
-
-document.body.style.overflow = '';
+document.body.style.overflow = "";
 
 if (heroSection) {
-    heroSection.classList.add('play');
+  heroSection.classList.add("play");
 }
 
 if (topNav) {
-    topNav.classList.add('show');
+  topNav.classList.add("show");
 }
 
-document
-    .querySelectorAll('.vitals-num[data-target]')
-    .forEach(countUp);
+document.querySelectorAll(".vitals-num[data-target]").forEach(countUp);
 
 // ========================================
 // BIRTHDAY → SCRATCH PAGE
 // ========================================
 
-const scratchButton =
-    document.getElementById("scratchButton");
+const scratchButton = document.getElementById("scratchButton");
 
 scratchButton?.addEventListener("click", () => {
-
-    window.location.href = "scratch.html";
-
+  window.location.href = "scratch.html";
 });
 
 /* nav bar background/shadow once the page is scrolled */

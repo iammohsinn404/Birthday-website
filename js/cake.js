@@ -8,169 +8,127 @@ const restartButton = document.getElementById("restartButton");
 const refreshButton = document.getElementById("refreshButton");
 
 if (profileBtn && profileMenu) {
-    profileBtn.addEventListener("click", (event) => {
-        event.stopPropagation();
-        profileMenu.classList.toggle("show");
-    });
+  profileBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+    profileMenu.classList.toggle("show");
+  });
 
-    document.addEventListener("click", (event) => {
-        if (
-            !profileMenu.contains(event.target) &&
-            !profileBtn.contains(event.target)
-        ) {
-            profileMenu.classList.remove("show");
-        }
-    });
+  document.addEventListener("click", (event) => {
+    if (
+      !profileMenu.contains(event.target) &&
+      !profileBtn.contains(event.target)
+    ) {
+      profileMenu.classList.remove("show");
+    }
+  });
 }
 
 if (restartButton) {
-    restartButton.addEventListener("click", () => {
-        window.location.href = "intro.html";
-    });
+  restartButton.addEventListener("click", () => {
+    window.location.href = "intro.html";
+  });
 }
 
 if (refreshButton) {
-    refreshButton.addEventListener("click", () => {
-        window.location.reload();
-    });
+  refreshButton.addEventListener("click", () => {
+    window.location.reload();
+  });
 }
 // ================================
 // CAKE PAGE
 // ================================
 
-const burpSound =
-    new Audio("../Sounds/burp.mp3");
+const burpSound = new Audio("../Sounds/burp.mp3");
 
-const cakeArea =
-    document.getElementById("cakeArea");
+const cakeArea = document.getElementById("cakeArea");
 
-const cakeMessage =
-    document.getElementById("cakeMessage");
+const cakeMessage = document.getElementById("cakeMessage");
 
-const moreForwardButton =
-    document.getElementById("moreForwardButton");
+const moreForwardButton = document.getElementById("moreForwardButton");
 
 let eatenPieces = 0;
 
 // Cake pieces
 if (cakeArea) {
+  cakeArea.addEventListener("click", (event) => {
+    const piece = event.target.closest(".cake-piece");
 
-    cakeArea.addEventListener("click", (event) => {
+    if (!piece) return;
 
-        const piece =
-            event.target.closest(".cake-piece");
+    if (piece.classList.contains("eaten")) {
+      return;
+    }
 
-        if (!piece) return;
+    piece.classList.add("eaten");
 
-        if (piece.classList.contains("eaten")) {
-            return;
+    eatenPieces++;
+
+    burpSound.currentTime = 0;
+    burpSound.play().catch(() => {});
+
+    if (cakeMessage) {
+      cakeMessage.textContent = "Yummm... another piece disappeared! 😂";
+    }
+
+    createCakeParticles(piece);
+
+    // All six eaten
+    if (eatenPieces === 6) {
+      if (cakeMessage) {
+        cakeMessage.textContent = "You ate them all! 😂🍰";
+      }
+
+      setTimeout(() => {
+        if (moreForwardButton) {
+          moreForwardButton.classList.add("show");
+
+          moreForwardButton.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
         }
-
-        piece.classList.add("eaten");
-
-        eatenPieces++;
-
-        burpSound.currentTime = 0;
-        burpSound.play().catch(() => {});
-
-        if (cakeMessage) {
-            cakeMessage.textContent =
-                "Yummm... another piece disappeared! 😂";
-        }
-
-        createCakeParticles(piece);
-
-        // All six eaten
-        if (eatenPieces === 6) {
-
-            if (cakeMessage) {
-                cakeMessage.textContent =
-                    "You ate them all! 😂🍰";
-            }
-
-            setTimeout(() => {
-
-                if (moreForwardButton) {
-
-                    moreForwardButton.classList.add("show");
-
-                    moreForwardButton.scrollIntoView({
-                        behavior: "smooth",
-                        block: "center"
-                    });
-                }
-
-            }, 800);
-        }
-    });
+      }, 800);
+    }
+  });
 }
 
 // More Forward → Poop
 if (moreForwardButton) {
-
-    moreForwardButton.addEventListener("click", () => {
-        window.location.href = "prank.html";
-    });
+  moreForwardButton.addEventListener("click", () => {
+    window.location.href = "prank.html";
+  });
 }
 
 // Cake particles
 function createCakeParticles(piece) {
+  const particles = ["🟫", "🟫", "🟤", "✨", "💨", "🟫", "✨", "🟤"];
 
-    const particles = [
-        "🟫",
-        "🟫",
-        "🟤",
-        "✨",
-        "💨",
-        "🟫",
-        "✨",
-        "🟤"
-    ];
+  const cakePage = document.getElementById("cakePage");
 
-    const cakePage =
-        document.getElementById("cakePage");
+  if (!cakePage) return;
 
-    if (!cakePage) return;
+  for (let i = 0; i < 18; i++) {
+    const particle = document.createElement("span");
 
-    for (let i = 0; i < 18; i++) {
+    particle.classList.add("cake-particle");
 
-        const particle =
-            document.createElement("span");
+    particle.textContent =
+      particles[Math.floor(Math.random() * particles.length)];
 
-        particle.classList.add("cake-particle");
+    particle.style.left = 45 + Math.random() * 15 + "%";
 
-        particle.textContent =
-            particles[
-                Math.floor(
-                    Math.random() * particles.length
-                )
-            ];
+    particle.style.top = 45 + Math.random() * 15 + "%";
 
-        particle.style.left =
-            (45 + Math.random() * 15) + "%";
+    particle.style.setProperty("--x", Math.random() * 220 - 110 + "px");
 
-        particle.style.top =
-            (45 + Math.random() * 15) + "%";
+    particle.style.setProperty("--y", Math.random() * -180 - 30 + "px");
 
-        particle.style.setProperty(
-            "--x",
-            (Math.random() * 220 - 110) + "px"
-        );
+    particle.style.setProperty("--rotate", Math.random() * 720 - 360 + "deg");
 
-        particle.style.setProperty(
-            "--y",
-            (Math.random() * -180 - 30) + "px"
-        );
+    cakePage.appendChild(particle);
 
-        particle.style.setProperty(
-            "--rotate",
-            (Math.random() * 720 - 360) + "deg"
-        );
-
-        cakePage.appendChild(particle);
-
-        setTimeout(() => {
-            particle.remove();
-        }, 1000);
-    }
+    setTimeout(() => {
+      particle.remove();
+    }, 1000);
+  }
 }

@@ -8,31 +8,31 @@ const restartButton = document.getElementById("restartButton");
 const refreshButton = document.getElementById("refreshButton");
 
 if (profileBtn && profileMenu) {
-    profileBtn.addEventListener("click", (event) => {
-        event.stopPropagation();
-        profileMenu.classList.toggle("show");
-    });
+  profileBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+    profileMenu.classList.toggle("show");
+  });
 
-    document.addEventListener("click", (event) => {
-        if (
-            !profileMenu.contains(event.target) &&
-            !profileBtn.contains(event.target)
-        ) {
-            profileMenu.classList.remove("show");
-        }
-    });
+  document.addEventListener("click", (event) => {
+    if (
+      !profileMenu.contains(event.target) &&
+      !profileBtn.contains(event.target)
+    ) {
+      profileMenu.classList.remove("show");
+    }
+  });
 }
 
 if (restartButton) {
-    restartButton.addEventListener("click", () => {
-        window.location.href = "intro.html";
-    });
+  restartButton.addEventListener("click", () => {
+    window.location.href = "intro.html";
+  });
 }
 
 if (refreshButton) {
-    refreshButton.addEventListener("click", () => {
-        window.location.reload();
-    });
+  refreshButton.addEventListener("click", () => {
+    window.location.reload();
+  });
 }
 // ================================
 // PRANK / POOP PAGE
@@ -44,293 +44,203 @@ const content = document.getElementById("prankContent");
 const surpriseBtn = document.getElementById("surpriseBtn");
 const birthdayBtn = document.getElementById("birthdayBtn");
 
-
 // ========================================
 // BACKGROUND PARTICLES
 // ========================================
 
-const symbols = [
-    "♡",
-    "✦",
-    "✧",
-    "·"
-];
+const symbols = ["♡", "✦", "✧", "·"];
 
 if (page) {
+  for (let i = 0; i < 35; i++) {
+    const particle = document.createElement("span");
 
-    for (let i = 0; i < 35; i++) {
+    particle.className = "background-particle";
 
-        const particle = document.createElement("span");
+    particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
 
-        particle.className = "background-particle";
+    particle.style.left = Math.random() * 100 + "%";
 
-        particle.textContent =
-            symbols[
-                Math.floor(Math.random() * symbols.length)
-            ];
+    particle.style.fontSize = Math.random() * 15 + 10 + "px";
 
-        particle.style.left =
-            Math.random() * 100 + "%";
+    particle.style.animationDuration = Math.random() * 8 + 8 + "s";
 
-        particle.style.fontSize =
-            Math.random() * 15 + 10 + "px";
+    particle.style.animationDelay = Math.random() * -10 + "s";
 
-        particle.style.animationDuration =
-            Math.random() * 8 + 8 + "s";
-
-        particle.style.animationDelay =
-            Math.random() * -10 + "s";
-
-        page.appendChild(particle);
-    }
+    page.appendChild(particle);
+  }
 }
-
 
 // ========================================
 // FART SOUND 💨
 // ========================================
 
 function playFart() {
+  const fart = new Audio("../Sounds/fart.mp3");
 
-    const fart = new Audio("../Sounds/fart.mp3");
+  fart.volume = 1;
+  fart.currentTime = 0;
 
-    fart.volume = 1;
-    fart.currentTime = 0;
-
-    fart.play().catch(error => {
-        console.log("Fart sound could not play:", error);
-    });
+  fart.play().catch((error) => {
+    console.log("Fart sound could not play:", error);
+  });
 }
-
 
 // ========================================
 // SCREEN SHAKE
 // ========================================
 
 function shakeScreen() {
+  if (!page) return;
 
-    if (!page) return;
+  page.classList.remove("shake");
 
-    page.classList.remove("shake");
+  void page.offsetWidth;
 
-    void page.offsetWidth;
-
-    page.classList.add("shake");
+  page.classList.add("shake");
 }
-
 
 // ========================================
 // GREEN PARTICLE EXPLOSION
 // ========================================
 
 function createGreenExplosion() {
+  const particles = ["●", "•", "✦", "✧", "✨"];
 
-    const particles = [
-        "●",
-        "•",
-        "✦",
-        "✧",
-        "✨"
-    ];
+  for (let i = 0; i < 80; i++) {
+    const particle = document.createElement("span");
 
-    for (let i = 0; i < 80; i++) {
+    particle.className = "green-explosion";
 
-        const particle = document.createElement("span");
+    particle.textContent =
+      particles[Math.floor(Math.random() * particles.length)];
 
-        particle.className = "green-explosion";
+    particle.style.setProperty("--x", Math.random() * 900 - 450 + "px");
 
-        particle.textContent =
-            particles[
-                Math.floor(Math.random() * particles.length)
-            ];
+    particle.style.setProperty("--y", Math.random() * 650 - 325 + "px");
 
-        particle.style.setProperty(
-            "--x",
-            (Math.random() * 900 - 450) + "px"
-        );
+    particle.style.setProperty("--rotation", Math.random() * 720 - 360 + "deg");
 
-        particle.style.setProperty(
-            "--y",
-            (Math.random() * 650 - 325) + "px"
-        );
+    particle.style.setProperty("--size", Math.random() * 12 + 5 + "px");
 
-        particle.style.setProperty(
-            "--rotation",
-            (Math.random() * 720 - 360) + "deg"
-        );
+    document.body.appendChild(particle);
 
-        particle.style.setProperty(
-            "--size",
-            (Math.random() * 12 + 5) + "px"
-        );
-
-        document.body.appendChild(particle);
-
-        setTimeout(() => {
-            particle.remove();
-        }, 1600);
-    }
+    setTimeout(() => {
+      particle.remove();
+    }, 1600);
+  }
 }
-
 
 // ========================================
 // POOP IMAGE 💩
 // ========================================
 
 function showPoop() {
+  const poop = document.createElement("img");
 
-    const poop = document.createElement("img");
+  poop.src = "../Imgs/poop.webp";
 
-    poop.src = "../Imgs/poop.webp";
+  poop.alt = "Surprise";
 
-    poop.alt = "Surprise";
+  poop.className = "poop-surprise";
 
-    poop.className = "poop-surprise";
+  document.body.appendChild(poop);
 
-    document.body.appendChild(poop);
+  setTimeout(() => {
+    poop.classList.add("poop-fade");
+  }, 2200);
 
-
-    setTimeout(() => {
-
-        poop.classList.add("poop-fade");
-
-    }, 2200);
-
-
-    setTimeout(() => {
-
-        poop.remove();
-
-    }, 2800);
+  setTimeout(() => {
+    poop.remove();
+  }, 2800);
 }
-
 
 // ========================================
 // CONFETTI 🎉
 // ========================================
 
 function createConfetti() {
+  const symbols = ["🎉", "🎊", "✨", "💗", "⭐", "🎈"];
 
-    const symbols = [
-        "🎉",
-        "🎊",
-        "✨",
-        "💗",
-        "⭐",
-        "🎈"
-    ];
+  for (let i = 0; i < 45; i++) {
+    const confetti = document.createElement("span");
 
-    for (let i = 0; i < 45; i++) {
+    confetti.className = "confetti-piece";
 
-        const confetti = document.createElement("span");
+    confetti.textContent = symbols[Math.floor(Math.random() * symbols.length)];
 
-        confetti.className = "confetti-piece";
+    confetti.style.left = Math.random() * 100 + "vw";
 
-        confetti.textContent =
-            symbols[
-                Math.floor(Math.random() * symbols.length)
-            ];
+    confetti.style.setProperty("--x", Math.random() * 300 - 150 + "px");
 
-        confetti.style.left =
-            Math.random() * 100 + "vw";
+    confetti.style.setProperty("--rotation", Math.random() * 900 - 450 + "deg");
 
-        confetti.style.setProperty(
-            "--x",
-            (Math.random() * 300 - 150) + "px"
-        );
+    document.body.appendChild(confetti);
 
-        confetti.style.setProperty(
-            "--rotation",
-            (Math.random() * 900 - 450) + "deg"
-        );
-
-        document.body.appendChild(confetti);
-
-        setTimeout(() => {
-            confetti.remove();
-        }, 2500);
-    }
+    setTimeout(() => {
+      confetti.remove();
+    }, 2500);
+  }
 }
-
 
 // ========================================
 // FINAL MESSAGE
 // ========================================
 
 function showFinalMessage() {
+  if (!content) return;
 
-    if (!content) return;
-
-    content.classList.add("revealed");
+  content.classList.add("revealed");
 }
-
 
 // ========================================
 // OKAY, CONTINUE BUTTON
 // ========================================
 
 if (surpriseBtn) {
+  surpriseBtn.addEventListener("click", () => {
+    console.log("OKAY BUTTON WORKING!");
 
-    surpriseBtn.addEventListener("click", () => {
+    surpriseBtn.disabled = true;
 
-        console.log("OKAY BUTTON WORKING!");
+    surpriseBtn.style.pointerEvents = "none";
 
-        surpriseBtn.disabled = true;
+    surpriseBtn.style.opacity = "0";
 
-        surpriseBtn.style.pointerEvents = "none";
+    surpriseBtn.style.transform = "scale(.5)";
 
-        surpriseBtn.style.opacity = "0";
+    // Green explosion
+    createGreenExplosion();
 
-        surpriseBtn.style.transform = "scale(.5)";
+    // Screen shake
+    shakeScreen();
 
+    // Fart
+    playFart();
 
-        // Green explosion
-        createGreenExplosion();
+    // Poop
+    setTimeout(() => {
+      showPoop();
+    }, 250);
 
+    // Confetti
+    setTimeout(() => {
+      createConfetti();
+    }, 700);
 
-        // Screen shake
-        shakeScreen();
-
-
-        // Fart
-        playFart();
-
-
-        // Poop
-        setTimeout(() => {
-
-            showPoop();
-
-        }, 250);
-
-
-        // Confetti
-        setTimeout(() => {
-
-            createConfetti();
-
-        }, 700);
-
-
-        // Final message
-        setTimeout(() => {
-
-            showFinalMessage();
-
-        }, 2800);
-
-    });
-
+    // Final message
+    setTimeout(() => {
+      showFinalMessage();
+    }, 2800);
+  });
 }
-
 
 // ========================================
 // NOW LET'S CELEBRATE 🎉
 // ========================================
 
 if (birthdayBtn) {
-    birthdayBtn.addEventListener("click", (event) => {
-        event.preventDefault();
-        window.location.href = "birthday.html";
-    });
+  birthdayBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    window.location.href = "birthday.html";
+  });
 }

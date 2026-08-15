@@ -8,31 +8,31 @@ const restartButton = document.getElementById("restartButton");
 const refreshButton = document.getElementById("refreshButton");
 
 if (profileBtn && profileMenu) {
-    profileBtn.addEventListener("click", (event) => {
-        event.stopPropagation();
-        profileMenu.classList.toggle("show");
-    });
+  profileBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+    profileMenu.classList.toggle("show");
+  });
 
-    document.addEventListener("click", (event) => {
-        if (
-            !profileMenu.contains(event.target) &&
-            !profileBtn.contains(event.target)
-        ) {
-            profileMenu.classList.remove("show");
-        }
-    });
+  document.addEventListener("click", (event) => {
+    if (
+      !profileMenu.contains(event.target) &&
+      !profileBtn.contains(event.target)
+    ) {
+      profileMenu.classList.remove("show");
+    }
+  });
 }
 
 if (restartButton) {
-    restartButton.addEventListener("click", () => {
-        window.location.href = "intro.html";
-    });
+  restartButton.addEventListener("click", () => {
+    window.location.href = "intro.html";
+  });
 }
 
 if (refreshButton) {
-    refreshButton.addEventListener("click", () => {
-        window.location.reload();
-    });
+  refreshButton.addEventListener("click", () => {
+    window.location.reload();
+  });
 }
 // ================================
 // MONKEY PAGE
@@ -43,49 +43,46 @@ const giftSound = new Audio("../Sounds/gift.mp3");
 const gameGift = document.getElementById("gameGift");
 
 if (gameGift) {
+  gameGift.addEventListener("click", () => {
+    // Prevent clicking again
+    gameGift.style.pointerEvents = "none";
 
-    gameGift.addEventListener("click", () => {
+    giftSound.currentTime = 0;
+    giftSound.play().catch(() => {});
 
-        // Prevent clicking again
-        gameGift.style.pointerEvents = "none";
-
-        giftSound.currentTime = 0;
-        giftSound.play().catch(() => {});
-
-        // Gift animation
-        setTimeout(() => {
-            gameGift.innerHTML = `
+    // Gift animation
+    setTimeout(() => {
+      gameGift.innerHTML = `
                 <img
                     src="../Gift Imgs/Gift2.webp"
                     alt="Gift"
                 >
             `;
-        }, 300);
+    }, 300);
 
-        setTimeout(() => {
-            gameGift.innerHTML = `
+    setTimeout(() => {
+      gameGift.innerHTML = `
                 <img
                     src="../Gift Imgs/Gift3.webp"
                     alt="Gift"
                 >
             `;
-        }, 900);
+    }, 900);
 
-        setTimeout(() => {
-            gameGift.innerHTML = `
+    setTimeout(() => {
+      gameGift.innerHTML = `
                 <img
                     src="../Gift Imgs/Gift4.webp"
                     alt="Gift"
                 >
             `;
-        }, 1500);
+    }, 1500);
 
-        // Monkey reveal
-        setTimeout(() => {
+    // Monkey reveal
+    setTimeout(() => {
+      gameGift.classList.add("revealed");
 
-            gameGift.classList.add("revealed");
-
-            gameGift.innerHTML = `
+      gameGift.innerHTML = `
                 <div class="gift-reveal">
 
                     <h2>A Memorable Photo Of YOU!</h2>
@@ -100,27 +97,20 @@ if (gameGift) {
 
                 </div>
             `;
+    }, 2000);
 
-        }, 2000);
+    // Cake button
+    setTimeout(() => {
+      const cakeButton = document.createElement("button");
 
-        // Cake button
-        setTimeout(() => {
+      cakeButton.className = "cake-button";
+      cakeButton.textContent = "🍰 One More Surprise";
 
-            const cakeButton =
-                document.createElement("button");
+      document.querySelector(".game-content").appendChild(cakeButton);
 
-            cakeButton.className = "cake-button";
-            cakeButton.textContent =
-                "🍰 One More Surprise";
-
-            document
-                .querySelector(".game-content")
-                .appendChild(cakeButton);
-
-            cakeButton.addEventListener("click", () => {
-                window.location.href = "cake.html";
-            });
-
-        }, 5000);
-    });
+      cakeButton.addEventListener("click", () => {
+        window.location.href = "cake.html";
+      });
+    }, 5000);
+  });
 }
