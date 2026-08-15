@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const backgroundMusic = new Audio("../Sounds/cute_music.mp3");
 
     backgroundMusic.loop = true;
-    backgroundMusic.volume = 0.4;
+    backgroundMusic.volume = 0.8;
     backgroundMusic.preload = "auto";
 
     backgroundMusic.addEventListener("error", () => {

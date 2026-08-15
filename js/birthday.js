@@ -558,6 +558,8 @@ Promise.all([
 
 const fallingFlowers = document.getElementById("fallingFlowers");
 
+const surpriseButton = document.getElementById("surprise-button");
+
 const flowerImages = [
     "../flowers Imgs/flower1.webp",
     "../flowers Imgs/flower2.webp",
@@ -567,19 +569,19 @@ const flowerImages = [
     "../flowers Imgs/flower6.webp"
 ];
 
+let flowersStarted = false;
+let flowerInterval = null;
+
 function randomNumber(min, max) {
     return Math.random() * (max - min) + min;
 }
 
 function createFlower() {
 
-    if (!fallingFlowers) {
-        return;
-    }
+    if (!fallingFlowers) return;
 
     const flower = document.createElement("img");
 
-    // Random flower
     flower.src =
         flowerImages[
             Math.floor(Math.random() * flowerImages.length)
@@ -587,29 +589,23 @@ function createFlower() {
 
     flower.className = "falling-flower";
 
-    // Random horizontal starting position
     flower.style.left =
         randomNumber(0, 100) + "vw";
 
-    // Random size
-    const size =
-        randomNumber(35, 65);
+    const size = randomNumber(30, 65);
 
     flower.style.setProperty(
         "--size",
         size + "px"
     );
 
-    // Random falling speed
-    const duration =
-        randomNumber(7, 12);
+    const duration = randomNumber(7, 12);
 
     flower.style.setProperty(
         "--duration",
         duration + "s"
     );
 
-    // Random sideways movement
     flower.style.setProperty(
         "--move1",
         randomNumber(-80, 80) + "px"
@@ -630,7 +626,6 @@ function createFlower() {
         randomNumber(-300, 300) + "px"
     );
 
-    // Random rotation
     flower.style.setProperty(
         "--rotate1",
         randomNumber(90, 180) + "deg"
@@ -653,12 +648,76 @@ function createFlower() {
 
     fallingFlowers.appendChild(flower);
 
-    // Remove after it reaches the bottom
     setTimeout(() => {
         flower.remove();
     }, (duration + 1) * 1000);
 }
 
 
-// Create flowers continuously
-setInterval(createFlower, 700);
+// ========================================
+// START FLOWERS
+// ========================================
+
+function startFlowers() {
+
+    if (flowersStarted) return;
+
+    flowersStarted = true;
+
+    // Immediately create a few
+    for (let i = 0; i < 8; i++) {
+        setTimeout(() => {
+            createFlower();
+        }, i * 150);
+    }
+
+    // Continue creating flowers
+    flowerInterval = setInterval(() => {
+        createFlower();
+    }, 650);
+}
+
+
+// ========================================
+// SURPRISE BUTTON
+// ========================================
+
+if (surpriseButton) {
+
+    surpriseButton.addEventListener("click", () => {
+
+        startFlowers();
+
+    });
+
+}
+
+
+// ========================================
+// START WHEN SURPRISE SECTION IS VISIBLE
+// ========================================
+
+if (surpriseSection) {
+
+    const flowerObserver = new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+
+                    startFlowers();
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.35
+        }
+    );
+
+    flowerObserver.observe(surpriseSection);
+
+}
