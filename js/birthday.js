@@ -34,6 +34,59 @@ if (refreshButton) {
     window.location.reload();
   });
 }
+// ========================================
+// BIRTHDAY PAGE ELEMENTS
+// ========================================
+
+const heroSection = document.getElementById("heroSection");
+const topNav = document.getElementById("topNav");
+
+const surpriseBtn = document.getElementById("surprise-button");
+const navCta = document.getElementById("navCta");
+
+const backToTop = document.getElementById("backToTop");
+const progressBar = document.getElementById("scrollProgress");
+
+const surpriseSection = document.getElementById("surpriseSection");
+// ========================================
+// SURPRISE BUTTONS
+// ========================================
+
+// Main surprise button
+if (surpriseBtn && surpriseSection) {
+  surpriseBtn.addEventListener("click", () => {
+    surpriseSection.classList.add("show");
+
+    surpriseSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+    confettiBurst(
+      window.innerWidth / 2,
+      window.innerHeight / 2,
+      120
+    );
+  });
+}
+
+// Top navigation surprise button
+if (navCta && surpriseSection) {
+  navCta.addEventListener("click", () => {
+    surpriseSection.classList.add("show");
+
+    surpriseSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+    confettiBurst(
+      window.innerWidth / 2,
+      window.innerHeight / 2,
+      120
+    );
+  });
+}
 const prefersReducedMotion = matchMedia(
   "(prefers-reduced-motion: reduce)",
 ).matches;
@@ -189,7 +242,6 @@ addEventListener(
 );
 
 /* ---------- scroll progress bar ---------- */
-const progressBar = document.getElementById("scrollProgress");
 function updateProgress() {
   const h = document.documentElement;
   const max = h.scrollHeight - h.clientHeight;
@@ -197,7 +249,6 @@ function updateProgress() {
 }
 
 /* ---------- back to top ---------- */
-const backToTop = document.getElementById("backToTop");
 backToTop.addEventListener("click", () =>
   scrollTo({ top: 0, behavior: "smooth" }),
 );
@@ -310,9 +361,7 @@ const reelDashes = [...document.querySelectorAll(".dash")];
 const reelCurrent = document.getElementById("reelCurrent");
 const motionOK = matchMedia("(prefers-reduced-motion: no-preference)").matches;
 
-/* Each frame's opacity/position/scale is a continuous function of scroll progress
-   (not a stepped class-toggle), so the crossfade tracks the scrollbar 1:1 — scrub
-   up or down and the transition follows instantly, the way a scrubbed video would. */
+ 
 function easeOutCubic(x) {
   return 1 - Math.pow(1 - x, 3);
 }
@@ -446,32 +495,170 @@ if (pointerFine && !prefersReducedMotion) {
   });
 }
 
-/* ---------- preloader: wait for the 3 photos (or a timeout), then reveal ---------- */
+/* ---------- preloader ---------- */
+
 const preloader = document.getElementById("preloader");
 const preloaderFill = document.getElementById("preloaderFill");
+
 const photosToLoad = [
-  "images/decoration.jpg",
-  "images/cake-cat.jpg",
-  "images/happybirthday-card.jpg",
+  "../Imgs/decoration.webp",
+  "../Imgs/birthday.cat.webp",
+  "../Imgs/Happybirthday.webp"
 ];
+
 let loadedCount = 0;
+
 function bumpPreloader() {
   loadedCount++;
-  preloaderFill.style.width =
-    Math.round((loadedCount / photosToLoad.length) * 100) + "%";
+
+  if (preloaderFill) {
+    preloaderFill.style.width =
+      Math.round((loadedCount / photosToLoad.length) * 100) + "%";
+  }
 }
-const loadPromises = photosToLoad.map(
-  (src) =>
-    new Promise((resolve) => {
-      const im = new Image();
-      im.onload = im.onerror = () => {
-        bumpPreloader();
-        resolve();
-      };
-      im.src = src;
-    }),
-);
-const minWait = new Promise((resolve) => setTimeout(resolve, 900));
-Promise.all([...loadPromises, minWait]).then(() => {
-  preloader.classList.add("hide");
+
+const loadPromises = photosToLoad.map((src) => {
+
+  return new Promise((resolve) => {
+
+    const img = new Image();
+
+    img.onload = () => {
+      bumpPreloader();
+      resolve();
+    };
+
+    img.onerror = () => {
+      bumpPreloader();
+      resolve();
+    };
+
+    img.src = src;
+  });
+
 });
+
+const minWait = new Promise((resolve) => {
+  setTimeout(resolve, 900);
+});
+
+Promise.all([
+  ...loadPromises,
+  minWait
+]).then(() => {
+
+  if (preloader) {
+    preloader.classList.add("hide");
+  }
+
+});
+// ========================================
+// FALLING FLOWERS
+// ========================================
+
+const fallingFlowers = document.getElementById("fallingFlowers");
+
+const flowerImages = [
+    "../flowers Imgs/flower1.webp",
+    "../flowers Imgs/flower2.webp",
+    "../flowers Imgs/flower3.webp",
+    "../flowers Imgs/flower4.webp",
+    "../flowers Imgs/flower5.webp",
+    "../flowers Imgs/flower6.webp"
+];
+
+function randomNumber(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+function createFlower() {
+
+    if (!fallingFlowers) {
+        return;
+    }
+
+    const flower = document.createElement("img");
+
+    // Random flower
+    flower.src =
+        flowerImages[
+            Math.floor(Math.random() * flowerImages.length)
+        ];
+
+    flower.className = "falling-flower";
+
+    // Random horizontal starting position
+    flower.style.left =
+        randomNumber(0, 100) + "vw";
+
+    // Random size
+    const size =
+        randomNumber(35, 65);
+
+    flower.style.setProperty(
+        "--size",
+        size + "px"
+    );
+
+    // Random falling speed
+    const duration =
+        randomNumber(7, 12);
+
+    flower.style.setProperty(
+        "--duration",
+        duration + "s"
+    );
+
+    // Random sideways movement
+    flower.style.setProperty(
+        "--move1",
+        randomNumber(-80, 80) + "px"
+    );
+
+    flower.style.setProperty(
+        "--move2",
+        randomNumber(-150, 150) + "px"
+    );
+
+    flower.style.setProperty(
+        "--move3",
+        randomNumber(-220, 220) + "px"
+    );
+
+    flower.style.setProperty(
+        "--move4",
+        randomNumber(-300, 300) + "px"
+    );
+
+    // Random rotation
+    flower.style.setProperty(
+        "--rotate1",
+        randomNumber(90, 180) + "deg"
+    );
+
+    flower.style.setProperty(
+        "--rotate2",
+        randomNumber(180, 360) + "deg"
+    );
+
+    flower.style.setProperty(
+        "--rotate3",
+        randomNumber(360, 540) + "deg"
+    );
+
+    flower.style.setProperty(
+        "--rotate4",
+        randomNumber(540, 900) + "deg"
+    );
+
+    fallingFlowers.appendChild(flower);
+
+    // Remove after it reaches the bottom
+    setTimeout(() => {
+        flower.remove();
+    }, (duration + 1) * 1000);
+}
+
+
+// Create flowers continuously
+setInterval(createFlower, 700);
