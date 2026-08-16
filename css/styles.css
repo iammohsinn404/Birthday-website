@@ -53,7 +53,7 @@ body.night-mode * {
     height: 46px;
     margin: -23px 0 0 -23px;
     pointer-events: none;
-    z-index: 10001;
+    z-index: 30001;
     will-change: transform;
 }
 
@@ -126,7 +126,7 @@ body.night-mode * {
     height: 74px;
     margin: -37px 0 0 -37px;
     pointer-events: none;
-    z-index: 10000;
+    z-index: 30000;
     will-change: transform;
 }
 
@@ -171,7 +171,7 @@ body.night-mode * {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: 9989;
+    z-index: 29999;
 }
 /* DAY MODE - NORMAL CURSOR */
 body:not(.night-mode) .glow-cursor,
@@ -2393,359 +2393,32 @@ body.night-mode .dash.active {
     background: linear-gradient(90deg, #ff6f9f, #a77cff);
 }
 /* =========================================================
-   GLOBAL NIGHT MODE
-   ========================================================= */
+   FINAL GLOBAL NIGHT MODE
+   MUST STAY AT THE VERY END
+========================================================= */
 
 body.night-mode {
-    --bg: #0a0812;
-    --bg2: #171126;
-
-    --text: #f7eef9;
-    --text-soft: #c8b7d0;
-
-    --card: rgba(27, 20, 40, 0.86);
-    --card-solid: #21182e;
-
-    --ink: #fff8ff;
-    --ink-soft: #dfd0e6;
-
-    background:
-        radial-gradient(
-            circle at 15% 15%,
-            rgba(126, 78, 190, .24),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 85% 25%,
-            rgba(210, 72, 145, .16),
-            transparent 32%
-        ),
-        linear-gradient(
-            135deg,
-            #090711,
-            #120d1e,
-            #0c0915
-        );
-
-    color: var(--text);
+    background: #0a0812 !important;
+    color: #f5edf8 !important;
 }
 
-/* -------------------------
-   NAVIGATION
-------------------------- */
+/* ========================================
+   GLOBAL TEXT
+======================================== */
 
-body.night-mode .top-nav.scrolled {
-    background: rgba(12, 8, 20, .86);
-    box-shadow:
-        0 12px 35px rgba(0, 0, 0, .35);
+body.night-mode h1,
+body.night-mode h2,
+body.night-mode h3,
+body.night-mode h4,
+body.night-mode p,
+body.night-mode span,
+body.night-mode label {
+    color: inherit;
 }
 
-body.night-mode .nav-word,
-body.night-mode .nav-links a {
-    color: #d9c9df;
-}
-
-body.night-mode .nav-links a.active,
-body.night-mode .nav-links a:hover {
-    color: #ff83b0;
-}
-
-body.night-mode .nav-cta {
-    background:
-        linear-gradient(
-            135deg,
-            #824dd0,
-            #d84d91
-        );
-}
-
-/* -------------------------
-   HERO
-------------------------- */
-
-body.night-mode .hero {
-    background:
-        radial-gradient(
-            circle at 50% 10%,
-            rgba(126, 77, 180, .30),
-            transparent 38%
-        ),
-        radial-gradient(
-            circle at 85% 80%,
-            rgba(215, 73, 145, .16),
-            transparent 35%
-        ),
-        #0c0915;
-    border-color: rgba(255,255,255,.12);
-}
-
-body.night-mode .hero-eyebrow,
-body.night-mode .scroll-cue,
-body.night-mode .hero .lede {
-    color: #d7c8df;
-}
-
-body.night-mode .hero-title .word.grad {
-    background:
-        linear-gradient(
-            90deg,
-            #ff72a7,
-            #ad7dff,
-            #ff91bb
-        );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-}
-
-/* -------------------------
-   VITALS CARD
-------------------------- */
-
-body.night-mode .vitals-card {
-    background: rgba(31, 24, 44, .92);
-    border-color: rgba(255,255,255,.12);
-    box-shadow:
-        0 20px 45px rgba(0,0,0,.40);
-}
-
-body.night-mode .vitals-eyebrow {
-    color: #ff83ad;
-}
-
-body.night-mode .vitals-num {
-    color: #b28cff;
-}
-
-body.night-mode .vitals-label {
-    color: #c7b5cf;
-}
-
-/* -------------------------
-   LETTER
-------------------------- */
-
-body.night-mode .letter {
-    background:
-        linear-gradient(
-            135deg,
-            #15101f,
-            #1d1428
-        );
-
-    border-color: rgba(255,255,255,.10);
-    color: #f4eaf7;
-}
-
-body.night-mode .letter-bg {
-    opacity: .08;
-    filter:
-        blur(4px)
-        brightness(.55)
-        saturate(.8);
-}
-
-body.night-mode .letter-body .line {
-    color: #e8dce9;
-}
-
-body.night-mode .chips-label {
-    color: #cdbbd4;
-}
-
-body.night-mode .chip {
-    background: rgba(40, 30, 52, .90);
-    border-color: rgba(255, 120, 175, .18);
-    color: #f3e9f6;
-    box-shadow:
-        0 8px 22px rgba(0,0,0,.25);
-}
-
-body.night-mode .chip:hover {
-    background:
-        linear-gradient(
-            135deg,
-            #30203d,
-            #37224a
-        );
-}
-
-/* -------------------------
-   STORY
-------------------------- */
-
-body.night-mode .story {
-    color: #f4eaf7;
-}
-
-body.night-mode .story-item h3 {
-    color: #eee2f1;
-}
-
-body.night-mode .story-item p {
-    color: #c8b8d0;
-}
-
-body.night-mode .story-num {
-    background: #171022;
-    color: #cdbbd5;
-}
-
-/* -------------------------
-   GALLERY
-------------------------- */
-
-body.night-mode .reel {
-    background: #0a0812;
-}
-
-body.night-mode .reel-pin {
-    background:
-        radial-gradient(
-            circle at 50% 38%,
-            rgba(130,70,170,.25),
-            transparent 58%
-        ),
-        radial-gradient(
-            circle at 82% 78%,
-            rgba(190,70,135,.18),
-            transparent 55%
-        ),
-        linear-gradient(
-            180deg,
-            #0a0812,
-            #171021
-        );
-}
-
-body.night-mode .reel-head h2 {
-    background:
-        linear-gradient(
-            90deg,
-            #ff78a9,
-            #b68cff,
-            #ff91bc
-        );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-}
-
-body.night-mode .reel-sub,
-body.night-mode .reel-counter {
-    color: #c7b7cf;
-}
-
-body.night-mode .frame-card {
-    background: #21182d;
-    box-shadow:
-        0 25px 60px rgba(0,0,0,.50);
-}
-
-body.night-mode .reel-frame figcaption {
-    color: #f3e7f5;
-}
-
-body.night-mode .dash {
-    background: rgba(180,140,220,.22);
-}
-
-body.night-mode .dash.active {
-    background:
-        linear-gradient(
-            90deg,
-            #ff6f9f,
-            #a77cff
-        );
-}
-
-/* -------------------------
-   CINEMATIC
-------------------------- */
-
-body.night-mode .cinematic::before {
-    background:
-        linear-gradient(
-            180deg,
-            rgba(10,7,16,.55),
-            rgba(10,7,16,.92)
-        );
-}
-
-/* -------------------------
-   SURPRISE
-------------------------- */
-
-body.night-mode .surprise {
-    background:
-        radial-gradient(
-            circle at center,
-            #28172f,
-            #171229 60%,
-            #0b0812
-        );
-
-    border-color: rgba(255,255,255,.10);
-    color: #f5eaf7;
-}
-
-body.night-mode .surprise-text {
-    color: #e0d2e5;
-}
-
-body.night-mode .surprise h3 {
-    color: #ff83ad;
-}
-
-/* -------------------------
-   FINAL CTA
-------------------------- */
-
-body.night-mode .final-cta {
-    background: #0c0914;
-}
-
-/* -------------------------
-   FOOTER
-------------------------- */
-
-body.night-mode .site-footer {
-    background: #090711;
-}
-
-body.night-mode .footer-tag {
-    background: #21182d;
-    color: #d8c7df;
-    border-color: rgba(255,255,255,.10);
-}
-
-body.night-mode .footer-tagline,
-body.night-mode .footer-col a,
-body.night-mode .footer-col span,
-body.night-mode .footer-credit {
-    color: #bfaec8;
-}
-
-/* -------------------------
-   MUSIC
-------------------------- */
-
-body.night-mode #musicButton {
-    background:
-        linear-gradient(
-            135deg,
-            #8d3e68,
-            #713e9d
-        );
-
-    color: white;
-}
-
-/* -------------------------
+/* ========================================
    PROFILE MENU
-   THIS FIXES THE PROBLEM
-   IN YOUR SCREENSHOT
-------------------------- */
+======================================== */
 
 body.night-mode .profile-menu > button {
     background:
@@ -2761,7 +2434,7 @@ body.night-mode .profile-menu > button {
         rgba(255,255,255,.14) !important;
 
     box-shadow:
-        0 10px 28px rgba(0,0,0,.35);
+        0 10px 28px rgba(0,0,0,.35) !important;
 }
 
 body.night-mode .profile-menu > button:hover {
@@ -2772,21 +2445,335 @@ body.night-mode .profile-menu > button:hover {
             #48254b
         ) !important;
 
-    color: #ffffff !important;
+    color: white !important;
 }
 
-/* -------------------------
-   OLD CURSOR = ALWAYS OFF
-------------------------- */
+/* ========================================
+   PUZZLE PAGE
+======================================== */
 
-.cursor-glow,
-.cursor-ring {
-    display: none !important;
+body.night-mode .game-screen {
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(130,70,170,.25),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(190,70,135,.18),
+            transparent 35%
+        ),
+        #0c0915 !important;
+
+    color: #f5edf8 !important;
 }
 
-/* -------------------------
-   NIGHT FIREFLY
-------------------------- */
+body.night-mode .game-content h1 {
+    color: #ff82ad !important;
+}
+
+body.night-mode .game-instruction {
+    color: #cdbbd5 !important;
+}
+
+body.night-mode .puzzle-complete {
+    background: rgba(31,24,44,.92) !important;
+    color: #f5edf8 !important;
+}
+
+body.night-mode .puzzle-complete h2 {
+    color: #ff82ad !important;
+}
+
+body.night-mode .puzzle-complete p {
+    color: #cdbbd5 !important;
+}
+
+body.night-mode #skipPuzzleButton {
+    background: #291d35 !important;
+    color: #ff82ad !important;
+}
+
+/* ========================================
+   MONKEY / SURPRISE PAGE
+======================================== */
+
+body.night-mode .game-screen .game-content {
+    color: #f5edf8 !important;
+}
+
+body.night-mode .game-small {
+    color: #ff82ad !important;
+}
+
+/* ========================================
+   CAKE PAGE
+======================================== */
+
+body.night-mode .cake-page {
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(130,70,170,.28),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(190,70,135,.20),
+            transparent 35%
+        ),
+        #0b0813 !important;
+
+    color: #f5edf8 !important;
+}
+
+body.night-mode .cake-page h1 {
+    color: #ff82ad !important;
+}
+
+body.night-mode .cake-small,
+body.night-mode .cake-instruction,
+body.night-mode .cake-message {
+    color: #cdbbd5 !important;
+}
+
+body.night-mode .cake-close {
+    background:
+        linear-gradient(
+            135deg,
+            #8d3e68,
+            #713e9d
+        ) !important;
+}
+
+/* ========================================
+   SCRATCH PAGE
+======================================== */
+
+body.night-mode .scratch-page {
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(130,70,170,.25),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(190,70,135,.18),
+            transparent 35%
+        ),
+        #0b0813 !important;
+
+    color: #f5edf8 !important;
+}
+
+body.night-mode .scratch-page h1,
+body.night-mode .scratch-page h2,
+body.night-mode .scratch-page h3 {
+    color: #ff82ad !important;
+}
+
+body.night-mode .scratch-page p {
+    color: #cdbbd5 !important;
+}
+
+body.night-mode .scratch-card {
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.45);
+}
+
+/* ========================================
+   PRANK PAGE
+======================================== */
+
+body.night-mode .prank-page {
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(130,70,170,.25),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(190,70,135,.18),
+            transparent 35%
+        ),
+        #0b0813 !important;
+
+    color: #f5edf8 !important;
+}
+
+body.night-mode .prank-page h1,
+body.night-mode .prank-page h2,
+body.night-mode .prank-page h3 {
+    color: #ff82ad !important;
+}
+
+body.night-mode .prank-page p {
+    color: #cdbbd5 !important;
+}
+
+/* ========================================
+   INTRO PAGE
+======================================== */
+
+body.night-mode .intro-screen {
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(130,70,170,.25),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(190,70,135,.18),
+            transparent 35%
+        ),
+        #0b0813 !important;
+
+    color: #f5edf8 !important;
+}
+
+body.night-mode .intro-screen h1,
+body.night-mode .intro-screen h2,
+body.night-mode .intro-screen h3 {
+    color: #ff82ad !important;
+}
+
+body.night-mode .intro-screen p {
+    color: #cdbbd5 !important;
+}
+
+/* ========================================
+   BIRTHDAY PAGE
+======================================== */
+
+body.night-mode .birthday-page {
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(112,72,180,.28),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(180,70,130,.20),
+            transparent 30%
+        ),
+        #0b0914 !important;
+
+    color: #f5edf8 !important;
+}
+
+body.night-mode .birthday-page .hero {
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(120,70,170,.30),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(180,70,130,.20),
+            transparent 35%
+        ),
+        #0d0a18 !important;
+}
+
+body.night-mode .birthday-page .message {
+    background:
+        linear-gradient(
+            135deg,
+            #15101f,
+            #1c1429
+        ) !important;
+}
+
+body.night-mode .birthday-page .memories {
+    background:
+        linear-gradient(
+            135deg,
+            #120e1b,
+            #1b1323
+        ) !important;
+}
+
+body.night-mode .birthday-page .surprise {
+    background:
+        radial-gradient(
+            circle at center,
+            #28172d,
+            #17132a 60%,
+            #0e0b17
+        ) !important;
+}
+
+body.night-mode .letter {
+    background:
+        linear-gradient(
+            135deg,
+            #15101f,
+            #1d1428
+        ) !important;
+
+    color: #f4eaf7 !important;
+}
+
+body.night-mode .letter-body .line {
+    color: #e8dce9 !important;
+}
+
+body.night-mode .message-text,
+body.night-mode .surprise-text {
+    color: #d8c9df !important;
+}
+
+/* ========================================
+   BIRTHDAY GALLERY
+======================================== */
+
+body.night-mode .reel,
+body.night-mode .reel-pin {
+    background:
+        radial-gradient(
+            circle at 50% 38%,
+            rgba(130,70,170,.25),
+            transparent 58%
+        ),
+        linear-gradient(
+            180deg,
+            #0a0812,
+            #171021
+        ) !important;
+}
+
+body.night-mode .frame-card {
+    background: #21182d !important;
+}
+
+body.night-mode .reel-frame figcaption {
+    color: #f3e7f5 !important;
+}
+
+/* ========================================
+   MUSIC
+======================================== */
+
+body.night-mode #musicButton {
+    background:
+        linear-gradient(
+            135deg,
+            #8d3e68,
+            #713e9d
+        ) !important;
+
+    color: white !important;
+}
+
+/* ========================================
+   CURSOR
+======================================== */
 
 body:not(.night-mode) .glow-cursor,
 body:not(.night-mode) .glow-cursor-ring,
@@ -2797,11 +2784,15 @@ body:not(.night-mode) .firefly-canvas {
 body.night-mode .glow-cursor,
 body.night-mode .glow-cursor-ring,
 body.night-mode .firefly-canvas {
-    display: block;
+    display: block !important;
 }
 
-/* Touch devices use the normal touch pointer */
+/* ========================================
+   TOUCH DEVICES
+======================================== */
+
 @media (pointer: coarse) {
+
     body.night-mode,
     body.night-mode * {
         cursor: auto !important;

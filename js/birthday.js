@@ -34,39 +34,7 @@ if (refreshButton) {
     window.location.reload();
   });
 }
-// ========================================
-// DAY / NIGHT MODE
-// ========================================
-
-const themeButton = document.getElementById("themeButton");
-
-function applyTheme(theme) {
-    const night = theme === "night";
-
-    document.body.classList.toggle("night-mode", night);
-
-    if (themeButton) {
-        themeButton.textContent = night
-            ? "☀️ Day Mode"
-            : "🌙 Night Mode";
-    }
-}
-
-const savedTheme = localStorage.getItem("birthday-theme") || "day";
-
-applyTheme(savedTheme);
-
-if (themeButton) {
-    themeButton.addEventListener("click", () => {
-        const night = document.body.classList.contains("night-mode");
-
-        const newTheme = night ? "day" : "night";
-
-        localStorage.setItem("birthday-theme", newTheme);
-
-        applyTheme(newTheme);
-    });
-}
+ 
 // ========================================
 // BIRTHDAY PAGE ELEMENTS
 // ========================================
