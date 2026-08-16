@@ -1045,7 +1045,486 @@ h1 {
 #musicButton:active {
     transform: scale(0.95);
 }
+ /* =========================================================
+   PRANK PAGE — ELEGANT MIDNIGHT THEME
+========================================================= */
 
+:root {
+    --prank-bg: #100c16;
+    --prank-bg-soft: #18111e;
+    --prank-card: rgba(30, 21, 34, .88);
+
+    --prank-rose: #f29aaa;
+    --prank-rose-soft: #e9b7bf;
+
+    --prank-gold: #e7c27a;
+    --prank-gold-soft: #f3d99d;
+
+    --prank-text: #fff8f3;
+    --prank-muted: #cbbdc2;
+
+    --prank-border: rgba(231, 194, 122, .20);
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.prank-page {
+    min-height: 100vh !important;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(242, 154, 170, .14),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(231, 194, 122, .08),
+            transparent 32%
+        ),
+        var(--prank-bg) !important;
+
+    color: var(--prank-text) !important;
+
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif !important;
+}
+
+
+/* =========================================================
+   BACKGROUND DECORATION
+========================================================= */
+
+.glow-one {
+    background: var(--prank-rose) !important;
+    opacity: .10 !important;
+}
+
+.glow-two {
+    background: var(--prank-gold) !important;
+    opacity: .08 !important;
+}
+
+.background-particle {
+    color: var(--prank-gold) !important;
+    opacity: .22 !important;
+}
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.prank-content {
+    width: min(92%, 680px) !important;
+
+    padding:
+        clamp(38px, 6vw, 60px)
+        clamp(22px, 5vw, 48px) !important;
+
+    background:
+        var(--prank-card) !important;
+
+    border:
+        1px solid var(--prank-border) !important;
+
+    border-radius: 28px !important;
+
+    backdrop-filter: blur(22px) !important;
+    -webkit-backdrop-filter: blur(22px) !important;
+
+    box-shadow:
+        0 28px 80px rgba(0,0,0,.48),
+        inset 0 1px 0 rgba(255,255,255,.05) !important;
+}
+
+
+/* =========================================================
+   SMALL INTRO
+========================================================= */
+
+.eyebrow {
+    font-family:
+        "Caveat",
+        cursive !important;
+
+    font-size: 1.35rem !important;
+    font-weight: 600 !important;
+
+    color:
+        var(--prank-rose) !important;
+
+    margin-bottom: 10px !important;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.prank-content h1 {
+    font-family:
+        "Fraunces",
+        Georgia,
+        serif !important;
+
+    font-style: italic !important;
+
+    font-weight: 600 !important;
+
+    font-size:
+        clamp(2.3rem, 7vw, 4.2rem) !important;
+
+    line-height: 1.08 !important;
+
+    color:
+        var(--prank-text) !important;
+
+    margin-bottom: 18px !important;
+
+    text-shadow:
+        0 8px 30px rgba(0,0,0,.30) !important;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.description {
+    max-width: 520px !important;
+
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif !important;
+
+    color:
+        var(--prank-muted) !important;
+
+    font-size:
+        clamp(.94rem, 2vw, 1.05rem) !important;
+
+    line-height: 1.75 !important;
+}
+
+
+/* =========================================================
+   PRESENTS
+========================================================= */
+
+.presents {
+    gap:
+        clamp(12px, 3vw, 25px) !important;
+
+    margin: 30px 0 !important;
+}
+
+.present {
+    filter:
+        drop-shadow(
+            0 14px 25px rgba(0,0,0,.35)
+        );
+}
+
+
+/* =========================================================
+   MAIN BUTTON
+========================================================= */
+
+#moreForwardButton,
+.surprise-btn,
+.continue-btn {
+
+    display: inline-flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    min-width: 230px !important;
+
+    padding:
+        14px 28px !important;
+
+    border:
+        0 !important;
+
+    border-radius:
+        999px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--prank-gold),
+            var(--prank-rose)
+        ) !important;
+
+    color:
+        #21151c !important;
+
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif !important;
+
+    font-size: 15px !important;
+
+    font-weight: 800 !important;
+
+    text-decoration: none !important;
+
+    cursor: pointer !important;
+
+    box-shadow:
+        0 12px 32px rgba(231,194,122,.18) !important;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        filter .25s ease !important;
+}
+
+#moreForwardButton:hover,
+.surprise-btn:hover,
+.continue-btn:hover {
+    transform:
+        translateY(-3px) !important;
+
+    box-shadow:
+        0 18px 42px rgba(231,194,122,.27) !important;
+
+    filter:
+        brightness(1.06) !important;
+}
+
+#moreForwardButton:active,
+.surprise-btn:active,
+.continue-btn:active {
+    transform:
+        translateY(-1px) scale(.98) !important;
+}
+
+
+/* =========================================================
+   FINAL MESSAGE
+========================================================= */
+
+.final-message h2 {
+    font-family:
+        "Fraunces",
+        Georgia,
+        serif !important;
+
+    font-style: italic !important;
+
+    font-weight: 600 !important;
+
+    font-size:
+        clamp(2rem, 6vw, 3rem) !important;
+
+    color:
+        var(--prank-gold-soft) !important;
+}
+
+.chilling {
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif !important;
+
+    color:
+        var(--prank-muted) !important;
+
+    line-height: 1.7 !important;
+}
+
+.no-prank {
+    font-family:
+        "Fraunces",
+        Georgia,
+        serif !important;
+
+    font-style: italic !important;
+
+    font-size:
+        clamp(2rem, 6vw, 3rem) !important;
+
+    color:
+        var(--prank-rose) !important;
+}
+
+.probably {
+    color:
+        rgba(255,248,243,.38) !important;
+}
+
+
+/* =========================================================
+   PROFILE MENU
+========================================================= */
+
+.profile-menu > button {
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif !important;
+
+    background:
+        rgba(30,21,34,.94) !important;
+
+    color:
+        var(--prank-text) !important;
+
+    border:
+        1px solid var(--prank-border) !important;
+
+    border-radius:
+        14px !important;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.38) !important;
+}
+
+.profile-menu > button:hover {
+    background:
+        #352432 !important;
+
+    border-color:
+        rgba(242,154,170,.35) !important;
+}
+
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+#musicButton {
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif !important;
+
+    background:
+        rgba(30,21,34,.94) !important;
+
+    color:
+        var(--prank-text) !important;
+
+    border:
+        1px solid var(--prank-border) !important;
+
+    box-shadow:
+        0 10px 26px rgba(0,0,0,.35) !important;
+}
+
+
+/* =========================================================
+   NIGHT MODE
+========================================================= */
+
+body.night-mode .prank-page {
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(242,154,170,.16),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(231,194,122,.09),
+            transparent 32%
+        ),
+        #100c16 !important;
+}
+/* =========================================================
+   DAY MODE — SOFT GLOW
+========================================================= */
+
+body:not(.night-mode) .prank-page {
+    background:
+        radial-gradient(
+            circle at 8% 12%,
+            rgba(255, 182, 205, .55),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 92% 18%,
+            rgba(205, 190, 255, .48),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(255, 215, 160, .38),
+            transparent 38%
+        ),
+        linear-gradient(
+            135deg,
+            #fff8f3,
+            #f8eef8,
+            #fff2ee
+        ) !important;
+}
+
+body:not(.night-mode) .prank-page .glow-one {
+    background: #ff9fbe !important;
+    opacity: .42 !important;
+}
+
+body:not(.night-mode) .prank-page .glow-two {
+    background: #b9a2ff !important;
+    opacity: .32 !important;
+}
+
+body:not(.night-mode) .background-particle {
+    color: #d78aa5 !important;
+    opacity: .42 !important;
+}
+
+body:not(.night-mode) .prank-content {
+    background:
+        rgba(255, 255, 255, .62) !important;
+
+    border-color:
+        rgba(255, 255, 255, .82) !important;
+
+    box-shadow:
+        0 30px 80px rgba(100, 60, 90, .16),
+        inset 0 1px 0 rgba(255,255,255,.9) !important;
+}
+
+body:not(.night-mode) .prank-content h1 {
+    color: #352632 !important;
+}
+
+body:not(.night-mode) .description {
+    color: #715d69 !important;
+}
+
+body:not(.night-mode) .eyebrow {
+    color: #b64f76 !important;
+}
+
+body:not(.night-mode) .final-message h2 {
+    color: #a97835 !important;
+}
+
+body:not(.night-mode) .chilling {
+    color: #715d69 !important;
+}
+
+body:not(.night-mode) .no-prank {
+    color: #c94f77 !important;
+}
+
+body:not(.night-mode) .probably {
+    color: #927783 !important;
+}
+ 
 /* =========================
    MOBILE
 ========================= */
@@ -1084,5 +1563,82 @@ h1 {
         padding: 10px 15px;
 
         font-size: 12px;
+    }
+    .prank-page {
+        padding: 20px 14px !important;
+    }
+
+    .prank-content {
+        width: 100% !important;
+
+        min-height: auto !important;
+
+        padding:
+            42px 20px !important;
+
+        border-radius: 24px !important;
+    }
+
+    .prank-content h1 {
+        font-size:
+            clamp(2.25rem, 11vw, 3.4rem) !important;
+    }
+
+    .description {
+        font-size: .94rem !important;
+    }
+
+    .presents {
+        gap: 3px !important;
+    }
+
+    .present {
+        font-size:
+            clamp(55px, 18vw, 85px) !important;
+    }
+
+    .surprise-btn,
+    .continue-btn {
+        width: min(100%, 320px) !important;
+    }
+    .prank-page {
+        padding:
+            18px 12px !important;
+    }
+
+    .prank-content {
+        width:
+            100% !important;
+
+        padding:
+            38px 20px !important;
+
+        border-radius:
+            24px !important;
+    }
+
+    .prank-content h1 {
+        font-size:
+            clamp(2.2rem, 11vw, 3.4rem) !important;
+    }
+
+    .description {
+        font-size:
+            .93rem !important;
+    }
+
+    .present {
+        font-size:
+            clamp(52px, 17vw, 82px) !important;
+    }
+
+    #moreForwardButton,
+    .surprise-btn,
+    .continue-btn {
+        width:
+            min(100%, 320px) !important;
+
+        min-width:
+            0 !important;
     }
 }
