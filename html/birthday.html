@@ -12,8 +12,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="../css/birthday.css">
+<link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
+    <!-- Firefly Glow Cursor -->
+
+<div class="glow-cursor" id="glowCursor">
+    <div class="glow-cursor-tail" id="glowCursorTail"></div>
+    <div class="glow-cursor-halo"></div>
+    <div class="glow-cursor-core"></div>
+</div>
+
+<div class="glow-cursor-ring" id="glowCursorRing">
+    <svg viewBox="0 0 100 100" class="ring-svg">
+        <circle class="ring-path" cx="50" cy="50" r="42"/>
+        <circle class="ring-bead" cx="90.6" cy="60.9" r="2.4"/>
+        <circle class="ring-bead" cx="46.4" cy="91.8" r="2.4"/>
+        <circle class="ring-bead" cx="8.6" cy="42.7" r="2.4"/>
+        <circle class="ring-bead" cx="71" cy="13.6" r="2.4"/>
+    </svg>
+</div>
+
+<canvas class="firefly-canvas" id="fireflyCanvas"></canvas>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+        <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#e8b04b"/>
+            <stop offset="50%" stop-color="#f2a3ad"/>
+            <stop offset="100%" stop-color="#b9c7a0"/>
+        </linearGradient>
+    </defs>
+</svg>
     <div id="fallingFlowers"></div>
     <button id="profileBtn" class="site-profile" aria-label="Profile">
     <img src="../Imgs/profile.jpg" alt="Profile">
@@ -22,6 +52,7 @@
 <div class="profile-menu" id="profileMenu">
     <button id="restartButton">↩ Restart</button>
     <button id="refreshButton">↻ Refresh</button>
+    <button id="themeButton">🌙 Night Mode</button>
 </div>
        <button id="musicButton">
         Play Music
@@ -245,7 +276,7 @@
     </section>
 
     <section class="cinematic" aria-hidden="false">
-        <div class="cinematic-bg" style="background-image:url('images/decoration.jpg')" aria-hidden="true"></div>
+        <div class="cinematic-bg" style="background-image:url('../Imgs/decoration.webp')" aria-hidden="true"></div>
         <p class="cinematic-eyebrow reveal">✦ a small pause</p>
         <h2 class="cinematic-lines" id="cinematicLines">
             <span class="mask-line"><span>Some people just make life better.</span></span>
@@ -275,7 +306,7 @@ Happy Birthday once again! 🥳</p>
     </section>
 
     <section class="final-cta">
-        <div class="final-cta-bg" style="background-image:url('images/cake-cat.jpg')" aria-hidden="true"></div>
+        <div class="final-cta-bg" style="background-image:url('../Imgs/birthday.cat.webp')" aria-hidden="true"></div>
         <p class="final-cta-eyebrow reveal">before you go</p>
         <h2 class="reveal">Here's To Another Year</h2>
         <p class="reveal">Of bad jokes, good food, and everything in between. I'm grateful for you today — and every day.</p>
@@ -326,10 +357,9 @@ Happy Birthday once again! 🥳</p>
 </footer>
 
 <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
-<canvas id="fxCanvas" aria-hidden="true"></canvas>
 
 <script src="../js/birthday.js"></script>
 <script src="../js/music.js"></script>
-
+<script src="../js/firefly-cursor.js"></script>
 </body>
 </html>

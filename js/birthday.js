@@ -35,6 +35,39 @@ if (refreshButton) {
   });
 }
 // ========================================
+// DAY / NIGHT MODE
+// ========================================
+
+const themeButton = document.getElementById("themeButton");
+
+function applyTheme(theme) {
+    const night = theme === "night";
+
+    document.body.classList.toggle("night-mode", night);
+
+    if (themeButton) {
+        themeButton.textContent = night
+            ? "☀️ Day Mode"
+            : "🌙 Night Mode";
+    }
+}
+
+const savedTheme = localStorage.getItem("birthday-theme") || "day";
+
+applyTheme(savedTheme);
+
+if (themeButton) {
+    themeButton.addEventListener("click", () => {
+        const night = document.body.classList.contains("night-mode");
+
+        const newTheme = night ? "day" : "night";
+
+        localStorage.setItem("birthday-theme", newTheme);
+
+        applyTheme(newTheme);
+    });
+}
+// ========================================
 // BIRTHDAY PAGE ELEMENTS
 // ========================================
 
@@ -101,16 +134,21 @@ document.querySelectorAll(".reveal-stagger").forEach((container) => {
 
 /* ---------- confetti (canvas particle system) ---------- */
 const fxCanvas = document.getElementById("fxCanvas");
-const ctx = fxCanvas.getContext("2d");
+const ctx = fxCanvas ? fxCanvas.getContext("2d") : null;
 let dpr = 1,
   particles = [],
   rafRunning = false;
 function resizeCanvas() {
+  if (!fxCanvas || !ctx) return;
+
   dpr = Math.min(window.devicePixelRatio || 1, 2);
+
   fxCanvas.width = innerWidth * dpr;
   fxCanvas.height = innerHeight * dpr;
+
   fxCanvas.style.width = innerWidth + "px";
   fxCanvas.style.height = innerHeight + "px";
+
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 }
 addEventListener("resize", resizeCanvas);

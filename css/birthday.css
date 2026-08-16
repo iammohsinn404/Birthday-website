@@ -1080,7 +1080,7 @@ body.cursor-ready .cursor-ring {
   position: absolute;
   inset: -12%;
   z-index: 0;
-  background-image: url('__IMG_DECORATION__');
+  background-image: url('../Imgs/decoration.webp');
   background-size: cover;
   background-position: center;
   opacity: .12;
@@ -2310,4 +2310,183 @@ body.shake {
         animation-duration: var(--duration) !important;
         animation-iteration-count: 1 !important;
     }
+}
+/* ========================================
+   BIRTHDAY NIGHT MODE
+======================================== */
+
+body.night-mode {
+    background: #0b0914;
+    color: #f5edf8;
+}
+
+/* Main birthday page */
+body.night-mode .birthday-page {
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(112, 72, 180, 0.28),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(180, 70, 130, 0.20),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(80, 60, 160, 0.20),
+            transparent 35%
+        ),
+        #0b0914;
+}
+
+/* Hero */
+body.night-mode .birthday-page .hero {
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(120, 70, 170, 0.30),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(180, 70, 130, 0.20),
+            transparent 35%
+        ),
+        #0d0a18;
+}
+
+body.night-mode .birthday-page .hero .intro {
+    color: #ddd0e3;
+}
+
+body.night-mode .birthday-page .intro strong {
+    background:
+        linear-gradient(
+            90deg,
+            #ff7bab,
+            #b78cff,
+            #ff8fc2,
+            #ff7bab
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+/* Message */
+body.night-mode .birthday-page .message {
+    background:
+        linear-gradient(
+            135deg,
+            #15101f,
+            #1c1429
+        );
+}
+
+body.night-mode .message-text {
+    color: #d8c9df;
+}
+
+/* Memories */
+body.night-mode .birthday-page .memories {
+    background:
+        linear-gradient(
+            135deg,
+            #120e1b,
+            #1b1323
+        );
+}
+
+body.night-mode .memory {
+    background: rgba(35, 26, 46, 0.85);
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+body.night-mode .memory-caption {
+    color: #d9c9df;
+}
+
+/* Section titles */
+body.night-mode .birthday-page .message h2,
+body.night-mode .birthday-page .memories h2,
+body.night-mode .birthday-page .surprise h2,
+body.night-mode .birthday-page .surprise h3 {
+    color: #ff83ae;
+}
+
+/* Final surprise */
+body.night-mode .birthday-page .surprise {
+    background:
+        radial-gradient(
+            circle at center,
+            #28172d,
+            #17132a 60%,
+            #0e0b17
+        );
+    border-top-color: rgba(255, 120, 170, 0.15);
+}
+
+body.night-mode .surprise-text {
+    color: #d8c9df;
+}
+
+/* Surprise button */
+body.night-mode #surprise-button {
+    background:
+        linear-gradient(
+            135deg,
+            #b83d72,
+            #874ed1,
+            #d54f91
+        );
+}
+
+/* Music button */
+body.night-mode #musicButton {
+    background: #8f3d66;
+    box-shadow:
+        0 6px 20px rgba(150, 50, 110, 0.35);
+}
+
+body.night-mode #musicButton:hover {
+    background: #a74776;
+}
+
+/* Profile menu */
+body.night-mode .profile-menu {
+    color: #fff;
+}
+
+body.night-mode .profile-menu > button {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(35, 25, 48, 0.96),
+            rgba(49, 30, 55, 0.94)
+        );
+
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #f8edf9;
+}
+
+body.night-mode .profile-menu > button:hover {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(65, 38, 75, 0.98),
+            rgba(75, 40, 70, 0.96)
+        );
+}
+
+/* Floating birthday effects */
+body.night-mode .floating-star {
+    color: #ff82ae;
+}
+
+/* Falling flowers */
+body.night-mode .falling-flower {
+    filter: brightness(0.75) saturate(0.9);
 }
