@@ -1,0 +1,600 @@
+/* =========================================================
+   SCRATCH PAGE
+========================================================= */
+
+.scratch-page {
+    position: fixed !important;
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100dvh !important;
+
+    min-height: 100dvh !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 90px 20px 40px !important;
+
+    box-sizing: border-box !important;
+
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+
+    text-align: center !important;
+
+    background:
+        radial-gradient(
+            circle at 12% 12%,
+            rgba(232, 176, 75, .14),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 88% 22%,
+            rgba(242, 163, 173, .12),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(185, 199, 160, .08),
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            #120e1a,
+            #1d1728
+        ) !important;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.scratch-content {
+    width: min(100%, 650px) !important;
+
+    margin: auto !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: center !important;
+
+    text-align: center !important;
+}
+
+
+/* =========================================================
+   SMALL TEXT
+========================================================= */
+
+.scratch-small {
+    margin: 0 0 7px !important;
+
+    font-family:
+        "Caveat",
+        cursive !important;
+
+    font-size:
+        clamp(1.2rem, 3vw, 1.55rem) !important;
+
+    font-weight: 600 !important;
+
+    line-height: 1.2 !important;
+
+    color: #f2a3ad !important;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.scratch-content h1 {
+    margin: 0 0 10px !important;
+
+    font-family:
+        "Fraunces",
+        Georgia,
+        serif !important;
+
+    font-size:
+        clamp(2.3rem, 7vw, 3.8rem) !important;
+
+    font-style: italic !important;
+
+    font-weight: 600 !important;
+
+    line-height: 1.05 !important;
+
+    color: #faf3e8 !important;
+
+    text-shadow:
+        0 0 35px rgba(232, 176, 75, .20) !important;
+}
+
+
+/* =========================================================
+   INSTRUCTION
+========================================================= */
+
+.scratch-instruction {
+    max-width: 420px !important;
+
+    margin: 0 0 28px !important;
+
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif !important;
+
+    font-size:
+        .96rem !important;
+
+    line-height:
+        1.6 !important;
+
+    color:
+        rgba(250, 243, 232, .68) !important;
+}
+
+
+/* =========================================================
+   SCRATCH CARD
+========================================================= */
+
+.scratch-card {
+    position: relative !important;
+
+    width:
+        min(350px, 86vw) !important;
+
+    aspect-ratio:
+        4 / 5 !important;
+
+    height:
+        auto !important;
+
+    flex-shrink: 0 !important;
+
+    margin: 0 auto !important;
+
+    overflow: hidden !important;
+
+    border-radius:
+        28px !important;
+
+    background:
+        #241d30 !important;
+
+    border:
+        1px solid rgba(232, 176, 75, .25) !important;
+
+    box-shadow:
+        0 28px 70px rgba(8, 6, 12, .58),
+        inset 0 1px 0 rgba(255,255,255,.06) !important;
+}
+
+
+/* =========================================================
+   HIDDEN MESSAGE
+========================================================= */
+
+.hidden-message {
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    width: auto !important;
+    height: auto !important;
+
+    margin: 0 !important;
+
+    padding: 28px !important;
+
+    box-sizing: border-box !important;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    gap: 8px !important;
+
+    text-align: center !important;
+
+    overflow: hidden !important;
+}
+
+
+/* =========================================================
+   MESSAGE TITLE
+========================================================= */
+
+.hidden-message h2 {
+    width: 100% !important;
+
+    margin: 0 !important;
+
+    font-family:
+        "Fraunces",
+        Georgia,
+        serif !important;
+
+    font-size:
+        clamp(1.45rem, 5vw, 1.9rem) !important;
+
+    font-style: italic !important;
+
+    font-weight: 600 !important;
+
+    line-height: 1.2 !important;
+
+    color:
+        #f7d488 !important;
+
+    overflow-wrap:
+        anywhere !important;
+}
+
+
+/* =========================================================
+   MESSAGE TEXT
+========================================================= */
+
+.hidden-message p {
+    width: 100% !important;
+
+    max-width: 260px !important;
+
+    margin: 0 !important;
+
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif !important;
+
+    font-size:
+        .88rem !important;
+
+    line-height:
+        1.55 !important;
+
+    color:
+        rgba(250,243,232,.70) !important;
+}
+
+
+/* =========================================================
+   CANVAS
+========================================================= */
+
+#scratchCanvas {
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    max-width: none !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+
+    display: block !important;
+
+    touch-action: none !important;
+
+    cursor: crosshair !important;
+}
+
+
+/* =========================================================
+   CONTINUE BUTTON
+========================================================= */
+
+.scratch-continue-button {
+    display: none !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: auto !important;
+    min-width: 230px !important;
+
+    margin:
+        26px auto 0 !important;
+
+    padding:
+        14px 26px !important;
+
+    border:
+        1px solid rgba(232,176,75,.30) !important;
+
+    border-radius:
+        999px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e8b04b,
+            #f2a3ad
+        ) !important;
+
+    color:
+        #120e1a !important;
+
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif !important;
+
+    font-size:
+        .94rem !important;
+
+    font-weight:
+        800 !important;
+
+    cursor:
+        pointer !important;
+
+    box-shadow:
+        0 12px 35px rgba(232,176,75,.20) !important;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease !important;
+}
+
+
+/* JS SHOW STATE */
+
+.scratch-continue-button.show {
+    display: inline-flex !important;
+
+    animation:
+        scratchButtonAppear .6s ease forwards !important;
+}
+
+
+.scratch-continue-button:hover {
+    transform:
+        translateY(-3px) !important;
+
+    box-shadow:
+        0 18px 42px rgba(232,176,75,.30) !important;
+}
+
+
+.scratch-continue-button:active {
+    transform:
+        translateY(0)
+        scale(.97) !important;
+}
+
+
+/* =========================================================
+   BUTTON ANIMATION
+========================================================= */
+
+@keyframes scratchButtonAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(18px)
+            scale(.94);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   DAY MODE
+========================================================= */
+
+body:not(.night-mode) .scratch-page {
+
+    background:
+        radial-gradient(
+            circle at 12% 12%,
+            rgba(242,163,173,.30),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 88% 20%,
+            rgba(232,176,75,.22),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(185,199,160,.18),
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            #faf3e8,
+            #f8e9ed,
+            #f4ecf8
+        ) !important;
+}
+
+
+body:not(.night-mode) .scratch-content h1 {
+    color:
+        #392532 !important;
+
+    text-shadow:
+        0 0 30px rgba(232,176,75,.16) !important;
+}
+
+
+body:not(.night-mode) .scratch-instruction {
+    color:
+        rgba(57,37,50,.68) !important;
+}
+
+
+body:not(.night-mode) .scratch-card {
+    background:
+        rgba(255,250,241,.92) !important;
+
+    border-color:
+        rgba(184,124,58,.25) !important;
+
+    box-shadow:
+        0 25px 60px rgba(60,40,20,.18) !important;
+}
+
+
+body:not(.night-mode) .hidden-message h2 {
+    color:
+        #b8752f !important;
+}
+
+
+body:not(.night-mode) .hidden-message p {
+    color:
+        rgba(57,37,50,.68) !important;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .scratch-page {
+        padding:
+            85px 18px 40px !important;
+    }
+
+    .scratch-card {
+        width:
+            min(340px, 86vw) !important;
+    }
+}
+
+
+/* =========================================================
+   PHONE
+========================================================= */
+
+@media (max-width: 550px) {
+
+    .scratch-page {
+        align-items:
+            flex-start !important;
+
+        padding:
+            88px 15px 35px !important;
+    }
+
+    .scratch-content h1 {
+        font-size:
+            clamp(2.1rem, 10vw, 3rem) !important;
+    }
+
+    .scratch-instruction {
+        font-size:
+            .88rem !important;
+
+        max-width:
+            320px !important;
+
+        margin-bottom:
+            22px !important;
+    }
+
+    .scratch-card {
+        width:
+            min(330px, 88vw) !important;
+    }
+
+    .hidden-message {
+        padding:
+            22px !important;
+    }
+
+    .hidden-message h2 {
+        font-size:
+            clamp(1.3rem, 6vw, 1.65rem) !important;
+    }
+
+    .hidden-message p {
+        max-width:
+            230px !important;
+
+        font-size:
+            .82rem !important;
+    }
+
+    .scratch-continue-button {
+        width:
+            min(100%, 300px) !important;
+
+        min-width:
+            0 !important;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .scratch-page {
+        padding-top:
+            80px !important;
+    }
+
+    .scratch-card {
+        width:
+            88vw !important;
+    }
+
+    .hidden-message {
+        padding:
+            18px !important;
+    }
+
+    .hidden-message h2 {
+        font-size:
+            1.2rem !important;
+    }
+
+    .hidden-message p {
+        font-size:
+            .76rem !important;
+    }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (pointer: coarse) {
+
+    #scratchCanvas {
+        cursor:
+            default !important;
+    }
+}

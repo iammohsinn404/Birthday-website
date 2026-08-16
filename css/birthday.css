@@ -665,6 +665,11 @@ body.cursor-ready .cursor-ring {
   position: relative;
   z-index: 2
 }
+.birthday-page .surprise.show {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
 
 .hero,
 .letter,

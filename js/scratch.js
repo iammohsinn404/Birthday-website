@@ -70,35 +70,90 @@ if (scratchCanvas && scratchCard) {
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    // Scratch cover
+// ========================================
+// SCRATCH COVER — MATCH WEBSITE THEME
+// ========================================
 
-    const gradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
+ctx.globalCompositeOperation = "source-over";
 
-    gradient.addColorStop(0, "#e46313");
+const gradient = ctx.createLinearGradient(
+    0,
+    0,
+    rect.width,
+    rect.height
+);
 
-    gradient.addColorStop(0.5, "#e61ccb");
+gradient.addColorStop(0, "#241d30");
+gradient.addColorStop(0.45, "#30243b");
+gradient.addColorStop(1, "#1a1524");
 
-    gradient.addColorStop(1, "#1393e9");
+ctx.fillStyle = gradient;
 
-    ctx.globalCompositeOperation = "source-over";
+ctx.fillRect(
+    0,
+    0,
+    rect.width,
+    rect.height
+);
 
-    ctx.fillStyle = gradient;
 
-    ctx.fillRect(0, 0, rect.width, rect.height);
+// ========================================
+// SUBTLE GOLD / ROSE GLOW
+// ========================================
 
-    // Scratch text
+const glow = ctx.createRadialGradient(
+    rect.width * 0.25,
+    rect.height * 0.20,
+    0,
+    rect.width * 0.25,
+    rect.height * 0.20,
+    rect.width * 0.65
+);
 
-    ctx.fillStyle = "rgba(255,255,255,0.95)";
+glow.addColorStop(
+    0,
+    "rgba(232,176,75,0.16)"
+);
 
-    ctx.font = "bold 22px Arial";
+glow.addColorStop(
+    0.45,
+    "rgba(242,163,173,0.08)"
+);
 
-    ctx.textAlign = "center";
+glow.addColorStop(
+    1,
+    "rgba(0,0,0,0)"
+);
 
-    ctx.textBaseline = "middle";
+ctx.fillStyle = glow;
 
-    ctx.fillText("✨ Scratch Me ✨", rect.width / 2, rect.height / 2);
-  }
+ctx.fillRect(
+    0,
+    0,
+    rect.width,
+    rect.height
+);
 
+
+// ========================================
+// SCRATCH TEXT
+// ========================================
+
+ctx.fillStyle = "rgba(250,243,232,0.92)";
+
+ctx.font =
+    "600 22px Manrope, Arial, sans-serif";
+
+ctx.textAlign = "center";
+
+ctx.textBaseline = "middle";
+
+ctx.fillText(
+    "✨ Scratch Me ✨",
+    rect.width / 2,
+    rect.height / 2
+);
+}
   // ========================================
   // SCRATCH
   // ========================================

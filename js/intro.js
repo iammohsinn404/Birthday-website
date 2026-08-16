@@ -84,142 +84,344 @@ if (noButton) {
 // INTRO PROFILE MENU
 // ========================================
 
-const profileBtn = document.getElementById("profileBtn");
+const profileBtn =
+  document.getElementById("profileBtn");
 
-const profileMenu = document.getElementById("profileMenu");
+const profileMenu =
+  document.getElementById("profileMenu");
 
-const createLinkButton = document.getElementById("createLinkButton");
+const createLinkButton =
+  document.getElementById("createLinkButton");
+
+const linkGenerator =
+  document.getElementById("linkGenerator");
+
+const generateLinkButton =
+  document.getElementById("generateLinkButton");
+
+const generatedLink =
+  document.getElementById("generatedLink");
+
+const copyLinkButton =
+  document.getElementById("copyLinkButton");
+
+
+// ========================================
+// OPEN / CLOSE PROFILE MENU
+// ========================================
 
 if (profileBtn && profileMenu) {
+
   profileBtn.addEventListener("click", (event) => {
+
     event.stopPropagation();
 
     profileMenu.classList.toggle("show");
+
   });
 
+
   document.addEventListener("click", (event) => {
+
     if (
       !profileMenu.contains(event.target) &&
       !profileBtn.contains(event.target)
     ) {
+
       profileMenu.classList.remove("show");
+
     }
+
   });
+
 }
 
+
 // ========================================
-// LINK GENERATOR
+// OPEN LINK GENERATOR
 // ========================================
-
-const linkGenerator = document.getElementById("linkGenerator");
-
-const generateLinkButton = document.getElementById("generateLinkButton");
-
-const generatedLink = document.getElementById("generatedLink");
-
-const copyLinkButton = document.getElementById("copyLinkButton");
-
-// Open link generator from Profile menu
 
 if (createLinkButton && linkGenerator) {
+
   createLinkButton.addEventListener("click", (event) => {
+
     event.stopPropagation();
 
     linkGenerator.classList.toggle("show");
 
     profileMenu?.classList.remove("show");
+
   });
+
 }
 
-// Generate personalized link
+
+// ========================================
+// GENERATE PERSONALIZED BIRTHDAY LINK
+// ========================================
 
 if (generateLinkButton) {
+
   generateLinkButton.addEventListener("click", () => {
-    const name = document.getElementById("personName")?.value.trim();
 
-    const day = document.getElementById("birthDay")?.value;
+    const name =
+      document.getElementById("personName")?.value.trim();
 
-    const month = document.getElementById("birthMonth")?.value;
+    const day =
+      document.getElementById("birthDay")?.value;
 
-    const year = document.getElementById("birthYear")?.value;
+    const month =
+      document.getElementById("birthMonth")?.value;
 
-    const relationship = document.getElementById("relationship")?.value.trim();
+    const year =
+      document.getElementById("birthYear")?.value;
 
-    if (!name || !day || !month || !year || !relationship) {
+    const relationship =
+      document.getElementById("relationship")?.value.trim();
+
+
+    // ----------------------------------------
+    // CHECK INFORMATION
+    // ----------------------------------------
+
+    if (
+      !name ||
+      !day ||
+      !month ||
+      !year ||
+      !relationship
+    ) {
+
       alert("Please fill in everything.");
 
       return;
+
     }
 
-    const params = new URLSearchParams({
-      name,
-      day,
-      month,
-      year,
-      relationship,
-    });
 
-    const link = `${window.location.origin}/?${params.toString()}`;
+    // ----------------------------------------
+    // CREATE BIRTH DATE
+    // ----------------------------------------
+
+    const birthDate =
+      new Date(
+        Number(year),
+        Number(month) - 1,
+        Number(day)
+      );
+
+
+    if (Number.isNaN(birthDate.getTime())) {
+
+      alert("Please enter a valid birthday.");
+
+      return;
+
+    }
+
+
+    // ----------------------------------------
+    // CALCULATE AGE AUTOMATICALLY
+    // ----------------------------------------
+
+    const today = new Date();
+
+    let age =
+      today.getFullYear() -
+      birthDate.getFullYear();
+
+
+    const birthdayThisYear =
+      new Date(
+        today.getFullYear(),
+        birthDate.getMonth(),
+        birthDate.getDate()
+      );
+
+
+    if (today < birthdayThisYear) {
+
+      age--;
+
+    }
+
+
+    // ----------------------------------------
+    // CALCULATE DAY OF BIRTH
+    // ----------------------------------------
+
+    const weekday =
+      birthDate.toLocaleDateString(
+        undefined,
+        {
+          weekday: "long"
+        }
+      );
+
+
+    // ----------------------------------------
+    // CREATE URL PARAMETERS
+    // ----------------------------------------
+
+    const params =
+      new URLSearchParams({
+
+        name: name,
+
+        day: day,
+
+        month: month,
+
+        year: year,
+
+        relationship: relationship
+
+      });
+
+
+    // ----------------------------------------
+    // CREATE LINK
+    // ----------------------------------------
+
+    const link =
+      `${window.location.origin}/?${params.toString()}`;
+
+
+    // ----------------------------------------
+    // SHOW LINK
+    // ----------------------------------------
 
     if (generatedLink) {
+
       generatedLink.value = link;
+
+      /*
+       * Store calculated information on the
+       * generated link element for now.
+       * The shared personalization system
+       * will use the same information later.
+       */
+
+      generatedLink.dataset.age = age;
+
+      generatedLink.dataset.weekday = weekday;
+
     }
+
+
+    // ----------------------------------------
+    // SHOW COPY BUTTON
+    // ----------------------------------------
+
+    if (copyLinkButton) {
+
+      copyLinkButton.style.display =
+        "inline-flex";
+
+    }
+
   });
+
 }
+
+
 // ========================================
 // LEVELS MENU
 // ========================================
 
-const levelsButton = document.getElementById("levelsButton");
+const levelsButton =
+  document.getElementById("levelsButton");
 
-const levelsMenu = document.getElementById("levelsMenu");
+const levelsMenu =
+  document.getElementById("levelsMenu");
 
-const levelButtons = document.querySelectorAll("[data-level]");
+const levelButtons =
+  document.querySelectorAll("[data-level]");
 
-// Open / close levels
+
+// ========================================
+// OPEN / CLOSE LEVELS
+// ========================================
 
 if (levelsButton && levelsMenu) {
+
   levelsButton.addEventListener("click", (event) => {
+
     event.stopPropagation();
 
     levelsMenu.classList.toggle("show");
+
   });
+
 }
 
-// Jump to selected level
+
+// ========================================
+// JUMP TO SELECTED LEVEL
+// ========================================
 
 levelButtons.forEach((button) => {
+
   button.addEventListener("click", () => {
-    const page = button.dataset.level;
+
+    const page =
+      button.dataset.level;
 
     if (page) {
+
       window.location.href = page;
+
     }
+
   });
+
 });
+
 
 // ========================================
 // COPY GENERATED LINK
 // ========================================
 
 if (copyLinkButton) {
-  copyLinkButton.addEventListener("click", async () => {
-    if (!generatedLink?.value) return;
 
-    try {
-      await navigator.clipboard.writeText(generatedLink.value);
+  copyLinkButton.addEventListener(
+    "click",
+    async () => {
 
-      copyLinkButton.textContent = "Copied! ✓";
+      if (!generatedLink?.value) return;
 
-      setTimeout(() => {
-        copyLinkButton.textContent = "Copy Link";
-      }, 1500);
-    } catch {
-      generatedLink.select();
 
-      document.execCommand("copy");
+      try {
 
-      copyLinkButton.textContent = "Copied! ✓";
+        await navigator.clipboard.writeText(
+          generatedLink.value
+        );
+
+
+        copyLinkButton.textContent =
+          "Copied! ✓";
+
+
+        setTimeout(() => {
+
+          copyLinkButton.textContent =
+            "Copy Link";
+
+        }, 1500);
+
+
+      } catch {
+
+        generatedLink.select();
+
+        document.execCommand("copy");
+
+        copyLinkButton.textContent =
+          "Copied! ✓";
+
+      }
+
     }
-  });
+  );
+
 }
