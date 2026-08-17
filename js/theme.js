@@ -5,6 +5,7 @@
 const themeKey = "birthday-theme";
 
 function applyGlobalTheme() {
+
     const theme =
         localStorage.getItem(themeKey) || "day";
 
@@ -17,14 +18,18 @@ function applyGlobalTheme() {
         document.getElementById("themeButton");
 
     if (themeButton) {
+
         themeButton.textContent =
             theme === "night"
                 ? "☀️ Day Mode"
                 : "🌙 Night Mode";
+
     }
 }
 
+
 function toggleGlobalTheme() {
+
     const isNight =
         document.body.classList.contains("night-mode");
 
@@ -39,9 +44,14 @@ function toggleGlobalTheme() {
     applyGlobalTheme();
 }
 
+
+/* Apply saved theme immediately */
 applyGlobalTheme();
 
+
+/* Theme button */
 document.addEventListener("click", (event) => {
+
     const button =
         event.target.closest("#themeButton");
 
@@ -51,4 +61,5 @@ document.addEventListener("click", (event) => {
     event.stopPropagation();
 
     toggleGlobalTheme();
+
 });

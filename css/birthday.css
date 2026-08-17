@@ -4004,3 +4004,28 @@ body.night-mode .preloader-label {
 
     transition: width .35s ease;
 }
+/* ========================================
+   BIRTHDAY PAGE MUSIC BUTTON POSITION
+======================================== */
+
+body:has(.birthday-page) #musicButton {
+    top: 72px !important;
+    right: 20px !important;
+    z-index: 30000 !important;
+}
+
+
+/* PHONE */
+
+@media (max-width: 550px) {
+
+    body:has(.birthday-page) #musicButton {
+        top: 62px !important;
+        right: 14px !important;
+
+        max-width: calc(100vw - 90px) !important;
+
+        white-space: nowrap !important;
+    }
+
+}
