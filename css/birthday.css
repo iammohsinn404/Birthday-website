@@ -657,233 +657,458 @@ body.cursor-ready .cursor-ring {
   transform: translateY(-3px) scale(1.03)
 }
 
-/* ==========================================================================
-   PAGE LAYOUT — shared "card" sections
-   ========================================================================== */
+/* =========================================================
+   FINAL HERO FIX
+   Prevents desktop overlap / clipping
+========================================================= */
+
 .birthday-page {
-  min-height: 100vh;
-  position: relative;
-  z-index: 2
-}
-.birthday-page .surprise.show {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateY(0) !important;
+    width: 100%;
+    overflow-x: hidden;
 }
 
-.hero,
-.letter,
-.surprise {
-  width: min(1100px, 92%);
-  margin: 35px auto;
-  padding: 55px 35px;
-  text-align: center;
-  border-radius: 32px;
-  background: var(--card);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 20px 60px rgba(100, 60, 120, .12);
-  border: 1px solid rgba(255, 255, 255, .9);
-}
-
-.section-eyebrow {
-  font-family: var(--hand);
-  font-size: 19px;
-  font-weight: 600;
-  color: var(--pink-deep);
-  margin-bottom: 6px;
-}
-
-/* ---- HERO ---- */
 .hero {
-  margin-top: 0;
-  min-height: 76vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  background: radial-gradient(circle at 50% 15%, #ffe0ec, transparent 38%), var(--card);
+    width: min(1100px, calc(100% - 40px));
+    min-height: 76vh;
+    margin: 0 auto 35px;
+    padding: 55px 35px;
+    box-sizing: border-box;
+
+    position: relative;
+    display: block;
+
+    overflow: hidden;
 }
 
-.hero:before {
-  content: "🎂";
-  font-size: 74px;
-  animation: float 3s ease-in-out infinite;
-  margin-bottom: 2px;
-  position: relative;
-  z-index: 1;
-}
+/* -----------------------------------------
+   MAIN HERO CONTENT
+----------------------------------------- */
 
 .hero-inner {
-  position: relative;
-  z-index: 3;
+    position: relative;
+    z-index: 10;
 
-  width: 58%;
-  max-width: 620px;
+    width: min(55%, 600px);
+    max-width: 600px;
 
-  margin-left: 3%;
-  margin-right: auto;
+    margin: 0;
+    padding: 0;
 
-  text-align: center;
-}
+    min-height: 520px;
 
-.hero-eyebrow {
-  font-family: var(--hand);
-  font-size: 19px;
-  font-weight: 600;
-  color: var(--text-soft);
-  margin-bottom: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    box-sizing: border-box;
 }
 
 .hero-title {
-  font-family: var(--display);
-  font-weight: 700;
-  line-height: 1.04;
-  font-size: clamp(36px, 7.4vw, 66px);
-  margin: 6px 0 18px;
+    width: 100%;
+    max-width: 600px;
+
+    margin: 0;
+    padding: 0;
+
+    font-family: var(--display);
+    font-weight: 700;
+    line-height: 1.04;
+
+    font-size: clamp(42px, 5.3vw, 66px);
+
+    overflow-wrap: normal;
+    word-break: normal;
 }
 
 .hero-title .word {
-  display: inline-block;
-  margin-right: .28em
+    display: inline-block;
+    margin-right: .18em;
+    white-space: normal;
 }
 
-.hero-title .word.grad {
-  background: linear-gradient(90deg, #ff4e91, #8b5cf6);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* Keep the person's name from creating a huge
+   single unbreakable line */
+.hero-title .word[data-person-name] {
+    max-width: 100%;
 }
+
+/* -----------------------------------------
+   HERO DESCRIPTION
+----------------------------------------- */
 
 .hero .lede {
-  font-size: 18px;
-  line-height: 1.8;
-  max-width: 560px;
-  margin: 0 auto
+    width: 100%;
+    max-width: 500px;
+
+    margin: 18px auto 0;
+
+    font-size: 17px;
+    line-height: 1.7;
+
+    box-sizing: border-box;
 }
 
-#surprise-button {
-  border: 0;
-  border-radius: 999px;
-  padding: 15px 30px;
-  font-weight: 700;
-  cursor: pointer;
-  color: #fff;
-  background: linear-gradient(135deg, #8b5cf6, #ff5e9b);
-  margin-top: 26px;
-  position: relative;
-  box-shadow: 0 12px 28px rgba(139, 92, 246, .28);
-  transition: box-shadow .3s var(--ease);
+/* -----------------------------------------
+   HERO VISUAL
+----------------------------------------- */
+
+.hero-visual {
+    position: absolute;
+
+    top: 50%;
+    right: 25px;
+
+    width: 300px;
+    height: 380px;
+
+    margin-top: -190px;
+
+    z-index: 5;
+
+    pointer-events: none;
 }
 
-#surprise-button:hover {
-  box-shadow: 0 16px 36px rgba(255, 78, 145, .35)
+.hero-visual .stack-card,
+.hero-visual .stack-badge,
+.hero-visual .vitals-card {
+    pointer-events: auto;
 }
 
-.scroll-cue {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  margin-top: 40px;
-  text-decoration: none;
-  color: var(--text-soft);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  position: relative;
-  z-index: 1;
+/* -----------------------------------------
+   VITALS CARD
+----------------------------------------- */
+
+.hero-visual .vitals-card {
+    position: absolute;
+
+    top: -30px;
+    right: -15px;
+
+    width: 186px;
+
+    box-sizing: border-box;
+
+    z-index: 20;
 }
 
-.scroll-cue-arrow {
-  font-size: 18px;
-  animation: bob 1.8s ease-in-out infinite
+/* -----------------------------------------
+   PHOTO CARDS
+----------------------------------------- */
+
+.hero-visual .stack-card.c1 {
+    left: 82px;
+    top: 0;
+
+    width: 190px;
+    height: 230px;
+
+    z-index: 15;
 }
 
-@keyframes bob {
-  50% {
-    transform: translateY(8px)
-  }
+.hero-visual .stack-card.c2 {
+    left: 0;
+    top: 128px;
+
+    width: 148px;
+    height: 184px;
+
+    z-index: 12;
 }
 
-/* Hero load choreography — only runs once .hero.play is added by JS
-   (i.e. right when the person clicks "YES!" and the intro gate lifts) */
-.js .hero-eyebrow,
-.js .hero .lede,
-.js #surprise-button,
-.js .scroll-cue,
-.js .vitals-card,
-.js .stack-badge {
-  opacity: 0;
-  transform: translateY(24px);
+.hero-visual .stack-card.c3 {
+    left: 156px;
+    top: 172px;
+
+    width: 126px;
+    height: 156px;
+
+    z-index: 10;
 }
 
-.js .hero-title .word {
-  opacity: 0;
-  transform: translateY(30px) rotate(3deg)
+/* -----------------------------------------
+   BADGE
+----------------------------------------- */
+
+.hero-visual .stack-badge {
+    left: -15px;
+    bottom: 14px;
+    z-index: 25;
 }
 
-.js .stack-card {
-  opacity: 0;
-  transform: translateY(26px) rotate(var(--rot, 0deg))
+/* -----------------------------------------
+   MEDIUM DESKTOP
+   761px - 1050px
+----------------------------------------- */
+
+@media (min-width: 761px) and (max-width: 1050px) {
+
+    .hero {
+        width: calc(100% - 30px);
+        padding: 45px 25px;
+    }
+
+    .hero-inner {
+        width: 54%;
+        max-width: 520px;
+        min-height: 500px;
+    }
+
+    .hero-title {
+        font-size: clamp(38px, 5.8vw, 56px);
+    }
+
+    .hero-visual {
+        right: 5px;
+        transform: scale(.88);
+        transform-origin: center right;
+    }
+
+    .hero .lede {
+        max-width: 440px;
+        font-size: 16px;
+    }
 }
 
-.hero.play .hero-eyebrow {
-  animation: fadeUp .7s var(--ease) .05s forwards
+/* =========================================================
+   TABLET / PHONE
+========================================================= */
+
+@media (max-width: 760px) {
+
+    .hero {
+        width: calc(100% - 24px);
+        min-height: auto;
+
+        margin: 0 auto 25px;
+
+        padding: 55px 18px 40px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        overflow: hidden;
+    }
+
+    .hero-inner {
+        order: 1;
+
+        width: 100%;
+        max-width: 600px;
+
+        min-height: auto;
+
+        margin: 0;
+        padding: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-title {
+        width: 100%;
+
+        font-size: clamp(38px, 11vw, 58px);
+
+        line-height: 1.05;
+
+        text-align: center;
+    }
+
+    .hero-title .word {
+        margin-right: .08em;
+    }
+
+    .hero .lede {
+        width: 100%;
+        max-width: 430px;
+
+        font-size: 16px;
+        line-height: 1.65;
+
+        margin-top: 16px;
+    }
+
+    .hero-visual {
+        order: 2;
+
+        position: relative;
+
+        top: auto;
+        right: auto;
+
+        width: min(100%, 300px);
+        height: 350px;
+
+        margin: 35px auto 0;
+
+        transform: none;
+
+        display: block;
+    }
+
+    .hero-visual .vitals-card {
+        top: -15px;
+        right: -5px;
+
+        width: 175px;
+    }
+
+    .hero-visual .stack-card.c1 {
+        left: 75px;
+        top: 35px;
+
+        width: 175px;
+        height: 215px;
+    }
+
+    .hero-visual .stack-card.c2 {
+        left: 5px;
+        top: 150px;
+
+        width: 135px;
+        height: 170px;
+    }
+
+    .hero-visual .stack-card.c3 {
+        display: block;
+
+        left: 165px;
+        top: 190px;
+
+        width: 115px;
+        height: 145px;
+    }
+
+    .hero-visual .stack-badge {
+        left: 5px;
+        bottom: 0;
+    }
+
+    .hero:before {
+        font-size: 62px;
+        margin-bottom: 5px;
+    }
+
+    #surprise-button {
+        margin-top: 22px;
+    }
+
+    .scroll-cue {
+        margin-top: 28px;
+    }
 }
 
-.hero.play .hero-title .word {
-  animation: wordIn .8s var(--ease) forwards
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 550px) {
+
+    .hero {
+        width: calc(100% - 16px);
+        padding: 45px 14px 30px;
+
+        border-radius: 24px;
+    }
+
+    .hero-title {
+        font-size: clamp(34px, 12vw, 48px);
+        line-height: 1.04;
+    }
+
+    .hero-eyebrow {
+        font-size: 17px;
+    }
+
+    .hero .lede {
+        font-size: 15px;
+        line-height: 1.6;
+        max-width: 330px;
+    }
+
+    .hero-visual {
+        width: 280px;
+        height: 330px;
+    }
+
+    .hero-visual .vitals-card {
+        width: 160px;
+        right: -8px;
+        padding: 13px 14px;
+    }
+
+    .hero-visual .stack-card.c1 {
+        left: 70px;
+        width: 165px;
+        height: 205px;
+    }
+
+    .hero-visual .stack-card.c2 {
+        left: 0;
+        top: 145px;
+        width: 125px;
+        height: 160px;
+    }
+
+    .hero-visual .stack-card.c3 {
+        left: 160px;
+        top: 185px;
+        width: 105px;
+        height: 135px;
+    }
+
+    .hero-visual .stack-badge {
+        font-size: 11px;
+        left: 0;
+    }
+
+    #surprise-button {
+        padding: 13px 23px;
+        font-size: 14px;
+    }
 }
 
-.hero.play .hero-title .word:nth-child(1) {
-  animation-delay: .12s
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .hero-title {
+        font-size: 32px;
+    }
+
+    .hero-visual {
+        transform: scale(.92);
+        transform-origin: top center;
+        margin-bottom: -25px;
+    }
+
+    .hero-visual .vitals-card {
+        right: 0;
+    }
 }
 
-.hero.play .hero-title .word:nth-child(2) {
-  animation-delay: .22s
+/* =========================================================
+   PREVENT HORIZONTAL OVERFLOW
+========================================================= */
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
-.hero.play .hero-title .word:nth-child(3) {
-  animation-delay: .32s
-}
-
-.hero.play .hero-title .word:nth-child(4) {
-  animation-delay: .44s
-}
-
-.hero.play .lede {
-  animation: fadeUp .9s var(--ease) .5s forwards
-}
-
-.hero.play #surprise-button {
-  animation: fadeUp .8s var(--ease) .68s forwards
-}
-
-.hero.play .scroll-cue {
-  animation: fadeUp .8s var(--ease) .86s forwards
-}
-
-.hero.play .vitals-card {
-  animation: fadeUp .8s var(--ease) .95s forwards
-}
-
-.hero.play .stack-card.c3 {
-  animation: cardIn .8s var(--ease) .76s forwards
-}
-
-.hero.play .stack-card.c2 {
-  animation: cardIn .8s var(--ease) .88s forwards
-}
-
-.hero.play .stack-card.c1 {
-  animation: cardIn .8s var(--ease) 1s forwards
-}
-
-.hero.play .stack-badge {
-  animation: fadeUp .8s var(--ease) 1.18s forwards
+.birthday-page,
+.hero,
+.hero-inner,
+.hero-visual {
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 @keyframes fadeUp {
@@ -2323,4 +2548,1459 @@ body.shake {
         animation-iteration-count: 1 !important;
     }
 }
- 
+ /* =========================================================
+   HELLO + LETTER FINAL DESIGN FIX
+   ========================================================= */
+
+/* ---------- GENERAL ---------- */
+
+.birthday-page {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.birthday-page .hero,
+.birthday-page .letter {
+    width: min(1100px, calc(100% - 40px));
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HELLO / HERO
+   ========================================================= */
+
+.birthday-page .hero {
+    min-height: 720px;
+
+    margin-top: 0;
+    padding: 70px 55px;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    align-items: center;
+    gap: 25px;
+
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 0 0 32px 32px;
+
+    background:
+        radial-gradient(
+            circle at 35% 15%,
+            rgba(255, 224, 236, .95),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(218, 195, 255, .45),
+            transparent 32%
+        ),
+        var(--card);
+}
+
+
+/* Cake stays decorative instead of affecting layout */
+
+.birthday-page .hero::before {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 70px;
+
+    z-index: 2;
+    pointer-events: none;
+}
+
+
+/* ---------- LEFT CONTENT ---------- */
+
+.birthday-page .hero-inner {
+    position: relative;
+    z-index: 10;
+
+    width: 100%;
+    max-width: 600px;
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    text-align: left;
+}
+
+
+/* Small heading */
+
+.birthday-page .hero-eyebrow {
+    margin-bottom: 12px;
+
+    font-size: 19px;
+    line-height: 1.4;
+
+    color: var(--text-soft);
+}
+
+
+/* Main birthday title */
+
+.birthday-page .hero-title {
+    width: 100%;
+    max-width: 600px;
+
+    margin: 0;
+
+    font-size: clamp(46px, 6vw, 76px);
+    line-height: .98;
+
+    text-align: left;
+    letter-spacing: -.025em;
+}
+
+
+/* Each word */
+
+.birthday-page .hero-title .word {
+    display: inline-block;
+
+    margin-right: .16em;
+    margin-bottom: .04em;
+
+    white-space: normal;
+}
+
+
+/* Description */
+
+.birthday-page .hero .lede {
+    width: 100%;
+    max-width: 500px;
+
+    margin: 22px 0 0;
+
+    font-size: 17px;
+    line-height: 1.75;
+
+    text-align: left;
+
+    color: var(--text-soft);
+}
+
+
+/* Surprise button */
+
+.birthday-page #surprise-button {
+    margin-top: 25px;
+
+    padding: 14px 27px;
+
+    border-radius: 999px;
+
+    font-size: 15px;
+
+    box-shadow:
+        0 12px 30px rgba(139, 92, 246, .22);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.birthday-page #surprise-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 17px 35px rgba(255, 78, 145, .28);
+}
+
+
+/* Scroll cue */
+
+.birthday-page .scroll-cue {
+    margin-top: 28px;
+
+    align-items: flex-start;
+
+    text-align: left;
+}
+
+
+/* =========================================================
+   RIGHT SIDE PHOTO AREA
+   ========================================================= */
+
+.birthday-page .hero-visual {
+    position: relative;
+
+    top: auto;
+    right: auto;
+
+    width: 340px;
+    height: 420px;
+
+    margin: 0 auto;
+
+    z-index: 8;
+
+    transform: none;
+}
+
+
+/* Vitals */
+
+.birthday-page .hero-visual .vitals-card {
+    top: -10px;
+    right: -5px;
+
+    width: 190px;
+
+    z-index: 20;
+}
+
+
+/* Main photo */
+
+.birthday-page .hero-visual .stack-card.c1 {
+    left: 100px;
+    top: 45px;
+
+    width: 190px;
+    height: 230px;
+
+    z-index: 15;
+}
+
+
+/* Left photo */
+
+.birthday-page .hero-visual .stack-card.c2 {
+    left: 15px;
+    top: 175px;
+
+    width: 145px;
+    height: 180px;
+
+    z-index: 12;
+}
+
+
+/* Bottom/right photo */
+
+.birthday-page .hero-visual .stack-card.c3 {
+    left: 185px;
+    top: 225px;
+
+    width: 125px;
+    height: 155px;
+
+    z-index: 10;
+}
+
+
+/* Celebration badge */
+
+.birthday-page .hero-visual .stack-badge {
+    left: 5px;
+    bottom: 15px;
+
+    z-index: 30;
+}
+
+
+/* =========================================================
+   BALLOONS
+   ========================================================= */
+
+.birthday-page .hero-balloons {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+.birthday-page .hero-balloons .balloon {
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   LETTER SECTION
+   ========================================================= */
+
+.birthday-page .letter {
+    position: relative;
+
+    margin-top: 55px;
+    margin-bottom: 70px;
+
+    padding: 80px 70px;
+
+    min-height: 700px;
+
+    overflow: hidden;
+
+    border-radius: 34px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.88),
+            rgba(255,244,250,.82)
+        );
+
+    border: 1px solid rgba(255,255,255,.95);
+
+    box-shadow:
+        0 25px 70px rgba(100,60,120,.14);
+}
+
+
+/* Soft background image */
+
+.birthday-page .letter-bg {
+    opacity: .08;
+
+    filter: blur(2px) saturate(1.1);
+
+    transform: scale(1.08);
+}
+
+
+/* Letter content */
+
+.birthday-page .letter-inner {
+    width: 100%;
+    max-width: 820px;
+
+    margin: 0 auto;
+
+    position: relative;
+    z-index: 3;
+}
+
+
+/* Letter small heading */
+
+.birthday-page .letter .section-eyebrow {
+    margin-bottom: 12px;
+
+    font-size: 20px;
+}
+
+
+/* Letter title */
+
+.birthday-page .letter h2 {
+    max-width: 700px;
+
+    margin: 0 auto 40px;
+
+    font-size: clamp(34px, 5vw, 54px);
+    line-height: 1.05;
+
+    text-align: center;
+}
+
+
+/* Actual letter text */
+
+.birthday-page .letter-body {
+    width: min(100%, 720px);
+
+    margin: 0 auto;
+
+    padding: 38px 42px;
+
+    text-align: left;
+
+    border-radius: 24px;
+
+    background: rgba(255,255,255,.62);
+
+    border: 1px solid rgba(255,94,155,.10);
+
+    box-shadow:
+        0 14px 40px rgba(100,60,120,.08);
+}
+
+
+/* Individual paragraphs */
+
+.birthday-page .letter-body .line {
+    position: relative;
+
+    margin-bottom: 18px;
+
+    padding-left: 20px;
+
+    font-size: 17px;
+    line-height: 1.9;
+
+    color: var(--text);
+}
+
+
+/* Small decorative line */
+
+.birthday-page .letter-body .line::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: .8em;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        var(--pink-deep),
+        var(--purple)
+    );
+
+    box-shadow:
+        0 0 0 4px rgba(255,94,155,.08);
+}
+
+
+/* Sign off */
+
+.birthday-page .letter-body .line-signoff {
+    margin-top: 30px;
+    margin-bottom: 0;
+
+    padding: 18px 0 0;
+
+    border-top: 1px dashed rgba(139,92,246,.25);
+
+    font-size: 27px;
+
+    text-align: center;
+}
+
+
+/* Remove bullet from signoff */
+
+.birthday-page .letter-body .line-signoff::before {
+    display: none;
+}
+
+
+/* Traits */
+
+.birthday-page .chips-label {
+    margin-top: 38px;
+
+    text-align: center;
+
+    font-size: 19px;
+}
+
+
+/* Center chips */
+
+.birthday-page .trait-chips {
+    justify-content: center;
+
+    max-width: 700px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .birthday-page .hero {
+        min-height: 780px;
+
+        padding: 60px 35px;
+
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+
+        gap: 35px;
+    }
+
+    .birthday-page .hero-inner {
+        max-width: 650px;
+
+        margin: 0 auto;
+
+        align-items: center;
+
+        text-align: center;
+    }
+
+    .birthday-page .hero-title {
+        text-align: center;
+
+        font-size: clamp(42px, 8vw, 65px);
+    }
+
+    .birthday-page .hero .lede {
+        margin-left: auto;
+        margin-right: auto;
+
+        text-align: center;
+    }
+
+    .birthday-page .scroll-cue {
+        align-items: center;
+
+        text-align: center;
+    }
+
+    .birthday-page .hero-visual {
+        width: 320px;
+        height: 390px;
+
+        margin: 0 auto;
+    }
+
+    .birthday-page .letter {
+        padding: 65px 35px;
+    }
+}
+
+
+/* =========================================================
+   PHONE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .birthday-page .hero,
+    .birthday-page .letter {
+        width: calc(100% - 18px);
+    }
+
+    .birthday-page .hero {
+        min-height: auto;
+
+        padding: 55px 18px 40px;
+
+        border-radius: 0 0 26px 26px;
+    }
+
+    .birthday-page .hero::before {
+        top: 43%;
+
+        font-size: 55px;
+    }
+
+    .birthday-page .hero-title {
+        font-size: clamp(36px, 12vw, 54px);
+
+        line-height: 1.02;
+    }
+
+    .birthday-page .hero .lede {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .birthday-page .hero-visual {
+        width: 290px;
+        height: 350px;
+
+        transform: scale(.92);
+        transform-origin: center top;
+
+        margin-bottom: -20px;
+    }
+
+    .birthday-page .hero-visual .vitals-card {
+        width: 165px;
+
+        right: -5px;
+    }
+
+    .birthday-page .hero-visual .stack-card.c1 {
+        left: 80px;
+        top: 45px;
+
+        width: 170px;
+        height: 205px;
+    }
+
+    .birthday-page .hero-visual .stack-card.c2 {
+        left: 5px;
+        top: 150px;
+
+        width: 130px;
+        height: 165px;
+    }
+
+    .birthday-page .hero-visual .stack-card.c3 {
+        left: 165px;
+        top: 190px;
+
+        width: 110px;
+        height: 140px;
+    }
+
+    .birthday-page .hero-visual .stack-badge {
+        left: 0;
+        bottom: 5px;
+
+        font-size: 10px;
+    }
+
+
+    /* LETTER */
+
+    .birthday-page .letter {
+        margin-top: 30px;
+        margin-bottom: 45px;
+
+        padding: 55px 16px;
+
+        border-radius: 26px;
+    }
+
+    .birthday-page .letter h2 {
+        margin-bottom: 28px;
+
+        font-size: clamp(31px, 9vw, 44px);
+    }
+
+    .birthday-page .letter-body {
+        padding: 25px 20px;
+
+        border-radius: 20px;
+    }
+
+    .birthday-page .letter-body .line {
+        padding-left: 15px;
+
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .birthday-page .letter-body .line-signoff {
+        font-size: 23px;
+    }
+
+    .birthday-page .chips-label {
+        font-size: 17px;
+
+        line-height: 1.6;
+    }
+
+    .birthday-page .trait-chips {
+        gap: 8px;
+    }
+
+    .birthday-page .chip {
+        padding: 8px 13px;
+
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   DARK / NIGHT MODE
+   ========================================================= */
+
+body.night-mode .birthday-page .letter {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(21,16,31,.96),
+            rgba(29,20,40,.96)
+        ) !important;
+
+    border-color: rgba(255,255,255,.08);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.35);
+}
+
+body.night-mode .birthday-page .letter-body {
+    background:
+        rgba(255,255,255,.045);
+
+    border-color:
+        rgba(255,255,255,.08);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.18);
+}
+
+body.night-mode .birthday-page .letter-body .line {
+    color: #e8dce9 !important;
+}
+
+body.night-mode .birthday-page .letter-body .line-signoff {
+    border-color: rgba(255,255,255,.12);
+}
+
+body.night-mode .birthday-page .hero {
+    background:
+        radial-gradient(
+            circle at 25% 15%,
+            rgba(120,70,170,.28),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(180,70,130,.20),
+            transparent 35%
+        ),
+        #0d0a18 !important;
+}
+
+
+/* =========================================================
+   EXTRA SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .birthday-page .hero-title {
+        font-size: 33px;
+    }
+
+    .birthday-page .hero-visual {
+        transform: scale(.84);
+        margin-bottom: -45px;
+    }
+
+    .birthday-page .letter-body {
+        padding: 22px 16px;
+    }
+}
+/* =========================================================
+   FINAL BIRTHDAY HERO + NIGHT MODE FIX
+========================================================= */
+
+/* Prevent the birthday page from ever creating horizontal overflow */
+.birthday-page,
+.hero,
+.hero-inner,
+.hero-title,
+.hero-visual {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.birthday-page {
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   HAPPY BIRTHDAY TITLE
+========================================================= */
+
+.hero-title {
+    width: 100%;
+    max-width: 620px;
+
+    margin: 0;
+
+    font-size: clamp(40px, 6vw, 68px);
+    line-height: 1.02;
+
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+
+.hero-title .word {
+    display: inline-block;
+
+    max-width: 100%;
+
+    margin-right: .12em;
+
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+
+/* Important for "MY BEST FRIEND" */
+.hero-title .word[data-person-name] {
+    max-width: 100%;
+}
+
+
+/* Keep gradient title visible */
+.hero-title .word.grad {
+    background: linear-gradient(
+        90deg,
+        #ff4e91,
+        #8b5cf6
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+
+/* =========================================================
+   HERO LEFT SIDE
+========================================================= */
+
+.hero-inner {
+    width: min(58%, 620px);
+
+    max-width: 620px;
+
+    min-width: 0;
+
+    margin-left: 0;
+    margin-right: auto;
+
+    position: relative;
+    z-index: 10;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HERO PHOTO AREA
+========================================================= */
+
+.hero-visual {
+    width: 340px;
+    height: 420px;
+
+    right: 25px;
+
+    z-index: 8;
+
+    overflow: visible;
+}
+
+
+/* =========================================================
+   VITALS CARD
+========================================================= */
+
+.hero-visual .vitals-card {
+    width: 186px;
+
+    right: -5px;
+    top: -10px;
+
+    z-index: 30;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   NIGHT MODE
+========================================================= */
+
+body.night-mode .birthday-page {
+    color: #f5edf8 !important;
+}
+
+
+/* Hero normal text */
+
+body.night-mode .birthday-page .hero-eyebrow {
+    color: #d9bfd9 !important;
+}
+
+body.night-mode .birthday-page .lede {
+    color: #d8c9df !important;
+}
+
+body.night-mode .birthday-page .scroll-cue {
+    color: #cdbbd5 !important;
+}
+
+
+/* HAPPY BIRTHDAY gradient MUST stay visible */
+
+body.night-mode .birthday-page .hero-title .word.grad {
+    background: linear-gradient(
+        90deg,
+        #ff6fa8,
+        #b58aff
+    ) !important;
+
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+}
+
+
+/* Heart at end */
+
+body.night-mode .birthday-page .hero-title .word:not(.grad) {
+    color: #ff82ad !important;
+}
+
+
+/* Vitals */
+
+body.night-mode .birthday-page .vitals-card {
+    background: rgba(29, 22, 40, .94) !important;
+
+    border-color: rgba(255,255,255,.12) !important;
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.4) !important;
+}
+
+body.night-mode .birthday-page .vitals-eyebrow {
+    color: #ff82ad !important;
+}
+
+body.night-mode .birthday-page .vitals-num {
+    color: #b995ff !important;
+}
+
+body.night-mode .birthday-page .vitals-label {
+    color: #d7c8dd !important;
+}
+
+
+/* Photo captions */
+
+body.night-mode .birthday-page .stack-card figcaption {
+    color: #40263b !important;
+}
+
+
+/* Celebration badge */
+
+body.night-mode .birthday-page .stack-badge {
+    background: rgba(35, 26, 46, .94) !important;
+
+    color: #ff82ad !important;
+
+    border: 1px solid rgba(255,255,255,.10);
+}
+
+
+/* =========================================================
+   LETTER NIGHT MODE
+========================================================= */
+
+body.night-mode .birthday-page .letter {
+    background:
+        linear-gradient(
+            135deg,
+            #15101f,
+            #21162d
+        ) !important;
+
+    color: #f4eaf7 !important;
+}
+
+body.night-mode .birthday-page .letter .section-eyebrow {
+    color: #ff82ad !important;
+}
+
+
+/* Letter heading */
+
+body.night-mode .birthday-page .letter h2 {
+    background: linear-gradient(
+        90deg,
+        #ff6fa8,
+        #b58aff
+    ) !important;
+
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+}
+
+
+/* Letter paragraphs */
+
+body.night-mode .birthday-page .letter-body .line {
+    color: #e8dce9 !important;
+}
+
+
+/* Letter signoff */
+
+body.night-mode .birthday-page .letter-body .line-signoff {
+    color: #ff82ad !important;
+}
+
+
+/* "In a word..." */
+
+body.night-mode .birthday-page .chips-label {
+    color: #d8c9df !important;
+}
+
+
+/* Chips */
+
+body.night-mode .birthday-page .chip {
+    background: #241a30 !important;
+
+    color: #eadff0 !important;
+
+    border-color: rgba(255,105,160,.22) !important;
+
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.2) !important;
+}
+
+
+/* =========================================================
+   DESKTOP TITLE SAFETY
+========================================================= */
+
+@media (min-width: 901px) {
+
+    .hero-inner {
+        width: min(56%, 600px);
+    }
+
+    .hero-title {
+        font-size: clamp(42px, 5.2vw, 64px);
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .hero-inner {
+        width: 100%;
+        max-width: 650px;
+    }
+
+    .hero-title {
+        width: 100%;
+        max-width: 650px;
+
+        font-size: clamp(40px, 8vw, 62px);
+
+        text-align: center;
+    }
+
+}
+
+
+/* =========================================================
+   PHONE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .hero-title {
+        width: 100%;
+
+        font-size: clamp(34px, 11.5vw, 52px);
+
+        line-height: 1.03;
+
+        text-align: center;
+    }
+
+    .hero-title .word {
+        margin-right: .06em;
+    }
+
+    .hero-inner {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .hero-title {
+        font-size: 31px;
+    }
+
+}
+/* =========================================================
+   FINAL HERO TITLE FIX
+========================================================= */
+
+.hero-title {
+    width: 100%;
+    max-width: 620px;
+
+    overflow: visible;
+
+    line-height: 1.02;
+}
+
+/* NEVER allow a single word to split */
+.hero-title .word {
+    display: inline-block;
+
+    white-space: nowrap;
+
+    word-break: keep-all;
+    overflow-wrap: normal;
+
+    max-width: none;
+
+    margin-right: .12em;
+}
+
+
+/* Keep the person's name together */
+.hero-title .word[data-person-name] {
+    white-space: nowrap;
+}
+
+
+/* Gradient text */
+.hero-title .word.grad {
+    background: linear-gradient(
+        90deg,
+        #ff4e91,
+        #b06cff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+
+/* =========================================================
+   DESKTOP HERO WIDTH
+========================================================= */
+
+@media (min-width: 901px) {
+
+    .hero {
+        grid-template-columns:
+            minmax(520px, 1fr)
+            340px;
+
+        gap: 15px;
+    }
+
+    .hero-inner {
+        width: 100%;
+        max-width: 620px;
+
+        min-width: 0;
+    }
+
+    .hero-title {
+        font-size: clamp(42px, 5.2vw, 64px);
+    }
+
+}
+
+
+/* =========================================================
+   NIGHT MODE TITLE
+========================================================= */
+
+body.night-mode .hero-title .word.grad {
+    background: linear-gradient(
+        90deg,
+        #ff6fa8,
+        #bd91ff
+    ) !important;
+
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+}
+
+
+/* Normal hero text in night mode */
+
+body.night-mode .hero-eyebrow {
+    color: #d9c8df !important;
+}
+
+body.night-mode .hero .lede {
+    color: #ded0e4 !important;
+}
+
+body.night-mode .scroll-cue {
+    color: #cdbbd5 !important;
+}
+
+
+/* =========================================================
+   SURPRISE SECTION
+========================================================= */
+
+.birthday-page .surprise {
+    display: none;
+}
+
+.birthday-page .surprise.show {
+    display: flex !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    transform: translateY(0) !important;
+
+    position: relative;
+    z-index: 10;
+
+    animation: pop .55s var(--ease) both;
+}
+
+
+/* Surprise text night mode */
+
+body.night-mode .birthday-page .surprise h2 {
+    color: #f7eaf8 !important;
+}
+
+body.night-mode .birthday-page .surprise-text {
+    color: #e4d5e9 !important;
+}
+
+body.night-mode .birthday-page .surprise h3 {
+    color: #ff82ad !important;
+}
+
+
+/* =========================================================
+   PHONE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .hero-title {
+        font-size: clamp(38px, 8vw, 60px);
+
+        text-align: center;
+    }
+
+    .hero-title .word {
+        white-space: nowrap;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .hero-title {
+        font-size: clamp(32px, 10.5vw, 50px);
+
+        line-height: 1.04;
+    }
+
+}
+
+
+@media (max-width: 380px) {
+
+    .hero-title {
+        font-size: 30px;
+    }
+
+}
+/* ========================================
+   PRELOADER FINAL FIX
+======================================== */
+
+.preloader {
+    position: fixed !important;
+
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+
+    z-index: 99999 !important;
+
+    opacity: 1;
+    visibility: visible;
+
+    pointer-events: auto;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(255, 105, 160, .16),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            var(--bg),
+            var(--bg2)
+        );
+
+    transition:
+        opacity .6s ease,
+        visibility .6s ease;
+}
+
+.preloader.hide {
+    opacity: 0 !important;
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+}
+
+.preloader-heart {
+    font-size: 52px;
+
+    animation:
+        heartbeat 1.05s ease-in-out infinite;
+}
+
+.preloader-bar {
+    width: 200px;
+    height: 5px;
+
+    margin-top: 4px;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+
+    background: rgba(139, 92, 246, .18);
+}
+
+.preloader-bar span {
+    display: block;
+
+    width: 5%;
+    height: 100%;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--pink-deep),
+            var(--purple)
+        );
+
+    transition: width .25s ease;
+}
+
+.preloader-label {
+    margin: 0;
+
+    font-family: var(--hand);
+
+    font-size: 19px;
+    font-weight: 600;
+
+    color: var(--text-soft);
+}
+
+
+/* Night mode */
+
+body.night-mode .preloader {
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(160, 100, 255, .18),
+            transparent 35%
+        ),
+        #0b0813;
+}
+
+body.night-mode .preloader-label {
+    color: #d9c8df !important;
+}
+/* ========================================
+   PRELOADER
+======================================== */
+
+#preloader {
+    position: fixed !important;
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 999999 !important;
+
+    opacity: 1;
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transition:
+        opacity .6s ease,
+        visibility .6s ease;
+}
+
+#preloader.hide {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+#preloaderFill {
+    display: block;
+
+    width: 5%;
+    height: 100%;
+
+    border-radius: 999px;
+
+    background: linear-gradient(
+        90deg,
+        #ff4e91,
+        #8b5cf6
+    );
+
+    transition: width .35s ease;
+}

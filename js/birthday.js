@@ -1,4 +1,13 @@
 // ========================================
+// ACCESSIBILITY
+// ========================================
+
+const prefersReducedMotion =
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const pointerFine =
+    window.matchMedia("(pointer: fine)").matches;
+// ========================================
 // PROFILE MENU
 // ========================================
 
@@ -24,10 +33,10 @@ if (profileBtn && profileMenu) {
 }
 
 if (restartButton) {
-  restartButton.addEventListener("c  ick", () => {
-    window.location.href =
+  restartButton.addEventListener("click", () => {
+    window.location.href = 
     window.getBirthdayPageUrl("intro.html");
-  });
+});
 }
 
 if (refreshButton) {
@@ -54,53 +63,64 @@ const surpriseSection = document.getElementById("surpriseSection");
 // SURPRISE BUTTONS
 // ========================================
 
-// Main surprise button
-if (surpriseBtn && surpriseSection) {
-  surpriseBtn.addEventListener("click", () => {
+function openSurprise() {
+
+    if (!surpriseSection) return;
+
+    // Show the surprise section
     surpriseSection.classList.add("show");
 
-    surpriseSection.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
+    // Make sure it is actually visible
+    surpriseSection.style.display = "flex";
+    surpriseSection.style.opacity = "1";
+    surpriseSection.style.visibility = "visible";
+    surpriseSection.style.transform = "translateY(0)";
 
-    confettiBurst(
-      window.innerWidth / 2,
-      window.innerHeight / 2,
-      120
-    );
-  });
+    // Scroll to it
+    setTimeout(() => {
+        surpriseSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }, 50);
+
+    // Confetti
+    if (typeof confettiBurst === "function") {
+        confettiBurst(
+            window.innerWidth / 2,
+            window.innerHeight / 2,
+            120
+        );
+    }
 }
 
-// Top navigation surprise button
-if (navCta && surpriseSection) {
-  navCta.addEventListener("click", () => {
-    surpriseSection.classList.add("show");
 
-    surpriseSection.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
+// Main hero surprise button
+if (surpriseBtn) {
+
+    surpriseBtn.addEventListener("click", (event) => {
+
+        event.preventDefault();
+
+        openSurprise();
+
     });
 
-    confettiBurst(
-      window.innerWidth / 2,
-      window.innerHeight / 2,
-      120
-    );
-  });
 }
-const prefersReducedMotion = matchMedia(
-  "(prefers-reduced-motion: reduce)",
-).matches;
-const pointerFine = matchMedia("(pointer:fine)").matches;
 
-/* ---------- assign --i index to every reveal-stagger child (generic, any length) ---------- */
-document.querySelectorAll(".reveal-stagger").forEach((container) => {
-  [...container.children].forEach((child, i) =>
-    child.style.setProperty("--i", i),
-  );
-});
 
+// Top navigation Surprise button
+if (navCta) {
+
+    navCta.addEventListener("click", (event) => {
+
+        event.preventDefault();
+
+        openSurprise();
+
+    });
+
+}
 /* ---------- confetti (canvas particle system) ---------- */
 const fxCanvas = document.getElementById("fxCanvas");
 const ctx = fxCanvas ? fxCanvas.getContext("2d") : null;
@@ -503,63 +523,66 @@ if (pointerFine && !prefersReducedMotion) {
   });
 }
 
-/* ---------- preloader ---------- */
+/* ========================================
+   PRELOADER
+======================================== */
 
 const preloader = document.getElementById("preloader");
 const preloaderFill = document.getElementById("preloaderFill");
 
-const photosToLoad = [
-  "../Imgs/decoration.webp",
-  "../Imgs/birthday.cat.webp",
-  "../Imgs/Happybirthday.webp"
-];
+if (preloader) {
 
-let loadedCount = 0;
+    // Make sure the loader is visible
+    preloader.classList.remove("hide");
 
-function bumpPreloader() {
-  loadedCount++;
+    preloader.style.display = "flex";
+    preloader.style.opacity = "1";
+    preloader.style.visibility = "visible";
+    preloader.style.pointerEvents = "auto";
 
-  if (preloaderFill) {
-    preloaderFill.style.width =
-      Math.round((loadedCount / photosToLoad.length) * 100) + "%";
-  }
 }
 
-const loadPromises = photosToLoad.map((src) => {
 
-  return new Promise((resolve) => {
+/* Start progress animation */
 
-    const img = new Image();
+if (preloaderFill) {
 
-    img.onload = () => {
-      bumpPreloader();
-      resolve();
-    };
+    preloaderFill.style.width = "5%";
 
-    img.onerror = () => {
-      bumpPreloader();
-      resolve();
-    };
+    setTimeout(() => {
+        preloaderFill.style.width = "25%";
+    }, 300);
 
-    img.src = src;
-  });
+    setTimeout(() => {
+        preloaderFill.style.width = "50%";
+    }, 700);
 
-});
+    setTimeout(() => {
+        preloaderFill.style.width = "75%";
+    }, 1100);
 
-const minWait = new Promise((resolve) => {
-  setTimeout(resolve, 900);
-});
+    setTimeout(() => {
+        preloaderFill.style.width = "92%";
+    }, 1500);
 
-Promise.all([
-  ...loadPromises,
-  minWait
-]).then(() => {
+    setTimeout(() => {
+        preloaderFill.style.width = "100%";
+    }, 1900);
 
-  if (preloader) {
+}
+
+
+/* Finish loading */
+
+setTimeout(() => {
+
+    if (!preloader) return;
+
     preloader.classList.add("hide");
-  }
 
-});
+    preloader.style.pointerEvents = "none";
+
+}, 2350);
 // ========================================
 // FALLING FLOWERS
 // ========================================
