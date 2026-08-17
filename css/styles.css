@@ -774,45 +774,6 @@ body.intro-active {
     }
 }
 
-
-
-.hero {
-
-    min-height: 100vh;
-    padding: 80px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    background:
-        radial-gradient(circle at top left, #ffd6e3, transparent 35%),
-        radial-gradient(circle at bottom right, #ffe9c7, transparent 35%),
-        #fff5f7;
-
-    position: relative;
-    overflow: hidden;
-}
-
-.hero::before {
-    content: "🎈";
-    position: absolute;
-    top: 70px;
-    left: 10%;
-    font-size: 55px;
-    animation: float 4s ease-in-out infinite;
-}
-
-.hero::after {
-    content: "🎈";
-    position: absolute;
-    top: 120px;
-    left: 10%;
-    font-size: 45px;
-    animation: float 5s ease-in-out infinite;
-}
-
 .small-text {
     font-size: 16px;
     color: #a86b7b;
@@ -2801,6 +2762,7 @@ body.night-mode .firefly-canvas {
 }
 
 
+
 /* ==================================================
    SCROLL REVEAL
 ================================================== */
@@ -3316,472 +3278,438 @@ body:not(.night-mode) {
 
 @media (max-width: 550px) {
 
+    /* -------------------------------
+       PROFILE
+    ------------------------------- */
+
     .site-profile {
-        width: 52px;
-        height: 52px;
-        top: 15px;
-        left: 15px;
+        width: 52px !important;
+        height: 52px !important;
+        top: 14px !important;
+        left: 14px !important;
+        z-index: 30000 !important;
     }
 
+
+    /* -------------------------------
+       GAME / PUZZLE
+    ------------------------------- */
+
     .game-screen {
-        padding: 45px 15px;
+        width: 100% !important;
+        min-height: 100dvh !important;
+        padding: 75px 15px 35px !important;
+        box-sizing: border-box !important;
     }
 
     .game-content {
-        width: 94%;
+        width: min(94%, 420px) !important;
+        margin: 0 auto !important;
     }
 
     .game-content h1 {
-        font-size: 40px;
+        font-size: clamp(32px, 10vw, 40px) !important;
+        line-height: 1.1 !important;
     }
 
     .game-instruction {
-        font-size: 14px;
-        margin-bottom: 20px;
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 20px !important;
     }
 
     .puzzle {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        margin-top: 25px;
+        width: 100% !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 9px !important;
+        margin-top: 25px !important;
     }
 
     .puzzle-card {
-        border-radius: 12px;
+        width: 100% !important;
+        aspect-ratio: 1 / 1 !important;
+        border-radius: 12px !important;
     }
 
     .card-image {
-        border-radius: 12px;
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 12px !important;
+        object-fit: cover !important;
     }
 
     .card-front {
-        font-size: 27px;
+        font-size: 27px !important;
     }
 
     .puzzle-complete {
-        padding: 20px;
+        width: min(100%, 360px) !important;
+        padding: 20px !important;
+        box-sizing: border-box !important;
     }
 
     .puzzle-complete h2 {
-        width: 210px;
-        height: 210px;
-
-        margin: 20px auto;
-
+        width: min(210px, 65vw) !important;
+        height: min(210px, 65vw) !important;
+        margin: 20px auto !important;
     }
 
 
-    @keyframes surpriseButtonAppear {
-        from {
-            opacity: 0;
-            transform: translateY(15px);
-        }
+    /* -------------------------------
+       GIFT REVEAL
+    ------------------------------- */
 
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .gift-reveal {
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     .gift-reveal h2 {
-        font-size: 24px;
+        font-size: 24px !important;
+        line-height: 1.2 !important;
     }
 
     .gift-reveal img {
-        width: 180px;
-        height: 180px;
+        width: 180px !important;
+        height: 180px !important;
+        object-fit: cover !important;
     }
 
     .game-gift {
-        font-size: 65px;
+        font-size: 65px !important;
     }
+
+
+    /* -------------------------------
+       CAKE PAGE
+    ------------------------------- */
 
     .cake-area {
-        transform: scale(0.78);
+        width: 100% !important;
+        max-width: 430px !important;
 
-        margin-top: -20px;
-        margin-bottom: -20px;
+        margin: 0 auto !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        transform: none !important;
+
+        box-sizing: border-box !important;
     }
 
-    .cake-page h1 {
-        font-size: 38px;
+    .cake {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        transform-origin: center center !important;
     }
 
     .cake-close {
-        top: 15px;
-        right: 15px;
+        position: fixed !important;
+
+        top: 75px !important;
+        right: 15px !important;
+
+        z-index: 30001 !important;
     }
- 
-    
+
+
+    /* -------------------------------
+       MUSIC BUTTON
+    ------------------------------- */
+
+    #musicButton {
+        position: fixed !important;
+
+        top: 14px !important;
+        right: 14px !important;
+
+        z-index: 30000 !important;
+
+        max-width: calc(100vw - 90px) !important;
+
+        white-space: nowrap !important;
+    }
+
+
+    /* -------------------------------
+       SCRATCH PAGE
+    ------------------------------- */
+
+    .scratch-page {
+        width: 100% !important;
+        min-height: 100dvh !important;
+
+        padding:
+            85px 16px 45px !important;
+
+        box-sizing: border-box !important;
+
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+    }
+
+    .scratch-content {
+        width: 100% !important;
+        max-width: 420px !important;
+
+        margin: 0 auto !important;
+
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .scratch-content h1 {
+        width: 100% !important;
+
+        font-size:
+            clamp(2.15rem, 11vw, 3rem) !important;
+
+        line-height: 1.05 !important;
+
+        text-align: center !important;
+    }
+
+    .scratch-instruction {
+        width: 100% !important;
+
+        font-size: 16px !important;
+        line-height: 1.5 !important;
+
+        text-align: center !important;
+
+        margin:
+            12px auto 24px !important;
+    }
+
+    .scratch-card {
+        width:
+            min(330px, 88vw) !important;
+
+        height:
+            min(420px, 112vw) !important;
+
+        margin:
+            0 auto !important;
+
+        flex-shrink: 0 !important;
+
+        overflow: hidden !important;
+
+        border-radius: 26px !important;
+    }
+
+    #scratchCanvas {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+
+    /* -------------------------------
+       SCRATCH HIDDEN MESSAGE
+    ------------------------------- */
+
+    .hidden-message {
+        position: absolute !important;
+
+        inset: 0 !important;
+
+        width: 100% !important;
+        height: 100% !important;
+
+        padding:
+            30px 22px !important;
+
+        box-sizing: border-box !important;
+
+        display: flex !important;
+        flex-direction: column !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        text-align: center !important;
+    }
 
     .hidden-message h2 {
-        font-size: 28px;
-         padding: 150px;
-        
+        width: 100% !important;
+
+        margin: 0 0 15px !important;
+
+        padding: 0 !important;
+
+        font-size:
+            clamp(25px, 8vw, 32px) !important;
+
+        line-height: 1.15 !important;
+
+        text-align: center !important;
+
+        overflow-wrap: anywhere !important;
     }
 
     .hidden-message p {
-        font-size: 15px;
+        width: 100% !important;
+
+        margin: 0 auto !important;
+
+        padding: 0 !important;
+
+        font-size: 16px !important;
+
+        line-height: 1.65 !important;
+
+        text-align: center !important;
+
+        overflow-wrap: break-word !important;
     }
 
-.hero {
-    min-height: 100vh;
-    padding: 60px 18px;
-}
+    .scratch-continue-button {
+        width:
+            min(100%, 310px) !important;
 
-.hero h1 {
-    font-size: 48px;
-}
+        margin:
+            28px auto 0 !important;
 
-.hero h2 {
-    font-size: 23px;
-}
+        display: none;
 
-/* FINAL INTRO SCREEN FIX */
+        align-items: center !important;
+        justify-content: center !important;
 
-.intro-screen {
-    position: fixed !important;
-    inset: 0 !important;
+        box-sizing: border-box !important;
+    }
 
-    width: 100vw !important;
-    max-width: none !important;
+    .scratch-continue-button.show {
+        display: inline-flex !important;
 
-    height: 100vh !important;
-
-    z-index: 10000 !important;
-}
+        animation:
+            scratchButtonAppear
+            0.6s ease !important;
+    }
 
 
-.intro-content {
-    width: 90%;
-    max-width: 90vh;
-}
+    /* -------------------------------
+       BIRTHDAY PAGE
+    ------------------------------- */
 
-.intro-content h1 {
-    font-size: 48px;
-}
+    .birthday-page .hero {
+        width: calc(100% - 24px) !important;
 
-.intro-question {
-    font-size: 16px;
-}
+        margin:
+            12px auto !important;
 
-.intro-buttons {
-    gap: 10px;
-}
-
-.intro-buttons button {
-    padding: 12px 24px;
-    font-size: 14px;
-}
-
-.intro {
-    font-size: 15px;
-}
-
-.message,
-.memories,
-.surprise {
-    padding: 65px 18px;
-}
-
-.message h2,
-.memories h2,
-.surprise h2 {
-    font-size: 31px;
-}
-
-.memories-gallery {
-    grid-template-columns: 1fr;
-    gap: 20px;
-}
-
-.memory img {
-    height: 300px;
-}
-
-.gift {
-    font-size: 75px;
-}
-
-.surprise h3 {
-    font-size: 25px;
-}
-}
- 
-.birthday-page .hero {
+        min-height: auto !important;
 
         padding:
-            80px 18px;
+            85px 18px 45px !important;
 
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        gap: 25px !important;
+
+        box-sizing: border-box !important;
+
+        overflow: hidden !important;
     }
 
-    .birthday-page .hero .intro {
+    .birthday-page .hero-inner {
+        width: 100% !important;
+        max-width: 100% !important;
 
-        font-size: 17px;
+        order: 1 !important;
 
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+
+        text-align: center !important;
     }
 
-    .birthday-page .message,
-    .birthday-page .memories,
-    .birthday-page .surprise {
+    .birthday-page .hero-title {
+        width: 100% !important;
 
-        padding:
-            90px 18px;
-
-    }
-/* =========================================================
-   RESPONSIVE BIRTHDAY LAYOUT
-========================================================= */
-
-/* Laptop / small desktop / tablet landscape */
-@media (max-width: 1250px) {
-
-    .hero {
-        min-height: auto;
-        padding:
-            75px 30px 55px;
-    }
-
-    .hero:before {
-        order: 1;
-    }
-
-    .hero-inner {
-        order: 2;
-        max-width: 760px;
-    }
-
-    .hero-visual {
-        order: 3;
-
-        position: relative;
-        right: auto;
-        top: auto;
-
-        margin: 40px auto 0;
-
-        width: 300px;
-        height: 380px;
-    }
-
-    .hero-title {
         font-size:
-            clamp(38px, 6vw, 62px);
-    }
-}
+            clamp(31px, 10vw, 48px) !important;
 
-/* Tablet */
-@media (max-width: 900px) {
+        line-height: 1.08 !important;
 
-    .hero,
-    .letter,
-    .surprise {
-        width: min(94%, 760px);
+        text-align: center !important;
+
+        overflow-wrap: break-word !important;
     }
 
-    .hero-title {
-        font-size:
-            clamp(34px, 8vw, 58px);
+    .birthday-page .hero-title .word {
+        margin-right: .12em !important;
     }
 
-    .hero .lede {
-        font-size: 17px;
+    .birthday-page .hero .lede {
+        width: 100% !important;
+
+        max-width: 340px !important;
+
+        margin:
+            20px auto 0 !important;
+
+        font-size: 16px !important;
+
+        line-height: 1.7 !important;
+
+        text-align: center !important;
     }
 
-    .letter {
-        padding: 48px 28px;
+    .birthday-page #surprise-button {
+        width:
+            min(100%, 310px) !important;
+
+        margin:
+            28px auto 0 !important;
     }
 
-    .letter-body .line {
-        font-size: 17px;
-        line-height: 1.8;
+    .birthday-page .hero-visual {
+        width:
+            min(270px, 82vw) !important;
+
+        height: 350px !important;
+
+        margin:
+            10px auto 0 !important;
+
+        position: relative !important;
+
+        right: auto !important;
+        top: auto !important;
+
+        order: 2 !important;
     }
 
-    .story {
-        width: min(94%, 760px);
+    .birthday-page .scroll-cue {
+        margin:
+            25px auto 0 !important;
     }
 
-    .reel-stage {
-        width: min(380px, 82vw);
+
+    /* -------------------------------
+       GENERAL MOBILE SAFETY
+    ------------------------------- */
+
+    html,
+    body {
+        width: 100% !important;
+        max-width: 100% !important;
+
+        overflow-x: hidden !important;
     }
 
-    .musicButton,
-    #musicButton {
-        z-index: 20000;
-    }
-}
-
-/* Phone */
-@media (max-width: 700px) {
-
-    .hero,
-    .letter,
-    .surprise {
-        width: calc(100% - 24px);
-        margin-left: 12px;
-        margin-right: 12px;
-
-        border-radius: 24px;
-        padding: 38px 18px;
-    }
-
-    .hero {
-        min-height: auto;
-    }
-
-    .hero-title {
-        font-size:
-            clamp(31px, 10vw, 48px);
-
-        line-height: 1.08;
-    }
-
-    .hero-title .word {
-        margin-right: .16em;
-    }
-
-    .hero .lede {
-        font-size: 16px;
-        line-height: 1.7;
-    }
-
-    #surprise-button {
-        width: min(100%, 310px);
-        padding: 14px 20px;
-    }
-
-    .hero-visual {
-        width: 270px;
-        height: 350px;
-        margin-top: 28px;
-    }
-
-    .hero-visual .vitals-card {
-        width: 180px;
-        margin: 0 auto;
-    }
-
-    .letter {
-        padding: 36px 18px;
-    }
-
-    .letter h2 {
-        font-size: 30px;
-        line-height: 1.15;
-    }
-
-    .letter-body {
-        width: 100%;
-    }
-
-    .letter-body .line {
-        font-size: 16px;
-        line-height: 1.8;
-        margin-bottom: 15px;
-    }
-
-    .trait-chips {
-        justify-content: center;
-    }
-
-    .chip {
-        font-size: 13px;
-        padding: 8px 13px;
-    }
-
-    .reel-head {
-        width: calc(100% - 24px);
-        padding: 0 10px;
-    }
-
-    .reel-stage {
-        width: min(330px, 86vw);
-    }
-
-    .reel-frame figcaption {
-        font-size: 16px;
-    }
-
-    .gift {
-        font-size: 70px;
-    }
-
-    .surprise-text {
-        font-size: 16px;
-        line-height: 1.8;
-    }
-
-    .section-dots {
-        display: none !important;
-    }
-}
-  
-/* Small phone */
-@media (max-width: 480px) {
-
-    .site-profile {
-        width: 46px;
-        height: 46px;
-        top: 12px;
-        left: 12px;
-    }
-
-    #musicButton {
-        top: 12px;
-        right: 12px;
-        padding: 9px 13px;
-        font-size: 12px;
-    }
-
-    .top-nav {
-        padding: 10px 12px;
-    }
-
-    .nav-row {
-        width: 100%;
-    }
-
-    .nav-cta {
-        padding: 8px 13px;
-        font-size: 11px;
-    }
-
-    .hero-title {
-        font-size: 30px;
-    }
-
-    .hero-eyebrow {
-        font-size: 16px;
-    }
-
-    .hero-visual {
-        width: 245px;
-        height: 325px;
-    }
-
-    .letter-body .line {
-        font-size: 15.5px;
-        line-height: 1.78;
-    }
-
-    .letter h2 {
-        font-size: 27px;
-    }
-
-    .reel-stage {
-        width: 82vw;
-    }
-
-    .frame-card {
-        padding: 9px 9px 40px;
-    }
-
-    .reel-frame figcaption {
-        font-size: 14px;
-    }
-
-    .profile-menu {
-        left: 12px;
-        width: min(240px, calc(100vw - 24px));
+    img,
+    canvas,
+    video {
+        max-width: 100% !important;
     }
 }
