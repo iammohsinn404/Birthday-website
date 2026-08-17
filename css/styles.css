@@ -3272,7 +3272,57 @@ body:not(.night-mode) {
 #copyLinkButton {
     white-space: nowrap;
 }
+/* ========================================
+   BIRTHDAY HERO — DESKTOP FIX
+======================================== */
 
+@media (min-width: 761px) {
+
+    .birthday-page .hero-inner {
+        position: absolute !important;
+
+        left: 6% !important;
+        right: auto !important;
+
+        top: 50% !important;
+
+        width: 48% !important;
+        max-width: 560px !important;
+
+        margin: 0 !important;
+
+        transform: translateY(-50%) !important;
+
+        z-index: 3 !important;
+
+        text-align: center !important;
+    }
+
+    .birthday-page .hero-title {
+        width: 100% !important;
+
+        font-size:
+            clamp(42px, 5.3vw, 62px) !important;
+
+        line-height: 1.05 !important;
+
+        text-align: center !important;
+    }
+
+    .birthday-page .hero-visual {
+        position: absolute !important;
+
+        right: 4% !important;
+        left: auto !important;
+
+        top: 50% !important;
+
+        margin-top: -190px !important;
+
+        z-index: 2 !important;
+    }
+
+}
 /* ================================
    PHONE
 ================================ */

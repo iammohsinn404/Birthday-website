@@ -4,14 +4,13 @@
 
 (function () {
 
+    // ========================================
+    // READ URL PARAMETERS
+    // ========================================
+
     const params = new URLSearchParams(
         window.location.search
     );
-
-
-    // ========================================
-    // GET INFORMATION FROM LINK
-    // ========================================
 
     const name = params.get("name");
     const day = params.get("day");
@@ -21,112 +20,53 @@
 
 
     // ========================================
-// CHECK PERSONALIZED LINK
-// ========================================
-
-const hasPersonalizedLink =
-    name &&
-    day &&
-    month &&
-    year &&
-    relationship;
-
-
-// ========================================
-// NORMAL INTRO PAGE
-// ========================================
-
-const currentPage =
-    window.location.pathname
-        .split("/")
-        .pop()
-        .toLowerCase();
-
-
-if (
-    currentPage === "intro.html" &&
-    !hasPersonalizedLink
-) {
-
-    localStorage.removeItem(
-        "birthdayPersonalData"
-    );
-
-    return;
-
-}
-
-
-// ========================================
-// SAVE INFORMATION FROM LINK
-// ========================================
-
-if (hasPersonalizedLink) {
-
-    localStorage.setItem(
-        "birthdayPersonalData",
-        JSON.stringify({
-            name,
-            day,
-            month,
-            year,
-            relationship
-        })
-    );
-
-}
-
-
-// ========================================
-// GET SAVED INFORMATION
-// ========================================
-
-let person = null;
-
-try {
-
-    person = JSON.parse(
-        localStorage.getItem(
-            "birthdayPersonalData"
-        )
-    );
-
-} catch {
-
-    person = null;
-
-}
-
-
-// No personalized information
-if (!person) {
-    return;
-}
-    // ========================================
-    // GET SAVED INFORMATION
+    // CHECK PERSONALIZED LINK
     // ========================================
 
-    let person = null;
-
-    try {
-
-        person = JSON.parse(
-            localStorage.getItem(
-                "birthdayPersonalData"
-            )
-        );
-
-    } catch {
-
-        person = null;
-
-    }
+    const hasPersonalizedLink =
+        !!name &&
+        !!day &&
+        !!month &&
+        !!year &&
+        !!relationship;
 
 
-    // No personalized information
-    if (!person) {
+    // ========================================
+    // KEEP PERSONALIZATION WHEN MOVING
+    // BETWEEN PAGES
+    // ========================================
+
+    window.getBirthdayPageUrl = function (page) {
+
+        if (!hasPersonalizedLink) {
+            return page;
+        }
+
+        return `${page}?${params.toString()}`;
+
+    };
+
+
+    // ========================================
+    // NORMAL PAGE
+    // ========================================
+
+    if (!hasPersonalizedLink) {
         return;
     }
+
+
+    // ========================================
+    // PERSONAL DATA
+    // ========================================
+
+    const person = {
+        name,
+        day,
+        month,
+        year,
+        relationship
+    };
 
 
     // ========================================
@@ -183,7 +123,6 @@ if (!person) {
 
     // ========================================
     // FULL DATE
-    // Example: 17 April 2003
     // ========================================
 
     const fullDate =
@@ -199,7 +138,6 @@ if (!person) {
 
     // ========================================
     // SHORT DATE
-    // Example: 17 April
     // ========================================
 
     const shortDate =

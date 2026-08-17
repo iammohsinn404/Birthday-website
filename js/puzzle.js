@@ -25,7 +25,8 @@ if (profileBtn && profileMenu) {
 
 if (restartButton) {
   restartButton.addEventListener("click", () => {
-    window.location.href = "intro.html";
+    window.location.href =
+    window.getBirthdayPageUrl("intro.html");
   });
 }
 
@@ -159,7 +160,8 @@ function puzzleComplete() {
   successSound.play().catch(() => {});
 
   setTimeout(() => {
-    window.location.href = "monkey.html";
+    window.location.href =
+    window.getBirthdayPageUrl("monkey.html");
   }, 500);
 }
 

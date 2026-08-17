@@ -24,8 +24,9 @@ if (profileBtn && profileMenu) {
 }
 
 if (restartButton) {
-  restartButton.addEventListener("click", () => {
-    window.location.href = "intro.html";
+  restartButton.addEventListener("c  ick", () => {
+    window.location.href =
+    window.getBirthdayPageUrl("intro.html");
   });
 }
 
@@ -235,7 +236,8 @@ document.querySelectorAll(".vitals-num[data-target]").forEach(countUp);
 const scratchButton = document.getElementById("scratchButton");
 
 scratchButton?.addEventListener("click", () => {
-  window.location.href = "scratch.html";
+  window.location.href =
+    window.getBirthdayPageUrl("scratch.html");
 });
 
 /* nav bar background/shadow once the page is scrolled */

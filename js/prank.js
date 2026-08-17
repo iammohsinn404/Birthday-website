@@ -25,7 +25,8 @@ if (profileBtn && profileMenu) {
 
 if (restartButton) {
   restartButton.addEventListener("click", () => {
-    window.location.href = "intro.html";
+    window.location.href =
+    window.getBirthdayPageUrl("intro.html");
   });
 }
 
@@ -241,6 +242,7 @@ if (surpriseBtn) {
 if (birthdayBtn) {
   birthdayBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    window.location.href = "birthday.html";
+    window.location.href =
+    window.getBirthdayPageUrl("birthday.html");
   });
 }

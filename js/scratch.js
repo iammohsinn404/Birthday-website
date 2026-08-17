@@ -25,7 +25,8 @@ if (profileBtn && profileMenu) {
 
 if (restartButton) {
   restartButton.addEventListener("click", () => {
-    window.location.href = "intro.html";
+    window.location.href =
+    window.getBirthdayPageUrl("intro.html");
   });
 }
 

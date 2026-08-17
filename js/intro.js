@@ -11,7 +11,8 @@ const noButton = document.getElementById("noButton");
 
 if (yesButton) {
   yesButton.addEventListener("click", () => {
-    window.location.href = "puzzle.html";
+    window.location.href =
+    window.getBirthdayPageUrl("puzzle.html");
   });
 }
 
@@ -284,7 +285,7 @@ if (generateLinkButton) {
     // ----------------------------------------
 
     const link =
-      `${window.location.origin}/?${params.toString()}`;
+  `${window.location.origin}/intro.html?${params.toString()}`;
 
 
     // ----------------------------------------
