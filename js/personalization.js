@@ -21,31 +21,87 @@
 
 
     // ========================================
-    // SAVE INFORMATION FROM LINK
-    // ========================================
+// CHECK PERSONALIZED LINK
+// ========================================
 
-    if (
-        name &&
-        day &&
-        month &&
-        year &&
-        relationship
-    ) {
-
-        localStorage.setItem(
-            "birthdayPersonalData",
-            JSON.stringify({
-                name,
-                day,
-                month,
-                year,
-                relationship
-            })
-        );
-
-    }
+const hasPersonalizedLink =
+    name &&
+    day &&
+    month &&
+    year &&
+    relationship;
 
 
+// ========================================
+// NORMAL INTRO PAGE
+// ========================================
+
+const currentPage =
+    window.location.pathname
+        .split("/")
+        .pop()
+        .toLowerCase();
+
+
+if (
+    currentPage === "intro.html" &&
+    !hasPersonalizedLink
+) {
+
+    localStorage.removeItem(
+        "birthdayPersonalData"
+    );
+
+    return;
+
+}
+
+
+// ========================================
+// SAVE INFORMATION FROM LINK
+// ========================================
+
+if (hasPersonalizedLink) {
+
+    localStorage.setItem(
+        "birthdayPersonalData",
+        JSON.stringify({
+            name,
+            day,
+            month,
+            year,
+            relationship
+        })
+    );
+
+}
+
+
+// ========================================
+// GET SAVED INFORMATION
+// ========================================
+
+let person = null;
+
+try {
+
+    person = JSON.parse(
+        localStorage.getItem(
+            "birthdayPersonalData"
+        )
+    );
+
+} catch {
+
+    person = null;
+
+}
+
+
+// No personalized information
+if (!person) {
+    return;
+}
     // ========================================
     // GET SAVED INFORMATION
     // ========================================
