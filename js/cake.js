@@ -25,8 +25,7 @@ if (profileBtn && profileMenu) {
 
 if (restartButton) {
   restartButton.addEventListener("click", () => {
-    window.location.href =
-    window.getBirthdayPageUrl("intro.html");
+    window.location.href = window.getBirthdayPageUrl("intro.html");
   });
 }
 
@@ -96,8 +95,7 @@ if (cakeArea) {
 // More Forward → Poop
 if (moreForwardButton) {
   moreForwardButton.addEventListener("click", () => {
-    window.location.href =
-    window.getBirthdayPageUrl("prank.html");
+    window.location.href = window.getBirthdayPageUrl("prank.html");
   });
 }
 

@@ -25,8 +25,7 @@ if (profileBtn && profileMenu) {
 
 if (restartButton) {
   restartButton.addEventListener("click", () => {
-    window.location.href =
-    window.getBirthdayPageUrl("intro.html");
+    window.location.href = window.getBirthdayPageUrl("intro.html");
   });
 }
 
@@ -110,8 +109,7 @@ if (gameGift) {
       document.querySelector(".game-content").appendChild(cakeButton);
 
       cakeButton.addEventListener("click", () => {
-        window.location.href =
-        window.getBirthdayPageUrl("cake.html");
+        window.location.href = window.getBirthdayPageUrl("cake.html");
       });
     }, 5000);
   });

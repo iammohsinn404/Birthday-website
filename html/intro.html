@@ -1,184 +1,134 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Birthday Website 🎂</title>
 
-    <link rel="stylesheet" href="../css/styles.css">
-</head>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
 
-<body>
+  <body>
     <!-- Firefly Glow Cursor -->
 
-<div class="glow-cursor" id="glowCursor">
-    <div class="glow-cursor-tail" id="glowCursorTail"></div>
-    <div class="glow-cursor-halo"></div>
-    <div class="glow-cursor-core"></div>
-</div>
+    <div class="glow-cursor" id="glowCursor">
+      <div class="glow-cursor-tail" id="glowCursorTail"></div>
+      <div class="glow-cursor-halo"></div>
+      <div class="glow-cursor-core"></div>
+    </div>
 
-<div class="glow-cursor-ring" id="glowCursorRing">
-    <svg viewBox="0 0 100 100" class="ring-svg">
-        <circle class="ring-path" cx="50" cy="50" r="42"/>
-        <circle class="ring-bead" cx="90.6" cy="60.9" r="2.4"/>
-        <circle class="ring-bead" cx="46.4" cy="91.8" r="2.4"/>
-        <circle class="ring-bead" cx="8.6" cy="42.7" r="2.4"/>
-        <circle class="ring-bead" cx="71" cy="13.6" r="2.4"/>
-    </svg>
-</div>
+    <div class="glow-cursor-ring" id="glowCursorRing">
+      <svg viewBox="0 0 100 100" class="ring-svg">
+        <circle class="ring-path" cx="50" cy="50" r="42" />
+        <circle class="ring-bead" cx="90.6" cy="60.9" r="2.4" />
+        <circle class="ring-bead" cx="46.4" cy="91.8" r="2.4" />
+        <circle class="ring-bead" cx="8.6" cy="42.7" r="2.4" />
+        <circle class="ring-bead" cx="71" cy="13.6" r="2.4" />
+      </svg>
+    </div>
 
-<canvas class="firefly-canvas" id="fireflyCanvas"></canvas>
+    <canvas class="firefly-canvas" id="fireflyCanvas"></canvas>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
         <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#e8b04b"/>
-            <stop offset="50%" stop-color="#f2a3ad"/>
-            <stop offset="100%" stop-color="#b9c7a0"/>
+          <stop offset="0%" stop-color="#e8b04b" />
+          <stop offset="50%" stop-color="#f2a3ad" />
+          <stop offset="100%" stop-color="#b9c7a0" />
         </linearGradient>
-    </defs>
-</svg>
+      </defs>
+    </svg>
 
     <button id="profileBtn" class="site-profile" aria-label="Profile">
-    <img src="../Imgs/profile.jpg" alt="Profile">
-</button>
-
-<div class="profile-menu" id="profileMenu">
-
-    <button id="levelsButton">
-        🎮 Levels
+      <img src="../Imgs/profile.jpg" alt="Profile" />
     </button>
 
-    <div class="levels-menu" id="levelsMenu">
+    <div class="profile-menu" id="profileMenu">
+      <button id="levelsButton">🎮 Levels</button>
 
-        <button data-level="intro.html">
-            🏠 Intro
-        </button>
+      <div class="levels-menu" id="levelsMenu">
+        <button data-level="intro.html">🏠 Intro</button>
 
-        <button data-level="puzzle.html">
-            🧩 Level 1 — Puzzle
-        </button>
+        <button data-level="puzzle.html">🧩 Level 1 — Puzzle</button>
 
-        <button data-level="monkey.html">
-            🐒 Level 2 — Monkey
-        </button>
+        <button data-level="monkey.html">🐒 Level 2 — Monkey</button>
 
-        <button data-level="cake.html">
-            🎂 Level 3 — Cake
-        </button>
+        <button data-level="cake.html">🎂 Level 3 — Cake</button>
 
-        <button data-level="prank.html">
-            😈 Level 4 — Prank
-        </button>
+        <button data-level="prank.html">😈 Level 4 — Prank</button>
 
-        <button data-level="birthday.html">
-            🎉 Level 5 — Birthday
-        </button>
+        <button data-level="birthday.html">🎉 Level 5 — Birthday</button>
 
-        <button data-level="scratch.html">
-            🎁 Level 6 — Scratch
-        </button>
+        <button data-level="scratch.html">🎁 Level 6 — Scratch</button>
+      </div>
 
+      <button id="createLinkButton">🔗 Create Birthday Link</button>
+
+      <button id="themeButton">🌙 Night Mode</button>
     </div>
-
-    <button id="createLinkButton">
-        🔗 Create Birthday Link
-    </button>
-
-    <button id="themeButton">
-        🌙 Night Mode
-    </button>
-
-</div>
-     <button id="musicButton">
-        Play Music
-     </button>
+    <button id="musicButton">Play Music</button>
 
     <div class="intro-screen" id="introScreen">
+      <div class="intro-content">
+        <p class="intro-small">✨ Something special is waiting...</p>
 
-        <div class="intro-content">
+        <h1>Are You Excited?</h1>
 
-            <p class="intro-small">
-                ✨ Something special is waiting...
-            </p>
+        <p class="intro-question">I Made Something just for youh 🎂</p>
 
-            <h1>
-                Are You Excited?
-            </h1>
+        <div class="intro-buttons">
+          <button id="yesButton">YES! 🎉</button>
 
-            <p class="intro-question">
-                I Made Something just for youh 🎂
-            </p>
-
-            <div class="intro-buttons">
-
-                <button id="yesButton">
-                    YES! 🎉
-                </button>
-
-                <button id="noButton">
-                    NO! 😐
-                </button>
-
-            </div>
-            <div id="linkGenerator" class="link-generator">
-                <h2> Create A Birthday Link</h2>
-
-                <input
-                    type="text"
-                    id="personName"
-                    placeholder="Person's name">
-
-                <input 
-                    type="number"
-                    id="birthDay"
-                    placeholder="Day"
-                    min="1"
-                    max="31">
-                 <input
-                  
-                  type="number"
-                  id="birthMonth"
-                  placeholder="Month"
-                  min="1"
-                  max="12">
-                <input
-                    type="number"
-                    id="birthYear"
-                    placeholder="Year"
-                    min="1900"
-                    max="2050">
-                    
-                <input     
-                    type="text"
-                    id="relationship"
-                    placeholder="Who is this peron? e.g Best Friend">
-
-                  <button id="generateLinkButton">
-                    Generate Link
-                  </button>  
-                  <div id="generatedLinkBox">
-                    <input
-                        type="text"
-                        id="generatedLink"
-                        readonly>
-                    <button id="copyLinkButton">
-                        Copy Link
-                    </button>
-                  </div>
-            </div>
-
+          <button id="noButton">NO! 😐</button>
         </div>
+        <div id="linkGenerator" class="link-generator">
+          <h2>Create A Birthday Link</h2>
 
+          <input type="text" id="personName" placeholder="Person's name" />
+
+          <input
+            type="number"
+            id="birthDay"
+            placeholder="Day"
+            min="1"
+            max="31"
+          />
+          <input
+            type="number"
+            id="birthMonth"
+            placeholder="Month"
+            min="1"
+            max="12"
+          />
+          <input
+            type="number"
+            id="birthYear"
+            placeholder="Year"
+            min="1900"
+            max="2050"
+          />
+
+          <input
+            type="text"
+            id="relationship"
+            placeholder="Who is this peron? e.g Best Friend"
+          />
+
+          <button id="generateLinkButton">Generate Link</button>
+          <div id="generatedLinkBox">
+            <input type="text" id="generatedLink" readonly />
+            <button id="copyLinkButton">Copy Link</button>
+          </div>
+        </div>
+      </div>
     </div>
-<section>
-    <script src="../js/personalization.js"></script>
-    <script src="../js/intro.js"></script>
-    <script src="../js/music.js"></script>
-    <script src="../js/firefly-cursor.js"></script>
-    <script src="../js/theme.js"></script>
-</section>
-
-</body>
+    <section>
+      <script src="../js/personalization.js"></script>
+      <script src="../js/intro.js"></script>
+      <script src="../js/music.js"></script>
+      <script src="../js/firefly-cursor.js"></script>
+      <script src="../js/theme.js"></script>
+    </section>
+  </body>
 </html>

@@ -3,291 +3,162 @@
 // ========================================
 
 document.addEventListener("DOMContentLoaded", () => {
+  const musicButton = document.getElementById("musicButton");
 
-    const musicButton =
-        document.getElementById("musicButton");
+  if (!musicButton) {
+    return;
+  }
 
-    if (!musicButton) {
-        return;
+  // ========================================
+  // AUDIO
+  // ========================================
+
+  const backgroundMusic = new Audio("../Sounds/cute_music.mp3");
+
+  backgroundMusic.loop = true;
+  backgroundMusic.volume = 0.8;
+  backgroundMusic.preload = "auto";
+
+  // ========================================
+  // STORAGE
+  // ========================================
+
+  const musicKey = "birthday-music-enabled";
+
+  const musicTimeKey = "birthday-music-time";
+
+  // ========================================
+  // UPDATE BUTTON
+  // ========================================
+
+  function updateMusicButton() {
+    if (backgroundMusic.paused) {
+      musicButton.textContent = "Play Music";
+    } else {
+      musicButton.textContent = "Stop Music";
     }
+  }
 
+  // ========================================
+  // SAVE MUSIC POSITION
+  // ========================================
 
-    // ========================================
-    // AUDIO
-    // ========================================
-
-    const backgroundMusic =
-        new Audio("../Sounds/cute_music.mp3");
-
-    backgroundMusic.loop = true;
-    backgroundMusic.volume = 0.8;
-    backgroundMusic.preload = "auto";
-
-
-    // ========================================
-    // STORAGE
-    // ========================================
-
-    const musicKey =
-        "birthday-music-enabled";
-
-    const musicTimeKey =
-        "birthday-music-time";
-
-
-    // ========================================
-    // UPDATE BUTTON
-    // ========================================
-
-    function updateMusicButton() {
-
-        if (backgroundMusic.paused) {
-
-            musicButton.textContent =
-                "Play Music";
-
-        } else {
-
-            musicButton.textContent =
-                "Stop Music";
-        }
+  backgroundMusic.addEventListener("timeupdate", () => {
+    if (!backgroundMusic.paused) {
+      localStorage.setItem(musicTimeKey, String(backgroundMusic.currentTime));
     }
+  });
 
+  // ========================================
+  // AUDIO ERROR CHECK
+  // ========================================
 
-    // ========================================
-    // SAVE MUSIC POSITION
-    // ========================================
+  backgroundMusic.addEventListener("error", () => {
+    console.error("Music could not be loaded.");
 
-    backgroundMusic.addEventListener(
-        "timeupdate",
-        () => {
+    console.error("Music URL:", backgroundMusic.src);
+  });
 
-            if (!backgroundMusic.paused) {
+  // ========================================
+  // RESTORE POSITION
+  // ========================================
 
-                localStorage.setItem(
-                    musicTimeKey,
-                    String(backgroundMusic.currentTime)
-                );
-            }
-        }
-    );
+  function restoreMusicPosition() {
+    const savedTime = parseFloat(localStorage.getItem(musicTimeKey));
 
-
-    // ========================================
-    // AUDIO ERROR CHECK
-    // ========================================
-
-    backgroundMusic.addEventListener(
-        "error",
-        () => {
-
-            console.error(
-                "Music could not be loaded."
-            );
-
-            console.error(
-                "Music URL:",
-                backgroundMusic.src
-            );
-        }
-    );
-
-
-    // ========================================
-    // RESTORE POSITION
-    // ========================================
-
-    function restoreMusicPosition() {
-
-        const savedTime =
-            parseFloat(
-                localStorage.getItem(
-                    musicTimeKey
-                )
-            );
-
-        if (
-            Number.isFinite(savedTime) &&
-            savedTime >= 0
-        ) {
-
-            try {
-
-                backgroundMusic.currentTime =
-                    savedTime;
-
-            } catch (error) {
-
-                console.warn(
-                    "Could not restore music position."
-                );
-            }
-        }
+    if (Number.isFinite(savedTime) && savedTime >= 0) {
+      try {
+        backgroundMusic.currentTime = savedTime;
+      } catch (error) {
+        console.warn("Could not restore music position.");
+      }
     }
+  }
 
+  // ========================================
+  // START MUSIC
+  // ========================================
 
-    // ========================================
-    // START MUSIC
-    // ========================================
+  async function startMusic() {
+    restoreMusicPosition();
 
-    async function startMusic() {
+    try {
+      await backgroundMusic.play();
 
-        restoreMusicPosition();
+      localStorage.setItem(musicKey, "on");
 
-        try {
+      updateMusicButton();
 
-            await backgroundMusic.play();
+      return true;
+    } catch (error) {
+      updateMusicButton();
 
-            localStorage.setItem(
-                musicKey,
-                "on"
-            );
-
-            updateMusicButton();
-
-            return true;
-
-        } catch (error) {
-
-            /*
-             * Browser autoplay protection.
-             *
-             * We DO NOT turn the saved music
-             * setting off here.
-             *
-             * A real user interaction will
-             * retry playback.
-             */
-
-            updateMusicButton();
-
-            return false;
-        }
+      return false;
     }
+  }
 
+  // ========================================
+  // STOP MUSIC
+  // ========================================
 
-    // ========================================
-    // STOP MUSIC
-    // ========================================
+  function stopMusic() {
+    backgroundMusic.pause();
 
-    function stopMusic() {
+    backgroundMusic.currentTime = 0;
 
-        backgroundMusic.pause();
+    localStorage.setItem(musicKey, "off");
 
-        backgroundMusic.currentTime = 0;
-
-        localStorage.setItem(
-            musicKey,
-            "off"
-        );
-
-        localStorage.removeItem(
-            musicTimeKey
-        );
-
-        updateMusicButton();
-    }
-
-
-    // ========================================
-    // MUSIC BUTTON
-    // ========================================
-
-    musicButton.addEventListener(
-        "click",
-        async (event) => {
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            /*
-             * IMPORTANT:
-             * Do not let the global resume handler
-             * interfere with this button.
-             */
-
-            if (backgroundMusic.paused) {
-
-                await startMusic();
-
-            } else {
-
-                stopMusic();
-            }
-
-        }
-    );
-
-
-    // ========================================
-    // REMEMBER MUSIC STATE
-    // ========================================
-
-    const musicEnabled =
-        localStorage.getItem(musicKey) === "on";
-
-
-    // ========================================
-    // AUTO RESUME
-    // ========================================
-
-    if (musicEnabled) {
-
-        /*
-         * First try automatically.
-         *
-         * Desktop browsers may allow this
-         * depending on their autoplay policy.
-         */
-        startMusic();
-
-
-        /*
-         * If autoplay was blocked, use the
-         * FIRST real interaction with the page.
-         *
-         * IMPORTANT:
-         * The music button itself is excluded.
-         * Otherwise pointerdown could start the
-         * music and the following click could
-         * immediately stop it.
-         */
-
-        const resumeMusic = (event) => {
-
-            if (
-                event.target.closest &&
-                event.target.closest("#musicButton")
-            ) {
-                return;
-            }
-
-
-            if (
-                localStorage.getItem(musicKey) === "on" &&
-                backgroundMusic.paused
-            ) {
-
-                startMusic();
-            }
-        };
-
-
-        document.addEventListener(
-            "pointerdown",
-            resumeMusic,
-            {
-                passive: true
-            }
-        );
-
-    }
-
-
-    // ========================================
-    // INITIAL BUTTON STATE
-    // ========================================
+    localStorage.removeItem(musicTimeKey);
 
     updateMusicButton();
+  }
 
+  // ========================================
+  // MUSIC BUTTON
+  // ========================================
+
+  musicButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (backgroundMusic.paused) {
+      await startMusic();
+    } else {
+      stopMusic();
+    }
+  });
+
+  // ========================================
+  // REMEMBER MUSIC STATE
+  // ========================================
+
+  const musicEnabled = localStorage.getItem(musicKey) === "on";
+
+  // ========================================
+  // AUTO RESUME
+  // ========================================
+
+  if (musicEnabled) {
+    startMusic();
+
+    const resumeMusic = (event) => {
+      if (event.target.closest && event.target.closest("#musicButton")) {
+        return;
+      }
+
+      if (localStorage.getItem(musicKey) === "on" && backgroundMusic.paused) {
+        startMusic();
+      }
+    };
+
+    document.addEventListener("pointerdown", resumeMusic, {
+      passive: true,
+    });
+  }
+
+  // ========================================
+  // INITIAL BUTTON STATE
+  // ========================================
+
+  updateMusicButton();
 });

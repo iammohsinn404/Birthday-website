@@ -2,11 +2,11 @@
 // ACCESSIBILITY
 // ========================================
 
-const prefersReducedMotion =
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+).matches;
 
-const pointerFine =
-    window.matchMedia("(pointer: fine)").matches;
+const pointerFine = window.matchMedia("(pointer: fine)").matches;
 // ========================================
 // PROFILE MENU
 // ========================================
@@ -34,9 +34,8 @@ if (profileBtn && profileMenu) {
 
 if (restartButton) {
   restartButton.addEventListener("click", () => {
-    window.location.href = 
-    window.getBirthdayPageUrl("intro.html");
-});
+    window.location.href = window.getBirthdayPageUrl("intro.html");
+  });
 }
 
 if (refreshButton) {
@@ -44,7 +43,7 @@ if (refreshButton) {
     window.location.reload();
   });
 }
- 
+
 // ========================================
 // BIRTHDAY PAGE ELEMENTS
 // ========================================
@@ -64,62 +63,47 @@ const surpriseSection = document.getElementById("surpriseSection");
 // ========================================
 
 function openSurprise() {
+  if (!surpriseSection) return;
 
-    if (!surpriseSection) return;
+  // Show the surprise section
+  surpriseSection.classList.add("show");
 
-    // Show the surprise section
-    surpriseSection.classList.add("show");
+  // Make sure it is actually visible
+  surpriseSection.style.display = "flex";
+  surpriseSection.style.opacity = "1";
+  surpriseSection.style.visibility = "visible";
+  surpriseSection.style.transform = "translateY(0)";
 
-    // Make sure it is actually visible
-    surpriseSection.style.display = "flex";
-    surpriseSection.style.opacity = "1";
-    surpriseSection.style.visibility = "visible";
-    surpriseSection.style.transform = "translateY(0)";
+  // Scroll to it
+  setTimeout(() => {
+    surpriseSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, 50);
 
-    // Scroll to it
-    setTimeout(() => {
-        surpriseSection.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-    }, 50);
-
-    // Confetti
-    if (typeof confettiBurst === "function") {
-        confettiBurst(
-            window.innerWidth / 2,
-            window.innerHeight / 2,
-            120
-        );
-    }
+  // Confetti
+  if (typeof confettiBurst === "function") {
+    confettiBurst(window.innerWidth / 2, window.innerHeight / 2, 120);
+  }
 }
-
 
 // Main hero surprise button
 if (surpriseBtn) {
+  surpriseBtn.addEventListener("click", (event) => {
+    event.preventDefault();
 
-    surpriseBtn.addEventListener("click", (event) => {
-
-        event.preventDefault();
-
-        openSurprise();
-
-    });
-
+    openSurprise();
+  });
 }
-
 
 // Top navigation Surprise button
 if (navCta) {
+  navCta.addEventListener("click", (event) => {
+    event.preventDefault();
 
-    navCta.addEventListener("click", (event) => {
-
-        event.preventDefault();
-
-        openSurprise();
-
-    });
-
+    openSurprise();
+  });
 }
 /* ---------- confetti (canvas particle system) ---------- */
 const fxCanvas = document.getElementById("fxCanvas");
@@ -256,8 +240,7 @@ document.querySelectorAll(".vitals-num[data-target]").forEach(countUp);
 const scratchButton = document.getElementById("scratchButton");
 
 scratchButton?.addEventListener("click", () => {
-  window.location.href =
-    window.getBirthdayPageUrl("scratch.html");
+  window.location.href = window.getBirthdayPageUrl("scratch.html");
 });
 
 /* nav bar background/shadow once the page is scrolled */
@@ -389,7 +372,6 @@ const reelDashes = [...document.querySelectorAll(".dash")];
 const reelCurrent = document.getElementById("reelCurrent");
 const motionOK = matchMedia("(prefers-reduced-motion: no-preference)").matches;
 
- 
 function easeOutCubic(x) {
   return 1 - Math.pow(1 - x, 3);
 }
@@ -531,57 +513,49 @@ const preloader = document.getElementById("preloader");
 const preloaderFill = document.getElementById("preloaderFill");
 
 if (preloader) {
+  // Make sure the loader is visible
+  preloader.classList.remove("hide");
 
-    // Make sure the loader is visible
-    preloader.classList.remove("hide");
-
-    preloader.style.display = "flex";
-    preloader.style.opacity = "1";
-    preloader.style.visibility = "visible";
-    preloader.style.pointerEvents = "auto";
-
+  preloader.style.display = "flex";
+  preloader.style.opacity = "1";
+  preloader.style.visibility = "visible";
+  preloader.style.pointerEvents = "auto";
 }
-
 
 /* Start progress animation */
 
 if (preloaderFill) {
+  preloaderFill.style.width = "5%";
 
-    preloaderFill.style.width = "5%";
+  setTimeout(() => {
+    preloaderFill.style.width = "25%";
+  }, 300);
 
-    setTimeout(() => {
-        preloaderFill.style.width = "25%";
-    }, 300);
+  setTimeout(() => {
+    preloaderFill.style.width = "50%";
+  }, 700);
 
-    setTimeout(() => {
-        preloaderFill.style.width = "50%";
-    }, 700);
+  setTimeout(() => {
+    preloaderFill.style.width = "75%";
+  }, 1100);
 
-    setTimeout(() => {
-        preloaderFill.style.width = "75%";
-    }, 1100);
+  setTimeout(() => {
+    preloaderFill.style.width = "92%";
+  }, 1500);
 
-    setTimeout(() => {
-        preloaderFill.style.width = "92%";
-    }, 1500);
-
-    setTimeout(() => {
-        preloaderFill.style.width = "100%";
-    }, 1900);
-
+  setTimeout(() => {
+    preloaderFill.style.width = "100%";
+  }, 1900);
 }
-
 
 /* Finish loading */
 
 setTimeout(() => {
+  if (!preloader) return;
 
-    if (!preloader) return;
+  preloader.classList.add("hide");
 
-    preloader.classList.add("hide");
-
-    preloader.style.pointerEvents = "none";
-
+  preloader.style.pointerEvents = "none";
 }, 2350);
 // ========================================
 // FALLING FLOWERS
@@ -592,163 +566,115 @@ const fallingFlowers = document.getElementById("fallingFlowers");
 const surpriseButton = document.getElementById("surprise-button");
 
 const flowerImages = [
-    "../flowers Imgs/flower1.webp",
-    "../flowers Imgs/flower2.webp",
-    "../flowers Imgs/flower3.webp",
-    "../flowers Imgs/flower4.webp",
-    "../flowers Imgs/flower5.webp",
-    "../flowers Imgs/flower6.webp"
+  "../flowers Imgs/flower1.webp",
+  "../flowers Imgs/flower2.webp",
+  "../flowers Imgs/flower3.webp",
+  "../flowers Imgs/flower4.webp",
+  "../flowers Imgs/flower5.webp",
+  "../flowers Imgs/flower6.webp",
 ];
 
 let flowersStarted = false;
 let flowerInterval = null;
 
 function randomNumber(min, max) {
-    return Math.random() * (max - min) + min;
+  return Math.random() * (max - min) + min;
 }
 
 function createFlower() {
+  if (!fallingFlowers) return;
 
-    if (!fallingFlowers) return;
+  const flower = document.createElement("img");
 
-    const flower = document.createElement("img");
+  flower.src = flowerImages[Math.floor(Math.random() * flowerImages.length)];
 
-    flower.src =
-        flowerImages[
-            Math.floor(Math.random() * flowerImages.length)
-        ];
+  flower.className = "falling-flower";
 
-    flower.className = "falling-flower";
+  flower.style.left = randomNumber(0, 100) + "vw";
 
-    flower.style.left =
-        randomNumber(0, 100) + "vw";
+  const size = randomNumber(30, 65);
 
-    const size = randomNumber(30, 65);
+  flower.style.setProperty("--size", size + "px");
 
-    flower.style.setProperty(
-        "--size",
-        size + "px"
-    );
+  const duration = randomNumber(7, 12);
 
-    const duration = randomNumber(7, 12);
+  flower.style.setProperty("--duration", duration + "s");
 
-    flower.style.setProperty(
-        "--duration",
-        duration + "s"
-    );
+  flower.style.setProperty("--move1", randomNumber(-80, 80) + "px");
 
-    flower.style.setProperty(
-        "--move1",
-        randomNumber(-80, 80) + "px"
-    );
+  flower.style.setProperty("--move2", randomNumber(-150, 150) + "px");
 
-    flower.style.setProperty(
-        "--move2",
-        randomNumber(-150, 150) + "px"
-    );
+  flower.style.setProperty("--move3", randomNumber(-220, 220) + "px");
 
-    flower.style.setProperty(
-        "--move3",
-        randomNumber(-220, 220) + "px"
-    );
+  flower.style.setProperty("--move4", randomNumber(-300, 300) + "px");
 
-    flower.style.setProperty(
-        "--move4",
-        randomNumber(-300, 300) + "px"
-    );
+  flower.style.setProperty("--rotate1", randomNumber(90, 180) + "deg");
 
-    flower.style.setProperty(
-        "--rotate1",
-        randomNumber(90, 180) + "deg"
-    );
+  flower.style.setProperty("--rotate2", randomNumber(180, 360) + "deg");
 
-    flower.style.setProperty(
-        "--rotate2",
-        randomNumber(180, 360) + "deg"
-    );
+  flower.style.setProperty("--rotate3", randomNumber(360, 540) + "deg");
 
-    flower.style.setProperty(
-        "--rotate3",
-        randomNumber(360, 540) + "deg"
-    );
+  flower.style.setProperty("--rotate4", randomNumber(540, 900) + "deg");
 
-    flower.style.setProperty(
-        "--rotate4",
-        randomNumber(540, 900) + "deg"
-    );
+  fallingFlowers.appendChild(flower);
 
-    fallingFlowers.appendChild(flower);
-
-    setTimeout(() => {
-        flower.remove();
-    }, (duration + 1) * 1000);
+  setTimeout(
+    () => {
+      flower.remove();
+    },
+    (duration + 1) * 1000,
+  );
 }
-
 
 // ========================================
 // START FLOWERS
 // ========================================
 
 function startFlowers() {
+  if (flowersStarted) return;
 
-    if (flowersStarted) return;
+  flowersStarted = true;
 
-    flowersStarted = true;
+  // Immediately create a few
+  for (let i = 0; i < 8; i++) {
+    setTimeout(() => {
+      createFlower();
+    }, i * 150);
+  }
 
-    // Immediately create a few
-    for (let i = 0; i < 8; i++) {
-        setTimeout(() => {
-            createFlower();
-        }, i * 150);
-    }
-
-    // Continue creating flowers
-    flowerInterval = setInterval(() => {
-        createFlower();
-    }, 650);
+  // Continue creating flowers
+  flowerInterval = setInterval(() => {
+    createFlower();
+  }, 650);
 }
-
 
 // ========================================
 // SURPRISE BUTTON
 // ========================================
 
 if (surpriseButton) {
-
-    surpriseButton.addEventListener("click", () => {
-
-        startFlowers();
-
-    });
-
+  surpriseButton.addEventListener("click", () => {
+    startFlowers();
+  });
 }
-
 
 // ========================================
 // START WHEN SURPRISE SECTION IS VISIBLE
 // ========================================
 
 if (surpriseSection) {
-
-    const flowerObserver = new IntersectionObserver(
-        (entries) => {
-
-            entries.forEach((entry) => {
-
-                if (entry.isIntersecting) {
-
-                    startFlowers();
-
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.35
+  const flowerObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          startFlowers();
         }
-    );
+      });
+    },
+    {
+      threshold: 0.35,
+    },
+  );
 
-    flowerObserver.observe(surpriseSection);
-
+  flowerObserver.observe(surpriseSection);
 }

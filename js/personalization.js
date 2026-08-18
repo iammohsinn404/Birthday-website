@@ -3,349 +3,238 @@
 // ========================================
 
 (function () {
+  // ========================================
+  // READ URL PARAMETERS
+  // ========================================
 
-    // ========================================
-    // READ URL PARAMETERS
-    // ========================================
+  const params = new URLSearchParams(window.location.search);
 
-    const params = new URLSearchParams(
-        window.location.search
-    );
+  const name = params.get("name");
+  const day = params.get("day");
+  const month = params.get("month");
+  const year = params.get("year");
+  const relationship = params.get("relationship");
 
-    const name = params.get("name");
-    const day = params.get("day");
-    const month = params.get("month");
-    const year = params.get("year");
-    const relationship = params.get("relationship");
+  // ========================================
+  // CHECK PERSONALIZED LINK
+  // ========================================
 
+  const hasPersonalizedLink =
+    !!name && !!day && !!month && !!year && !!relationship;
 
-    // ========================================
-    // CHECK PERSONALIZED LINK
-    // ========================================
+  // ========================================
+  // KEEP PERSONALIZATION WHEN MOVING
+  // BETWEEN PAGES
+  // ========================================
 
-    const hasPersonalizedLink =
-        !!name &&
-        !!day &&
-        !!month &&
-        !!year &&
-        !!relationship;
-
-
-    // ========================================
-    // KEEP PERSONALIZATION WHEN MOVING
-    // BETWEEN PAGES
-    // ========================================
-
-    window.getBirthdayPageUrl = function (page) {
-
-        if (!hasPersonalizedLink) {
-            return page;
-        }
-
-        return `${page}?${params.toString()}`;
-
-    };
-
-
-    // ========================================
-    // NORMAL PAGE
-    // ========================================
-
+  window.getBirthdayPageUrl = function (page) {
     if (!hasPersonalizedLink) {
-        return;
+      return page;
     }
 
+    return `${page}?${params.toString()}`;
+  };
 
-    // ========================================
-    // PERSONAL DATA
-    // ========================================
+  // ========================================
+  // NORMAL PAGE
+  // ========================================
 
-    const person = {
-        name,
-        day,
-        month,
-        year,
-        relationship
-    };
+  if (!hasPersonalizedLink) {
+    return;
+  }
 
+  // ========================================
+  // PERSONAL DATA
+  // ========================================
 
-    // ========================================
-    // CREATE BIRTH DATE
-    // ========================================
+  const person = {
+    name,
+    day,
+    month,
+    year,
+    relationship,
+  };
 
-    const birthDate = new Date(
-        Number(person.year),
-        Number(person.month) - 1,
-        Number(person.day)
-    );
+  // ========================================
+  // CREATE BIRTH DATE
+  // ========================================
 
+  const birthDate = new Date(
+    Number(person.year),
+    Number(person.month) - 1,
+    Number(person.day),
+  );
 
-    if (Number.isNaN(birthDate.getTime())) {
-        return;
-    }
+  if (Number.isNaN(birthDate.getTime())) {
+    return;
+  }
 
+  // ========================================
+  // CALCULATE AGE
+  // ========================================
 
-    // ========================================
-    // CALCULATE AGE
-    // ========================================
+  const today = new Date();
 
-    const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
 
-    let age =
-        today.getFullYear() -
-        birthDate.getFullYear();
+  const birthdayThisYear = new Date(
+    today.getFullYear(),
+    birthDate.getMonth(),
+    birthDate.getDate(),
+  );
 
+  if (today < birthdayThisYear) {
+    age--;
+  }
 
-    const birthdayThisYear = new Date(
-        today.getFullYear(),
-        birthDate.getMonth(),
-        birthDate.getDate()
-    );
+  // ========================================
+  // CALCULATE WEEKDAY
+  // ========================================
 
+  const weekday = birthDate.toLocaleDateString(undefined, {
+    weekday: "long",
+  });
 
-    if (today < birthdayThisYear) {
-        age--;
-    }
+  // ========================================
+  // FULL DATE
+  // ========================================
 
+  const fullDate = birthDate.toLocaleDateString(undefined, {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 
-    // ========================================
-    // CALCULATE WEEKDAY
-    // ========================================
+  // ========================================
+  // SHORT DATE
+  // ========================================
 
-    const weekday =
-        birthDate.toLocaleDateString(
-            undefined,
-            {
-                weekday: "long"
-            }
-        );
+  const shortDate = birthDate.toLocaleDateString(undefined, {
+    day: "numeric",
+    month: "long",
+  });
 
+  // ========================================
+  // PERSONALIZATION DATA
+  // ========================================
 
-    // ========================================
-    // FULL DATE
-    // ========================================
+  const data = {
+    name: person.name,
 
-    const fullDate =
-        birthDate.toLocaleDateString(
-            undefined,
-            {
-                day: "numeric",
-                month: "long",
-                year: "numeric"
-            }
-        );
+    age: age,
 
+    day: person.day,
 
-    // ========================================
-    // SHORT DATE
-    // ========================================
+    month: person.month,
 
-    const shortDate =
-        birthDate.toLocaleDateString(
-            undefined,
-            {
-                day: "numeric",
-                month: "long"
-            }
-        );
+    year: person.year,
 
+    relationship: person.relationship,
 
-    // ========================================
-    // PERSONALIZATION DATA
-    // ========================================
+    weekday: weekday,
 
-    const data = {
+    date: fullDate,
 
-        name: person.name,
+    shortDate: shortDate,
+  };
 
-        age: age,
+  // ========================================
+  // REPLACE NAME
+  // ========================================
 
-        day: person.day,
+  document.querySelectorAll("[data-person-name]").forEach((element) => {
+    element.textContent = data.name;
+  });
 
-        month: person.month,
+  // ========================================
+  // REPLACE AGE
+  // ========================================
 
-        year: person.year,
+  document.querySelectorAll("[data-person-age]").forEach((element) => {
+    element.textContent = data.age;
+  });
 
-        relationship:
-            person.relationship,
+  // ========================================
+  // REPLACE FULL DATE
+  // ========================================
 
-        weekday: weekday,
+  document.querySelectorAll("[data-person-date]").forEach((element) => {
+    element.textContent = data.date;
+  });
 
-        date: fullDate,
+  // ========================================
+  // REPLACE SHORT DATE
+  // ========================================
 
-        shortDate: shortDate
+  document.querySelectorAll("[data-person-short-date]").forEach((element) => {
+    element.textContent = data.shortDate;
+  });
 
-    };
+  // ========================================
+  // REPLACE WEEKDAY
+  // ========================================
 
+  document.querySelectorAll("[data-person-weekday]").forEach((element) => {
+    element.textContent = data.weekday;
+  });
 
-    // ========================================
-    // REPLACE NAME
-    // ========================================
+  // ========================================
+  // REPLACE RELATIONSHIP
+  // ========================================
 
-    document
-        .querySelectorAll("[data-person-name]")
-        .forEach(element => {
+  document.querySelectorAll("[data-person-relationship]").forEach((element) => {
+    element.textContent = data.relationship;
+  });
 
-            element.textContent =
-                data.name;
+  // ========================================
+  // REPLACE DAY
+  // ========================================
 
-        });
+  document.querySelectorAll("[data-person-day]").forEach((element) => {
+    element.textContent = data.day;
+  });
 
+  // ========================================
+  // REPLACE MONTH
+  // ========================================
 
-    // ========================================
-    // REPLACE AGE
-    // ========================================
+  document.querySelectorAll("[data-person-month]").forEach((element) => {
+    element.textContent = data.month;
+  });
 
-    document
-        .querySelectorAll("[data-person-age]")
-        .forEach(element => {
+  // ========================================
+  // REPLACE YEAR
+  // ========================================
 
-            element.textContent =
-                data.age;
+  document.querySelectorAll("[data-person-year]").forEach((element) => {
+    element.textContent = data.year;
+  });
 
-        });
+  // ========================================
+  // PAGE TITLE
+  // ========================================
 
+  document.title = `Happy Birthday, ${data.name} 🎂`;
 
-    // ========================================
-    // REPLACE FULL DATE
-    // ========================================
+  // ========================================
+  // HIDE CREATE LINK FROM RECIPIENT
+  // ========================================
 
-    document
-        .querySelectorAll("[data-person-date]")
-        .forEach(element => {
+  const createLinkButton = document.getElementById("createLinkButton");
 
-            element.textContent =
-                data.date;
+  if (createLinkButton) {
+    createLinkButton.style.display = "none";
+  }
 
-        });
+  const linkGenerator = document.getElementById("linkGenerator");
 
+  if (linkGenerator) {
+    linkGenerator.style.display = "none";
+  }
 
-    // ========================================
-    // REPLACE SHORT DATE
-    // ========================================
+  // ========================================
+  // GLOBAL ACCESS
+  // ========================================
 
-    document
-        .querySelectorAll("[data-person-short-date]")
-        .forEach(element => {
-
-            element.textContent =
-                data.shortDate;
-
-        });
-
-
-    // ========================================
-    // REPLACE WEEKDAY
-    // ========================================
-
-    document
-        .querySelectorAll("[data-person-weekday]")
-        .forEach(element => {
-
-            element.textContent =
-                data.weekday;
-
-        });
-
-
-    // ========================================
-    // REPLACE RELATIONSHIP
-    // ========================================
-
-    document
-        .querySelectorAll("[data-person-relationship]")
-        .forEach(element => {
-
-            element.textContent =
-                data.relationship;
-
-        });
-
-
-    // ========================================
-    // REPLACE DAY
-    // ========================================
-
-    document
-        .querySelectorAll("[data-person-day]")
-        .forEach(element => {
-
-            element.textContent =
-                data.day;
-
-        });
-
-
-    // ========================================
-    // REPLACE MONTH
-    // ========================================
-
-    document
-        .querySelectorAll("[data-person-month]")
-        .forEach(element => {
-
-            element.textContent =
-                data.month;
-
-        });
-
-
-    // ========================================
-    // REPLACE YEAR
-    // ========================================
-
-    document
-        .querySelectorAll("[data-person-year]")
-        .forEach(element => {
-
-            element.textContent =
-                data.year;
-
-        });
-
-
-    // ========================================
-    // PAGE TITLE
-    // ========================================
-
-    document.title =
-        `Happy Birthday, ${data.name} 🎂`;
-
-
-    // ========================================
-    // HIDE CREATE LINK FROM RECIPIENT
-    // ========================================
-
-    const createLinkButton =
-        document.getElementById(
-            "createLinkButton"
-        );
-
-    if (createLinkButton) {
-
-        createLinkButton.style.display =
-            "none";
-
-    }
-
-
-    const linkGenerator =
-        document.getElementById(
-            "linkGenerator"
-        );
-
-    if (linkGenerator) {
-
-        linkGenerator.style.display =
-            "none";
-
-    }
-
-
-    // ========================================
-    // GLOBAL ACCESS
-    // ========================================
-
-    window.birthdayPerson = data;
-
+  window.birthdayPerson = data;
 })();

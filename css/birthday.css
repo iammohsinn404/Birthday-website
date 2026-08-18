@@ -663,21 +663,21 @@ body.cursor-ready .cursor-ring {
 ========================================================= */
 
 .birthday-page {
-    width: 100%;
-    overflow-x: hidden;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .hero {
-    width: min(1100px, calc(100% - 40px));
-    min-height: 76vh;
-    margin: 0 auto 35px;
-    padding: 55px 35px;
-    box-sizing: border-box;
+  width: min(1100px, calc(100% - 40px));
+  min-height: 76vh;
+  margin: 0 auto 35px;
+  padding: 55px 35px;
+  box-sizing: border-box;
 
-    position: relative;
-    display: block;
+  position: relative;
+  display: block;
 
-    overflow: hidden;
+  overflow: hidden;
 }
 
 /* -----------------------------------------
@@ -685,53 +685,53 @@ body.cursor-ready .cursor-ring {
 ----------------------------------------- */
 
 .hero-inner {
-    position: relative;
-    z-index: 10;
+  position: relative;
+  z-index: 10;
 
-    width: min(55%, 600px);
-    max-width: 600px;
+  width: min(55%, 600px);
+  max-width: 600px;
 
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 
-    min-height: 520px;
+  min-height: 520px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    text-align: center;
-    box-sizing: border-box;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .hero-title {
-    width: 100%;
-    max-width: 600px;
+  width: 100%;
+  max-width: 600px;
 
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 
-    font-family: var(--display);
-    font-weight: 700;
-    line-height: 1.04;
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: 1.04;
 
-    font-size: clamp(42px, 5.3vw, 66px);
+  font-size: clamp(42px, 5.3vw, 66px);
 
-    overflow-wrap: normal;
-    word-break: normal;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .hero-title .word {
-    display: inline-block;
-    margin-right: .18em;
-    white-space: normal;
+  display: inline-block;
+  margin-right: .18em;
+  white-space: normal;
 }
 
 /* Keep the person's name from creating a huge
    single unbreakable line */
 .hero-title .word[data-person-name] {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 /* -----------------------------------------
@@ -739,15 +739,15 @@ body.cursor-ready .cursor-ring {
 ----------------------------------------- */
 
 .hero .lede {
-    width: 100%;
-    max-width: 500px;
+  width: 100%;
+  max-width: 500px;
 
-    margin: 18px auto 0;
+  margin: 18px auto 0;
 
-    font-size: 17px;
-    line-height: 1.7;
+  font-size: 17px;
+  line-height: 1.7;
 
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* -----------------------------------------
@@ -755,25 +755,25 @@ body.cursor-ready .cursor-ring {
 ----------------------------------------- */
 
 .hero-visual {
-    position: absolute;
+  position: absolute;
 
-    top: 50%;
-    right: 25px;
+  top: 50%;
+  right: 25px;
 
-    width: 300px;
-    height: 380px;
+  width: 300px;
+  height: 380px;
 
-    margin-top: -190px;
+  margin-top: -190px;
 
-    z-index: 5;
+  z-index: 5;
 
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .hero-visual .stack-card,
 .hero-visual .stack-badge,
 .hero-visual .vitals-card {
-    pointer-events: auto;
+  pointer-events: auto;
 }
 
 /* -----------------------------------------
@@ -781,16 +781,16 @@ body.cursor-ready .cursor-ring {
 ----------------------------------------- */
 
 .hero-visual .vitals-card {
-    position: absolute;
+  position: absolute;
 
-    top: -30px;
-    right: -15px;
+  top: -30px;
+  right: -15px;
 
-    width: 186px;
+  width: 186px;
 
-    box-sizing: border-box;
+  box-sizing: border-box;
 
-    z-index: 20;
+  z-index: 20;
 }
 
 /* -----------------------------------------
@@ -798,33 +798,33 @@ body.cursor-ready .cursor-ring {
 ----------------------------------------- */
 
 .hero-visual .stack-card.c1 {
-    left: 82px;
-    top: 0;
+  left: 82px;
+  top: 0;
 
-    width: 190px;
-    height: 230px;
+  width: 190px;
+  height: 230px;
 
-    z-index: 15;
+  z-index: 15;
 }
 
 .hero-visual .stack-card.c2 {
-    left: 0;
-    top: 128px;
+  left: 0;
+  top: 128px;
 
-    width: 148px;
-    height: 184px;
+  width: 148px;
+  height: 184px;
 
-    z-index: 12;
+  z-index: 12;
 }
 
 .hero-visual .stack-card.c3 {
-    left: 156px;
-    top: 172px;
+  left: 156px;
+  top: 172px;
 
-    width: 126px;
-    height: 156px;
+  width: 126px;
+  height: 156px;
 
-    z-index: 10;
+  z-index: 10;
 }
 
 /* -----------------------------------------
@@ -832,9 +832,9 @@ body.cursor-ready .cursor-ring {
 ----------------------------------------- */
 
 .hero-visual .stack-badge {
-    left: -15px;
-    bottom: 14px;
-    z-index: 25;
+  left: -15px;
+  bottom: 14px;
+  z-index: 25;
 }
 
 /* -----------------------------------------
@@ -844,31 +844,31 @@ body.cursor-ready .cursor-ring {
 
 @media (min-width: 761px) and (max-width: 1050px) {
 
-    .hero {
-        width: calc(100% - 30px);
-        padding: 45px 25px;
-    }
+  .hero {
+    width: calc(100% - 30px);
+    padding: 45px 25px;
+  }
 
-    .hero-inner {
-        width: 54%;
-        max-width: 520px;
-        min-height: 500px;
-    }
+  .hero-inner {
+    width: 54%;
+    max-width: 520px;
+    min-height: 500px;
+  }
 
-    .hero-title {
-        font-size: clamp(38px, 5.8vw, 56px);
-    }
+  .hero-title {
+    font-size: clamp(38px, 5.8vw, 56px);
+  }
 
-    .hero-visual {
-        right: 5px;
-        transform: scale(.88);
-        transform-origin: center right;
-    }
+  .hero-visual {
+    right: 5px;
+    transform: scale(.88);
+    transform-origin: center right;
+  }
 
-    .hero .lede {
-        max-width: 440px;
-        font-size: 16px;
-    }
+  .hero .lede {
+    max-width: 440px;
+    font-size: 16px;
+  }
 }
 
 /* =========================================================
@@ -877,129 +877,129 @@ body.cursor-ready .cursor-ring {
 
 @media (max-width: 760px) {
 
-    .hero {
-        width: calc(100% - 24px);
-        min-height: auto;
+  .hero {
+    width: calc(100% - 24px);
+    min-height: auto;
 
-        margin: 0 auto 25px;
+    margin: 0 auto 25px;
 
-        padding: 55px 18px 40px;
+    padding: 55px 18px 40px;
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-        overflow: hidden;
-    }
+    overflow: hidden;
+  }
 
-    .hero-inner {
-        order: 1;
+  .hero-inner {
+    order: 1;
 
-        width: 100%;
-        max-width: 600px;
+    width: 100%;
+    max-width: 600px;
 
-        min-height: auto;
+    min-height: auto;
 
-        margin: 0;
-        padding: 0;
+    margin: 0;
+    padding: 0;
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .hero-title {
-        width: 100%;
+  .hero-title {
+    width: 100%;
 
-        font-size: clamp(38px, 11vw, 58px);
+    font-size: clamp(38px, 11vw, 58px);
 
-        line-height: 1.05;
+    line-height: 1.05;
 
-        text-align: center;
-    }
+    text-align: center;
+  }
 
-    .hero-title .word {
-        margin-right: .08em;
-    }
+  .hero-title .word {
+    margin-right: .08em;
+  }
 
-    .hero .lede {
-        width: 100%;
-        max-width: 430px;
+  .hero .lede {
+    width: 100%;
+    max-width: 430px;
 
-        font-size: 16px;
-        line-height: 1.65;
+    font-size: 16px;
+    line-height: 1.65;
 
-        margin-top: 16px;
-    }
+    margin-top: 16px;
+  }
 
-    .hero-visual {
-        order: 2;
+  .hero-visual {
+    order: 2;
 
-        position: relative;
+    position: relative;
 
-        top: auto;
-        right: auto;
+    top: auto;
+    right: auto;
 
-        width: min(100%, 300px);
-        height: 350px;
+    width: min(100%, 300px);
+    height: 350px;
 
-        margin: 35px auto 0;
+    margin: 35px auto 0;
 
-        transform: none;
+    transform: none;
 
-        display: block;
-    }
+    display: block;
+  }
 
-    .hero-visual .vitals-card {
-        top: -15px;
-        right: -5px;
+  .hero-visual .vitals-card {
+    top: -15px;
+    right: -5px;
 
-        width: 175px;
-    }
+    width: 175px;
+  }
 
-    .hero-visual .stack-card.c1 {
-        left: 75px;
-        top: 35px;
+  .hero-visual .stack-card.c1 {
+    left: 75px;
+    top: 35px;
 
-        width: 175px;
-        height: 215px;
-    }
+    width: 175px;
+    height: 215px;
+  }
 
-    .hero-visual .stack-card.c2 {
-        left: 5px;
-        top: 150px;
+  .hero-visual .stack-card.c2 {
+    left: 5px;
+    top: 150px;
 
-        width: 135px;
-        height: 170px;
-    }
+    width: 135px;
+    height: 170px;
+  }
 
-    .hero-visual .stack-card.c3 {
-        display: block;
+  .hero-visual .stack-card.c3 {
+    display: block;
 
-        left: 165px;
-        top: 190px;
+    left: 165px;
+    top: 190px;
 
-        width: 115px;
-        height: 145px;
-    }
+    width: 115px;
+    height: 145px;
+  }
 
-    .hero-visual .stack-badge {
-        left: 5px;
-        bottom: 0;
-    }
+  .hero-visual .stack-badge {
+    left: 5px;
+    bottom: 0;
+  }
 
-    .hero:before {
-        font-size: 62px;
-        margin-bottom: 5px;
-    }
+  .hero:before {
+    font-size: 62px;
+    margin-bottom: 5px;
+  }
 
-    #surprise-button {
-        margin-top: 22px;
-    }
+  #surprise-button {
+    margin-top: 22px;
+  }
 
-    .scroll-cue {
-        margin-top: 28px;
-    }
+  .scroll-cue {
+    margin-top: 28px;
+  }
 }
 
 /* =========================================================
@@ -1008,68 +1008,68 @@ body.cursor-ready .cursor-ring {
 
 @media (max-width: 550px) {
 
-    .hero {
-        width: calc(100% - 16px);
-        padding: 45px 14px 30px;
+  .hero {
+    width: calc(100% - 16px);
+    padding: 45px 14px 30px;
 
-        border-radius: 24px;
-    }
+    border-radius: 24px;
+  }
 
-    .hero-title {
-        font-size: clamp(34px, 12vw, 48px);
-        line-height: 1.04;
-    }
+  .hero-title {
+    font-size: clamp(34px, 12vw, 48px);
+    line-height: 1.04;
+  }
 
-    .hero-eyebrow {
-        font-size: 17px;
-    }
+  .hero-eyebrow {
+    font-size: 17px;
+  }
 
-    .hero .lede {
-        font-size: 15px;
-        line-height: 1.6;
-        max-width: 330px;
-    }
+  .hero .lede {
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 330px;
+  }
 
-    .hero-visual {
-        width: 280px;
-        height: 330px;
-    }
+  .hero-visual {
+    width: 280px;
+    height: 330px;
+  }
 
-    .hero-visual .vitals-card {
-        width: 160px;
-        right: -8px;
-        padding: 13px 14px;
-    }
+  .hero-visual .vitals-card {
+    width: 160px;
+    right: -8px;
+    padding: 13px 14px;
+  }
 
-    .hero-visual .stack-card.c1 {
-        left: 70px;
-        width: 165px;
-        height: 205px;
-    }
+  .hero-visual .stack-card.c1 {
+    left: 70px;
+    width: 165px;
+    height: 205px;
+  }
 
-    .hero-visual .stack-card.c2 {
-        left: 0;
-        top: 145px;
-        width: 125px;
-        height: 160px;
-    }
+  .hero-visual .stack-card.c2 {
+    left: 0;
+    top: 145px;
+    width: 125px;
+    height: 160px;
+  }
 
-    .hero-visual .stack-card.c3 {
-        left: 160px;
-        top: 185px;
-        width: 105px;
-        height: 135px;
-    }
+  .hero-visual .stack-card.c3 {
+    left: 160px;
+    top: 185px;
+    width: 105px;
+    height: 135px;
+  }
 
-    .hero-visual .stack-badge {
-        font-size: 11px;
-        left: 0;
-    }
+  .hero-visual .stack-badge {
+    font-size: 11px;
+    left: 0;
+  }
 
-    #surprise-button {
-        padding: 13px 23px;
-        font-size: 14px;
-    }
+  #surprise-button {
+    padding: 13px 23px;
+    font-size: 14px;
+  }
 }
 
 /* =========================================================
@@ -1078,19 +1078,19 @@ body.cursor-ready .cursor-ring {
 
 @media (max-width: 380px) {
 
-    .hero-title {
-        font-size: 32px;
-    }
+  .hero-title {
+    font-size: 32px;
+  }
 
-    .hero-visual {
-        transform: scale(.92);
-        transform-origin: top center;
-        margin-bottom: -25px;
-    }
+  .hero-visual {
+    transform: scale(.92);
+    transform-origin: top center;
+    margin-bottom: -25px;
+  }
 
-    .hero-visual .vitals-card {
-        right: 0;
-    }
+  .hero-visual .vitals-card {
+    right: 0;
+  }
 }
 
 /* =========================================================
@@ -1099,16 +1099,16 @@ body.cursor-ready .cursor-ring {
 
 html,
 body {
-    max-width: 100%;
-    overflow-x: hidden;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .birthday-page,
 .hero,
 .hero-inner,
 .hero-visual {
-    max-width: 100%;
-    box-sizing: border-box;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 @keyframes fadeUp {
@@ -2204,90 +2204,92 @@ body.shake {
     display: none
   }
 }
+
 /* =========================
    PROFILE BUTTON
 ========================= */
 
 .site-profile {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    right: auto;
-    width: 52px;
-    height: 52px;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  right: auto;
+  width: 52px;
+  height: 52px;
 
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 
-    border: 2px solid rgba(255, 255, 255, .9);
-    border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, .9);
+  border-radius: 50%;
 
-    background: white;
+  background: white;
 
-    overflow: hidden;
+  overflow: hidden;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    z-index: 20001;
+  z-index: 20001;
 
-    box-shadow:
-        0 8px 25px rgba(80, 50, 100, .18);
+  box-shadow:
+    0 8px 25px rgba(80, 50, 100, .18);
 
-    transition:
-        transform .2s ease,
-        box-shadow .2s ease;
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
 }
 
 .site-profile img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    display: block;
+  display: block;
 
-    object-fit: cover;
+  object-fit: cover;
 
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 .site-profile:hover {
-    transform: scale(1.08);
+  transform: scale(1.08);
 
-    box-shadow:
-        0 12px 30px rgba(80, 50, 100, .25);
+  box-shadow:
+    0 12px 30px rgba(80, 50, 100, .25);
 }
 
 .site-profile:active {
-    transform: scale(.95);
+  transform: scale(.95);
 }
+
 /* Profile dropdown */
 
 .profile-menu {
-    position: fixed;
+  position: fixed;
 
-    top: 115px;
-    left: 20px;
+  top: 115px;
+  left: 20px;
 
-    width: 190px;
+  width: 190px;
 
-    display: none;
-    flex-direction: column;
+  display: none;
+  flex-direction: column;
 
-    gap: 12px;
+  gap: 12px;
 
-    padding: 0;
+  padding: 0;
 
-    background: transparent;
+  background: transparent;
 
-    border: none;
-    box-shadow: none;
+  border: none;
+  box-shadow: none;
 
-    z-index: 99998;
+  z-index: 99998;
 }
 
 .profile-menu.show {
-    display: flex;
+  display: flex;
 
-    animation: profileMenuIn 0.25s ease;
+  animation: profileMenuIn 0.25s ease;
 }
 
 
@@ -2295,109 +2297,99 @@ body.shake {
    RESTART + REFRESH BUTTONS
 ======================================== */
 
-.profile-menu > button {
-    position: relative;
+.profile-menu>button {
+  position: relative;
 
-    width: 100%;
-    min-height: 55px;
+  width: 100%;
+  min-height: 55px;
 
-    padding: 13px 16px;
+  padding: 13px 16px;
 
-    border: 1px solid rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.75);
 
-    border-radius: 17px;
+  border-radius: 17px;
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255, 245, 250, 0.96),
-            rgba(245, 231, 250, 0.94)
-        );
+  background:
+    linear-gradient(135deg,
+      rgba(255, 245, 250, 0.96),
+      rgba(245, 231, 250, 0.94));
 
-    color: #4b3150;
+  color: #4b3150;
 
-    font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
 
-    font-size: 14px;
-    font-weight: 650;
+  font-size: 14px;
+  font-weight: 650;
 
-    text-align: left;
+  text-align: left;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 
-    box-shadow:
-        0 8px 22px rgba(80, 40, 80, 0.14);
+  box-shadow:
+    0 8px 22px rgba(80, 40, 80, 0.14);
 
-    transition:
-        transform 0.22s ease,
-        box-shadow 0.22s ease,
-        background 0.22s ease;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease;
 }
 
 
 /* Restart */
 
 #restartButton {
-    background:
-        linear-gradient(
-            135deg,
-            #fff0f6,
-            #ffe0ec
-        );
+  background:
+    linear-gradient(135deg,
+      #fff0f6,
+      #ffe0ec);
 }
 
 
 /* Refresh */
 
 #refreshButton {
-    background:
-        linear-gradient(
-            135deg,
-            #f3efff,
-            #e9e0ff
-        );
+  background:
+    linear-gradient(135deg,
+      #f3efff,
+      #e9e0ff);
 }
 
 
 /* Hover */
 
 #restartButton:hover {
-    transform: translateX(5px) translateY(-2px);
+  transform: translateX(5px) translateY(-2px);
 
-    background:
-        linear-gradient(
-            135deg,
-            #ffe1ed,
-            #ffd1e1
-        );
+  background:
+    linear-gradient(135deg,
+      #ffe1ed,
+      #ffd1e1);
 
-    box-shadow:
-        0 14px 30px rgba(224, 68, 114, 0.20);
+  box-shadow:
+    0 14px 30px rgba(224, 68, 114, 0.20);
 }
 
 
 #refreshButton:hover {
-    transform: translateX(5px) translateY(-2px);
+  transform: translateX(5px) translateY(-2px);
 
-    background:
-        linear-gradient(
-            135deg,
-            #e9ddff,
-            #ded0ff
-        );
+  background:
+    linear-gradient(135deg,
+      #e9ddff,
+      #ded0ff);
 
-    box-shadow:
-        0 14px 30px rgba(126, 87, 194, 0.20);
+  box-shadow:
+    0 14px 30px rgba(126, 87, 194, 0.20);
 }
 
 
 /* Click */
 
-.profile-menu > button:active {
-    transform: scale(0.96);
+.profile-menu>button:active {
+  transform: scale(0.96);
 }
 
 
@@ -2407,164 +2399,161 @@ body.shake {
 
 @keyframes profileMenuIn {
 
-    from {
-        opacity: 0;
+  from {
+    opacity: 0;
 
-        transform:
-            translateY(-8px)
-            scale(0.96);
-    }
+    transform:
+      translateY(-8px) scale(0.96);
+  }
 
-    to {
-        opacity: 1;
+  to {
+    opacity: 1;
 
-        transform:
-            translateY(0)
-            scale(1);
-    }
+    transform:
+      translateY(0) scale(1);
+  }
 }
+
 #musicButton {
-    position: fixed;
+  position: fixed;
 
-    top: 20px;
-    right: 20px;
+  top: 20px;
+  right: 20px;
 
-    z-index: 20000;
-    border: none;
-    padding: 10px 18px;
+  z-index: 20000;
+  border: none;
+  padding: 10px 18px;
 
-    border-radius: 25px;
-    background: #d94f75;
-    color: white;
+  border-radius: 25px;
+  background: #d94f75;
+  color: white;
 
-    font-size: 14px;
-    font-weight: 600;
+  font-size: 14px;
+  font-weight: 600;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    box-shadow: 0 6px 18px rgba(217, 79, 117, 0.25);
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease;
+  box-shadow: 0 6px 18px rgba(217, 79, 117, 0.25);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
 }
 
 #musicButton:hover {
-    transform: translateY(-2px);
-    background: #c83f65;
+  transform: translateY(-2px);
+  background: #c83f65;
 }
 
 #musicButton:active {
-    transform: scale(0.95);
+  transform: scale(0.95);
 }
+
 /* ========================================
    FALLING FLOWERS
 ======================================== */
 
 #fallingFlowers {
-    position: fixed;
-    inset: 0;
+  position: fixed;
+  inset: 0;
 
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    overflow: hidden;
-    pointer-events: none;
+  overflow: hidden;
+  pointer-events: none;
 
-    z-index: 9990;
+  z-index: 9990;
 }
 
 .falling-flower {
-    position: absolute;
+  position: absolute;
 
-    top: -100px;
+  top: -100px;
 
-    width: var(--size);
-    height: var(--size);
+  width: var(--size);
+  height: var(--size);
 
-    object-fit: contain;
+  object-fit: contain;
 
-    pointer-events: none;
+  pointer-events: none;
 
-    opacity: 0;
+  opacity: 0;
 
-    animation: flowerFall var(--duration) linear forwards;
+  animation: flowerFall var(--duration) linear forwards;
 
-    will-change: transform, top, opacity;
+  will-change: transform, top, opacity;
 
-    /*
+  /*
        Your images are JPGs, so this helps
        hide most of the white background.
     */
-    mix-blend-mode: multiply;
+  mix-blend-mode: multiply;
 }
 
 @keyframes flowerFall {
 
-    0% {
-        top: -100px;
+  0% {
+    top: -100px;
 
-        opacity: 0;
+    opacity: 0;
 
-        transform:
-            translateX(0)
-            rotate(0deg);
-    }
+    transform:
+      translateX(0) rotate(0deg);
+  }
 
-    10% {
-        opacity: 1;
-    }
+  10% {
+    opacity: 1;
+  }
 
-    30% {
-        transform:
-            translateX(var(--move1))
-            rotate(var(--rotate1));
-    }
+  30% {
+    transform:
+      translateX(var(--move1)) rotate(var(--rotate1));
+  }
 
-    55% {
-        transform:
-            translateX(var(--move2))
-            rotate(var(--rotate2));
-    }
+  55% {
+    transform:
+      translateX(var(--move2)) rotate(var(--rotate2));
+  }
 
-    80% {
-        transform:
-            translateX(var(--move3))
-            rotate(var(--rotate3));
-    }
+  80% {
+    transform:
+      translateX(var(--move3)) rotate(var(--rotate3));
+  }
 
-    100% {
-        top: 110vh;
+  100% {
+    top: 110vh;
 
-        opacity: 0;
+    opacity: 0;
 
-        transform:
-            translateX(var(--move4))
-            rotate(var(--rotate4));
-    }
+    transform:
+      translateX(var(--move4)) rotate(var(--rotate4));
+  }
 }
+
 @media (prefers-reduced-motion: reduce) {
-    .falling-flower {
-        animation-duration: var(--duration) !important;
-        animation-iteration-count: 1 !important;
-    }
+  .falling-flower {
+    animation-duration: var(--duration) !important;
+    animation-iteration-count: 1 !important;
+  }
 }
- /* =========================================================
+
+/* =========================================================
    HELLO + LETTER FINAL DESIGN FIX
    ========================================================= */
 
 /* ---------- GENERAL ---------- */
 
 .birthday-page {
-    width: 100%;
-    overflow-x: hidden;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .birthday-page .hero,
 .birthday-page .letter {
-    width: min(1100px, calc(100% - 40px));
-    margin-left: auto;
-    margin-right: auto;
-    box-sizing: border-box;
+  width: min(1100px, calc(100% - 40px));
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
 
 
@@ -2573,165 +2562,161 @@ body.shake {
    ========================================================= */
 
 .birthday-page .hero {
-    min-height: 720px;
+  min-height: 720px;
 
-    margin-top: 0;
-    padding: 70px 55px;
+  margin-top: 0;
+  padding: 70px 55px;
 
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 360px;
-    align-items: center;
-    gap: 25px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  align-items: center;
+  gap: 25px;
 
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 
-    border-radius: 0 0 32px 32px;
+  border-radius: 0 0 32px 32px;
 
-    background:
-        radial-gradient(
-            circle at 35% 15%,
-            rgba(255, 224, 236, .95),
-            transparent 38%
-        ),
-        radial-gradient(
-            circle at 85% 80%,
-            rgba(218, 195, 255, .45),
-            transparent 32%
-        ),
-        var(--card);
+  background:
+    radial-gradient(circle at 35% 15%,
+      rgba(255, 224, 236, .95),
+      transparent 38%),
+    radial-gradient(circle at 85% 80%,
+      rgba(218, 195, 255, .45),
+      transparent 32%),
+    var(--card);
 }
 
 
 /* Cake stays decorative instead of affecting layout */
 
 .birthday-page .hero::before {
-    position: absolute;
-    left: 50%;
-    top: 48%;
+  position: absolute;
+  left: 50%;
+  top: 48%;
 
-    transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 
-    font-size: 70px;
+  font-size: 70px;
 
-    z-index: 2;
-    pointer-events: none;
+  z-index: 2;
+  pointer-events: none;
 }
 
 
 /* ---------- LEFT CONTENT ---------- */
 
 .birthday-page .hero-inner {
-    position: relative;
-    z-index: 10;
+  position: relative;
+  z-index: 10;
 
-    width: 100%;
-    max-width: 600px;
+  width: 100%;
+  max-width: 600px;
 
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 
-    text-align: left;
+  text-align: left;
 }
 
 
 /* Small heading */
 
 .birthday-page .hero-eyebrow {
-    margin-bottom: 12px;
+  margin-bottom: 12px;
 
-    font-size: 19px;
-    line-height: 1.4;
+  font-size: 19px;
+  line-height: 1.4;
 
-    color: var(--text-soft);
+  color: var(--text-soft);
 }
 
 
 /* Main birthday title */
 
 .birthday-page .hero-title {
-    width: 100%;
-    max-width: 600px;
+  width: 100%;
+  max-width: 600px;
 
-    margin: 0;
+  margin: 0;
 
-    font-size: clamp(46px, 6vw, 76px);
-    line-height: .98;
+  font-size: clamp(46px, 6vw, 76px);
+  line-height: .98;
 
-    text-align: left;
-    letter-spacing: -.025em;
+  text-align: left;
+  letter-spacing: -.025em;
 }
 
 
 /* Each word */
 
 .birthday-page .hero-title .word {
-    display: inline-block;
+  display: inline-block;
 
-    margin-right: .16em;
-    margin-bottom: .04em;
+  margin-right: .16em;
+  margin-bottom: .04em;
 
-    white-space: normal;
+  white-space: normal;
 }
 
 
 /* Description */
 
 .birthday-page .hero .lede {
-    width: 100%;
-    max-width: 500px;
+  width: 100%;
+  max-width: 500px;
 
-    margin: 22px 0 0;
+  margin: 22px 0 0;
 
-    font-size: 17px;
-    line-height: 1.75;
+  font-size: 17px;
+  line-height: 1.75;
 
-    text-align: left;
+  text-align: left;
 
-    color: var(--text-soft);
+  color: var(--text-soft);
 }
 
 
 /* Surprise button */
 
 .birthday-page #surprise-button {
-    margin-top: 25px;
+  margin-top: 25px;
 
-    padding: 14px 27px;
+  padding: 14px 27px;
 
-    border-radius: 999px;
+  border-radius: 999px;
 
-    font-size: 15px;
+  font-size: 15px;
 
-    box-shadow:
-        0 12px 30px rgba(139, 92, 246, .22);
+  box-shadow:
+    0 12px 30px rgba(139, 92, 246, .22);
 
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
 }
 
 .birthday-page #surprise-button:hover {
-    transform: translateY(-3px);
+  transform: translateY(-3px);
 
-    box-shadow:
-        0 17px 35px rgba(255, 78, 145, .28);
+  box-shadow:
+    0 17px 35px rgba(255, 78, 145, .28);
 }
 
 
 /* Scroll cue */
 
 .birthday-page .scroll-cue {
-    margin-top: 28px;
+  margin-top: 28px;
 
-    align-items: flex-start;
+  align-items: flex-start;
 
-    text-align: left;
+  text-align: left;
 }
 
 
@@ -2740,80 +2725,80 @@ body.shake {
    ========================================================= */
 
 .birthday-page .hero-visual {
-    position: relative;
+  position: relative;
 
-    top: auto;
-    right: auto;
+  top: auto;
+  right: auto;
 
-    width: 340px;
-    height: 420px;
+  width: 340px;
+  height: 420px;
 
-    margin: 0 auto;
+  margin: 0 auto;
 
-    z-index: 8;
+  z-index: 8;
 
-    transform: none;
+  transform: none;
 }
 
 
 /* Vitals */
 
 .birthday-page .hero-visual .vitals-card {
-    top: -10px;
-    right: -5px;
+  top: -10px;
+  right: -5px;
 
-    width: 190px;
+  width: 190px;
 
-    z-index: 20;
+  z-index: 20;
 }
 
 
 /* Main photo */
 
 .birthday-page .hero-visual .stack-card.c1 {
-    left: 100px;
-    top: 45px;
+  left: 100px;
+  top: 45px;
 
-    width: 190px;
-    height: 230px;
+  width: 190px;
+  height: 230px;
 
-    z-index: 15;
+  z-index: 15;
 }
 
 
 /* Left photo */
 
 .birthday-page .hero-visual .stack-card.c2 {
-    left: 15px;
-    top: 175px;
+  left: 15px;
+  top: 175px;
 
-    width: 145px;
-    height: 180px;
+  width: 145px;
+  height: 180px;
 
-    z-index: 12;
+  z-index: 12;
 }
 
 
 /* Bottom/right photo */
 
 .birthday-page .hero-visual .stack-card.c3 {
-    left: 185px;
-    top: 225px;
+  left: 185px;
+  top: 225px;
 
-    width: 125px;
-    height: 155px;
+  width: 125px;
+  height: 155px;
 
-    z-index: 10;
+  z-index: 10;
 }
 
 
 /* Celebration badge */
 
 .birthday-page .hero-visual .stack-badge {
-    left: 5px;
-    bottom: 15px;
+  left: 5px;
+  bottom: 15px;
 
-    z-index: 30;
+  z-index: 30;
 }
 
 
@@ -2822,16 +2807,16 @@ body.shake {
    ========================================================= */
 
 .birthday-page .hero-balloons {
-    position: absolute;
-    inset: 0;
+  position: absolute;
+  inset: 0;
 
-    pointer-events: none;
+  pointer-events: none;
 
-    z-index: 1;
+  z-index: 1;
 }
 
 .birthday-page .hero-balloons .balloon {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 
@@ -2840,186 +2825,182 @@ body.shake {
    ========================================================= */
 
 .birthday-page .letter {
-    position: relative;
+  position: relative;
 
-    margin-top: 55px;
-    margin-bottom: 70px;
+  margin-top: 55px;
+  margin-bottom: 70px;
 
-    padding: 80px 70px;
+  padding: 80px 70px;
 
-    min-height: 700px;
+  min-height: 700px;
 
-    overflow: hidden;
+  overflow: hidden;
 
-    border-radius: 34px;
+  border-radius: 34px;
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.88),
-            rgba(255,244,250,.82)
-        );
+  background:
+    linear-gradient(135deg,
+      rgba(255, 255, 255, .88),
+      rgba(255, 244, 250, .82));
 
-    border: 1px solid rgba(255,255,255,.95);
+  border: 1px solid rgba(255, 255, 255, .95);
 
-    box-shadow:
-        0 25px 70px rgba(100,60,120,.14);
+  box-shadow:
+    0 25px 70px rgba(100, 60, 120, .14);
 }
 
 
 /* Soft background image */
 
 .birthday-page .letter-bg {
-    opacity: .08;
+  opacity: .08;
 
-    filter: blur(2px) saturate(1.1);
+  filter: blur(2px) saturate(1.1);
 
-    transform: scale(1.08);
+  transform: scale(1.08);
 }
 
 
 /* Letter content */
 
 .birthday-page .letter-inner {
-    width: 100%;
-    max-width: 820px;
+  width: 100%;
+  max-width: 820px;
 
-    margin: 0 auto;
+  margin: 0 auto;
 
-    position: relative;
-    z-index: 3;
+  position: relative;
+  z-index: 3;
 }
 
 
 /* Letter small heading */
 
 .birthday-page .letter .section-eyebrow {
-    margin-bottom: 12px;
+  margin-bottom: 12px;
 
-    font-size: 20px;
+  font-size: 20px;
 }
 
 
 /* Letter title */
 
 .birthday-page .letter h2 {
-    max-width: 700px;
+  max-width: 700px;
 
-    margin: 0 auto 40px;
+  margin: 0 auto 40px;
 
-    font-size: clamp(34px, 5vw, 54px);
-    line-height: 1.05;
+  font-size: clamp(34px, 5vw, 54px);
+  line-height: 1.05;
 
-    text-align: center;
+  text-align: center;
 }
 
 
 /* Actual letter text */
 
 .birthday-page .letter-body {
-    width: min(100%, 720px);
+  width: min(100%, 720px);
 
-    margin: 0 auto;
+  margin: 0 auto;
 
-    padding: 38px 42px;
+  padding: 38px 42px;
 
-    text-align: left;
+  text-align: left;
 
-    border-radius: 24px;
+  border-radius: 24px;
 
-    background: rgba(255,255,255,.62);
+  background: rgba(255, 255, 255, .62);
 
-    border: 1px solid rgba(255,94,155,.10);
+  border: 1px solid rgba(255, 94, 155, .10);
 
-    box-shadow:
-        0 14px 40px rgba(100,60,120,.08);
+  box-shadow:
+    0 14px 40px rgba(100, 60, 120, .08);
 }
 
 
 /* Individual paragraphs */
 
 .birthday-page .letter-body .line {
-    position: relative;
+  position: relative;
 
-    margin-bottom: 18px;
+  margin-bottom: 18px;
 
-    padding-left: 20px;
+  padding-left: 20px;
 
-    font-size: 17px;
-    line-height: 1.9;
+  font-size: 17px;
+  line-height: 1.9;
 
-    color: var(--text);
+  color: var(--text);
 }
 
 
 /* Small decorative line */
 
 .birthday-page .letter-body .line::before {
-    content: "";
+  content: "";
 
-    position: absolute;
+  position: absolute;
 
-    left: 0;
-    top: .8em;
+  left: 0;
+  top: .8em;
 
-    width: 6px;
-    height: 6px;
+  width: 6px;
+  height: 6px;
 
-    border-radius: 50%;
+  border-radius: 50%;
 
-    background: linear-gradient(
-        135deg,
-        var(--pink-deep),
-        var(--purple)
-    );
+  background: linear-gradient(135deg,
+      var(--pink-deep),
+      var(--purple));
 
-    box-shadow:
-        0 0 0 4px rgba(255,94,155,.08);
+  box-shadow:
+    0 0 0 4px rgba(255, 94, 155, .08);
 }
 
 
 /* Sign off */
 
 .birthday-page .letter-body .line-signoff {
-    margin-top: 30px;
-    margin-bottom: 0;
+  margin-top: 30px;
+  margin-bottom: 0;
 
-    padding: 18px 0 0;
+  padding: 18px 0 0;
 
-    border-top: 1px dashed rgba(139,92,246,.25);
+  border-top: 1px dashed rgba(139, 92, 246, .25);
 
-    font-size: 27px;
+  font-size: 27px;
 
-    text-align: center;
+  text-align: center;
 }
 
 
 /* Remove bullet from signoff */
 
 .birthday-page .letter-body .line-signoff::before {
-    display: none;
+  display: none;
 }
 
 
 /* Traits */
 
 .birthday-page .chips-label {
-    margin-top: 38px;
+  margin-top: 38px;
 
-    text-align: center;
+  text-align: center;
 
-    font-size: 19px;
+  font-size: 19px;
 }
 
 
 /* Center chips */
 
 .birthday-page .trait-chips {
-    justify-content: center;
+  justify-content: center;
 
-    max-width: 700px;
+  max-width: 700px;
 
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 
@@ -3029,56 +3010,56 @@ body.shake {
 
 @media (max-width: 900px) {
 
-    .birthday-page .hero {
-        min-height: 780px;
+  .birthday-page .hero {
+    min-height: 780px;
 
-        padding: 60px 35px;
+    padding: 60px 35px;
 
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
 
-        gap: 35px;
-    }
+    gap: 35px;
+  }
 
-    .birthday-page .hero-inner {
-        max-width: 650px;
+  .birthday-page .hero-inner {
+    max-width: 650px;
 
-        margin: 0 auto;
+    margin: 0 auto;
 
-        align-items: center;
+    align-items: center;
 
-        text-align: center;
-    }
+    text-align: center;
+  }
 
-    .birthday-page .hero-title {
-        text-align: center;
+  .birthday-page .hero-title {
+    text-align: center;
 
-        font-size: clamp(42px, 8vw, 65px);
-    }
+    font-size: clamp(42px, 8vw, 65px);
+  }
 
-    .birthday-page .hero .lede {
-        margin-left: auto;
-        margin-right: auto;
+  .birthday-page .hero .lede {
+    margin-left: auto;
+    margin-right: auto;
 
-        text-align: center;
-    }
+    text-align: center;
+  }
 
-    .birthday-page .scroll-cue {
-        align-items: center;
+  .birthday-page .scroll-cue {
+    align-items: center;
 
-        text-align: center;
-    }
+    text-align: center;
+  }
 
-    .birthday-page .hero-visual {
-        width: 320px;
-        height: 390px;
+  .birthday-page .hero-visual {
+    width: 320px;
+    height: 390px;
 
-        margin: 0 auto;
-    }
+    margin: 0 auto;
+  }
 
-    .birthday-page .letter {
-        padding: 65px 35px;
-    }
+  .birthday-page .letter {
+    padding: 65px 35px;
+  }
 }
 
 
@@ -3088,133 +3069,133 @@ body.shake {
 
 @media (max-width: 600px) {
 
-    .birthday-page .hero,
-    .birthday-page .letter {
-        width: calc(100% - 18px);
-    }
+  .birthday-page .hero,
+  .birthday-page .letter {
+    width: calc(100% - 18px);
+  }
 
-    .birthday-page .hero {
-        min-height: auto;
+  .birthday-page .hero {
+    min-height: auto;
 
-        padding: 55px 18px 40px;
+    padding: 55px 18px 40px;
 
-        border-radius: 0 0 26px 26px;
-    }
+    border-radius: 0 0 26px 26px;
+  }
 
-    .birthday-page .hero::before {
-        top: 43%;
+  .birthday-page .hero::before {
+    top: 43%;
 
-        font-size: 55px;
-    }
+    font-size: 55px;
+  }
 
-    .birthday-page .hero-title {
-        font-size: clamp(36px, 12vw, 54px);
+  .birthday-page .hero-title {
+    font-size: clamp(36px, 12vw, 54px);
 
-        line-height: 1.02;
-    }
+    line-height: 1.02;
+  }
 
-    .birthday-page .hero .lede {
-        font-size: 15px;
-        line-height: 1.7;
-    }
+  .birthday-page .hero .lede {
+    font-size: 15px;
+    line-height: 1.7;
+  }
 
-    .birthday-page .hero-visual {
-        width: 290px;
-        height: 350px;
+  .birthday-page .hero-visual {
+    width: 290px;
+    height: 350px;
 
-        transform: scale(.92);
-        transform-origin: center top;
+    transform: scale(.92);
+    transform-origin: center top;
 
-        margin-bottom: -20px;
-    }
+    margin-bottom: -20px;
+  }
 
-    .birthday-page .hero-visual .vitals-card {
-        width: 165px;
+  .birthday-page .hero-visual .vitals-card {
+    width: 165px;
 
-        right: -5px;
-    }
+    right: -5px;
+  }
 
-    .birthday-page .hero-visual .stack-card.c1 {
-        left: 80px;
-        top: 45px;
+  .birthday-page .hero-visual .stack-card.c1 {
+    left: 80px;
+    top: 45px;
 
-        width: 170px;
-        height: 205px;
-    }
+    width: 170px;
+    height: 205px;
+  }
 
-    .birthday-page .hero-visual .stack-card.c2 {
-        left: 5px;
-        top: 150px;
+  .birthday-page .hero-visual .stack-card.c2 {
+    left: 5px;
+    top: 150px;
 
-        width: 130px;
-        height: 165px;
-    }
+    width: 130px;
+    height: 165px;
+  }
 
-    .birthday-page .hero-visual .stack-card.c3 {
-        left: 165px;
-        top: 190px;
+  .birthday-page .hero-visual .stack-card.c3 {
+    left: 165px;
+    top: 190px;
 
-        width: 110px;
-        height: 140px;
-    }
+    width: 110px;
+    height: 140px;
+  }
 
-    .birthday-page .hero-visual .stack-badge {
-        left: 0;
-        bottom: 5px;
+  .birthday-page .hero-visual .stack-badge {
+    left: 0;
+    bottom: 5px;
 
-        font-size: 10px;
-    }
+    font-size: 10px;
+  }
 
 
-    /* LETTER */
+  /* LETTER */
 
-    .birthday-page .letter {
-        margin-top: 30px;
-        margin-bottom: 45px;
+  .birthday-page .letter {
+    margin-top: 30px;
+    margin-bottom: 45px;
 
-        padding: 55px 16px;
+    padding: 55px 16px;
 
-        border-radius: 26px;
-    }
+    border-radius: 26px;
+  }
 
-    .birthday-page .letter h2 {
-        margin-bottom: 28px;
+  .birthday-page .letter h2 {
+    margin-bottom: 28px;
 
-        font-size: clamp(31px, 9vw, 44px);
-    }
+    font-size: clamp(31px, 9vw, 44px);
+  }
 
-    .birthday-page .letter-body {
-        padding: 25px 20px;
+  .birthday-page .letter-body {
+    padding: 25px 20px;
 
-        border-radius: 20px;
-    }
+    border-radius: 20px;
+  }
 
-    .birthday-page .letter-body .line {
-        padding-left: 15px;
+  .birthday-page .letter-body .line {
+    padding-left: 15px;
 
-        font-size: 15px;
-        line-height: 1.8;
-    }
+    font-size: 15px;
+    line-height: 1.8;
+  }
 
-    .birthday-page .letter-body .line-signoff {
-        font-size: 23px;
-    }
+  .birthday-page .letter-body .line-signoff {
+    font-size: 23px;
+  }
 
-    .birthday-page .chips-label {
-        font-size: 17px;
+  .birthday-page .chips-label {
+    font-size: 17px;
 
-        line-height: 1.6;
-    }
+    line-height: 1.6;
+  }
 
-    .birthday-page .trait-chips {
-        gap: 8px;
-    }
+  .birthday-page .trait-chips {
+    gap: 8px;
+  }
 
-    .birthday-page .chip {
-        padding: 8px 13px;
+  .birthday-page .chip {
+    padding: 8px 13px;
 
-        font-size: 12px;
-    }
+    font-size: 12px;
+  }
 }
 
 
@@ -3223,51 +3204,45 @@ body.shake {
    ========================================================= */
 
 body.night-mode .birthday-page .letter {
-    background:
-        linear-gradient(
-            135deg,
-            rgba(21,16,31,.96),
-            rgba(29,20,40,.96)
-        ) !important;
+  background:
+    linear-gradient(135deg,
+      rgba(21, 16, 31, .96),
+      rgba(29, 20, 40, .96)) !important;
 
-    border-color: rgba(255,255,255,.08);
+  border-color: rgba(255, 255, 255, .08);
 
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.35);
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, .35);
 }
 
 body.night-mode .birthday-page .letter-body {
-    background:
-        rgba(255,255,255,.045);
+  background:
+    rgba(255, 255, 255, .045);
 
-    border-color:
-        rgba(255,255,255,.08);
+  border-color:
+    rgba(255, 255, 255, .08);
 
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.18);
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, .18);
 }
 
 body.night-mode .birthday-page .letter-body .line {
-    color: #e8dce9 !important;
+  color: #e8dce9 !important;
 }
 
 body.night-mode .birthday-page .letter-body .line-signoff {
-    border-color: rgba(255,255,255,.12);
+  border-color: rgba(255, 255, 255, .12);
 }
 
 body.night-mode .birthday-page .hero {
-    background:
-        radial-gradient(
-            circle at 25% 15%,
-            rgba(120,70,170,.28),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 85% 80%,
-            rgba(180,70,130,.20),
-            transparent 35%
-        ),
-        #0d0a18 !important;
+  background:
+    radial-gradient(circle at 25% 15%,
+      rgba(120, 70, 170, .28),
+      transparent 35%),
+    radial-gradient(circle at 85% 80%,
+      rgba(180, 70, 130, .20),
+      transparent 35%),
+    #0d0a18 !important;
 }
 
 
@@ -3277,19 +3252,20 @@ body.night-mode .birthday-page .hero {
 
 @media (max-width: 380px) {
 
-    .birthday-page .hero-title {
-        font-size: 33px;
-    }
+  .birthday-page .hero-title {
+    font-size: 33px;
+  }
 
-    .birthday-page .hero-visual {
-        transform: scale(.84);
-        margin-bottom: -45px;
-    }
+  .birthday-page .hero-visual {
+    transform: scale(.84);
+    margin-bottom: -45px;
+  }
 
-    .birthday-page .letter-body {
-        padding: 22px 16px;
-    }
+  .birthday-page .letter-body {
+    padding: 22px 16px;
+  }
 }
+
 /* =========================================================
    FINAL BIRTHDAY HERO + NIGHT MODE FIX
 ========================================================= */
@@ -3300,12 +3276,12 @@ body.night-mode .birthday-page .hero {
 .hero-inner,
 .hero-title,
 .hero-visual {
-    max-width: 100%;
-    box-sizing: border-box;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .birthday-page {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 
@@ -3314,49 +3290,47 @@ body.night-mode .birthday-page .hero {
 ========================================================= */
 
 .hero-title {
-    width: 100%;
-    max-width: 620px;
+  width: 100%;
+  max-width: 620px;
 
-    margin: 0;
+  margin: 0;
 
-    font-size: clamp(40px, 6vw, 68px);
-    line-height: 1.02;
+  font-size: clamp(40px, 6vw, 68px);
+  line-height: 1.02;
 
-    overflow-wrap: break-word;
-    word-break: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .hero-title .word {
-    display: inline-block;
+  display: inline-block;
 
-    max-width: 100%;
+  max-width: 100%;
 
-    margin-right: .12em;
+  margin-right: .12em;
 
-    white-space: normal;
-    overflow-wrap: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 
 
 /* Important for "MY BEST FRIEND" */
 .hero-title .word[data-person-name] {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 
 /* Keep gradient title visible */
 .hero-title .word.grad {
-    background: linear-gradient(
-        90deg,
-        #ff4e91,
-        #8b5cf6
-    );
+  background: linear-gradient(90deg,
+      #ff4e91,
+      #8b5cf6);
 
-    -webkit-background-clip: text;
-    background-clip: text;
+  -webkit-background-clip: text;
+  background-clip: text;
 
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 
@@ -3365,19 +3339,19 @@ body.night-mode .birthday-page .hero {
 ========================================================= */
 
 .hero-inner {
-    width: min(58%, 620px);
+  width: min(58%, 620px);
 
-    max-width: 620px;
+  max-width: 620px;
 
-    min-width: 0;
+  min-width: 0;
 
-    margin-left: 0;
-    margin-right: auto;
+  margin-left: 0;
+  margin-right: auto;
 
-    position: relative;
-    z-index: 10;
+  position: relative;
+  z-index: 10;
 
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 
@@ -3386,14 +3360,14 @@ body.night-mode .birthday-page .hero {
 ========================================================= */
 
 .hero-visual {
-    width: 340px;
-    height: 420px;
+  width: 340px;
+  height: 420px;
 
-    right: 25px;
+  right: 25px;
 
-    z-index: 8;
+  z-index: 8;
 
-    overflow: visible;
+  overflow: visible;
 }
 
 
@@ -3402,14 +3376,14 @@ body.night-mode .birthday-page .hero {
 ========================================================= */
 
 .hero-visual .vitals-card {
-    width: 186px;
+  width: 186px;
 
-    right: -5px;
-    top: -10px;
+  right: -5px;
+  top: -10px;
 
-    z-index: 30;
+  z-index: 30;
 
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 
@@ -3418,88 +3392,86 @@ body.night-mode .birthday-page .hero {
 ========================================================= */
 
 body.night-mode .birthday-page {
-    color: #f5edf8 !important;
+  color: #f5edf8 !important;
 }
 
 
 /* Hero normal text */
 
 body.night-mode .birthday-page .hero-eyebrow {
-    color: #d9bfd9 !important;
+  color: #d9bfd9 !important;
 }
 
 body.night-mode .birthday-page .lede {
-    color: #d8c9df !important;
+  color: #d8c9df !important;
 }
 
 body.night-mode .birthday-page .scroll-cue {
-    color: #cdbbd5 !important;
+  color: #cdbbd5 !important;
 }
 
 
 /* HAPPY BIRTHDAY gradient MUST stay visible */
 
 body.night-mode .birthday-page .hero-title .word.grad {
-    background: linear-gradient(
-        90deg,
-        #ff6fa8,
-        #b58aff
-    ) !important;
+  background: linear-gradient(90deg,
+      #ff6fa8,
+      #b58aff) !important;
 
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
 
-    -webkit-text-fill-color: transparent !important;
-    color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
 }
 
 
 /* Heart at end */
 
 body.night-mode .birthday-page .hero-title .word:not(.grad) {
-    color: #ff82ad !important;
+  color: #ff82ad !important;
 }
 
 
 /* Vitals */
 
 body.night-mode .birthday-page .vitals-card {
-    background: rgba(29, 22, 40, .94) !important;
+  background: rgba(29, 22, 40, .94) !important;
 
-    border-color: rgba(255,255,255,.12) !important;
+  border-color: rgba(255, 255, 255, .12) !important;
 
-    box-shadow:
-        0 18px 45px rgba(0,0,0,.4) !important;
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, .4) !important;
 }
 
 body.night-mode .birthday-page .vitals-eyebrow {
-    color: #ff82ad !important;
+  color: #ff82ad !important;
 }
 
 body.night-mode .birthday-page .vitals-num {
-    color: #b995ff !important;
+  color: #b995ff !important;
 }
 
 body.night-mode .birthday-page .vitals-label {
-    color: #d7c8dd !important;
+  color: #d7c8dd !important;
 }
 
 
 /* Photo captions */
 
 body.night-mode .birthday-page .stack-card figcaption {
-    color: #40263b !important;
+  color: #40263b !important;
 }
 
 
 /* Celebration badge */
 
 body.night-mode .birthday-page .stack-badge {
-    background: rgba(35, 26, 46, .94) !important;
+  background: rgba(35, 26, 46, .94) !important;
 
-    color: #ff82ad !important;
+  color: #ff82ad !important;
 
-    border: 1px solid rgba(255,255,255,.10);
+  border: 1px solid rgba(255, 255, 255, .10);
 }
 
 
@@ -3508,70 +3480,66 @@ body.night-mode .birthday-page .stack-badge {
 ========================================================= */
 
 body.night-mode .birthday-page .letter {
-    background:
-        linear-gradient(
-            135deg,
-            #15101f,
-            #21162d
-        ) !important;
+  background:
+    linear-gradient(135deg,
+      #15101f,
+      #21162d) !important;
 
-    color: #f4eaf7 !important;
+  color: #f4eaf7 !important;
 }
 
 body.night-mode .birthday-page .letter .section-eyebrow {
-    color: #ff82ad !important;
+  color: #ff82ad !important;
 }
 
 
 /* Letter heading */
 
 body.night-mode .birthday-page .letter h2 {
-    background: linear-gradient(
-        90deg,
-        #ff6fa8,
-        #b58aff
-    ) !important;
+  background: linear-gradient(90deg,
+      #ff6fa8,
+      #b58aff) !important;
 
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
 
-    -webkit-text-fill-color: transparent !important;
-    color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
 }
 
 
 /* Letter paragraphs */
 
 body.night-mode .birthday-page .letter-body .line {
-    color: #e8dce9 !important;
+  color: #e8dce9 !important;
 }
 
 
 /* Letter signoff */
 
 body.night-mode .birthday-page .letter-body .line-signoff {
-    color: #ff82ad !important;
+  color: #ff82ad !important;
 }
 
 
 /* "In a word..." */
 
 body.night-mode .birthday-page .chips-label {
-    color: #d8c9df !important;
+  color: #d8c9df !important;
 }
 
 
 /* Chips */
 
 body.night-mode .birthday-page .chip {
-    background: #241a30 !important;
+  background: #241a30 !important;
 
-    color: #eadff0 !important;
+  color: #eadff0 !important;
 
-    border-color: rgba(255,105,160,.22) !important;
+  border-color: rgba(255, 105, 160, .22) !important;
 
-    box-shadow:
-        0 8px 22px rgba(0,0,0,.2) !important;
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, .2) !important;
 }
 
 
@@ -3581,13 +3549,13 @@ body.night-mode .birthday-page .chip {
 
 @media (min-width: 901px) {
 
-    .hero-inner {
-        width: min(56%, 600px);
-    }
+  .hero-inner {
+    width: min(56%, 600px);
+  }
 
-    .hero-title {
-        font-size: clamp(42px, 5.2vw, 64px);
-    }
+  .hero-title {
+    font-size: clamp(42px, 5.2vw, 64px);
+  }
 
 }
 
@@ -3598,19 +3566,19 @@ body.night-mode .birthday-page .chip {
 
 @media (max-width: 900px) {
 
-    .hero-inner {
-        width: 100%;
-        max-width: 650px;
-    }
+  .hero-inner {
+    width: 100%;
+    max-width: 650px;
+  }
 
-    .hero-title {
-        width: 100%;
-        max-width: 650px;
+  .hero-title {
+    width: 100%;
+    max-width: 650px;
 
-        font-size: clamp(40px, 8vw, 62px);
+    font-size: clamp(40px, 8vw, 62px);
 
-        text-align: center;
-    }
+    text-align: center;
+  }
 
 }
 
@@ -3621,23 +3589,23 @@ body.night-mode .birthday-page .chip {
 
 @media (max-width: 600px) {
 
-    .hero-title {
-        width: 100%;
+  .hero-title {
+    width: 100%;
 
-        font-size: clamp(34px, 11.5vw, 52px);
+    font-size: clamp(34px, 11.5vw, 52px);
 
-        line-height: 1.03;
+    line-height: 1.03;
 
-        text-align: center;
-    }
+    text-align: center;
+  }
 
-    .hero-title .word {
-        margin-right: .06em;
-    }
+  .hero-title .word {
+    margin-right: .06em;
+  }
 
-    .hero-inner {
-        width: 100%;
-    }
+  .hero-inner {
+    width: 100%;
+  }
 
 }
 
@@ -3648,58 +3616,57 @@ body.night-mode .birthday-page .chip {
 
 @media (max-width: 380px) {
 
-    .hero-title {
-        font-size: 31px;
-    }
+  .hero-title {
+    font-size: 31px;
+  }
 
 }
+
 /* =========================================================
    FINAL HERO TITLE FIX
 ========================================================= */
 
 .hero-title {
-    width: 100%;
-    max-width: 620px;
+  width: 100%;
+  max-width: 620px;
 
-    overflow: visible;
+  overflow: visible;
 
-    line-height: 1.02;
+  line-height: 1.02;
 }
 
 /* NEVER allow a single word to split */
 .hero-title .word {
-    display: inline-block;
+  display: inline-block;
 
-    white-space: nowrap;
+  white-space: nowrap;
 
-    word-break: keep-all;
-    overflow-wrap: normal;
+  word-break: keep-all;
+  overflow-wrap: normal;
 
-    max-width: none;
+  max-width: none;
 
-    margin-right: .12em;
+  margin-right: .12em;
 }
 
 
 /* Keep the person's name together */
 .hero-title .word[data-person-name] {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
 
 /* Gradient text */
 .hero-title .word.grad {
-    background: linear-gradient(
-        90deg,
-        #ff4e91,
-        #b06cff
-    );
+  background: linear-gradient(90deg,
+      #ff4e91,
+      #b06cff);
 
-    -webkit-background-clip: text;
-    background-clip: text;
+  -webkit-background-clip: text;
+  background-clip: text;
 
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 
@@ -3709,24 +3676,23 @@ body.night-mode .birthday-page .chip {
 
 @media (min-width: 901px) {
 
-    .hero {
-        grid-template-columns:
-            minmax(520px, 1fr)
-            340px;
+  .hero {
+    grid-template-columns:
+      minmax(520px, 1fr) 340px;
 
-        gap: 15px;
-    }
+    gap: 15px;
+  }
 
-    .hero-inner {
-        width: 100%;
-        max-width: 620px;
+  .hero-inner {
+    width: 100%;
+    max-width: 620px;
 
-        min-width: 0;
-    }
+    min-width: 0;
+  }
 
-    .hero-title {
-        font-size: clamp(42px, 5.2vw, 64px);
-    }
+  .hero-title {
+    font-size: clamp(42px, 5.2vw, 64px);
+  }
 
 }
 
@@ -3736,32 +3702,30 @@ body.night-mode .birthday-page .chip {
 ========================================================= */
 
 body.night-mode .hero-title .word.grad {
-    background: linear-gradient(
-        90deg,
-        #ff6fa8,
-        #bd91ff
-    ) !important;
+  background: linear-gradient(90deg,
+      #ff6fa8,
+      #bd91ff) !important;
 
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
 
-    -webkit-text-fill-color: transparent !important;
-    color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
 }
 
 
 /* Normal hero text in night mode */
 
 body.night-mode .hero-eyebrow {
-    color: #d9c8df !important;
+  color: #d9c8df !important;
 }
 
 body.night-mode .hero .lede {
-    color: #ded0e4 !important;
+  color: #ded0e4 !important;
 }
 
 body.night-mode .scroll-cue {
-    color: #cdbbd5 !important;
+  color: #cdbbd5 !important;
 }
 
 
@@ -3770,36 +3734,36 @@ body.night-mode .scroll-cue {
 ========================================================= */
 
 .birthday-page .surprise {
-    display: none;
+  display: none;
 }
 
 .birthday-page .surprise.show {
-    display: flex !important;
+  display: flex !important;
 
-    opacity: 1 !important;
-    visibility: visible !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 
-    transform: translateY(0) !important;
+  transform: translateY(0) !important;
 
-    position: relative;
-    z-index: 10;
+  position: relative;
+  z-index: 10;
 
-    animation: pop .55s var(--ease) both;
+  animation: pop .55s var(--ease) both;
 }
 
 
 /* Surprise text night mode */
 
 body.night-mode .birthday-page .surprise h2 {
-    color: #f7eaf8 !important;
+  color: #f7eaf8 !important;
 }
 
 body.night-mode .birthday-page .surprise-text {
-    color: #e4d5e9 !important;
+  color: #e4d5e9 !important;
 }
 
 body.night-mode .birthday-page .surprise h3 {
-    color: #ff82ad !important;
+  color: #ff82ad !important;
 }
 
 
@@ -3809,209 +3773,202 @@ body.night-mode .birthday-page .surprise h3 {
 
 @media (max-width: 900px) {
 
-    .hero-title {
-        font-size: clamp(38px, 8vw, 60px);
+  .hero-title {
+    font-size: clamp(38px, 8vw, 60px);
 
-        text-align: center;
-    }
+    text-align: center;
+  }
 
-    .hero-title .word {
-        white-space: nowrap;
-    }
+  .hero-title .word {
+    white-space: nowrap;
+  }
 
 }
 
 
 @media (max-width: 600px) {
 
-    .hero-title {
-        font-size: clamp(32px, 10.5vw, 50px);
+  .hero-title {
+    font-size: clamp(32px, 10.5vw, 50px);
 
-        line-height: 1.04;
-    }
+    line-height: 1.04;
+  }
 
 }
 
 
 @media (max-width: 380px) {
 
-    .hero-title {
-        font-size: 30px;
-    }
+  .hero-title {
+    font-size: 30px;
+  }
 
 }
+
 /* ========================================
    PRELOADER FINAL FIX
 ======================================== */
 
 .preloader {
-    position: fixed !important;
+  position: fixed !important;
 
-    inset: 0 !important;
+  inset: 0 !important;
 
-    width: 100vw !important;
-    height: 100vh !important;
+  width: 100vw !important;
+  height: 100vh !important;
 
-    display: flex !important;
+  display: flex !important;
 
-    align-items: center !important;
-    justify-content: center !important;
-    flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
 
-    z-index: 99999 !important;
+  z-index: 99999 !important;
 
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 
-    pointer-events: auto;
+  pointer-events: auto;
 
-    background:
-        radial-gradient(
-            circle at 50% 35%,
-            rgba(255, 105, 160, .16),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            var(--bg),
-            var(--bg2)
-        );
+  background:
+    radial-gradient(circle at 50% 35%,
+      rgba(255, 105, 160, .16),
+      transparent 35%),
+    linear-gradient(135deg,
+      var(--bg),
+      var(--bg2));
 
-    transition:
-        opacity .6s ease,
-        visibility .6s ease;
+  transition:
+    opacity .6s ease,
+    visibility .6s ease;
 }
 
 .preloader.hide {
-    opacity: 0 !important;
-    visibility: hidden !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
 
-    pointer-events: none !important;
+  pointer-events: none !important;
 }
 
 .preloader-heart {
-    font-size: 52px;
+  font-size: 52px;
 
-    animation:
-        heartbeat 1.05s ease-in-out infinite;
+  animation:
+    heartbeat 1.05s ease-in-out infinite;
 }
 
 .preloader-bar {
-    width: 200px;
-    height: 5px;
+  width: 200px;
+  height: 5px;
 
-    margin-top: 4px;
+  margin-top: 4px;
 
-    border-radius: 999px;
+  border-radius: 999px;
 
-    overflow: hidden;
+  overflow: hidden;
 
-    background: rgba(139, 92, 246, .18);
+  background: rgba(139, 92, 246, .18);
 }
 
 .preloader-bar span {
-    display: block;
+  display: block;
 
-    width: 5%;
-    height: 100%;
+  width: 5%;
+  height: 100%;
 
-    border-radius: 999px;
+  border-radius: 999px;
 
-    background:
-        linear-gradient(
-            90deg,
-            var(--pink-deep),
-            var(--purple)
-        );
+  background:
+    linear-gradient(90deg,
+      var(--pink-deep),
+      var(--purple));
 
-    transition: width .25s ease;
+  transition: width .25s ease;
 }
 
 .preloader-label {
-    margin: 0;
+  margin: 0;
 
-    font-family: var(--hand);
+  font-family: var(--hand);
 
-    font-size: 19px;
-    font-weight: 600;
+  font-size: 19px;
+  font-weight: 600;
 
-    color: var(--text-soft);
+  color: var(--text-soft);
 }
 
 
 /* Night mode */
 
 body.night-mode .preloader {
-    background:
-        radial-gradient(
-            circle at 50% 35%,
-            rgba(160, 100, 255, .18),
-            transparent 35%
-        ),
-        #0b0813;
+  background:
+    radial-gradient(circle at 50% 35%,
+      rgba(160, 100, 255, .18),
+      transparent 35%),
+    #0b0813;
 }
 
 body.night-mode .preloader-label {
-    color: #d9c8df !important;
+  color: #d9c8df !important;
 }
+
 /* ========================================
    PRELOADER
 ======================================== */
 
 #preloader {
-    position: fixed !important;
-    inset: 0 !important;
+  position: fixed !important;
+  inset: 0 !important;
 
-    width: 100vw !important;
-    height: 100vh !important;
+  width: 100vw !important;
+  height: 100vh !important;
 
-    display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    z-index: 999999 !important;
+  z-index: 999999 !important;
 
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 
-    pointer-events: auto;
+  pointer-events: auto;
 
-    transition:
-        opacity .6s ease,
-        visibility .6s ease;
+  transition:
+    opacity .6s ease,
+    visibility .6s ease;
 }
 
 #preloader.hide {
-    opacity: 0 !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 #preloaderFill {
-    display: block;
+  display: block;
 
-    width: 5%;
-    height: 100%;
+  width: 5%;
+  height: 100%;
 
-    border-radius: 999px;
+  border-radius: 999px;
 
-    background: linear-gradient(
-        90deg,
-        #ff4e91,
-        #8b5cf6
-    );
+  background: linear-gradient(90deg,
+      #ff4e91,
+      #8b5cf6);
 
-    transition: width .35s ease;
+  transition: width .35s ease;
 }
+
 /* ========================================
    BIRTHDAY PAGE MUSIC BUTTON POSITION
 ======================================== */
 
 body:has(.birthday-page) #musicButton {
-    top: 72px !important;
-    right: 20px !important;
-    z-index: 30000 !important;
+  top: 72px !important;
+  right: 20px !important;
+  z-index: 30000 !important;
 }
 
 
@@ -4019,13 +3976,13 @@ body:has(.birthday-page) #musicButton {
 
 @media (max-width: 550px) {
 
-    body:has(.birthday-page) #musicButton {
-        top: 62px !important;
-        right: 14px !important;
+  body:has(.birthday-page) #musicButton {
+    top: 62px !important;
+    right: 14px !important;
 
-        max-width: calc(100vw - 90px) !important;
+    max-width: calc(100vw - 90px) !important;
 
-        white-space: nowrap !important;
-    }
+    white-space: nowrap !important;
+  }
 
 }

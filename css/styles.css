@@ -14,23 +14,18 @@ body {
     color: #392532;
 
     background:
-        radial-gradient(
-            circle at 20% 20%,
+        radial-gradient(circle at 20% 20%,
             rgba(255, 170, 205, .35),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 80% 30%,
+            transparent 30%),
+        radial-gradient(circle at 80% 30%,
             rgba(190, 170, 255, .3),
-            transparent 30%
-        ),
-        linear-gradient(
-            135deg,
+            transparent 30%),
+        linear-gradient(135deg,
             #fff0f7,
             #f4eaff,
-            #ffe8f1
-        );
+            #ffe8f1);
 }
+
 /* ========================================
    DAY / NIGHT CURSOR CONTROL
 ======================================== */
@@ -65,12 +60,10 @@ body.night-mode * {
     height: 9px;
     margin: -4.5px 0 0 -44px;
     border-radius: 999px;
-    background: linear-gradient(
-        90deg,
-        rgba(255,227,163,0),
-        rgba(232,176,75,0.4),
-        rgba(255,248,236,0.6)
-    );
+    background: linear-gradient(90deg,
+            rgba(255, 227, 163, 0),
+            rgba(232, 176, 75, 0.4),
+            rgba(255, 248, 236, 0.6));
     filter: blur(3px);
     transform-origin: right center;
     opacity: 0;
@@ -80,14 +73,12 @@ body.night-mode * {
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        rgba(255,248,236,0.95) 0%,
-        rgba(255,227,163,0.55) 24%,
-        rgba(232,176,75,0.28) 46%,
-        rgba(242,163,173,0.12) 66%,
-        rgba(242,163,173,0) 78%
-    );
+    background: radial-gradient(circle,
+            rgba(255, 248, 236, 0.95) 0%,
+            rgba(255, 227, 163, 0.55) 24%,
+            rgba(232, 176, 75, 0.28) 46%,
+            rgba(242, 163, 173, 0.12) 66%,
+            rgba(242, 163, 173, 0) 78%);
     animation: dotBreathe 2.6s ease-in-out infinite;
 }
 
@@ -102,12 +93,14 @@ body.night-mode * {
     background: #fffdf7;
     box-shadow:
         0 0 6px 2px #fff8ec,
-        0 0 16px 6px rgba(255,227,163,0.75),
-        0 0 32px 11px rgba(232,176,75,0.35);
+        0 0 16px 6px rgba(255, 227, 163, 0.75),
+        0 0 32px 11px rgba(232, 176, 75, 0.35);
 }
 
 @keyframes dotBreathe {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(0.9);
         opacity: 0.82;
     }
@@ -136,9 +129,7 @@ body.night-mode * {
     display: block;
     overflow: visible;
     animation: ringSpin 16s linear infinite;
-    filter: drop-shadow(
-        0 0 5px rgba(232,176,75,0.4)
-    );
+    filter: drop-shadow(0 0 5px rgba(232, 176, 75, 0.4));
 }
 
 .ring-path {
@@ -152,9 +143,7 @@ body.night-mode * {
 
 .ring-bead {
     fill: #fff8ec;
-    filter: drop-shadow(
-        0 0 4px rgba(255,227,163,0.9)
-    );
+    filter: drop-shadow(0 0 4px rgba(255, 227, 163, 0.9));
 }
 
 @keyframes ringSpin {
@@ -173,6 +162,7 @@ body.night-mode * {
     pointer-events: none;
     z-index: 29999;
 }
+
 /* DAY MODE - NORMAL CURSOR */
 body:not(.night-mode) .glow-cursor,
 body:not(.night-mode) .glow-cursor-ring,
@@ -186,7 +176,9 @@ body.night-mode .glow-cursor-ring,
 body.night-mode .firefly-canvas {
     display: block;
 }
+
 @media (pointer: coarse) {
+
     html,
     body {
         cursor: auto;
@@ -200,15 +192,15 @@ body.night-mode .firefly-canvas {
 }
 
 
-    .hidden-message {
+.hidden-message {
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-         width: 600px;
-        height: 300px;
-        flex-direction: column;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    height: 300px;
+    flex-direction: column;
+}
 
 body.intro-active {
     overflow: hidden;
@@ -824,11 +816,9 @@ body.intro-active {
 
     color: #ffffff !important;
 
-    background: linear-gradient(
-        135deg,
-        #e84f7b,
-        #b93767
-    );
+    background: linear-gradient(135deg,
+            #e84f7b,
+            #b93767);
 
     font-size: 17px;
     font-weight: 800;
@@ -1583,20 +1573,19 @@ body.intro-active {
 
     font-weight: 600;
 }
- /* Styling of forward button */
- .more-forward-button {
+
+/* Styling of forward button */
+.more-forward-button {
     display: none !important;
 
-    margin:  25px auto 10px;
+    margin: 25px auto 10px;
 
     padding: none;
 
     border-radius: 999px;
-    background: linear-gradient(
-        135deg,
-        #d94f75,
-        #ef7895
-    );
+    background: linear-gradient(135deg,
+            #d94f75,
+            #ef7895);
 
     color: #ffffff;
 
@@ -1646,22 +1635,20 @@ body.intro-active {
     }
 }
 
- 
+
 @keyframes floatingStar {
 
     0%,
     100% {
         transform:
-            translateY(0)
-            rotate(0deg);
+            translateY(0) rotate(0deg);
 
         opacity: 0.35;
     }
 
     50% {
         transform:
-            translateY(-25px)
-            rotate(15deg);
+            translateY(-25px) rotate(15deg);
 
         opacity: 0.8;
     }
@@ -1681,11 +1668,9 @@ body.intro-active {
     border: 2px solid #d94f75;
     border-radius: 999px;
 
-    background: linear-gradient(
-        135deg,
-        #e85b82,
-        #d43f6b
-    );
+    background: linear-gradient(135deg,
+            #e85b82,
+            #d43f6b);
 
     color: white;
 
@@ -1722,8 +1707,7 @@ body.intro-active {
 
 #moreForwardButton:hover {
     transform:
-        translateY(-4px)
-        scale(1.04);
+        translateY(-4px) scale(1.04);
 
     box-shadow:
         0 14px 35px rgba(217, 79, 117, 0.40);
@@ -1736,8 +1720,7 @@ body.intro-active {
 
 #moreForwardButton:active {
     transform:
-        translateY(0)
-        scale(0.96);
+        translateY(0) scale(0.96);
 }
 
 
@@ -1748,17 +1731,16 @@ body.intro-active {
     from {
         opacity: 0;
         transform:
-            translateY(20px)
-            scale(0.85);
+            translateY(20px) scale(0.85);
     }
 
     to {
         opacity: 1;
         transform:
-            translateY(0)
-            scale(1);
+            translateY(0) scale(1);
     }
 }
+
 /* FINAL MESSAGE REVEAL */
 
 .final-message {
@@ -1778,6 +1760,7 @@ body.intro-active {
     pointer-events: auto;
     transform: translateY(0);
 }
+
 /* ==================================================
    ULTIMATE BIRTHDAY PAGE
 ================================================== */
@@ -1788,21 +1771,15 @@ body.intro-active {
     overflow: hidden;
 
     background:
-        radial-gradient(
-            circle at 10% 10%,
+        radial-gradient(circle at 10% 10%,
             rgba(255, 170, 205, 0.45),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 90% 20%,
+            transparent 30%),
+        radial-gradient(circle at 90% 20%,
             rgba(190, 170, 255, 0.35),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 50% 90%,
+            transparent 30%),
+        radial-gradient(circle at 50% 90%,
             rgba(255, 210, 160, 0.35),
-            transparent 35%
-        ),
+            transparent 35%),
         #fff7fb;
 }
 
@@ -1822,12 +1799,10 @@ body.intro-active {
     border-radius: 999px;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #d94f75,
             #ff6b9d,
-            #8f63ff
-        );
+            #8f63ff);
 
     background-size: 200% 200%;
 
@@ -1872,20 +1847,20 @@ body.intro-active {
 
     0% {
         box-shadow:
-            0 15px 35px rgba(217,79,117,.25),
-            0 0 0 0 rgba(255,105,160,.35);
+            0 15px 35px rgba(217, 79, 117, .25),
+            0 0 0 0 rgba(255, 105, 160, .35);
     }
 
     70% {
         box-shadow:
-            0 15px 35px rgba(217,79,117,.25),
-            0 0 0 18px rgba(255,105,160,0);
+            0 15px 35px rgba(217, 79, 117, .25),
+            0 0 0 18px rgba(255, 105, 160, 0);
     }
 
     100% {
         box-shadow:
-            0 15px 35px rgba(217,79,117,.25),
-            0 0 0 0 rgba(255,105,160,0);
+            0 15px 35px rgba(217, 79, 117, .25),
+            0 0 0 0 rgba(255, 105, 160, 0);
     }
 }
 
@@ -1893,19 +1868,17 @@ body.intro-active {
 #surprise-button:hover {
 
     transform:
-        translateY(-7px)
-        scale(1.06);
+        translateY(-7px) scale(1.06);
 
     box-shadow:
-        0 22px 45px rgba(217,79,117,.35);
+        0 22px 45px rgba(217, 79, 117, .35);
 }
 
 
 #surprise-button:active {
 
     transform:
-        translateY(-2px)
-        scale(.96);
+        translateY(-2px) scale(.96);
 }
 
 
@@ -1931,22 +1904,18 @@ body.intro-active {
 .birthday-page .message {
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #fff0f6,
-            #f5efff
-        );
+            #f5efff);
 }
 
 
 .birthday-page .memories {
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #fff7ed,
-            #fff0f7
-        );
+            #fff0f7);
 }
 
 
@@ -1961,12 +1930,10 @@ body.intro-active {
     align-items: center;
 
     background:
-        radial-gradient(
-            circle at center,
+        radial-gradient(circle at center,
             #ffe0ed,
             #f1e7ff 60%,
-            #fff7fb
-        );
+            #fff7fb);
 }
 
 
@@ -2030,15 +1997,15 @@ body.intro-active {
 
     border-radius: 25px;
 
-    background: rgba(255,255,255,.7);
+    background: rgba(255, 255, 255, .7);
 
     padding: 12px;
 
     box-shadow:
-        0 20px 50px rgba(80,40,60,.12);
+        0 20px 50px rgba(80, 40, 60, .12);
 
     transition:
-        transform .5s cubic-bezier(.2,.8,.2,1),
+        transform .5s cubic-bezier(.2, .8, .2, 1),
         box-shadow .5s ease;
 }
 
@@ -2046,21 +2013,17 @@ body.intro-active {
 .memory:hover {
 
     transform:
-        translateY(-15px)
-        rotate(-1deg)
-        scale(1.03);
+        translateY(-15px) rotate(-1deg) scale(1.03);
 
     box-shadow:
-        0 30px 70px rgba(80,40,60,.2);
+        0 30px 70px rgba(80, 40, 60, .2);
 }
 
 
 .memory:nth-child(2):hover {
 
     transform:
-        translateY(-15px)
-        rotate(1deg)
-        scale(1.03);
+        translateY(-15px) rotate(1deg) scale(1.03);
 }
 
 
@@ -2106,7 +2069,7 @@ body.intro-active {
 .birthday-page .surprise {
 
     border-top:
-        1px solid rgba(217,79,117,.12);
+        1px solid rgba(217, 79, 117, .12);
 }
 
 
@@ -2118,9 +2081,7 @@ body.intro-active {
         giftBounce 2s ease-in-out infinite;
 
     filter:
-        drop-shadow(
-            0 20px 20px rgba(217,79,117,.2)
-        );
+        drop-shadow(0 20px 20px rgba(217, 79, 117, .2));
 }
 
 
@@ -2145,6 +2106,7 @@ body.intro-active {
 
     color: #684b54;
 }
+
 /* FIX SURPRISE VISIBILITY */
 
 .birthday-page .surprise.show {
@@ -2158,6 +2120,7 @@ body.intro-active {
     transform: translateY(0) !important;
 
 }
+
 /* GALLERY NIGHT MODE */
 body.night-mode .reel {
     background: #0c0915;
@@ -2165,8 +2128,8 @@ body.night-mode .reel {
 
 body.night-mode .reel-pin {
     background:
-        radial-gradient(circle at 50% 38%, rgba(130,70,170,.25), transparent 58%),
-        radial-gradient(circle at 82% 78%, rgba(190,70,135,.18), transparent 55%),
+        radial-gradient(circle at 50% 38%, rgba(130, 70, 170, .25), transparent 58%),
+        radial-gradient(circle at 82% 78%, rgba(190, 70, 135, .18), transparent 55%),
         linear-gradient(180deg, #0c0915, #171021);
 }
 
@@ -2181,7 +2144,7 @@ body.night-mode .reel-counter {
 
 body.night-mode .frame-card {
     background: #21182b;
-    box-shadow: 0 24px 55px rgba(0,0,0,.45);
+    box-shadow: 0 24px 55px rgba(0, 0, 0, .45);
 }
 
 body.night-mode .reel-frame figcaption {
@@ -2189,12 +2152,13 @@ body.night-mode .reel-frame figcaption {
 }
 
 body.night-mode .dash {
-    background: rgba(180,140,220,.22);
+    background: rgba(180, 140, 220, .22);
 }
 
 body.night-mode .dash.active {
     background: linear-gradient(90deg, #ff6f9f, #a77cff);
 }
+
 /* =========================================================
    FINAL GLOBAL NIGHT MODE
    MUST STAY AT THE VERY END
@@ -2223,30 +2187,26 @@ body.night-mode label {
    PROFILE MENU
 ======================================== */
 
-body.night-mode .profile-menu > button {
+body.night-mode .profile-menu>button {
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #24192f,
-            #34203d
-        ) !important;
+            #34203d) !important;
 
     color: #f8edf9 !important;
 
     border-color:
-        rgba(255,255,255,.14) !important;
+        rgba(255, 255, 255, .14) !important;
 
     box-shadow:
-        0 10px 28px rgba(0,0,0,.35) !important;
+        0 10px 28px rgba(0, 0, 0, .35) !important;
 }
 
-body.night-mode .profile-menu > button:hover {
+body.night-mode .profile-menu>button:hover {
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #3a2547,
-            #48254b
-        ) !important;
+            #48254b) !important;
 
     color: white !important;
 }
@@ -2257,16 +2217,12 @@ body.night-mode .profile-menu > button:hover {
 
 body.night-mode .game-screen {
     background:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(130,70,170,.25),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 85% 80%,
-            rgba(190,70,135,.18),
-            transparent 35%
-        ),
+        radial-gradient(circle at 15% 20%,
+            rgba(130, 70, 170, .25),
+            transparent 35%),
+        radial-gradient(circle at 85% 80%,
+            rgba(190, 70, 135, .18),
+            transparent 35%),
         #0c0915 !important;
 
     color: #f5edf8 !important;
@@ -2281,7 +2237,7 @@ body.night-mode .game-instruction {
 }
 
 body.night-mode .puzzle-complete {
-    background: rgba(31,24,44,.92) !important;
+    background: rgba(31, 24, 44, .92) !important;
     color: #f5edf8 !important;
 }
 
@@ -2316,16 +2272,12 @@ body.night-mode .game-small {
 
 body.night-mode .cake-page {
     background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(130,70,170,.28),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
-            rgba(190,70,135,.20),
-            transparent 35%
-        ),
+        radial-gradient(circle at 20% 20%,
+            rgba(130, 70, 170, .28),
+            transparent 35%),
+        radial-gradient(circle at 80% 80%,
+            rgba(190, 70, 135, .20),
+            transparent 35%),
         #0b0813 !important;
 
     color: #f5edf8 !important;
@@ -2343,28 +2295,23 @@ body.night-mode .cake-message {
 
 body.night-mode .cake-close {
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #8d3e68,
-            #713e9d
-        ) !important;
+            #713e9d) !important;
 }
+
 /* ========================================
    PRANK PAGE
 ======================================== */
 
 body.night-mode .prank-page {
     background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(130,70,170,.25),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
-            rgba(190,70,135,.18),
-            transparent 35%
-        ),
+        radial-gradient(circle at 20% 20%,
+            rgba(130, 70, 170, .25),
+            transparent 35%),
+        radial-gradient(circle at 80% 80%,
+            rgba(190, 70, 135, .18),
+            transparent 35%),
         #0b0813 !important;
 
     color: #f5edf8 !important;
@@ -2386,16 +2333,12 @@ body.night-mode .prank-page p {
 
 body.night-mode .intro-screen {
     background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(130,70,170,.25),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
-            rgba(190,70,135,.18),
-            transparent 35%
-        ),
+        radial-gradient(circle at 20% 20%,
+            rgba(130, 70, 170, .25),
+            transparent 35%),
+        radial-gradient(circle at 80% 80%,
+            rgba(190, 70, 135, .18),
+            transparent 35%),
         #0b0813 !important;
 
     color: #f5edf8 !important;
@@ -2417,16 +2360,12 @@ body.night-mode .intro-screen p {
 
 body.night-mode .birthday-page {
     background:
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(112,72,180,.28),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 90% 20%,
-            rgba(180,70,130,.20),
-            transparent 30%
-        ),
+        radial-gradient(circle at 10% 10%,
+            rgba(112, 72, 180, .28),
+            transparent 30%),
+        radial-gradient(circle at 90% 20%,
+            rgba(180, 70, 130, .20),
+            transparent 30%),
         #0b0914 !important;
 
     color: #f5edf8 !important;
@@ -2434,54 +2373,42 @@ body.night-mode .birthday-page {
 
 body.night-mode .birthday-page .hero {
     background:
-        radial-gradient(
-            circle at top left,
-            rgba(120,70,170,.30),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at bottom right,
-            rgba(180,70,130,.20),
-            transparent 35%
-        ),
+        radial-gradient(circle at top left,
+            rgba(120, 70, 170, .30),
+            transparent 35%),
+        radial-gradient(circle at bottom right,
+            rgba(180, 70, 130, .20),
+            transparent 35%),
         #0d0a18 !important;
 }
 
 body.night-mode .birthday-page .message {
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #15101f,
-            #1c1429
-        ) !important;
+            #1c1429) !important;
 }
 
 body.night-mode .birthday-page .memories {
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #120e1b,
-            #1b1323
-        ) !important;
+            #1b1323) !important;
 }
 
 body.night-mode .birthday-page .surprise {
     background:
-        radial-gradient(
-            circle at center,
+        radial-gradient(circle at center,
             #28172d,
             #17132a 60%,
-            #0e0b17
-        ) !important;
+            #0e0b17) !important;
 }
 
 body.night-mode .letter {
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #15101f,
-            #1d1428
-        ) !important;
+            #1d1428) !important;
 
     color: #f4eaf7 !important;
 }
@@ -2502,16 +2429,12 @@ body.night-mode .surprise-text {
 body.night-mode .reel,
 body.night-mode .reel-pin {
     background:
-        radial-gradient(
-            circle at 50% 38%,
-            rgba(130,70,170,.25),
-            transparent 58%
-        ),
-        linear-gradient(
-            180deg,
+        radial-gradient(circle at 50% 38%,
+            rgba(130, 70, 170, .25),
+            transparent 58%),
+        linear-gradient(180deg,
             #0a0812,
-            #171021
-        ) !important;
+            #171021) !important;
 }
 
 body.night-mode .frame-card {
@@ -2528,11 +2451,9 @@ body.night-mode .reel-frame figcaption {
 
 body.night-mode #musicButton {
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #8d3e68,
-            #713e9d
-        ) !important;
+            #713e9d) !important;
 
     color: white !important;
 }
@@ -2570,6 +2491,7 @@ body.night-mode .firefly-canvas {
         display: none !important;
     }
 }
+
 /* ==================================================
    FLOATING EFFECTS
 ================================================== */
@@ -2607,8 +2529,7 @@ body.night-mode .firefly-canvas {
 
     from {
         transform:
-            translateY(0)
-            rotate(0deg);
+            translateY(0) rotate(0deg);
         opacity: 0;
     }
 
@@ -2618,8 +2539,7 @@ body.night-mode .firefly-canvas {
 
     to {
         transform:
-            translateY(-120vh)
-            rotate(360deg);
+            translateY(-120vh) rotate(360deg);
         opacity: 0;
     }
 }
@@ -2666,7 +2586,7 @@ body.night-mode .firefly-canvas {
 
     transition:
         opacity 1s ease,
-        transform 1s cubic-bezier(.2,.8,.2,1);
+        transform 1s cubic-bezier(.2, .8, .2, 1);
 }
 
 
@@ -2681,22 +2601,20 @@ body.night-mode .firefly-canvas {
 
 .profile-menu button:hover {
     background:
-        rgba(232,176,75,.14) !important;
+        rgba(232, 176, 75, .14) !important;
 }
 
 
- 
+
 /* =========================================================
    NIGHT MODE
 ========================================================= */
 
 body.night-mode {
     background:
-        radial-gradient(
-            120% 90% at 50% -10%,
+        radial-gradient(120% 90% at 50% -10%,
             #1d1728,
-            #120e1a 62%
-        ) !important;
+            #120e1a 62%) !important;
 }
 
 
@@ -2706,16 +2624,15 @@ body.night-mode {
 
 body:not(.night-mode) {
     background:
-        radial-gradient(
-            120% 90% at 50% -10%,
+        radial-gradient(120% 90% at 50% -10%,
             #f7e0ca,
-            #fbeee0 62%
-        ) !important;
+            #fbeee0 62%) !important;
 
     color:
         #2b2333 !important;
 }
- /* ========================================
+
+/* ========================================
    PROFILE + MUSIC CONTROLS
 ======================================== */
 
@@ -2731,12 +2648,12 @@ body:not(.night-mode) {
 .page-control-btn {
     width: 46px;
     height: 46px;
-    border: 1px solid rgba(255,255,255,.7);
+    border: 1px solid rgba(255, 255, 255, .7);
     border-radius: 50%;
-    background: rgba(255,255,255,.75);
+    background: rgba(255, 255, 255, .75);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 8px 25px rgba(80,50,100,.15);
+    box-shadow: 0 8px 25px rgba(80, 50, 100, .15);
     cursor: pointer;
     font-size: 19px;
     transition: transform .25s ease, box-shadow .25s ease;
@@ -2744,7 +2661,7 @@ body:not(.night-mode) {
 
 .page-control-btn:hover {
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 12px 30px rgba(80,50,100,.22);
+    box-shadow: 0 12px 30px rgba(80, 50, 100, .22);
 }
 
 /* ========================================
@@ -2772,7 +2689,7 @@ body:not(.night-mode) {
 .profile-menu.show {
     display: flex;
 
-    animation: profileMenuEnter 0.35s cubic-bezier(.2,.8,.2,1);
+    animation: profileMenuEnter 0.35s cubic-bezier(.2, .8, .2, 1);
 }
 
 
@@ -2781,7 +2698,7 @@ body:not(.night-mode) {
    MAIN MENU BUTTONS
 ======================================== */
 
-.profile-menu > button {
+.profile-menu>button {
     position: relative;
 
     width: 100%;
@@ -2824,11 +2741,9 @@ body:not(.night-mode) {
 
 #levelsButton {
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(255, 238, 247, 0.98),
-            rgba(235, 218, 255, 0.96)
-        );
+            rgba(235, 218, 255, 0.96));
 }
 
 
@@ -2848,11 +2763,9 @@ body:not(.night-mode) {
     border-radius: 0 8px 8px 0;
 
     background:
-        linear-gradient(
-            180deg,
+        linear-gradient(180deg,
             #8b5cf6,
-            #d946ef
-        );
+            #d946ef);
 
     box-shadow:
         0 0 14px rgba(139, 92, 246, 0.55);
@@ -2865,11 +2778,9 @@ body:not(.night-mode) {
 
 #createLinkButton {
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(255, 244, 224, 0.98),
-            rgba(255, 222, 235, 0.97)
-        );
+            rgba(255, 222, 235, 0.97));
 }
 
 
@@ -2889,11 +2800,9 @@ body:not(.night-mode) {
     border-radius: 0 8px 8px 0;
 
     background:
-        linear-gradient(
-            180deg,
+        linear-gradient(180deg,
             #f59e0b,
-            #ec4899
-        );
+            #ec4899);
 
     box-shadow:
         0 0 14px rgba(245, 158, 11, 0.45);
@@ -2919,10 +2828,9 @@ body:not(.night-mode) {
    HOVER
 ======================================== */
 
-.profile-menu > button:hover {
+.profile-menu>button:hover {
     transform:
-        translateX(5px)
-        translateY(-3px);
+        translateX(5px) translateY(-3px);
 
     filter: brightness(1.03);
 
@@ -2954,7 +2862,7 @@ body:not(.night-mode) {
    CLICK
 ======================================== */
 
-.profile-menu > button:active {
+.profile-menu>button:active {
     transform: scale(0.97);
 }
 
@@ -2977,11 +2885,9 @@ body:not(.night-mode) {
     border-radius: 17px;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(255, 247, 252, 0.96),
-            rgba(244, 237, 255, 0.94)
-        );
+            rgba(244, 237, 255, 0.94));
 
     border: 1px solid rgba(255, 255, 255, 0.8);
 
@@ -3036,11 +2942,9 @@ body:not(.night-mode) {
     transform: translateX(4px);
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             rgba(217, 70, 239, 0.12),
-            rgba(236, 72, 153, 0.08)
-        );
+            rgba(236, 72, 153, 0.08));
 
     color: #8b3f78;
 }
@@ -3055,15 +2959,13 @@ body:not(.night-mode) {
     0% {
         opacity: 0;
         transform:
-            translateY(-14px)
-            scale(0.94);
+            translateY(-14px) scale(0.94);
     }
 
     100% {
         opacity: 1;
         transform:
-            translateY(0)
-            scale(1);
+            translateY(0) scale(1);
     }
 }
 
@@ -3072,17 +2974,16 @@ body:not(.night-mode) {
     0% {
         opacity: 0;
         transform:
-            translateY(-8px)
-            scale(0.97);
+            translateY(-8px) scale(0.97);
     }
 
     100% {
         opacity: 1;
         transform:
-            translateY(0)
-            scale(1);
+            translateY(0) scale(1);
     }
 }
+
 /* ========================================
    BIRTHDAY LINK GENERATOR
 ======================================== */
@@ -3092,11 +2993,11 @@ body:not(.night-mode) {
     border: none;
     padding: 12px 22px;
     border-radius: 999px;
-    background: rgba(255,255,255,.8);
+    background: rgba(255, 255, 255, .8);
     color: #684e65;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 8px 20px rgba(100,60,120,.12);
+    box-shadow: 0 8px 20px rgba(100, 60, 120, .12);
     transition: .25s ease;
 }
 
@@ -3110,9 +3011,9 @@ body:not(.night-mode) {
     margin: 25px auto 0;
     padding: 24px;
     border-radius: 24px;
-    background: rgba(255,255,255,.75);
+    background: rgba(255, 255, 255, .75);
     backdrop-filter: blur(15px);
-    box-shadow: 0 15px 40px rgba(80,50,100,.15);
+    box-shadow: 0 15px 40px rgba(80, 50, 100, .15);
 }
 
 .link-generator.show {
@@ -3130,7 +3031,7 @@ body:not(.night-mode) {
     border: 1px solid #eadbea;
     border-radius: 12px;
     outline: none;
-    background: rgba(255,255,255,.9);
+    background: rgba(255, 255, 255, .9);
 }
 
 #generateLinkButton,
@@ -3144,7 +3045,7 @@ body:not(.night-mode) {
 }
 
 #generateLinkButton {
-    background: linear-gradient(135deg,#ff5e9b,#9b6cff);
+    background: linear-gradient(135deg, #ff5e9b, #9b6cff);
     color: white;
 }
 
@@ -3475,8 +3376,7 @@ body:not(.night-mode) {
         display: inline-flex !important;
 
         animation:
-            scratchButtonAppear
-            0.6s ease !important;
+            scratchButtonAppear 0.6s ease !important;
     }
 
 }

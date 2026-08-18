@@ -25,8 +25,7 @@ if (profileBtn && profileMenu) {
 
 if (restartButton) {
   restartButton.addEventListener("click", () => {
-    window.location.href =
-    window.getBirthdayPageUrl("intro.html");
+    window.location.href = window.getBirthdayPageUrl("intro.html");
   });
 }
 
@@ -71,90 +70,59 @@ if (scratchCanvas && scratchCard) {
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-// ========================================
-// SCRATCH COVER — MATCH WEBSITE THEME
-// ========================================
+    // ========================================
+    // SCRATCH COVER — MATCH WEBSITE THEME
+    // ========================================
 
-ctx.globalCompositeOperation = "source-over";
+    ctx.globalCompositeOperation = "source-over";
 
-const gradient = ctx.createLinearGradient(
-    0,
-    0,
-    rect.width,
-    rect.height
-);
+    const gradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
 
-gradient.addColorStop(0, "#241d30");
-gradient.addColorStop(0.45, "#30243b");
-gradient.addColorStop(1, "#1a1524");
+    gradient.addColorStop(0, "#241d30");
+    gradient.addColorStop(0.45, "#30243b");
+    gradient.addColorStop(1, "#1a1524");
 
-ctx.fillStyle = gradient;
+    ctx.fillStyle = gradient;
 
-ctx.fillRect(
-    0,
-    0,
-    rect.width,
-    rect.height
-);
+    ctx.fillRect(0, 0, rect.width, rect.height);
 
+    // ========================================
+    // SUBTLE GOLD / ROSE GLOW
+    // ========================================
 
-// ========================================
-// SUBTLE GOLD / ROSE GLOW
-// ========================================
+    const glow = ctx.createRadialGradient(
+      rect.width * 0.25,
+      rect.height * 0.2,
+      0,
+      rect.width * 0.25,
+      rect.height * 0.2,
+      rect.width * 0.65,
+    );
 
-const glow = ctx.createRadialGradient(
-    rect.width * 0.25,
-    rect.height * 0.20,
-    0,
-    rect.width * 0.25,
-    rect.height * 0.20,
-    rect.width * 0.65
-);
+    glow.addColorStop(0, "rgba(232,176,75,0.16)");
 
-glow.addColorStop(
-    0,
-    "rgba(232,176,75,0.16)"
-);
+    glow.addColorStop(0.45, "rgba(242,163,173,0.08)");
 
-glow.addColorStop(
-    0.45,
-    "rgba(242,163,173,0.08)"
-);
+    glow.addColorStop(1, "rgba(0,0,0,0)");
 
-glow.addColorStop(
-    1,
-    "rgba(0,0,0,0)"
-);
+    ctx.fillStyle = glow;
 
-ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, rect.width, rect.height);
 
-ctx.fillRect(
-    0,
-    0,
-    rect.width,
-    rect.height
-);
+    // ========================================
+    // SCRATCH TEXT
+    // ========================================
 
+    ctx.fillStyle = "rgba(250,243,232,0.92)";
 
-// ========================================
-// SCRATCH TEXT
-// ========================================
+    ctx.font = "600 22px Manrope, Arial, sans-serif";
 
-ctx.fillStyle = "rgba(250,243,232,0.92)";
+    ctx.textAlign = "center";
 
-ctx.font =
-    "600 22px Manrope, Arial, sans-serif";
+    ctx.textBaseline = "middle";
 
-ctx.textAlign = "center";
-
-ctx.textBaseline = "middle";
-
-ctx.fillText(
-    "✨ Scratch Me ✨",
-    rect.width / 2,
-    rect.height / 2
-);
-}
+    ctx.fillText("✨ Scratch Me ✨", rect.width / 2, rect.height / 2);
+  }
   // ========================================
   // SCRATCH
   // ========================================
