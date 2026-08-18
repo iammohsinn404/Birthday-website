@@ -2,72 +2,37 @@
 // GLOBAL BACKGROUND MUSIC
 // ========================================
 
-(function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-    const musicKey = "birthday-music-enabled";
-    const musicTimeKey = "birthday-music-time";
+    const musicButton =
+        document.getElementById("musicButton");
 
-    let backgroundMusic = null;
-    let musicButton = null;
-
-
-    // ========================================
-    // CREATE MUSIC
-    // ========================================
-
-    function createMusic() {
-
-        if (backgroundMusic) {
-            return backgroundMusic;
-        }
-
-        backgroundMusic =
-            new Audio("../Sounds/cute_music.mp3");
-
-        backgroundMusic.loop = true;
-        backgroundMusic.volume = 0.8;
-        backgroundMusic.preload = "auto";
-
-        // Remember current position
-        backgroundMusic.addEventListener(
-            "timeupdate",
-            () => {
-
-                if (!backgroundMusic.paused) {
-
-                    localStorage.setItem(
-                        musicTimeKey,
-                        backgroundMusic.currentTime
-                    );
-                }
-            }
-        );
-
-        backgroundMusic.addEventListener(
-            "play",
-            updateMusicButton
-        );
-
-        backgroundMusic.addEventListener(
-            "pause",
-            updateMusicButton
-        );
-
-        return backgroundMusic;
+    if (!musicButton) {
+        return;
     }
 
 
     // ========================================
-    // FIND BUTTON
+    // AUDIO
     // ========================================
 
-    function findMusicButton() {
+    const backgroundMusic =
+        new Audio("../Sounds/cute_music.mp3");
 
-        musicButton =
-            document.getElementById("musicButton");
+    backgroundMusic.loop = true;
+    backgroundMusic.volume = 0.8;
+    backgroundMusic.preload = "auto";
 
-        return musicButton;
-    }
+
+    // ========================================
+    // STORAGE
+    // ========================================
+
+    const musicKey =
+        "birthday-music-enabled";
+
+    const musicTimeKey =
+        "birthday-music-time";
 
 
     // ========================================
@@ -75,10 +40,6 @@
     // ========================================
 
     function updateMusicButton() {
-
-        if (!musicButton || !backgroundMusic) {
-            return;
-        }
 
         if (backgroundMusic.paused) {
 
@@ -94,38 +55,88 @@
 
 
     // ========================================
+    // SAVE MUSIC POSITION
+    // ========================================
+
+    backgroundMusic.addEventListener(
+        "timeupdate",
+        () => {
+
+            if (!backgroundMusic.paused) {
+
+                localStorage.setItem(
+                    musicTimeKey,
+                    String(backgroundMusic.currentTime)
+                );
+            }
+        }
+    );
+
+
+    // ========================================
+    // AUDIO ERROR CHECK
+    // ========================================
+
+    backgroundMusic.addEventListener(
+        "error",
+        () => {
+
+            console.error(
+                "Music could not be loaded."
+            );
+
+            console.error(
+                "Music URL:",
+                backgroundMusic.src
+            );
+        }
+    );
+
+
+    // ========================================
+    // RESTORE POSITION
+    // ========================================
+
+    function restoreMusicPosition() {
+
+        const savedTime =
+            parseFloat(
+                localStorage.getItem(
+                    musicTimeKey
+                )
+            );
+
+        if (
+            Number.isFinite(savedTime) &&
+            savedTime >= 0
+        ) {
+
+            try {
+
+                backgroundMusic.currentTime =
+                    savedTime;
+
+            } catch (error) {
+
+                console.warn(
+                    "Could not restore music position."
+                );
+            }
+        }
+    }
+
+
+    // ========================================
     // START MUSIC
     // ========================================
 
     async function startMusic() {
 
-        const audio = createMusic();
-
-        // Restore previous position
-        const savedTime =
-            parseFloat(
-                localStorage.getItem(musicTimeKey)
-            );
-
-        if (
-            Number.isFinite(savedTime) &&
-            audio.currentTime === 0
-        ) {
-
-            try {
-
-                audio.currentTime =
-                    savedTime;
-
-            } catch (error) {
-                // Ignore invalid saved position
-            }
-        }
-
+        restoreMusicPosition();
 
         try {
 
-            await audio.play();
+            await backgroundMusic.play();
 
             localStorage.setItem(
                 musicKey,
@@ -138,14 +149,15 @@
 
         } catch (error) {
 
-            // Browser blocked autoplay.
-            // Keep the music state ON so the
-            // next touch/click can start it.
-
-            localStorage.setItem(
-                musicKey,
-                "on"
-            );
+            /*
+             * Browser autoplay protection.
+             *
+             * We DO NOT turn the saved music
+             * setting off here.
+             *
+             * A real user interaction will
+             * retry playback.
+             */
 
             updateMusicButton();
 
@@ -160,13 +172,8 @@
 
     function stopMusic() {
 
-        if (!backgroundMusic) {
-            createMusic();
-        }
-
         backgroundMusic.pause();
 
-        // Start again from beginning
         backgroundMusic.currentTime = 0;
 
         localStorage.setItem(
@@ -186,138 +193,101 @@
     // MUSIC BUTTON
     // ========================================
 
-    function setupMusicButton() {
+    musicButton.addEventListener(
+        "click",
+        async (event) => {
 
-        findMusicButton();
+            event.preventDefault();
+            event.stopPropagation();
 
-        if (!musicButton) {
-            return;
-        }
+            /*
+             * IMPORTANT:
+             * Do not let the global resume handler
+             * interfere with this button.
+             */
 
-        createMusic();
+            if (backgroundMusic.paused) {
 
-        updateMusicButton();
+                await startMusic();
 
+            } else {
 
-        musicButton.addEventListener(
-            "click",
-            async (event) => {
-
-                event.preventDefault();
-                event.stopPropagation();
-
-                if (backgroundMusic.paused) {
-
-                    await startMusic();
-
-                } else {
-
-                    stopMusic();
-                }
-
+                stopMusic();
             }
-        );
-    }
+
+        }
+    );
+
+
+    // ========================================
+    // REMEMBER MUSIC STATE
+    // ========================================
+
+    const musicEnabled =
+        localStorage.getItem(musicKey) === "on";
 
 
     // ========================================
     // AUTO RESUME
     // ========================================
 
-    function tryResumeMusic() {
+    if (musicEnabled) {
 
-        if (
-            localStorage.getItem(musicKey) !== "on"
-        ) {
-            return;
-        }
-
-        if (!backgroundMusic) {
-            createMusic();
-        }
-
-        if (!backgroundMusic.paused) {
-            return;
-        }
-
+        /*
+         * First try automatically.
+         *
+         * Desktop browsers may allow this
+         * depending on their autoplay policy.
+         */
         startMusic();
-    }
 
 
-    // ========================================
-    // INITIALIZE
-    // ========================================
+        /*
+         * If autoplay was blocked, use the
+         * FIRST real interaction with the page.
+         *
+         * IMPORTANT:
+         * The music button itself is excluded.
+         * Otherwise pointerdown could start the
+         * music and the following click could
+         * immediately stop it.
+         */
 
-    function initializeMusic() {
+        const resumeMusic = (event) => {
 
-        setupMusicButton();
-
-        const musicEnabled =
-            localStorage.getItem(musicKey) === "on";
-
-
-        if (musicEnabled) {
-
-            // Try immediately
-            startMusic();
-
-
-            // Mobile browsers usually allow
-            // playback after the first interaction.
-            const resumeHandler = () => {
-
-                if (
-                    localStorage.getItem(musicKey) === "on"
-                ) {
-
-                    tryResumeMusic();
-                }
-
-            };
+            if (
+                event.target.closest &&
+                event.target.closest("#musicButton")
+            ) {
+                return;
+            }
 
 
-            document.addEventListener(
-                "pointerdown",
-                resumeHandler,
-                {
-                    passive: true
-                }
-            );
+            if (
+                localStorage.getItem(musicKey) === "on" &&
+                backgroundMusic.paused
+            ) {
 
-            document.addEventListener(
-                "touchstart",
-                resumeHandler,
-                {
-                    passive: true
-                }
-            );
+                startMusic();
+            }
+        };
 
-            document.addEventListener(
-                "click",
-                resumeHandler,
-                {
-                    passive: true
-                }
-            );
-        }
-    }
-
-
-    // ========================================
-    // PAGE LOAD
-    // ========================================
-
-    if (document.readyState === "loading") {
 
         document.addEventListener(
-            "DOMContentLoaded",
-            initializeMusic
+            "pointerdown",
+            resumeMusic,
+            {
+                passive: true
+            }
         );
-
-    } else {
-
-        initializeMusic();
 
     }
 
-})();
+
+    // ========================================
+    // INITIAL BUTTON STATE
+    // ========================================
+
+    updateMusicButton();
+
+});
