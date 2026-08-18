@@ -9,11 +9,18 @@ function applyGlobalTheme() {
     const theme =
         localStorage.getItem(themeKey) || "day";
 
+    // Apply theme to the page
+    document.documentElement.classList.toggle(
+        "night-mode",
+        theme === "night"
+    );
+
     document.body.classList.toggle(
         "night-mode",
         theme === "night"
     );
 
+    // Update button
     const themeButton =
         document.getElementById("themeButton");
 
@@ -23,18 +30,23 @@ function applyGlobalTheme() {
             theme === "night"
                 ? "☀️ Day Mode"
                 : "🌙 Night Mode";
-
     }
 }
 
 
+// ========================================
+// TOGGLE THEME
+// ========================================
+
 function toggleGlobalTheme() {
 
-    const isNight =
-        document.body.classList.contains("night-mode");
+    const currentTheme =
+        localStorage.getItem(themeKey) || "day";
 
     const newTheme =
-        isNight ? "day" : "night";
+        currentTheme === "night"
+            ? "day"
+            : "night";
 
     localStorage.setItem(
         themeKey,
@@ -45,21 +57,57 @@ function toggleGlobalTheme() {
 }
 
 
-/* Apply saved theme immediately */
-applyGlobalTheme();
+// ========================================
+// APPLY SAVED THEME
+// ========================================
+
+function initializeTheme() {
+
+    applyGlobalTheme();
+
+    // Make sure the button is updated after
+    // the page has finished loading.
+    requestAnimationFrame(() => {
+        applyGlobalTheme();
+    });
+}
 
 
-/* Theme button */
-document.addEventListener("click", (event) => {
+// ========================================
+// THEME BUTTON
+// ========================================
 
-    const button =
-        event.target.closest("#themeButton");
+document.addEventListener(
+    "click",
+    (event) => {
 
-    if (!button) return;
+        const button =
+            event.target.closest("#themeButton");
 
-    event.preventDefault();
-    event.stopPropagation();
+        if (!button) return;
 
-    toggleGlobalTheme();
+        event.preventDefault();
+        event.stopPropagation();
 
-});
+        toggleGlobalTheme();
+    },
+    true
+);
+
+
+// ========================================
+// START
+// ========================================
+
+if (document.readyState === "loading") {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        initializeTheme
+    );
+
+} else {
+
+    initializeTheme();
+
+}

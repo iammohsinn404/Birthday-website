@@ -1,30 +1,84 @@
 // ========================================
-// BACKGROUND MUSIC
+// GLOBAL BACKGROUND MUSIC
 // ========================================
 
-document.addEventListener("DOMContentLoaded", () => {
+(function () {
 
-    const musicButton =
-        document.getElementById("musicButton");
+    const musicKey = "birthday-music-enabled";
+    const musicTimeKey = "birthday-music-time";
 
-    if (!musicButton) {
-        return;
+    let backgroundMusic = null;
+    let musicButton = null;
+
+
+    // ========================================
+    // CREATE MUSIC
+    // ========================================
+
+    function createMusic() {
+
+        if (backgroundMusic) {
+            return backgroundMusic;
+        }
+
+        backgroundMusic =
+            new Audio("../Sounds/cute_music.mp3");
+
+        backgroundMusic.loop = true;
+        backgroundMusic.volume = 0.8;
+        backgroundMusic.preload = "auto";
+
+        // Remember current position
+        backgroundMusic.addEventListener(
+            "timeupdate",
+            () => {
+
+                if (!backgroundMusic.paused) {
+
+                    localStorage.setItem(
+                        musicTimeKey,
+                        backgroundMusic.currentTime
+                    );
+                }
+            }
+        );
+
+        backgroundMusic.addEventListener(
+            "play",
+            updateMusicButton
+        );
+
+        backgroundMusic.addEventListener(
+            "pause",
+            updateMusicButton
+        );
+
+        return backgroundMusic;
     }
 
 
-    const backgroundMusic =
-        new Audio("../Sounds/cute_music.mp3");
+    // ========================================
+    // FIND BUTTON
+    // ========================================
+
+    function findMusicButton() {
+
+        musicButton =
+            document.getElementById("musicButton");
+
+        return musicButton;
+    }
 
 
-    backgroundMusic.loop = true;
-    backgroundMusic.volume = 0.8;
-    backgroundMusic.preload = "auto";
-
-
-    const musicKey = "birthday-music-enabled";
-
+    // ========================================
+    // UPDATE BUTTON
+    // ========================================
 
     function updateMusicButton() {
+
+        if (!musicButton || !backgroundMusic) {
+            return;
+        }
 
         if (backgroundMusic.paused) {
 
@@ -35,17 +89,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
             musicButton.textContent =
                 "Stop Music";
-
         }
-
     }
 
 
+    // ========================================
+    // START MUSIC
+    // ========================================
+
     async function startMusic() {
+
+        const audio = createMusic();
+
+        // Restore previous position
+        const savedTime =
+            parseFloat(
+                localStorage.getItem(musicTimeKey)
+            );
+
+        if (
+            Number.isFinite(savedTime) &&
+            audio.currentTime === 0
+        ) {
+
+            try {
+
+                audio.currentTime =
+                    savedTime;
+
+            } catch (error) {
+                // Ignore invalid saved position
+            }
+        }
+
 
         try {
 
-            await backgroundMusic.play();
+            await audio.play();
 
             localStorage.setItem(
                 musicKey,
@@ -54,29 +134,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
             updateMusicButton();
 
+            return true;
+
         } catch (error) {
 
-            /*
-             * Browser may block autoplay after
-             * moving to another page.
-             *
-             * The next user interaction will
-             * start it automatically.
-             */
+            // Browser blocked autoplay.
+            // Keep the music state ON so the
+            // next touch/click can start it.
 
-            console.log(
-                "Music waiting for user interaction."
+            localStorage.setItem(
+                musicKey,
+                "on"
             );
 
-        }
+            updateMusicButton();
 
+            return false;
+        }
     }
 
 
+    // ========================================
+    // STOP MUSIC
+    // ========================================
+
     function stopMusic() {
+
+        if (!backgroundMusic) {
+            createMusic();
+        }
 
         backgroundMusic.pause();
 
+        // Start again from beginning
         backgroundMusic.currentTime = 0;
 
         localStorage.setItem(
@@ -84,77 +174,150 @@ document.addEventListener("DOMContentLoaded", () => {
             "off"
         );
 
-        updateMusicButton();
-
-    }
-
-
-    /* ----------------------------------------
-       MUSIC BUTTON
-    ---------------------------------------- */
-
-    musicButton.addEventListener(
-        "click",
-        async (event) => {
-
-            event.preventDefault();
-
-            if (backgroundMusic.paused) {
-
-                await startMusic();
-
-            } else {
-
-                stopMusic();
-
-            }
-
-        }
-    );
-
-
-    /* ----------------------------------------
-       REMEMBER MUSIC STATE
-    ---------------------------------------- */
-
-    const musicEnabled =
-        localStorage.getItem(musicKey) === "on";
-
-
-    if (musicEnabled) {
-
-        /*
-         * Try to continue automatically.
-         */
-        startMusic();
-
-        /*
-         * If browser blocks autoplay,
-         * start on the next user interaction.
-         */
-        const resumeMusic = () => {
-
-            if (
-                localStorage.getItem(musicKey) === "on" &&
-                backgroundMusic.paused
-            ) {
-
-                startMusic();
-
-            }
-
-        };
-
-
-        document.addEventListener(
-            "click",
-            resumeMusic,
-            { once: true }
+        localStorage.removeItem(
+            musicTimeKey
         );
 
+        updateMusicButton();
     }
 
 
-    updateMusicButton();
+    // ========================================
+    // MUSIC BUTTON
+    // ========================================
 
-});
+    function setupMusicButton() {
+
+        findMusicButton();
+
+        if (!musicButton) {
+            return;
+        }
+
+        createMusic();
+
+        updateMusicButton();
+
+
+        musicButton.addEventListener(
+            "click",
+            async (event) => {
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                if (backgroundMusic.paused) {
+
+                    await startMusic();
+
+                } else {
+
+                    stopMusic();
+                }
+
+            }
+        );
+    }
+
+
+    // ========================================
+    // AUTO RESUME
+    // ========================================
+
+    function tryResumeMusic() {
+
+        if (
+            localStorage.getItem(musicKey) !== "on"
+        ) {
+            return;
+        }
+
+        if (!backgroundMusic) {
+            createMusic();
+        }
+
+        if (!backgroundMusic.paused) {
+            return;
+        }
+
+        startMusic();
+    }
+
+
+    // ========================================
+    // INITIALIZE
+    // ========================================
+
+    function initializeMusic() {
+
+        setupMusicButton();
+
+        const musicEnabled =
+            localStorage.getItem(musicKey) === "on";
+
+
+        if (musicEnabled) {
+
+            // Try immediately
+            startMusic();
+
+
+            // Mobile browsers usually allow
+            // playback after the first interaction.
+            const resumeHandler = () => {
+
+                if (
+                    localStorage.getItem(musicKey) === "on"
+                ) {
+
+                    tryResumeMusic();
+                }
+
+            };
+
+
+            document.addEventListener(
+                "pointerdown",
+                resumeHandler,
+                {
+                    passive: true
+                }
+            );
+
+            document.addEventListener(
+                "touchstart",
+                resumeHandler,
+                {
+                    passive: true
+                }
+            );
+
+            document.addEventListener(
+                "click",
+                resumeHandler,
+                {
+                    passive: true
+                }
+            );
+        }
+    }
+
+
+    // ========================================
+    // PAGE LOAD
+    // ========================================
+
+    if (document.readyState === "loading") {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            initializeMusic
+        );
+
+    } else {
+
+        initializeMusic();
+
+    }
+
+})();
