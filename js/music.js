@@ -1,50 +1,194 @@
 // ========================================
-// BACKGROUND MUSIC
+// GLOBAL BACKGROUND MUSIC
 // ========================================
 
-document.addEventListener("DOMContentLoaded", () => {
+(function () {
 
-    const musicButton =
-        document.getElementById("musicButton");
+    const MUSIC_KEY =
+        "birthday-music-enabled";
 
-    if (!musicButton) {
-        return;
+    const TIME_KEY =
+        "birthday-music-time";
+
+
+    let audio = null;
+    let button = null;
+
+
+    // ========================================
+    // SAFE STORAGE
+    // ========================================
+
+    function getStorage(key) {
+
+        try {
+            return localStorage.getItem(key);
+        } catch (error) {
+            return null;
+        }
+    }
+
+
+    function setStorage(key, value) {
+
+        try {
+            localStorage.setItem(
+                key,
+                value
+            );
+        } catch (error) {
+            // Storage unavailable
+        }
+    }
+
+
+    function removeStorage(key) {
+
+        try {
+            localStorage.removeItem(key);
+        } catch (error) {
+            // Storage unavailable
+        }
     }
 
 
     // ========================================
-    // AUDIO
+    // CREATE AUDIO
     // ========================================
 
-    const backgroundMusic =
-        new Audio("../Sounds/cute_music.mp3");
+    function createAudio() {
 
-    backgroundMusic.loop = true;
-    backgroundMusic.volume = 0.8;
-    backgroundMusic.preload = "auto";
+        if (audio) {
+            return audio;
+        }
+
+
+        const musicURL =
+            new URL(
+                "../Sounds/cute_music.mp3",
+                document.baseURI
+            ).href;
+
+
+        audio = new Audio(musicURL);
+
+        audio.loop = true;
+
+        audio.volume = 0.8;
+
+        audio.preload = "auto";
+
+        /*
+         * Important for mobile browsers.
+         */
+        audio.setAttribute(
+            "playsinline",
+            ""
+        );
+
+
+        audio.addEventListener(
+            "play",
+            updateButton
+        );
+
+
+        audio.addEventListener(
+            "pause",
+            updateButton
+        );
+
+
+        audio.addEventListener(
+            "ended",
+            updateButton
+        );
+
+
+        audio.addEventListener(
+            "error",
+            () => {
+
+                console.error(
+                    "Birthday music failed to load:",
+                    musicURL
+                );
+            }
+        );
+
+
+        return audio;
+    }
 
 
     // ========================================
-    // STORAGE
+    // BUTTON
     // ========================================
 
-    const musicKey =
-        "birthday-music-enabled";
+    function getButton() {
 
-    const musicTimeKey =
-        "birthday-music-time";
+        if (!button) {
+
+            button =
+                document.getElementById(
+                    "musicButton"
+                );
+        }
+
+        return button;
+    }
 
 
     // ========================================
-    // BUTTON TEXT
+    // UPDATE BUTTON
     // ========================================
 
-    function updateMusicButton() {
+    function updateButton() {
 
-        musicButton.textContent =
-            backgroundMusic.paused
-                ? "Play Music"
-                : "Stop Music";
+        const btn =
+            getButton();
+
+        if (!btn) {
+            return;
+        }
+
+
+        btn.textContent =
+            audio && !audio.paused
+                ? "Stop Music"
+                : "Play Music";
+    }
+
+
+    // ========================================
+    // RESTORE POSITION
+    // ========================================
+
+    function restorePosition() {
+
+        const saved =
+            parseFloat(
+                getStorage(TIME_KEY)
+            );
+
+
+        if (
+            !Number.isFinite(saved) ||
+            saved < 0
+        ) {
+            return;
+        }
+
+
+        try {
+
+            audio.currentTime =
+                saved;
+
+        } catch (error) {
+
+            // Ignore invalid position
+        }
     }
 
 
@@ -52,66 +196,57 @@ document.addEventListener("DOMContentLoaded", () => {
     // SAVE POSITION
     // ========================================
 
-    backgroundMusic.addEventListener(
-        "timeupdate",
-        () => {
-
-            if (!backgroundMusic.paused) {
-
-                localStorage.setItem(
-                    musicTimeKey,
-                    backgroundMusic.currentTime
-                );
-            }
-        }
-    );
-
-
-    // ========================================
-    // PLAY
-    // ========================================
-
-    async function startMusic() {
-
-        const savedTime =
-            parseFloat(
-                localStorage.getItem(
-                    musicTimeKey
-                )
-            );
+    function savePosition() {
 
         if (
-            Number.isFinite(savedTime) &&
-            backgroundMusic.currentTime === 0
+            audio &&
+            !audio.paused &&
+            Number.isFinite(
+                audio.currentTime
+            )
         ) {
 
-            try {
-                backgroundMusic.currentTime =
-                    savedTime;
-            } catch (error) {}
+            setStorage(
+                TIME_KEY,
+                String(audio.currentTime)
+            );
         }
+    }
+
+
+    // ========================================
+    // PLAY MUSIC
+    // ========================================
+
+    async function playMusic() {
+
+        const music =
+            createAudio();
+
+
+        restorePosition();
 
 
         try {
 
-            await backgroundMusic.play();
+            await music.play();
 
-            localStorage.setItem(
-                musicKey,
+            setStorage(
+                MUSIC_KEY,
                 "on"
             );
 
-            updateMusicButton();
+            updateButton();
 
             return true;
 
         } catch (error) {
 
-            console.log(
-                "Browser blocked automatic music playback."
+            console.warn(
+                "Music playback was blocked by the browser."
             );
 
-            updateMusicButton();
+            updateButton();
 
             return false;
         }
@@ -119,25 +254,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ========================================
-    // STOP
+    // STOP MUSIC
     // ========================================
 
     function stopMusic() {
 
-        backgroundMusic.pause();
+        const music =
+            createAudio();
 
-        backgroundMusic.currentTime = 0;
 
-        localStorage.setItem(
-            musicKey,
+        music.pause();
+
+
+        try {
+            music.currentTime = 0;
+        } catch (error) {}
+
+
+        setStorage(
+            MUSIC_KEY,
             "off"
         );
 
-        localStorage.removeItem(
-            musicTimeKey
+
+        removeStorage(
+            TIME_KEY
         );
 
-        updateMusicButton();
+
+        updateButton();
     }
 
 
@@ -145,91 +290,113 @@ document.addEventListener("DOMContentLoaded", () => {
     // MUSIC BUTTON
     // ========================================
 
-    musicButton.addEventListener(
-        "click",
-        async (event) => {
+    function handleMusicButton(event) {
 
-            event.preventDefault();
-            event.stopPropagation();
+        event.preventDefault();
+        event.stopPropagation();
 
-            if (backgroundMusic.paused) {
 
-                await startMusic();
+        const music =
+            createAudio();
 
-            } else {
 
-                stopMusic();
-            }
+        if (music.paused) {
+
+            playMusic();
+
+        } else {
+
+            stopMusic();
         }
-    );
-
-
-    // ========================================
-    // SAVED MUSIC STATE
-    // ========================================
-
-    const musicEnabled =
-        localStorage.getItem(musicKey) === "on";
-
-
-    if (musicEnabled) {
-
-        /*
-         * Try to continue automatically.
-         * Mobile browsers may reject this.
-         */
-        startMusic();
-
-
-        /*
-         * If autoplay is blocked, wait for
-         * ONE genuine page interaction.
-         *
-         * The music button is intentionally
-         * ignored here so it cannot start and
-         * immediately stop the music.
-         */
-
-        const resumeMusic = (event) => {
-
-            if (
-                event.target.closest &&
-                event.target.closest("#musicButton")
-            ) {
-                return;
-            }
-
-
-            if (
-                localStorage.getItem(musicKey) === "on" &&
-                backgroundMusic.paused
-            ) {
-
-                startMusic();
-            }
-
-
-            document.removeEventListener(
-                "pointerdown",
-                resumeMusic
-            );
-        };
-
-
-        document.addEventListener(
-            "pointerdown",
-            resumeMusic,
-            {
-                passive: true
-            }
-        );
     }
 
 
     // ========================================
-    // INITIAL BUTTON STATE
+    // INITIALIZE
     // ========================================
 
-    updateMusicButton();
+    function initialize() {
 
-});
+        button =
+            document.getElementById(
+                "musicButton"
+            );
+
+
+        if (!button) {
+            return;
+        }
+
+
+        createAudio();
+
+
+        /*
+         * One clean click handler.
+         *
+         * No global pointerdown handler.
+         * No global touchstart handler.
+         */
+        button.addEventListener(
+            "click",
+            handleMusicButton
+        );
+
+
+        updateButton();
+
+
+        // Save position periodically
+        setInterval(
+            savePosition,
+            1000
+        );
+
+
+        /*
+         * If music was ON before changing
+         * pages, try to continue it.
+         *
+         * If the mobile browser blocks this,
+         * the user can press the button once.
+         */
+        if (
+            getStorage(MUSIC_KEY) === "on"
+        ) {
+
+            playMusic();
+        }
+    }
+
+
+    // ========================================
+    // GLOBAL FUNCTIONS
+    // ========================================
+
+    window.playBirthdayMusic =
+        playMusic;
+
+    window.stopBirthdayMusic =
+        stopMusic;
+
+
+    // ========================================
+    // START
+    // ========================================
+
+    if (
+        document.readyState ===
+        "loading"
+    ) {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            initialize
+        );
+
+    } else {
+
+        initialize();
+    }
+
+})();

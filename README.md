@@ -3,9 +3,9 @@
 Assalam 0 Alikum, _iammohsinn404_!
 
 
-Welcome to My "Birthday Website". This is just not "birthday webiste", bcz I 
+Welcome to My "Birthday Website". This is just not  any "birthday webiste", because I wanted to build something that was more of an experience.
 
-I have had a look ay my birthday websites before and i actually contributted to a birthday website
+I have had a look ay my birthday websites before and I actually contributted to a birthday website before too, which was actually the first website I ever contibuted to.
 
 # About the Project and the Working
 

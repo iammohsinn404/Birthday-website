@@ -2,118 +2,122 @@
 // GLOBAL DAY / NIGHT MODE
 // ========================================
 
-const themeKey =
-    "birthday-theme";
+(function () {
 
+    const THEME_KEY = "birthday-theme";
 
-// ========================================
-// APPLY THEME
-// ========================================
+    function getTheme() {
 
-function applyGlobalTheme() {
-
-    const theme =
-        localStorage.getItem(themeKey) || "day";
-
-    const isNight =
-        theme === "night";
-
-
-    document.body.classList.toggle(
-        "night-mode",
-        isNight
-    );
-
-
-    const themeButton =
-        document.getElementById(
-            "themeButton"
-        );
-
-    if (themeButton) {
-
-        themeButton.textContent =
-            isNight
-                ? "☀️ Day Mode"
-                : "🌙 Night Mode";
-    }
-}
-
-
-// ========================================
-// TOGGLE THEME
-// ========================================
-
-function toggleGlobalTheme() {
-
-    const currentTheme =
-        localStorage.getItem(themeKey) || "day";
-
-    const newTheme =
-        currentTheme === "night"
-            ? "day"
-            : "night";
-
-
-    localStorage.setItem(
-        themeKey,
-        newTheme
-    );
-
-
-    applyGlobalTheme();
-}
-
-
-// ========================================
-// INITIALIZE
-// ========================================
-
-function initializeTheme() {
-
-    applyGlobalTheme();
-
-
-    const themeButton =
-        document.getElementById(
-            "themeButton"
-        );
-
-
-    if (!themeButton) {
-        return;
+        try {
+            return localStorage.getItem(THEME_KEY) || "day";
+        } catch (error) {
+            return "day";
+        }
     }
 
 
-    themeButton.addEventListener(
-        "click",
-        (event) => {
+    function saveTheme(theme) {
 
+        try {
+            localStorage.setItem(THEME_KEY, theme);
+        } catch (error) {
+            // Storage unavailable - theme still works
+        }
+    }
+
+
+    function applyTheme() {
+
+        const theme = getTheme();
+        const night = theme === "night";
+
+        document.body.classList.toggle(
+            "night-mode",
+            night
+        );
+
+        const button =
+            document.getElementById("themeButton");
+
+        if (button) {
+
+            button.textContent =
+                night
+                    ? "☀️ Day Mode"
+                    : "🌙 Night Mode";
+        }
+    }
+
+
+    function toggleTheme(event) {
+
+        if (event) {
             event.preventDefault();
             event.stopPropagation();
-
-            toggleGlobalTheme();
         }
-    );
-}
+
+        const current = getTheme();
+
+        const next =
+            current === "night"
+                ? "day"
+                : "night";
+
+        saveTheme(next);
+
+        applyTheme();
+    }
 
 
-// ========================================
-// START
-// ========================================
+    // Make function available globally
+    window.toggleGlobalTheme = toggleTheme;
 
-if (
-    document.readyState ===
-    "loading"
-) {
 
-    document.addEventListener(
-        "DOMContentLoaded",
-        initializeTheme
-    );
+    function initialize() {
 
-} else {
+        applyTheme();
 
-    initializeTheme();
+        const button =
+            document.getElementById("themeButton");
 
-}
+        if (!button) {
+            return;
+        }
+
+
+        // Remove any previous handler
+        if (button.__themeHandler) {
+
+            button.removeEventListener(
+                "click",
+                button.__themeHandler
+            );
+        }
+
+
+        button.__themeHandler = toggleTheme;
+
+
+        button.addEventListener(
+            "click",
+            toggleTheme
+        );
+    }
+
+
+    if (
+        document.readyState ===
+        "loading"
+    ) {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            initialize
+        );
+
+    } else {
+
+        initialize();
+    }
+
+})();
