@@ -1,239 +1,171 @@
 // ========================================
-// GLOBAL THEME + PROFILE MENU CONTROLLER
+// GLOBAL DAY / NIGHT MODE
 // ========================================
 
-(function () {
-
-    "use strict";
-
-    const THEME_KEY = "birthday-theme";
+const themeKey = "birthday-theme";
 
 
-    // ========================================
-    // STORAGE
-    // ========================================
+// ========================================
+// GET SAVED THEME
+// ========================================
 
-    function getTheme() {
+function getSavedTheme() {
 
-        try {
-            return localStorage.getItem(THEME_KEY) || "day";
-        } catch (error) {
-            return "day";
-        }
+    try {
+
+        return (
+            localStorage.getItem(themeKey) ||
+            "day"
+        );
+
+    } catch (error) {
+
+        return "day";
     }
+}
 
 
-    function setTheme(theme) {
+// ========================================
+// SAVE THEME
+// ========================================
 
-        try {
-            localStorage.setItem(THEME_KEY, theme);
-        } catch (error) {
-            // Theme still works if storage is unavailable
-        }
+function saveTheme(theme) {
+
+    try {
+
+        localStorage.setItem(
+            themeKey,
+            theme
+        );
+
+    } catch (error) {
+
+        // Theme still works without storage
     }
+}
 
 
-    // ========================================
-    // APPLY THEME
-    // ========================================
+// ========================================
+// APPLY THEME
+// ========================================
 
-    function applyTheme() {
+function applyGlobalTheme() {
 
-        const night =
-            getTheme() === "night";
+    const theme =
+        getSavedTheme();
 
 
-        document.body.classList.toggle(
-            "night-mode",
+    const night =
+        theme === "night";
+
+
+    document.body.classList.toggle(
+        "night-mode",
+        night
+    );
+
+
+    const themeButton =
+        document.getElementById(
+            "themeButton"
+        );
+
+
+    if (themeButton) {
+
+        themeButton.textContent =
             night
-        );
+                ? "☀️ Day Mode"
+                : "🌙 Night Mode";
+    }
+}
 
 
-        const themeButton =
-            document.getElementById("themeButton");
+// ========================================
+// TOGGLE THEME
+// ========================================
 
+function toggleGlobalTheme(event) {
 
-        if (themeButton) {
+    if (event) {
 
-            themeButton.textContent =
-                night
-                    ? "☀️ Day Mode"
-                    : "🌙 Night Mode";
-        }
+        event.preventDefault();
+
+        event.stopPropagation();
     }
 
 
-    // ========================================
-    // TOGGLE THEME
-    // ========================================
-
-    function toggleTheme(event) {
-
-        if (event) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
+    const currentTheme =
+        getSavedTheme();
 
 
-        const newTheme =
-            getTheme() === "night"
-                ? "day"
-                : "night";
+    const newTheme =
+        currentTheme === "night"
+            ? "day"
+            : "night";
 
 
-        setTheme(newTheme);
+    saveTheme(newTheme);
 
-        applyTheme();
-    }
-
-
-    // ========================================
-    // PROFILE MENU
-    // ========================================
-
-    function setupProfileMenu() {
-
-        const profileButton =
-            document.getElementById("profileBtn");
-
-        const profileMenu =
-            document.getElementById("profileMenu");
+    applyGlobalTheme();
+}
 
 
-        if (!profileButton || !profileMenu) {
+// ========================================
+// APPLY SAVED THEME
+// ========================================
+
+if (
+    document.readyState ===
+    "loading"
+) {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        applyGlobalTheme
+    );
+
+} else {
+
+    applyGlobalTheme();
+}
+
+
+// ========================================
+// THEME BUTTON
+// ========================================
+//
+// IMPORTANT:
+// We use event delegation here.
+// This does NOT touch the profile
+// button or profile menu.
+//
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        const button =
+            event.target.closest(
+                "#themeButton"
+            );
+
+
+        if (!button) {
             return;
         }
 
 
-        // Prevent duplicate setup
-        if (
-            profileButton.dataset.menuReady === "true"
-        ) {
-            return;
-        }
+        toggleGlobalTheme(event);
+
+    },
+    false
+);
 
 
-        profileButton.dataset.menuReady = "true";
+// ========================================
+// GLOBAL FUNCTION
+// ========================================
 
-
-        profileButton.addEventListener(
-            "click",
-            function (event) {
-
-                event.preventDefault();
-                event.stopPropagation();
-
-                profileMenu.classList.toggle(
-                    "show"
-                );
-            }
-        );
-
-
-        // Close menu when clicking outside
-        document.addEventListener(
-            "click",
-            function (event) {
-
-                if (
-                    !profileMenu.contains(event.target) &&
-                    !profileButton.contains(event.target)
-                ) {
-
-                    profileMenu.classList.remove(
-                        "show"
-                    );
-                }
-            }
-        );
-    }
-
-
-    // ========================================
-    // THEME BUTTON
-    // ========================================
-
-    function setupThemeButton() {
-
-        const themeButton =
-            document.getElementById("themeButton");
-
-
-        if (!themeButton) {
-            return;
-        }
-
-
-        // Prevent duplicate setup
-        if (
-            themeButton.dataset.themeReady === "true"
-        ) {
-            return;
-        }
-
-
-        themeButton.dataset.themeReady = "true";
-
-
-        /*
-         * IMPORTANT:
-         *
-         * We use ONE click handler.
-         *
-         * No pointerdown.
-         * No touchstart.
-         *
-         * This prevents mobile browsers from
-         * triggering the action twice.
-         */
-
-        themeButton.addEventListener(
-            "click",
-            toggleTheme
-        );
-    }
-
-
-    // ========================================
-    // INITIALIZE
-    // ========================================
-
-    function initializeThemeSystem() {
-
-        applyTheme();
-
-        setupProfileMenu();
-
-        setupThemeButton();
-    }
-
-
-    // ========================================
-    // GLOBAL FUNCTION
-    // ========================================
-
-    window.toggleGlobalTheme =
-        toggleTheme;
-
-
-    // ========================================
-    // START
-    // ========================================
-
-    if (
-        document.readyState ===
-        "loading"
-    ) {
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            initializeThemeSystem
-        );
-
-    } else {
-
-        initializeThemeSystem();
-    }
-
-
-})();
+window.toggleGlobalTheme =
+    toggleGlobalTheme;
