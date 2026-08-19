@@ -1,10 +1,17 @@
 // ========================================
-// GLOBAL DAY / NIGHT MODE
+// GLOBAL THEME + PROFILE MENU CONTROLLER
 // ========================================
 
 (function () {
 
+    "use strict";
+
     const THEME_KEY = "birthday-theme";
+
+
+    // ========================================
+    // STORAGE
+    // ========================================
 
     function getTheme() {
 
@@ -16,38 +23,49 @@
     }
 
 
-    function saveTheme(theme) {
+    function setTheme(theme) {
 
         try {
             localStorage.setItem(THEME_KEY, theme);
         } catch (error) {
-            // Storage unavailable - theme still works
+            // Theme still works if storage is unavailable
         }
     }
 
 
+    // ========================================
+    // APPLY THEME
+    // ========================================
+
     function applyTheme() {
 
-        const theme = getTheme();
-        const night = theme === "night";
+        const night =
+            getTheme() === "night";
+
 
         document.body.classList.toggle(
             "night-mode",
             night
         );
 
-        const button =
+
+        const themeButton =
             document.getElementById("themeButton");
 
-        if (button) {
 
-            button.textContent =
+        if (themeButton) {
+
+            themeButton.textContent =
                 night
                     ? "☀️ Day Mode"
                     : "🌙 Night Mode";
         }
     }
 
+
+    // ========================================
+    // TOGGLE THEME
+    // ========================================
 
     function toggleTheme(event) {
 
@@ -56,54 +74,151 @@
             event.stopPropagation();
         }
 
-        const current = getTheme();
 
-        const next =
-            current === "night"
+        const newTheme =
+            getTheme() === "night"
                 ? "day"
                 : "night";
 
-        saveTheme(next);
+
+        setTheme(newTheme);
 
         applyTheme();
     }
 
 
-    // Make function available globally
-    window.toggleGlobalTheme = toggleTheme;
+    // ========================================
+    // PROFILE MENU
+    // ========================================
+
+    function setupProfileMenu() {
+
+        const profileButton =
+            document.getElementById("profileBtn");
+
+        const profileMenu =
+            document.getElementById("profileMenu");
 
 
-    function initialize() {
-
-        applyTheme();
-
-        const button =
-            document.getElementById("themeButton");
-
-        if (!button) {
+        if (!profileButton || !profileMenu) {
             return;
         }
 
 
-        // Remove any previous handler
-        if (button.__themeHandler) {
-
-            button.removeEventListener(
-                "click",
-                button.__themeHandler
-            );
+        // Prevent duplicate setup
+        if (
+            profileButton.dataset.menuReady === "true"
+        ) {
+            return;
         }
 
 
-        button.__themeHandler = toggleTheme;
+        profileButton.dataset.menuReady = "true";
 
 
-        button.addEventListener(
+        profileButton.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                profileMenu.classList.toggle(
+                    "show"
+                );
+            }
+        );
+
+
+        // Close menu when clicking outside
+        document.addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    !profileMenu.contains(event.target) &&
+                    !profileButton.contains(event.target)
+                ) {
+
+                    profileMenu.classList.remove(
+                        "show"
+                    );
+                }
+            }
+        );
+    }
+
+
+    // ========================================
+    // THEME BUTTON
+    // ========================================
+
+    function setupThemeButton() {
+
+        const themeButton =
+            document.getElementById("themeButton");
+
+
+        if (!themeButton) {
+            return;
+        }
+
+
+        // Prevent duplicate setup
+        if (
+            themeButton.dataset.themeReady === "true"
+        ) {
+            return;
+        }
+
+
+        themeButton.dataset.themeReady = "true";
+
+
+        /*
+         * IMPORTANT:
+         *
+         * We use ONE click handler.
+         *
+         * No pointerdown.
+         * No touchstart.
+         *
+         * This prevents mobile browsers from
+         * triggering the action twice.
+         */
+
+        themeButton.addEventListener(
             "click",
             toggleTheme
         );
     }
 
+
+    // ========================================
+    // INITIALIZE
+    // ========================================
+
+    function initializeThemeSystem() {
+
+        applyTheme();
+
+        setupProfileMenu();
+
+        setupThemeButton();
+    }
+
+
+    // ========================================
+    // GLOBAL FUNCTION
+    // ========================================
+
+    window.toggleGlobalTheme =
+        toggleTheme;
+
+
+    // ========================================
+    // START
+    // ========================================
 
     if (
         document.readyState ===
@@ -112,12 +227,13 @@
 
         document.addEventListener(
             "DOMContentLoaded",
-            initialize
+            initializeThemeSystem
         );
 
     } else {
 
-        initialize();
+        initializeThemeSystem();
     }
+
 
 })();
