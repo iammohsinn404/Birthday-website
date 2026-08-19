@@ -186,7 +186,7 @@ Clone the repository:
 
 git clone https://github.com/iammohsinn404/Birthday-website.git
 
-then open the project folder and run the website from the index.html file.
+then open the project folder and run the website from the index.html file. No actual server needed, just go and run the index.html file.
 
 ## Project Structure
 
