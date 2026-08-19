@@ -1,164 +1,235 @@
 // ========================================
-// GLOBAL BACKGROUND MUSIC
+// BACKGROUND MUSIC
 // ========================================
 
 document.addEventListener("DOMContentLoaded", () => {
-  const musicButton = document.getElementById("musicButton");
 
-  if (!musicButton) {
-    return;
-  }
+    const musicButton =
+        document.getElementById("musicButton");
 
-  // ========================================
-  // AUDIO
-  // ========================================
-
-  const backgroundMusic = new Audio("../Sounds/cute_music.mp3");
-
-  backgroundMusic.loop = true;
-  backgroundMusic.volume = 0.8;
-  backgroundMusic.preload = "auto";
-
-  // ========================================
-  // STORAGE
-  // ========================================
-
-  const musicKey = "birthday-music-enabled";
-
-  const musicTimeKey = "birthday-music-time";
-
-  // ========================================
-  // UPDATE BUTTON
-  // ========================================
-
-  function updateMusicButton() {
-    if (backgroundMusic.paused) {
-      musicButton.textContent = "Play Music";
-    } else {
-      musicButton.textContent = "Stop Music";
+    if (!musicButton) {
+        return;
     }
-  }
 
-  // ========================================
-  // SAVE MUSIC POSITION
-  // ========================================
 
-  backgroundMusic.addEventListener("timeupdate", () => {
-    if (!backgroundMusic.paused) {
-      localStorage.setItem(musicTimeKey, String(backgroundMusic.currentTime));
+    // ========================================
+    // AUDIO
+    // ========================================
+
+    const backgroundMusic =
+        new Audio("../Sounds/cute_music.mp3");
+
+    backgroundMusic.loop = true;
+    backgroundMusic.volume = 0.8;
+    backgroundMusic.preload = "auto";
+
+
+    // ========================================
+    // STORAGE
+    // ========================================
+
+    const musicKey =
+        "birthday-music-enabled";
+
+    const musicTimeKey =
+        "birthday-music-time";
+
+
+    // ========================================
+    // BUTTON TEXT
+    // ========================================
+
+    function updateMusicButton() {
+
+        musicButton.textContent =
+            backgroundMusic.paused
+                ? "Play Music"
+                : "Stop Music";
     }
-  });
 
-  // ========================================
-  // AUDIO ERROR CHECK
-  // ========================================
 
-  backgroundMusic.addEventListener("error", () => {
-    console.error("Music could not be loaded.");
+    // ========================================
+    // SAVE POSITION
+    // ========================================
 
-    console.error("Music URL:", backgroundMusic.src);
-  });
+    backgroundMusic.addEventListener(
+        "timeupdate",
+        () => {
 
-  // ========================================
-  // RESTORE POSITION
-  // ========================================
+            if (!backgroundMusic.paused) {
 
-  function restoreMusicPosition() {
-    const savedTime = parseFloat(localStorage.getItem(musicTimeKey));
+                localStorage.setItem(
+                    musicTimeKey,
+                    backgroundMusic.currentTime
+                );
+            }
+        }
+    );
 
-    if (Number.isFinite(savedTime) && savedTime >= 0) {
-      try {
-        backgroundMusic.currentTime = savedTime;
-      } catch (error) {
-        console.warn("Could not restore music position.");
-      }
+
+    // ========================================
+    // PLAY
+    // ========================================
+
+    async function startMusic() {
+
+        const savedTime =
+            parseFloat(
+                localStorage.getItem(
+                    musicTimeKey
+                )
+            );
+
+        if (
+            Number.isFinite(savedTime) &&
+            backgroundMusic.currentTime === 0
+        ) {
+
+            try {
+                backgroundMusic.currentTime =
+                    savedTime;
+            } catch (error) {}
+        }
+
+
+        try {
+
+            await backgroundMusic.play();
+
+            localStorage.setItem(
+                musicKey,
+                "on"
+            );
+
+            updateMusicButton();
+
+            return true;
+
+        } catch (error) {
+
+            console.log(
+                "Browser blocked automatic music playback."
+            );
+
+            updateMusicButton();
+
+            return false;
+        }
     }
-  }
 
-  // ========================================
-  // START MUSIC
-  // ========================================
 
-  async function startMusic() {
-    restoreMusicPosition();
+    // ========================================
+    // STOP
+    // ========================================
 
-    try {
-      await backgroundMusic.play();
+    function stopMusic() {
 
-      localStorage.setItem(musicKey, "on");
+        backgroundMusic.pause();
 
-      updateMusicButton();
+        backgroundMusic.currentTime = 0;
 
-      return true;
-    } catch (error) {
-      updateMusicButton();
+        localStorage.setItem(
+            musicKey,
+            "off"
+        );
 
-      return false;
+        localStorage.removeItem(
+            musicTimeKey
+        );
+
+        updateMusicButton();
     }
-  }
 
-  // ========================================
-  // STOP MUSIC
-  // ========================================
 
-  function stopMusic() {
-    backgroundMusic.pause();
+    // ========================================
+    // MUSIC BUTTON
+    // ========================================
 
-    backgroundMusic.currentTime = 0;
+    musicButton.addEventListener(
+        "click",
+        async (event) => {
 
-    localStorage.setItem(musicKey, "off");
+            event.preventDefault();
+            event.stopPropagation();
 
-    localStorage.removeItem(musicTimeKey);
+            if (backgroundMusic.paused) {
+
+                await startMusic();
+
+            } else {
+
+                stopMusic();
+            }
+        }
+    );
+
+
+    // ========================================
+    // SAVED MUSIC STATE
+    // ========================================
+
+    const musicEnabled =
+        localStorage.getItem(musicKey) === "on";
+
+
+    if (musicEnabled) {
+
+        /*
+         * Try to continue automatically.
+         * Mobile browsers may reject this.
+         */
+        startMusic();
+
+
+        /*
+         * If autoplay is blocked, wait for
+         * ONE genuine page interaction.
+         *
+         * The music button is intentionally
+         * ignored here so it cannot start and
+         * immediately stop the music.
+         */
+
+        const resumeMusic = (event) => {
+
+            if (
+                event.target.closest &&
+                event.target.closest("#musicButton")
+            ) {
+                return;
+            }
+
+
+            if (
+                localStorage.getItem(musicKey) === "on" &&
+                backgroundMusic.paused
+            ) {
+
+                startMusic();
+            }
+
+
+            document.removeEventListener(
+                "pointerdown",
+                resumeMusic
+            );
+        };
+
+
+        document.addEventListener(
+            "pointerdown",
+            resumeMusic,
+            {
+                passive: true
+            }
+        );
+    }
+
+
+    // ========================================
+    // INITIAL BUTTON STATE
+    // ========================================
 
     updateMusicButton();
-  }
 
-  // ========================================
-  // MUSIC BUTTON
-  // ========================================
-
-  musicButton.addEventListener("click", async (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-
-    if (backgroundMusic.paused) {
-      await startMusic();
-    } else {
-      stopMusic();
-    }
-  });
-
-  // ========================================
-  // REMEMBER MUSIC STATE
-  // ========================================
-
-  const musicEnabled = localStorage.getItem(musicKey) === "on";
-
-  // ========================================
-  // AUTO RESUME
-  // ========================================
-
-  if (musicEnabled) {
-    startMusic();
-
-    const resumeMusic = (event) => {
-      if (event.target.closest && event.target.closest("#musicButton")) {
-        return;
-      }
-
-      if (localStorage.getItem(musicKey) === "on" && backgroundMusic.paused) {
-        startMusic();
-      }
-    };
-
-    document.addEventListener("pointerdown", resumeMusic, {
-      passive: true,
-    });
-  }
-
-  // ========================================
-  // INITIAL BUTTON STATE
-  // ========================================
-
-  updateMusicButton();
 });

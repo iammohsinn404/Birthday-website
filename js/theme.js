@@ -2,79 +2,118 @@
 // GLOBAL DAY / NIGHT MODE
 // ========================================
 
-const themeKey = "birthday-theme";
+const themeKey =
+    "birthday-theme";
+
 
 // ========================================
 // APPLY THEME
 // ========================================
 
 function applyGlobalTheme() {
-  const savedTheme = localStorage.getItem(themeKey) || "day";
 
-  const isNight = savedTheme === "night";
+    const theme =
+        localStorage.getItem(themeKey) || "day";
 
-  // ----------------------------------------
-  // BODY
-  // ----------------------------------------
+    const isNight =
+        theme === "night";
 
-  document.body.classList.toggle("night-mode", isNight);
 
-  // ----------------------------------------
-  // BUTTON
-  // ----------------------------------------
+    document.body.classList.toggle(
+        "night-mode",
+        isNight
+    );
 
-  const themeButton = document.getElementById("themeButton");
 
-  if (themeButton) {
-    themeButton.textContent = isNight ? "☀️ Day Mode" : "🌙 Night Mode";
-  }
+    const themeButton =
+        document.getElementById(
+            "themeButton"
+        );
+
+    if (themeButton) {
+
+        themeButton.textContent =
+            isNight
+                ? "☀️ Day Mode"
+                : "🌙 Night Mode";
+    }
 }
+
 
 // ========================================
 // TOGGLE THEME
 // ========================================
 
 function toggleGlobalTheme() {
-  const currentTheme = localStorage.getItem(themeKey) || "day";
 
-  const newTheme = currentTheme === "night" ? "day" : "night";
+    const currentTheme =
+        localStorage.getItem(themeKey) || "day";
 
-  localStorage.setItem(themeKey, newTheme);
+    const newTheme =
+        currentTheme === "night"
+            ? "day"
+            : "night";
 
-  applyGlobalTheme();
+
+    localStorage.setItem(
+        themeKey,
+        newTheme
+    );
+
+
+    applyGlobalTheme();
 }
+
 
 // ========================================
 // INITIALIZE
 // ========================================
 
 function initializeTheme() {
-  applyGlobalTheme();
 
-  const themeButton = document.getElementById("themeButton");
+    applyGlobalTheme();
 
-  if (!themeButton) {
-    return;
-  }
 
-  // ========================================
-  // PHONE + DESKTOP
-  // ========================================
+    const themeButton =
+        document.getElementById(
+            "themeButton"
+        );
 
-  themeButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    event.stopPropagation();
 
-    toggleGlobalTheme();
-  });
+    if (!themeButton) {
+        return;
+    }
+
+
+    themeButton.addEventListener(
+        "click",
+        (event) => {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            toggleGlobalTheme();
+        }
+    );
 }
+
 
 // ========================================
 // START
 // ========================================
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initializeTheme);
+if (
+    document.readyState ===
+    "loading"
+) {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        initializeTheme
+    );
+
 } else {
-  initializeTheme();
+
+    initializeTheme();
+
 }

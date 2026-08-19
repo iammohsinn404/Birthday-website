@@ -1,6 +1,7 @@
 # Birthday Website
 
-Assalam 0 Alikum,
+Assalam 0 Alikum, _iammohsinn404_!
+
 
 Welcome to My "Birthday Website". This is just not "birthday webiste", bcz I 
 
@@ -98,4 +99,10 @@ Once you find it, the message will appear.
 
 **Thank you 😊**
 
+# Resourses
 
+All images except Gifts Imgs, I take from Pinterest and i made the gifts with ChatGPT AI. 
+
+The cute music of birthday i take from youtue and other from meme websites.
+
+I Found the
